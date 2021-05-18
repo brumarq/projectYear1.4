@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ChapeauxDAL\ChapeauxDAL.csproj" />
+    <ProjectReference Include="..\ChapeauxModel\ChapeauxModel.csproj" />
+  </ItemGroup>
+
 </Project>
