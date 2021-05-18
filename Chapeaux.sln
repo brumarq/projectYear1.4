@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapeauxUI", "ChapeauxUI\ChapeauxUI.csproj", "{96A79978-3A08-4914-92FE-8D294648DBCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapeauxModel", "ChapeauxModel\ChapeauxModel.csproj", "{FD626234-AD49-4DB2-B492-97EDB6F201E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChapeauxModel", "ChapeauxModel\ChapeauxModel.csproj", "{FD626234-AD49-4DB2-B492-97EDB6F201E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapeauxLogix", "ChapeauxLogix\ChapeauxLogix.csproj", "{71332B43-2267-461D-9BC7-E1F3EB49E613}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChapeauxLogic", "ChapeauxLogix\ChapeauxLogic.csproj", "{71332B43-2267-461D-9BC7-E1F3EB49E613}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapeauxDAL", "ChapeauxDAL\ChapeauxDAL.csproj", "{46D4A2DC-CEF0-4847-BB1C-F625E24D5BC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChapeauxDAL", "ChapeauxDAL\ChapeauxDAL.csproj", "{46D4A2DC-CEF0-4847-BB1C-F625E24D5BC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

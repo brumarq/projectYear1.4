@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ChapeauxLogix
+namespace ChapeauxLogic
 {
     public class Class1
     {
