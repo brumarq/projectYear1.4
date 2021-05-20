@@ -11,7 +11,6 @@ namespace ChapeauxUI
     public partial class ChapeauxUI : Form
     {
         private EventLog appLog = new EventLog("Application"); // Initiate EventLog
-        private string loginStatusUser = "null";
 
         public ChapeauxUI()
         {
