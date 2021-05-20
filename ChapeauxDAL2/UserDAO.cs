@@ -8,34 +8,33 @@ namespace ChapeauxDAL
 {
     public class UserDAO : Base
     {
-        public User LoginCheck(string username)
+        public List<User> GetLoginInfo(string username)
         {
-            string query = "SELECT userID, role, firstName, lastName, userName, password FROM USERS WHERE userName = @userName";
+            string query = "SELECT userID, role, firstName, lastName, loginUsername, loginPassword FROM USER WHERE username = @loginUsername";
             SqlParameter[] sqlParameters = {
-                new SqlParameter("@userName", username),
+                new SqlParameter("@loginUsername", username),
             };
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private User ReadTables(DataTable dataTable)
+        private List<User> ReadTables(DataTable dataTable)
         {
-            User foundUser = null;
+            List<User> users = new List<User>();
+
             foreach (DataRow dr in dataTable.Rows)
             {
                 User user = new User()
                 {
                     UserID = (int)dr["userID"],
-                    //Role = (Role)dr["role"],
+                    Role = (Role)dr["role"],
                     FirstName = dr["firstName"].ToString(),
                     LastName = dr["lastName"].ToString(),
-                    LoginUsername = dr["userName"].ToString(),
-                    LoginPassword = dr["password"].ToString(),
+                    LoginUsername = dr["loginUsername"].ToString(),
+                    LoginPassword = dr["loginPassword"].ToString(),
                 };
-
-                foundUser = user;
+                users.Add(user);
             }
-
-            return foundUser;
+            return users;
         }
     }
 }

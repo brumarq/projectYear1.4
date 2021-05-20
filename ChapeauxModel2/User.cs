@@ -12,6 +12,5 @@ namespace ChapeauxModel
         public string LastName { get; set; }
         public string LoginUsername { get; set; }
         public string LoginPassword { get; set; }
-        public string PasswordHashed { get; set; }
     }
 }

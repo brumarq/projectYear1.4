@@ -1,10 +1,6 @@
 ﻿using ChapeauxDAL;
 using ChapeauxModel;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChapeauxLogic
 {
@@ -15,12 +11,12 @@ namespace ChapeauxLogic
         public User_Service()
         {
             userdb = new UserDAO();
-
         }
 
-        public User LoginCheck(string username)
+        public List<User> GetLoginInfo(string username)
         {
-            return userdb.LoginCheck(username);
+            List<User> users = userdb.GetLoginInfo(username);
+            return users;
         }
     }
 }
