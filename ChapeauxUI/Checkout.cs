@@ -20,13 +20,20 @@ namespace ChapeauxUI
         #region Buttons
         private void btnClearTip_Click(object sender, EventArgs e)
         {
+            btnClearTip.Size = new Size(74, 36);
             txtTipAmount.Clear();
         }
         #endregion
 
-        private void btnClearTip_MouseHover(object sender, EventArgs e)
-        { 
+        private void btnClearTip_MouseEnter(object sender, EventArgs e)
+        {
+            Bitmap b = new Bitmap("./");
+            b.MakeTransparent(b.GetPixel(0, 0));
+        }
 
+        private void btnClearTip_MouseLeave(object sender, EventArgs e)
+        {
+            btnClearTip.Size = new Size(98, 48);
         }
     }
 }

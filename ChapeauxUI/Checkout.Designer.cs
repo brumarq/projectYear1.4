@@ -112,10 +112,10 @@ namespace ChapeauxUI
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.label1.Font = new System.Drawing.Font("Roboto", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(45, 81);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(278, 49);
+            this.label1.Size = new System.Drawing.Size(282, 42);
             this.label1.TabIndex = 8;
             this.label1.Text = "Checkout Order";
             // 
@@ -158,10 +158,10 @@ namespace ChapeauxUI
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.lblTotal.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.Location = new System.Drawing.Point(3, 2);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(197, 28);
+            this.lblTotal.Size = new System.Drawing.Size(224, 25);
             this.lblTotal.TabIndex = 10;
             this.lblTotal.Text = "TOTAL (INCL. VAT):";
             // 
@@ -169,10 +169,10 @@ namespace ChapeauxUI
             // 
             this.lblVATHigh.AutoSize = true;
             this.lblVATHigh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.lblVATHigh.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVATHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVATHigh.Location = new System.Drawing.Point(3, 28);
             this.lblVATHigh.Name = "lblVATHigh";
-            this.lblVATHigh.Size = new System.Drawing.Size(162, 26);
+            this.lblVATHigh.Size = new System.Drawing.Size(186, 25);
             this.lblVATHigh.TabIndex = 11;
             this.lblVATHigh.Text = "VAT HIGH (21%):";
             // 
@@ -180,10 +180,10 @@ namespace ChapeauxUI
             // 
             this.lblVATLow.AutoSize = true;
             this.lblVATLow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.lblVATLow.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVATLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVATLow.Location = new System.Drawing.Point(3, 54);
             this.lblVATLow.Name = "lblVATLow";
-            this.lblVATLow.Size = new System.Drawing.Size(144, 26);
+            this.lblVATLow.Size = new System.Drawing.Size(172, 25);
             this.lblVATLow.TabIndex = 12;
             this.lblVATLow.Text = "VAT LOW (9%):";
             // 
@@ -191,10 +191,10 @@ namespace ChapeauxUI
             // 
             this.lblTipAmount.AutoSize = true;
             this.lblTipAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.lblTipAmount.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipAmount.Location = new System.Drawing.Point(3, 106);
             this.lblTipAmount.Name = "lblTipAmount";
-            this.lblTipAmount.Size = new System.Drawing.Size(138, 26);
+            this.lblTipAmount.Size = new System.Drawing.Size(153, 25);
             this.lblTipAmount.TabIndex = 13;
             this.lblTipAmount.Text = "TIP AMOUNT:";
             // 
@@ -202,10 +202,10 @@ namespace ChapeauxUI
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.label6.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(3, 173);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 26);
+            this.label6.Size = new System.Drawing.Size(99, 25);
             this.label6.TabIndex = 14;
             this.label6.Text = "TO PAY:";
             // 
@@ -213,10 +213,10 @@ namespace ChapeauxUI
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.label2.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(220, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 26);
+            this.label2.Size = new System.Drawing.Size(24, 25);
             this.label2.TabIndex = 15;
             this.label2.Text = "€";
             // 
@@ -224,10 +224,10 @@ namespace ChapeauxUI
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.label3.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(220, 173);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 26);
+            this.label3.Size = new System.Drawing.Size(24, 25);
             this.label3.TabIndex = 16;
             this.label3.Text = "€";
             // 
@@ -235,10 +235,10 @@ namespace ChapeauxUI
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.label4.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(220, 106);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 26);
+            this.label4.Size = new System.Drawing.Size(24, 25);
             this.label4.TabIndex = 17;
             this.label4.Text = "€";
             // 
@@ -246,10 +246,10 @@ namespace ChapeauxUI
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.label5.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(220, 54);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(23, 26);
+            this.label5.Size = new System.Drawing.Size(24, 25);
             this.label5.TabIndex = 18;
             this.label5.Text = "€";
             // 
@@ -257,17 +257,17 @@ namespace ChapeauxUI
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.label7.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(220, 28);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(23, 26);
+            this.label7.Size = new System.Drawing.Size(24, 25);
             this.label7.TabIndex = 19;
             this.label7.Text = "€";
             // 
             // lblTotalResult
             // 
             this.lblTotalResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.lblTotalResult.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalResult.Location = new System.Drawing.Point(242, 3);
             this.lblTotalResult.Name = "lblTotalResult";
             this.lblTotalResult.Size = new System.Drawing.Size(88, 26);
@@ -277,26 +277,26 @@ namespace ChapeauxUI
             // 
             // txtTipAmount
             // 
-            this.txtTipAmount.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTipAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTipAmount.Location = new System.Drawing.Point(249, 103);
             this.txtTipAmount.Name = "txtTipAmount";
-            this.txtTipAmount.Size = new System.Drawing.Size(81, 34);
+            this.txtTipAmount.Size = new System.Drawing.Size(81, 30);
             this.txtTipAmount.TabIndex = 25;
             this.txtTipAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtToPay
             // 
-            this.txtToPay.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtToPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtToPay.Location = new System.Drawing.Point(249, 170);
             this.txtToPay.Name = "txtToPay";
-            this.txtToPay.Size = new System.Drawing.Size(81, 34);
+            this.txtToPay.Size = new System.Drawing.Size(81, 30);
             this.txtToPay.TabIndex = 26;
             this.txtToPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblVATLowResult
             // 
             this.lblVATLowResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.lblVATLowResult.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVATLowResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVATLowResult.Location = new System.Drawing.Point(249, 54);
             this.lblVATLowResult.Name = "lblVATLowResult";
             this.lblVATLowResult.Size = new System.Drawing.Size(81, 26);
@@ -307,7 +307,7 @@ namespace ChapeauxUI
             // lblVATHighResult
             // 
             this.lblVATHighResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.lblVATHighResult.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVATHighResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVATHighResult.Location = new System.Drawing.Point(249, 28);
             this.lblVATHighResult.Name = "lblVATHighResult";
             this.lblVATHighResult.Size = new System.Drawing.Size(81, 26);
@@ -340,34 +340,35 @@ namespace ChapeauxUI
             // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
-            this.lblUserName.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserName.ForeColor = System.Drawing.Color.White;
             this.lblUserName.Location = new System.Drawing.Point(650, 25);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(71, 18);
+            this.lblUserName.Size = new System.Drawing.Size(76, 16);
             this.lblUserName.TabIndex = 31;
             this.lblUserName.Text = "[username]";
             // 
             // btnClearTip
             // 
-            this.btnClearTip.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClearTip.BackgroundImage")));
+            this.btnClearTip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClearTip.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClearTip.Location = new System.Drawing.Point(336, 91);
+            this.btnClearTip.Location = new System.Drawing.Point(336, 94);
             this.btnClearTip.Name = "btnClearTip";
-            this.btnClearTip.Size = new System.Drawing.Size(111, 65);
+            this.btnClearTip.Size = new System.Drawing.Size(98, 48);
             this.btnClearTip.TabIndex = 32;
             this.btnClearTip.TabStop = false;
             this.btnClearTip.Click += new System.EventHandler(this.btnClearTip_Click);
-            this.btnClearTip.MouseHover += new System.EventHandler(this.btnClearTip_MouseHover);
+            this.btnClearTip.MouseEnter += new System.EventHandler(this.btnClearTip_MouseEnter);
+            this.btnClearTip.MouseLeave += new System.EventHandler(this.btnClearTip_MouseLeave);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.label8.Font = new System.Drawing.Font("Roboto", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(324, 81);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 49);
+            this.label8.Size = new System.Drawing.Size(48, 42);
             this.label8.TabIndex = 33;
             this.label8.Text = "...";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -435,7 +436,6 @@ namespace ChapeauxUI
             this.Controls.Add(this.pnlCheckout);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.MaximizeBox = false;
             this.Name = "CheckoutForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
