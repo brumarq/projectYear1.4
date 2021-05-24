@@ -352,7 +352,7 @@ namespace ChapeauxUI
             // 
             this.btnClearTip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClearTip.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClearTip.Location = new System.Drawing.Point(336, 94);
+            this.btnClearTip.Location = new System.Drawing.Point(351, 94);
             this.btnClearTip.Name = "btnClearTip";
             this.btnClearTip.Size = new System.Drawing.Size(98, 48);
             this.btnClearTip.TabIndex = 32;
@@ -410,6 +410,7 @@ namespace ChapeauxUI
             // 
             // pnlCheckout
             // 
+            this.pnlCheckout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pnlCheckout.Controls.Add(this.panel1);
             this.pnlCheckout.Controls.Add(this.btnBack);
             this.pnlCheckout.Controls.Add(this.label8);
