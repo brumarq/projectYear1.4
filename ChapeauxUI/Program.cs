@@ -16,7 +16,7 @@ namespace ChapeauxUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new showdennis());
+            Application.Run(new KitchenDisplay());
         }
     }
 }
