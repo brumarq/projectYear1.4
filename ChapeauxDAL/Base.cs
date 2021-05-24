@@ -1,20 +1,21 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace ChapeauxDAL
 {
     public abstract class Base
     {
         private SqlDataAdapter adapter;
-        protected SqlConnection conn;
+        private SqlConnection conn;
+        private EventLog appLog = new EventLog("Application"); // Initiate EventLog
+
         public Base()
         {
-            string connstring = ConfigurationManager.ConnectionStrings["DB"].ConnectionString;
-            conn = new SqlConnection(connstring);
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dbchapeau202104"].ConnectionString);
             adapter = new SqlDataAdapter();
-            OpenConnection();
         }
 
         protected SqlConnection OpenConnection()
@@ -25,32 +26,41 @@ namespace ChapeauxDAL
                 {
                     conn.Open();
                 }
-
             }
-            catch
+            catch (Exception e)
             {
+                appLog.Source = "Application";
+                appLog.WriteEntry(e.Message);
                 throw;
             }
-
             return conn;
-
         }
 
         private void CloseConnection()
         {
+            conn.Close();
+        }
+
+        /* For Insert/Update/Delete Queries with transaction */
+        protected void ExecuteEditTranQuery(string query, SqlParameter[] sqlParameters, SqlTransaction sqlTransaction)
+        {
+            SqlCommand command = new SqlCommand(query, conn, sqlTransaction);
             try
             {
-                conn.Close();
+                command.Parameters.AddRange(sqlParameters);
+                adapter.InsertCommand = command;
+                command.ExecuteNonQuery();
             }
-            catch
+            catch (Exception e)
             {
+                appLog.Source = "Application";
+                appLog.WriteEntry(e.Message);
                 throw;
             }
-
         }
 
         /* For Insert/Update/Delete Queries */
-        protected void ExecuteEditQuery(String query, SqlParameter[] sqlParameters)
+        protected void ExecuteEditQuery(string query, SqlParameter[] sqlParameters)
         {
             SqlCommand command = new SqlCommand();
 
@@ -62,8 +72,10 @@ namespace ChapeauxDAL
                 adapter.InsertCommand = command;
                 command.ExecuteNonQuery();
             }
-            catch
+            catch (SqlException e)
             {
+                appLog.Source = "Application";
+                appLog.WriteEntry(e.Message);
                 throw;
             }
             finally
@@ -71,9 +83,9 @@ namespace ChapeauxDAL
                 CloseConnection();
             }
         }
-        
+
         /* For Select Queries */
-        protected DataTable ExecuteSelectQuery(String query, params SqlParameter[] sqlParameters)
+        protected DataTable ExecuteSelectQuery(string query, params SqlParameter[] sqlParameters)
         {
             SqlCommand command = new SqlCommand();
             DataTable dataTable;
@@ -89,10 +101,12 @@ namespace ChapeauxDAL
                 adapter.Fill(dataSet);
                 dataTable = dataSet.Tables[0];
             }
-            catch
+            catch (SqlException e)
             {
+                appLog.Source = "Application";
+                appLog.WriteEntry(e.Message);
+                return null;
                 throw;
-
             }
             finally
             {
