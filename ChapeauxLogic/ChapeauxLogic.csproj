@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Item_Service.cs" />
+    <Compile Include="OrderItem_Service.cs" />
+    <Compile Include="Order_Service.cs" />
+    <Compile Include="Transaction_Service.cs" />
     <Compile Include="User_Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -54,6 +58,9 @@
       <Project>{1719e5f4-9769-4ed2-8b45-676b4e27111f}</Project>
       <Name>ChapeauxModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Table_Service.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

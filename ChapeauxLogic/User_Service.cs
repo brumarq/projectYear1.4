@@ -10,11 +10,11 @@ namespace ChapeauxLogic
 {
     public class User_Service
     {
-        UserDAO userdb;
+        UserDAL userdb;
 
         public User_Service()
         {
-            userdb = new UserDAO();
+            userdb = new UserDAL();
 
         }
 

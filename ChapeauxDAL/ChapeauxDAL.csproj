@@ -46,7 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base.cs" />
-    <Compile Include="UserDAO.cs" />
+    <Compile Include="ItemDAL.cs" />
+    <Compile Include="OrderDAL.cs" />
+    <Compile Include="OrderItemDAL.cs" />
+    <Compile Include="TableDAL.cs" />
+    <Compile Include="TransactionDAL.cs" />
+    <Compile Include="UserDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

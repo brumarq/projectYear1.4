@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace ChapeauxDAL
 {
-    public class UserDAO : Base
+    public class UserDAL : Base
     {
         public User LoginCheck(string username)
         {
