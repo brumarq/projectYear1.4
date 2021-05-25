@@ -13,8 +13,5 @@ namespace ChapeauxModel
         public string loginUsername { get; set; }
         public string loginPassword { get; set; }
 
-        //another random comment
-        //an even more random comment
-        //more comments (running out of comments)
     }
 }
