@@ -8,11 +8,10 @@ using System.Windows.Forms;
 
 namespace ChapeauxUI
 {
-    public partial class ChapeauxUI : Form
+    public partial class LoginScreen : Form
     {
         private EventLog appLog = new EventLog("Application"); // Initiate EventLog
-
-        public ChapeauxUI()
+        public LoginScreen()
         {
             InitializeComponent();
         }
@@ -84,8 +83,11 @@ namespace ChapeauxUI
                     if (result) 
                     {
                         //MessageBox.Show("Login Sucessfull");
-                        OverviewPanel.Show();
-                        LoginPanel.Hide();
+                        //OverviewPanel.Show();
+                        
+                        new TableOverviewForm().Show();
+                        this.Hide();
+                        //LoginPanel.Hide();
                     }
                     else
                     {

@@ -16,7 +16,9 @@ namespace ChapeauxUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ChapeauxUI());
+
+
+            Application.Run(new LoginScreen());
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace ChapeauxUI
 {
-    partial class ChapeauxUI
+    partial class LoginScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -163,7 +163,7 @@ namespace ChapeauxUI
             this.label1.TabIndex = 0;
             this.label1.Text = "Overview";
             // 
-            // ChapeauxUI
+            // LoginScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -171,7 +171,8 @@ namespace ChapeauxUI
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.OverviewPanel);
-            this.Name = "ChapeauxUI";
+            this.Name = "LoginScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chapeaux";
             this.Load += new System.EventHandler(this.ChapeauxUI_Load);
             this.txtPnlUsername.ResumeLayout(false);
