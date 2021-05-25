@@ -2,6 +2,6 @@
 {
     public enum Status
     {
-        Free, Occupied, notOrdered, OrderLoading, Served, OrderLate
+        Free, Occupied, Late
     }
 }

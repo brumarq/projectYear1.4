@@ -127,5 +127,32 @@
   <ItemGroup>
     <None Include="Resources\table-free1.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drinks-beingPrepared.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drinks-ReadyToBeServed.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drinks-served.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\food-beingPrepared.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\food-ReadyToBeServed.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\food-served.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\testingg.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table-occupied.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table-late.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

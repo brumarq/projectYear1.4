@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChapeauxDAL;
+using ChapeauxModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,22 @@ namespace ChapeauxLogic
 {
     public class OrderItem_Service
     {
+        OrderItemDAL orderItemdb;
+
+        public OrderItem_Service()
+        {
+            orderItemdb = new OrderItemDAL();
+
+        }
+
+        public List<OrderItem> getDrinksStatus(int tableNumber)
+        {
+            return orderItemdb.getDrinksStatus(tableNumber);
+        }
+
+        public List<OrderItem> getFoodStatus(int tableNumber)
+        {
+            return orderItemdb.getFoodStatus(tableNumber);
+        }
     }
 }

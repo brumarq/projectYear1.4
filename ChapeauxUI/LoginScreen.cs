@@ -34,9 +34,9 @@ namespace ChapeauxUI
                 }
 
                 User_Service userService = new User_Service();
-                User foundUser = userService.LoginCheck(givenUsername);
+                User user = userService.LoginCheck(givenUsername);
 
-                if (foundUser == null)
+                if (user == null)
                 {
                     throw new Exception("Username does not exist");
                 }
@@ -61,7 +61,7 @@ namespace ChapeauxUI
 
                     // Checking if the given password is correct. Source: https://medium.com/@mehanix/lets-talk-security-salted-password-hashing-in-c-5460be5c3aae
                     // Turn received hashed password into bytes
-                    byte[] hashBytes = Convert.FromBase64String(foundUser.LoginPassword);
+                    byte[] hashBytes = Convert.FromBase64String(user.LoginPassword);
                     // Take the salt out of hashBytes and save it into the salt array
                     byte[] salt = new byte[16];
                     Array.Copy(hashBytes, 0, salt, 0, 16);
@@ -85,7 +85,7 @@ namespace ChapeauxUI
                         //MessageBox.Show("Login Sucessfull");
                         //OverviewPanel.Show();
                         
-                        new TableOverviewForm().Show();
+                        new TableOverviewForm(user).Show();
                         this.Hide();
                         //LoginPanel.Hide();
                     }
