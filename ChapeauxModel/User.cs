@@ -6,12 +6,17 @@ namespace ChapeauxModel
 {
     public class User
     {
-        public int userID { get; set; }
-        public Role role { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string loginUsername { get; set; }
-        public string loginPassword { get; set; }
+        public int UserID { get; set; }
+        public Role Role { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string LoginUsername { get; set; }
+        public string LoginPassword { get; set; }
 
+        /*private List<User> users;
+        public User()
+        {
+            users = new List<User>();
+        }*/
     }
 }
