@@ -13,6 +13,7 @@ namespace ChapeauxModel
         public string PaymentType { get; set; }
         public decimal TipAmount { get; set; }
         public string Feedback { get; set; }
-        public string OrderID { get; set; }
+        public DateTime TransactionDate { get; set; }
+        public Order Order { get; set; }
     }
 }
