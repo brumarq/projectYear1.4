@@ -74,6 +74,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -101,6 +102,69 @@
       <Project>{1719e5f4-9769-4ed2-8b45-676b4e27111f}</Project>
       <Name>ChapeauxModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnToPayment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeelding1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picLine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picLine1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeelding2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeelding14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeelding4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeelding3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeelding6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeelding7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeelding8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeeldagasg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeelding11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeelding12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeelding13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeelding15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Afbeelding22.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

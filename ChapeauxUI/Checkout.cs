@@ -17,23 +17,75 @@ namespace ChapeauxUI
             InitializeComponent();
         }
 
-        #region Buttons
-        private void btnClearTip_Click(object sender, EventArgs e)
+        #region Global
+        private void CheckoutForm_Load(object sender, EventArgs e)
         {
-            btnClearTip.Size = new Size(74, 36);
-            txtTipAmount.Clear();
+            ShowPanel("Checkout");
+        }
+
+        private void HideAllPanels()
+        {
+            //hide main panels
+            pnlCheckout.Hide();
+            pnlPayment.Hide();
+
+            //hide sub-panels
+            subPnlCash.Hide();
         }
         #endregion
 
-        private void btnClearTip_MouseEnter(object sender, EventArgs e)
+        #region PanelSelection
+        private void ShowPanel(string panelName)
         {
-            Bitmap b = new Bitmap("./");
-            b.MakeTransparent(b.GetPixel(0, 0));
+            //Hide panels
+            HideAllPanels();
+
+            //show requested panel
+            if (panelName == "Checkout")
+            {
+                pnlCheckout.Show();
+            }
+
+            else if (panelName == "Payment")
+            {
+                pnlPayment.Show();
+            }
+        }
+        #endregion
+
+        #region PanelElements
+
+        #region Checkout
+        private void btnClearTip_Click(object sender, EventArgs e)
+        {
+            txtTipAmount.Clear();
         }
 
-        private void btnClearTip_MouseLeave(object sender, EventArgs e)
+        private void btnToPayment_Click(object sender, EventArgs e)
         {
-            btnClearTip.Size = new Size(98, 48);
+            ShowPanel("Payment");
         }
+        #endregion
+
+        #region Payment
+        private void btnBackToCheckout_Click(object sender, EventArgs e)
+        {
+            ShowPanel("Checkout");
+        }
+
+        private void btnFinishPayment_Click(object sender, EventArgs e)
+        {
+            //ShownPanel("");
+
+            //Add code for saving transaction info etc.
+        }
+
+        private void btnCash_Click(object sender, EventArgs e)
+        {
+            subPnlCash.Show();
+        }
+        #endregion
+
+        #endregion
     }
 }
