@@ -8,7 +8,7 @@
 
 ### Restaurant overview
 
-- [ ] there must be a restaurant overview displaying all tables with an indication ‘free’ or ‘occupied’ (text or icon or color or ...); 
+- [X] there must be a restaurant overview displaying all tables with an indication ‘free’ or ‘occupied’ (text or icon or color or ...); 
 - [ ] in this overview one can also see (for each table)if an order is running at the moment, and the waiting time for the order (text or icon or color or ...);
 
 ### Taking orders
