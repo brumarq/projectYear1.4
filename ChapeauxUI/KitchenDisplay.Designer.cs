@@ -102,7 +102,7 @@ namespace ChapeauxUI
             // lblOrders
             // 
             this.lblOrders.AutoSize = true;
-            this.lblOrders.BackColor = System.Drawing.Color.White;
+            this.lblOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.lblOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOrders.Location = new System.Drawing.Point(40, 123);
             this.lblOrders.Name = "lblOrders";
@@ -130,7 +130,7 @@ namespace ChapeauxUI
             // lblKitchenScreen
             // 
             this.lblKitchenScreen.AutoSize = true;
-            this.lblKitchenScreen.BackColor = System.Drawing.Color.White;
+            this.lblKitchenScreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.lblKitchenScreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKitchenScreen.Location = new System.Drawing.Point(493, 111);
             this.lblKitchenScreen.Name = "lblKitchenScreen";
@@ -150,7 +150,7 @@ namespace ChapeauxUI
             // lblStatusOfTheOrder
             // 
             this.lblStatusOfTheOrder.AutoSize = true;
-            this.lblStatusOfTheOrder.BackColor = System.Drawing.Color.White;
+            this.lblStatusOfTheOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.lblStatusOfTheOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatusOfTheOrder.Location = new System.Drawing.Point(40, 507);
             this.lblStatusOfTheOrder.Name = "lblStatusOfTheOrder";
@@ -163,6 +163,7 @@ namespace ChapeauxUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(752, 985);
             this.Controls.Add(this.lblStatusOfTheOrder);
             this.Controls.Add(this.listView1);
