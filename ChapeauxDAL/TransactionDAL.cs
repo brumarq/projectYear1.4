@@ -38,26 +38,16 @@ namespace ChapeauxDAL
         #endregion
 
         #region Reading
-        private Transaction ReadTransaction(SqlDataReader reader)
-        {
-            Transaction transaction = new Transaction()
-            {
-                TransactionID = (int)reader["paymentID"],
-                TotalPrice = (decimal)reader["totalPrice"],
-                PaymentType = (string)reader["paymentType"],
-                TipAmount = (decimal)reader["tip"],
-                Feedback = (string)reader["feedback"],
-                OrderID = (int)reader["orderID"]
-            };
-            return transaction;
-        }
-
         private List<Transaction> ReadTables(DataTable dataTable)
         {
             List<Transaction> transactions = new List<Transaction>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
+                int orderID = (int)dr["orderID"];
+
+                Order order = orderDal.GetByID(orderID);
+
                 Transaction transaction = new Transaction
                 {
                     TransactionID = (int)dr["paymentID"],
@@ -65,7 +55,7 @@ namespace ChapeauxDAL
                     PaymentType = (string)dr["paymentType"],
                     TipAmount = (decimal)dr["tip"],
                     Feedback = (string)dr["feedback"],
-                    OrderID = (int)dr["orderID"]
+                    Order = order
                 };
                 transactions.Add(transaction);
             }

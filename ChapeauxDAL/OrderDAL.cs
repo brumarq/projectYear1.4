@@ -10,7 +10,7 @@ namespace ChapeauxDAL
 {
     public class OrderDAL : Base
     {
-        #region Storing
+        #region Reading
         private Order ReadOrder(SqlDataReader reader)
         {
             Order order = new Order()
@@ -26,15 +26,20 @@ namespace ChapeauxDAL
         }
         #endregion
 
+        #region Storing
+
+        #endregion
+
         #region Retrieving
-        public Order GetByID(int id)
+        //(needed for transactions) please leave this method as it is
+        public Order GetByID(int orderID)
         {
             SqlCommand cmd = new SqlCommand("SELECT orderID, isPaid, tableID, userID " +
                                             "FROM ORDERS " +
                                             "WHERE orderID = @orderID", conn);
 
             OpenConnection();
-            cmd.Parameters.AddWithValue("@orderID", id);
+            cmd.Parameters.AddWithValue("@orderID", orderID);
             SqlDataReader reader = cmd.ExecuteReader();
             Order order = null;
 
