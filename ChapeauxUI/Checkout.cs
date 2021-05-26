@@ -53,8 +53,7 @@ namespace ChapeauxUI
         }
         #endregion
 
-        #region PanelElements
-
+        //Panels
         #region Checkout
         private void btnClearTip_Click(object sender, EventArgs e)
         {
@@ -84,8 +83,6 @@ namespace ChapeauxUI
         {
             subPnlCash.Show();
         }
-        #endregion
-
         #endregion
     }
 }

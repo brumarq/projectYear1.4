@@ -92,6 +92,23 @@ namespace ChapeauxUI
             this.btnUserInfo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.subPnlCard = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.button10 = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlCheckout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frameBox)).BeginInit();
@@ -101,6 +118,7 @@ namespace ChapeauxUI
             ((System.ComponentModel.ISupportInitialize)(this.btnUserInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.subPnlCard.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -428,6 +446,7 @@ namespace ChapeauxUI
             // 
             // pnlPayment
             // 
+            this.pnlPayment.Controls.Add(this.subPnlCard);
             this.pnlPayment.Controls.Add(this.subPnlCash);
             this.pnlPayment.Controls.Add(this.label10);
             this.pnlPayment.Controls.Add(this.btnCash);
@@ -846,6 +865,218 @@ namespace ChapeauxUI
             this.pictureBox4.TabIndex = 29;
             this.pictureBox4.TabStop = false;
             // 
+            // subPnlCard
+            // 
+            this.subPnlCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.subPnlCard.Controls.Add(this.label11);
+            this.subPnlCard.Controls.Add(this.label14);
+            this.subPnlCard.Controls.Add(this.label19);
+            this.subPnlCard.Controls.Add(this.label20);
+            this.subPnlCard.Controls.Add(this.label21);
+            this.subPnlCard.Controls.Add(this.label22);
+            this.subPnlCard.Controls.Add(this.label23);
+            this.subPnlCard.Controls.Add(this.button2);
+            this.subPnlCard.Controls.Add(this.label24);
+            this.subPnlCard.Controls.Add(this.button10);
+            this.subPnlCard.Controls.Add(this.label25);
+            this.subPnlCard.Controls.Add(this.label26);
+            this.subPnlCard.Controls.Add(this.button12);
+            this.subPnlCard.Controls.Add(this.button14);
+            this.subPnlCard.Controls.Add(this.button16);
+            this.subPnlCard.Controls.Add(this.button18);
+            this.subPnlCard.Location = new System.Drawing.Point(46, 227);
+            this.subPnlCard.Name = "subPnlCard";
+            this.subPnlCard.Size = new System.Drawing.Size(632, 626);
+            this.subPnlCard.TabIndex = 58;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(-5, 12);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(145, 29);
+            this.label11.TabIndex = 44;
+            this.label11.Text = "Select Card:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(176, 493);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(99, 25);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Received:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(325, 455);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(23, 25);
+            this.label19.TabIndex = 19;
+            this.label19.Text = "€";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(176, 561);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(95, 25);
+            this.label20.TabIndex = 11;
+            this.label20.Text = "Change:";
+            // 
+            // label21
+            // 
+            this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(355, 454);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(81, 26);
+            this.label21.TabIndex = 28;
+            this.label21.Text = "0.50";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(325, 493);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(23, 25);
+            this.label22.TabIndex = 15;
+            this.label22.Text = "€";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(325, 561);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(24, 25);
+            this.label23.TabIndex = 18;
+            this.label23.Text = "€";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.button2.BackgroundImage = global::ChapeauxUI.Properties.Resources.Afbeelding2;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(153, 71);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(166, 86);
+            this.button2.TabIndex = 45;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(176, 455);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(81, 25);
+            this.label24.TabIndex = 14;
+            this.label24.Text = "To Pay:";
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.button10.BackgroundImage = global::ChapeauxUI.Properties.Resources.Afbeelding3;
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Location = new System.Drawing.Point(325, 175);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(166, 86);
+            this.button10.TabIndex = 46;
+            this.button10.UseVisualStyleBackColor = false;
+            // 
+            // label25
+            // 
+            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(355, 492);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(81, 26);
+            this.label25.TabIndex = 27;
+            this.label25.Text = "10.24";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label26
+            // 
+            this.label26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(348, 560);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(88, 26);
+            this.label26.TabIndex = 24;
+            this.label26.Text = "126.90";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.button12.BackgroundImage = global::ChapeauxUI.Properties.Resources.Afbeelding6;
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Location = new System.Drawing.Point(153, 281);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(166, 86);
+            this.button12.TabIndex = 47;
+            this.button12.UseVisualStyleBackColor = false;
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.button14.BackgroundImage = global::ChapeauxUI.Properties.Resources.Afbeelding7;
+            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Location = new System.Drawing.Point(325, 281);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(166, 86);
+            this.button14.TabIndex = 48;
+            this.button14.UseVisualStyleBackColor = false;
+            // 
+            // button16
+            // 
+            this.button16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.button16.BackgroundImage = global::ChapeauxUI.Properties.Resources.Afbeelding4;
+            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button16.FlatAppearance.BorderSize = 0;
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.Location = new System.Drawing.Point(153, 175);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(166, 86);
+            this.button16.TabIndex = 49;
+            this.button16.UseVisualStyleBackColor = false;
+            // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.button18.BackgroundImage = global::ChapeauxUI.Properties.Resources.Afbeelding14;
+            this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button18.FlatAppearance.BorderSize = 0;
+            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button18.Location = new System.Drawing.Point(325, 71);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(166, 86);
+            this.button18.TabIndex = 50;
+            this.button18.UseVisualStyleBackColor = false;
+            // 
             // CheckoutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -879,6 +1110,8 @@ namespace ChapeauxUI
             ((System.ComponentModel.ISupportInitialize)(this.btnUserInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.subPnlCard.ResumeLayout(false);
+            this.subPnlCard.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -947,5 +1180,22 @@ namespace ChapeauxUI
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lblReceivedCash;
         private System.Windows.Forms.Label lblChange;
+        private System.Windows.Forms.Panel subPnlCard;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button18;
     }
 }
