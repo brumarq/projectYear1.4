@@ -19,6 +19,30 @@ namespace ChapeauxDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public Table getTable(int tableID)
+        {
+            string query = "SELECT tableID, status FROM TABLES WHERE tableID=@tableID";
+            SqlParameter[] sqlParameters = {
+                new SqlParameter("@tableID", tableID),
+            };
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        private Table ReadTable(DataTable dataTable)
+        {
+            Table table = null;
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                table = new Table()
+                {
+                    TableID = (int)dr["tableID"],
+                    Status = (Status)Enum.Parse(typeof(Status), dr["status"].ToString()),
+                };
+            }
+            return table;
+        }
+
         private List<Table> ReadTables(DataTable dataTable)
         {
             List<Table> listOfTables = new List<Table>();

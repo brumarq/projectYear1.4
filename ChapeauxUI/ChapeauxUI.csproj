@@ -54,6 +54,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TableDetails.Designer.cs">
+      <DependentUpon>TableDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="TableOverview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TableDetails.resx">
+      <DependentUpon>TableDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TableOverview.resx">
       <DependentUpon>TableOverview.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +162,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\table-late.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backButton1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tableDesign.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnOccupyTable-enabled.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAddNewOrder-enabled.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCheckout-enabled.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAddNewOrder-hover.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCheckout-hover.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnOccupyTable-hover.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnFreeTable-enabled.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnFreeTable-hover.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAddNewOrder-hover1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCheckout-hover1.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

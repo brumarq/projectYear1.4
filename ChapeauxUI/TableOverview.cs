@@ -1,4 +1,5 @@
-﻿using ChapeauxLogic;
+﻿using ChapeauUI;
+using ChapeauxLogic;
 using ChapeauxModel;
 using System;
 using System.Collections.Generic;
@@ -96,5 +97,68 @@ namespace ChapeauxUI
             }
         }
 
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
+            this.Close();
+        }
+
+        private void tableClicked(int tableNumber)
+        {
+            TableDetails tableDetails = new TableDetails(loggedUser, tableNumber);
+            tableDetails.Show();
+            this.Close();
+        }
+
+        private void btnTable1_Click(object sender, EventArgs e)
+        {
+            tableClicked(1);
+        }
+
+        private void btnTable2_Click(object sender, EventArgs e)
+        {
+            tableClicked(2);
+        }
+
+        private void btnTable3_Click(object sender, EventArgs e)
+        {
+            tableClicked(3);
+        }
+
+        private void btnTable4_Click(object sender, EventArgs e)
+        {
+            tableClicked(4);
+        }
+
+        private void btnTable5_Click(object sender, EventArgs e)
+        {
+            tableClicked(5);
+        }
+
+        private void btnTable6_Click(object sender, EventArgs e)
+        {
+            tableClicked(6);
+        }
+
+        private void btnTable7_Click(object sender, EventArgs e)
+        {
+            tableClicked(7);
+        }
+
+        private void btnTable8_Click(object sender, EventArgs e)
+        {
+            tableClicked(8);
+        }
+
+        private void btnTable9_Click(object sender, EventArgs e)
+        {
+            tableClicked(9);
+        }
+
+        private void btnTable10_Click(object sender, EventArgs e)
+        {
+            tableClicked(10);
+        }
     }
 }

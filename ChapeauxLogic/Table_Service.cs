@@ -15,12 +15,15 @@ namespace ChapeauxLogic
         public Table_Service()
         {
             tabledb = new TableDAL();
-
         }
 
         public List<Table> getAllTables()
         {
             return tabledb.getAllTables();
+        }
+        public Table getTable(int tableID)
+        {
+            return tabledb.getTable(tableID);
         }
     }
 }

@@ -18,9 +18,9 @@ namespace ChapeauxLogic
 
         }
 
-        /*public List<Order> getOrderForTable(int tableNumber)
+        public bool getOrderForTable(int tableNumber)
         {
-            return orderdb.getDrinksStatus(tableNumber);
-        }*/
+            return orderdb.isThereAnOrder(tableNumber);
+        }
     }
 }

@@ -350,6 +350,7 @@ namespace ChapeauxUI
             this.btnTable10.TabIndex = 22;
             this.btnTable10.Text = "10";
             this.btnTable10.UseVisualStyleBackColor = false;
+            this.btnTable10.Click += new System.EventHandler(this.btnTable10_Click);
             // 
             // btnTable9
             // 
@@ -365,6 +366,7 @@ namespace ChapeauxUI
             this.btnTable9.TabIndex = 21;
             this.btnTable9.Text = "9";
             this.btnTable9.UseVisualStyleBackColor = false;
+            this.btnTable9.Click += new System.EventHandler(this.btnTable9_Click);
             // 
             // btnTable8
             // 
@@ -380,6 +382,7 @@ namespace ChapeauxUI
             this.btnTable8.TabIndex = 20;
             this.btnTable8.Text = "8";
             this.btnTable8.UseVisualStyleBackColor = false;
+            this.btnTable8.Click += new System.EventHandler(this.btnTable8_Click);
             // 
             // btnTable7
             // 
@@ -395,6 +398,7 @@ namespace ChapeauxUI
             this.btnTable7.TabIndex = 19;
             this.btnTable7.Text = "7";
             this.btnTable7.UseVisualStyleBackColor = false;
+            this.btnTable7.Click += new System.EventHandler(this.btnTable7_Click);
             // 
             // btnTable6
             // 
@@ -410,6 +414,7 @@ namespace ChapeauxUI
             this.btnTable6.TabIndex = 18;
             this.btnTable6.Text = "6";
             this.btnTable6.UseVisualStyleBackColor = false;
+            this.btnTable6.Click += new System.EventHandler(this.btnTable6_Click);
             // 
             // btnTable5
             // 
@@ -425,6 +430,7 @@ namespace ChapeauxUI
             this.btnTable5.TabIndex = 17;
             this.btnTable5.Text = "5";
             this.btnTable5.UseVisualStyleBackColor = false;
+            this.btnTable5.Click += new System.EventHandler(this.btnTable5_Click);
             // 
             // btnTable4
             // 
@@ -440,6 +446,7 @@ namespace ChapeauxUI
             this.btnTable4.TabIndex = 16;
             this.btnTable4.Text = "4";
             this.btnTable4.UseVisualStyleBackColor = false;
+            this.btnTable4.Click += new System.EventHandler(this.btnTable4_Click);
             // 
             // btnTable3
             // 
@@ -455,6 +462,7 @@ namespace ChapeauxUI
             this.btnTable3.TabIndex = 15;
             this.btnTable3.Text = "3";
             this.btnTable3.UseVisualStyleBackColor = false;
+            this.btnTable3.Click += new System.EventHandler(this.btnTable3_Click);
             // 
             // btnTable2
             // 
@@ -470,6 +478,7 @@ namespace ChapeauxUI
             this.btnTable2.TabIndex = 8;
             this.btnTable2.Text = "2";
             this.btnTable2.UseVisualStyleBackColor = false;
+            this.btnTable2.Click += new System.EventHandler(this.btnTable2_Click);
             // 
             // btnTable1
             // 
@@ -485,6 +494,7 @@ namespace ChapeauxUI
             this.btnTable1.TabIndex = 7;
             this.btnTable1.Text = "1";
             this.btnTable1.UseVisualStyleBackColor = false;
+            this.btnTable1.Click += new System.EventHandler(this.btnTable1_Click);
             // 
             // pctLogo
             // 
@@ -509,6 +519,7 @@ namespace ChapeauxUI
             this.btnLogout.Size = new System.Drawing.Size(146, 63);
             this.btnLogout.TabIndex = 3;
             this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // ptcHeader
             // 
