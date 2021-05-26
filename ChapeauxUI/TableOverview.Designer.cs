@@ -98,9 +98,9 @@ namespace ChapeauxUI
             this.lblTitle.ForeColor = System.Drawing.Color.Transparent;
             this.lblTitle.Location = new System.Drawing.Point(50, 18);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(197, 48);
+            this.lblTitle.Size = new System.Drawing.Size(177, 48);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Chapeaux";
+            this.lblTitle.Text = "Chapeau";
             // 
             // lblUserFullName
             // 
@@ -585,7 +585,7 @@ namespace ChapeauxUI
             this.Controls.Add(this.pctBackground);
             this.Name = "TableOverviewForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chapeaux - Table Overview";
+            this.Text = "Chapeau - Table Overview";
             this.Load += new System.EventHandler(this.TableOverviewForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pctT10_DrinkStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctT10_FoodStatus)).EndInit();

@@ -28,6 +28,17 @@ namespace ChapeauxDAL
             return ReadTable(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public void updateStatus(int tableID, Status status)
+        {
+            string query = "UPDATE TABLES SET status = @status WHERE tableID=@tableID";
+            SqlParameter[] sqlParameters = {
+                new SqlParameter("@status", status.ToString()),
+                new SqlParameter("@tableID", tableID),
+            };
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
         private Table ReadTable(DataTable dataTable)
         {
             Table table = null;

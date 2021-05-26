@@ -56,9 +56,9 @@ namespace ChapeauUI
             this.lblTitle.ForeColor = System.Drawing.Color.Transparent;
             this.lblTitle.Location = new System.Drawing.Point(50, 17);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(197, 48);
+            this.lblTitle.Size = new System.Drawing.Size(177, 48);
             this.lblTitle.TabIndex = 7;
-            this.lblTitle.Text = "Chapeaux";
+            this.lblTitle.Text = "Chapeau";
             // 
             // lblUserFullName
             // 
@@ -112,6 +112,7 @@ namespace ChapeauUI
             this.btnCheckout.Size = new System.Drawing.Size(315, 287);
             this.btnCheckout.TabIndex = 19;
             this.btnCheckout.UseVisualStyleBackColor = false;
+            this.btnCheckout.Click += new System.EventHandler(this.btnCheckout_Click);
             // 
             // btnAddNewOrder
             // 
@@ -125,6 +126,7 @@ namespace ChapeauUI
             this.btnAddNewOrder.Size = new System.Drawing.Size(297, 206);
             this.btnAddNewOrder.TabIndex = 18;
             this.btnAddNewOrder.UseVisualStyleBackColor = false;
+            this.btnAddNewOrder.Click += new System.EventHandler(this.btnAddNewOrder_Click);
             // 
             // btnOccupyTable
             // 
@@ -230,7 +232,7 @@ namespace ChapeauUI
             this.Controls.Add(this.ptcHeader);
             this.Name = "TableDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TableDetails";
+            this.Text = "Chapeau - Table Details";
             this.Load += new System.EventHandler(this.TableDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBackground)).EndInit();

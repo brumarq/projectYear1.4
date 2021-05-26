@@ -55,11 +55,13 @@ namespace ChapeauUI
 
         private void btnOccupyTable_Click(object sender, EventArgs e)
         {
+            Table_Service table_service = new Table_Service();
+
             if (selectedTable.Status == Status.Free)
             {
                 // Change value in databse to occupied
-                // XXX 
-
+                table_service.UpdateStatus(selectedTable.TableID, Status.Occupied);
+                selectedTable.Status = Status.Occupied;
                 updateStatus();
             }
             else
@@ -71,8 +73,8 @@ namespace ChapeauUI
                 }
                 else
                 {
-                    // Change value in databse to occupied
-                    // XXX 
+                    table_service.UpdateStatus(selectedTable.TableID, Status.Free);
+                    selectedTable.Status = Status.Free;
                     updateStatus();
                 }
             }
@@ -80,6 +82,8 @@ namespace ChapeauUI
 
         void updateStatus()
         {
+            lblTableStatus.Text = $"Table {selectedTable.TableID}: {selectedTable.Status}";
+
             if (selectedTable.Status == Status.Occupied || selectedTable.Status == Status.Late)
             {
                 Order_Service order_service = new Order_Service();
@@ -105,6 +109,26 @@ namespace ChapeauUI
                 btnAddNewOrder.BackgroundImage = ChapeauxUI.Properties.Resources.btnAddNewOrder_hover1;
                 btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_hover1;
             }
+        }
+
+        private void btnAddNewOrder_Click(object sender, EventArgs e)
+        {
+            if (selectedTable.Status == Status.Free)
+            {
+                return;
+            }
+
+            // Add code here for new order
+        }
+
+        private void btnCheckout_Click(object sender, EventArgs e)
+        {
+            if (selectedTable.Status == Status.Free)
+            {
+                return;
+            }
+
+            // Add code here for checkout
         }
     }
 }

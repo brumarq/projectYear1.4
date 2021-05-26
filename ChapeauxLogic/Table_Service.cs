@@ -25,5 +25,10 @@ namespace ChapeauxLogic
         {
             return tabledb.getTable(tableID);
         }
+
+        public void UpdateStatus(int tableID, Status status)
+        {
+            tabledb.updateStatus(tableID, status);
+        }
     }
 }

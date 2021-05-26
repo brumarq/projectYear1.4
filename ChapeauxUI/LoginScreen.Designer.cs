@@ -173,7 +173,7 @@ namespace ChapeauxUI
             this.Controls.Add(this.OverviewPanel);
             this.Name = "LoginScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chapeaux";
+            this.Text = "Chapeau";
             this.Load += new System.EventHandler(this.ChapeauxUI_Load);
             this.txtPnlUsername.ResumeLayout(false);
             this.txtPnlUsername.PerformLayout();
