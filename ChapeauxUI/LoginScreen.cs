@@ -82,12 +82,23 @@ namespace ChapeauxUI
                     
                     if (result) 
                     {
-                        //MessageBox.Show("Login Sucessfull");
-                        //OverviewPanel.Show();
-                        
-                        new TableOverviewForm(user).Show();
-                        this.Hide();
-                        //LoginPanel.Hide();
+                        if (user.Role == Role.Waiter)
+                        {
+                            new TableOverviewForm(user).Show();
+                            this.Hide();
+                        }
+                        else if(user.Role == Role.Bartender)
+                        {
+                            //Add code here to open bar form
+                        }
+                        else if (user.Role == Role.Chef)
+                        {
+                            //Add code here to open kitchen form
+                        }
+                        else if (user.Role == Role.Manager)
+                        {
+                            //Add code here to open manager form
+                        }
                     }
                     else
                     {

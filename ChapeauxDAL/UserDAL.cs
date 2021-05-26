@@ -25,7 +25,7 @@ namespace ChapeauxDAL
                 User user = new User()
                 {
                     UserID = (int)dr["userID"],
-                    //Role = (Role)dr["role"],
+                    Role = (Role)Enum.Parse(typeof(Role), dr["role"].ToString()),
                     FirstName = dr["firstName"].ToString(),
                     LastName = dr["lastName"].ToString(),
                     LoginUsername = dr["userName"].ToString(),
