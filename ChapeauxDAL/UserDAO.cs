@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace ChapeauxDAL
 {
-    public class UserDAL : Base
+    public class UserDAO : Base
     {
         public List<User> Get_Users_DB()
         {

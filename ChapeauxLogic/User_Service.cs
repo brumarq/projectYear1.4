@@ -22,12 +22,12 @@ namespace ChapeauxLogic
 
         public List<User> GetUsers()
         {
-            return userDAO.Get_Users();
+            return userDAO.Get_Users_DB();
         }
 
         public User GetUserById(int userId)
         {
-            return userDAO.GetUserById(userId);
+            return userDAO.GetUserById_DB(userId);
         }
     }
 }

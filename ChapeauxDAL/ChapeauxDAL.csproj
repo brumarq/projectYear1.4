@@ -51,7 +51,7 @@
     <Compile Include="OrderItemDAL.cs" />
     <Compile Include="TableDAL.cs" />
     <Compile Include="TransactionDAL.cs" />
-    <Compile Include="UserDAL.cs" />
+    <Compile Include="UserDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
