@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ChapeauxDAL
 {
-    class MenuItemDAO
+    public class MenuItemDAO
     {
     }
 }

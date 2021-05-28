@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChapeauxModel
+﻿namespace ChapeauxModel
 {
     public class MenuItem
     {
@@ -12,7 +8,5 @@ namespace ChapeauxModel
         public string Category { get; set; }
         public decimal VAT { get; set; }
         public int Stock { get; set; }
-
-
     }
 }

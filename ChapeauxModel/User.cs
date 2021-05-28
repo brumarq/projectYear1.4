@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChapeauxModel
+﻿namespace ChapeauxModel
 {
     public class User
     {

@@ -7,11 +7,12 @@ namespace ChapeauxDAL
 {
     public class UserDAO : Base
     {
-        public List<User> Get_Users()
+        public List<User> Get_Users_DB()
         {
+            conn.Open();
             //read Users values from sql database
             SqlCommand cmd = new SqlCommand
-                ("select userID, firstName, lastName, role, username, password from USERS");
+                ("select userID, firstName, lastName, userName, password, role from USERS");
 
             SqlDataReader reader = cmd.ExecuteReader();
             List<User> users = new List<User>();
@@ -21,14 +22,16 @@ namespace ChapeauxDAL
                 User user = ReadUser(reader);
                 users.Add(user);
             }
+
+            conn.Close();
             return users;
         }
 
-        public User GetUserById(int userId)
+        public User GetUserById_DB(int userId)
         {
             conn.Open();
             SqlCommand command = new SqlCommand
-                ("select userID, firstName, lastName, role, username, password from USERS where userId = @userID", conn);
+                ("select userID, firstName, lastName, userName, password, role from USERS where userId = @userID", conn);
 
             command.Parameters.AddWithValue("@Id", userId);
 
@@ -44,6 +47,17 @@ namespace ChapeauxDAL
             conn.Close();
 
             return user;
+        }
+
+        public void AddUserAccount(User user)
+        {
+            conn.Open();
+            SqlCommand command = new SqlCommand("insert into USERS values (@firstName, @lastName, @userName, @password, @role)", conn);
+            
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Close();
+            conn.Close();
         }
 
         private User ReadUser(SqlDataReader reader)

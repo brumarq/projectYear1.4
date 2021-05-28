@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ChapeauxLogic
 {
-    class MenuItem_Service
+    public class MenuItem_Service
     {
     }
 }
