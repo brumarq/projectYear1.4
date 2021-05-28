@@ -93,6 +93,7 @@ namespace ChapeauxUI
             this.btnToPayment.Size = new System.Drawing.Size(176, 69);
             this.btnToPayment.TabIndex = 5;
             this.btnToPayment.TabStop = false;
+            this.btnToPayment.Click += new System.EventHandler(this.btnToPayment_Click);
             // 
             // frameBox
             // 
@@ -406,6 +407,7 @@ namespace ChapeauxUI
             this.btnBack.Size = new System.Drawing.Size(125, 69);
             this.btnBack.TabIndex = 6;
             this.btnBack.TabStop = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // pnlCheckout
             // 
@@ -435,7 +437,6 @@ namespace ChapeauxUI
             this.Controls.Add(this.pnlCheckout);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.MaximizeBox = false;
             this.Name = "CheckoutForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

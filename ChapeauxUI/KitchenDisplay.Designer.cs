@@ -40,10 +40,18 @@ namespace ChapeauxUI
             this.lblKitchenScreen = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.lblStatusOfTheOrder = new System.Windows.Forms.Label();
+            this.btnAlertWaiter = new System.Windows.Forms.PictureBox();
+            this.btnEditOrder = new System.Windows.Forms.PictureBox();
+            this.btnSwitchToBarman = new System.Windows.Forms.PictureBox();
+            this.btnOrderReadyToBeServed = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnUserInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FrameBoxKitchen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAlertWaiter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEditOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSwitchToBarman)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOrderReadyToBeServed)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUserName
@@ -93,7 +101,7 @@ namespace ChapeauxUI
             // listViewTableKitchen
             // 
             this.listViewTableKitchen.HideSelection = false;
-            this.listViewTableKitchen.Location = new System.Drawing.Point(45, 155);
+            this.listViewTableKitchen.Location = new System.Drawing.Point(45, 139);
             this.listViewTableKitchen.Name = "listViewTableKitchen";
             this.listViewTableKitchen.Size = new System.Drawing.Size(661, 330);
             this.listViewTableKitchen.TabIndex = 36;
@@ -104,7 +112,7 @@ namespace ChapeauxUI
             this.lblOrders.AutoSize = true;
             this.lblOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.lblOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrders.Location = new System.Drawing.Point(40, 123);
+            this.lblOrders.Location = new System.Drawing.Point(40, 107);
             this.lblOrders.Name = "lblOrders";
             this.lblOrders.Size = new System.Drawing.Size(88, 29);
             this.lblOrders.TabIndex = 37;
@@ -121,7 +129,7 @@ namespace ChapeauxUI
             this.FrameBoxKitchen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.FrameBoxKitchen.Location = new System.Drawing.Point(12, 88);
             this.FrameBoxKitchen.Name = "FrameBoxKitchen";
-            this.FrameBoxKitchen.Size = new System.Drawing.Size(728, 893);
+            this.FrameBoxKitchen.Size = new System.Drawing.Size(728, 900);
             this.FrameBoxKitchen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.FrameBoxKitchen.TabIndex = 38;
             this.FrameBoxKitchen.TabStop = false;
@@ -141,7 +149,7 @@ namespace ChapeauxUI
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(45, 539);
+            this.listView1.Location = new System.Drawing.Point(45, 508);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(661, 330);
             this.listView1.TabIndex = 40;
@@ -152,12 +160,64 @@ namespace ChapeauxUI
             this.lblStatusOfTheOrder.AutoSize = true;
             this.lblStatusOfTheOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.lblStatusOfTheOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatusOfTheOrder.Location = new System.Drawing.Point(40, 507);
+            this.lblStatusOfTheOrder.Location = new System.Drawing.Point(40, 476);
             this.lblStatusOfTheOrder.Name = "lblStatusOfTheOrder";
             this.lblStatusOfTheOrder.Size = new System.Drawing.Size(213, 29);
             this.lblStatusOfTheOrder.TabIndex = 41;
             this.lblStatusOfTheOrder.Text = "Status of the Order";
             this.lblStatusOfTheOrder.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // btnAlertWaiter
+            // 
+            this.btnAlertWaiter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnAlertWaiter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAlertWaiter.Image = ((System.Drawing.Image)(resources.GetObject("btnAlertWaiter.Image")));
+            this.btnAlertWaiter.Location = new System.Drawing.Point(45, 841);
+            this.btnAlertWaiter.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAlertWaiter.Name = "btnAlertWaiter";
+            this.btnAlertWaiter.Size = new System.Drawing.Size(186, 63);
+            this.btnAlertWaiter.TabIndex = 42;
+            this.btnAlertWaiter.TabStop = false;
+            this.btnAlertWaiter.Click += new System.EventHandler(this.btnAlertWaiter_Click);
+            // 
+            // btnEditOrder
+            // 
+            this.btnEditOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnEditOrder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnEditOrder.Image")));
+            this.btnEditOrder.Location = new System.Drawing.Point(242, 841);
+            this.btnEditOrder.Margin = new System.Windows.Forms.Padding(0);
+            this.btnEditOrder.Name = "btnEditOrder";
+            this.btnEditOrder.Size = new System.Drawing.Size(186, 63);
+            this.btnEditOrder.TabIndex = 43;
+            this.btnEditOrder.TabStop = false;
+            this.btnEditOrder.Click += new System.EventHandler(this.btnEditOrder_Click);
+            // 
+            // btnSwitchToBarman
+            // 
+            this.btnSwitchToBarman.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnSwitchToBarman.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSwitchToBarman.Image = ((System.Drawing.Image)(resources.GetObject("btnSwitchToBarman.Image")));
+            this.btnSwitchToBarman.Location = new System.Drawing.Point(438, 841);
+            this.btnSwitchToBarman.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSwitchToBarman.Name = "btnSwitchToBarman";
+            this.btnSwitchToBarman.Size = new System.Drawing.Size(186, 63);
+            this.btnSwitchToBarman.TabIndex = 44;
+            this.btnSwitchToBarman.TabStop = false;
+            this.btnSwitchToBarman.Click += new System.EventHandler(this.btnSwitchToBarman_Click);
+            // 
+            // btnOrderReadyToBeServed
+            // 
+            this.btnOrderReadyToBeServed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnOrderReadyToBeServed.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOrderReadyToBeServed.Image = ((System.Drawing.Image)(resources.GetObject("btnOrderReadyToBeServed.Image")));
+            this.btnOrderReadyToBeServed.Location = new System.Drawing.Point(307, 904);
+            this.btnOrderReadyToBeServed.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOrderReadyToBeServed.Name = "btnOrderReadyToBeServed";
+            this.btnOrderReadyToBeServed.Size = new System.Drawing.Size(419, 74);
+            this.btnOrderReadyToBeServed.TabIndex = 45;
+            this.btnOrderReadyToBeServed.TabStop = false;
+            this.btnOrderReadyToBeServed.Click += new System.EventHandler(this.btnOrderReadyToBeServed_Click);
             // 
             // KitchenDisplay
             // 
@@ -165,6 +225,10 @@ namespace ChapeauxUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(752, 985);
+            this.Controls.Add(this.btnOrderReadyToBeServed);
+            this.Controls.Add(this.btnSwitchToBarman);
+            this.Controls.Add(this.btnEditOrder);
+            this.Controls.Add(this.btnAlertWaiter);
             this.Controls.Add(this.lblStatusOfTheOrder);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.lblKitchenScreen);
@@ -175,7 +239,7 @@ namespace ChapeauxUI
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.FrameBoxKitchen);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "KitchenDisplay";
             this.Text = "KitchenDisplay";
             this.Load += new System.EventHandler(this.KitchenDisplay_Load);
@@ -183,6 +247,10 @@ namespace ChapeauxUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FrameBoxKitchen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAlertWaiter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEditOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSwitchToBarman)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOrderReadyToBeServed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,5 +268,9 @@ namespace ChapeauxUI
         private System.Windows.Forms.Label lblKitchenScreen;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label lblStatusOfTheOrder;
+        private System.Windows.Forms.PictureBox btnAlertWaiter;
+        private System.Windows.Forms.PictureBox btnEditOrder;
+        private System.Windows.Forms.PictureBox btnSwitchToBarman;
+        private System.Windows.Forms.PictureBox btnOrderReadyToBeServed;
     }
 }

@@ -36,5 +36,25 @@ namespace ChapeauxUI
         {
 
         }
+
+        private void btnAlertWaiter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSwitchToBarman_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOrderReadyToBeServed_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

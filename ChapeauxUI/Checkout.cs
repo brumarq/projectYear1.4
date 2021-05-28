@@ -28,5 +28,15 @@ namespace ChapeauxUI
         { 
 
         }
+
+        private void btnToPayment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
