@@ -10,17 +10,24 @@ namespace ChapeauxLogic
 {
     public class User_Service
     {
-        UserDAL userdb;
+        private UserDAO userDAO = new UserDAO();
 
-        public User_Service()
-        {
-            userdb = new UserDAL();
-
-        }
+       
 
         public User LoginCheck(string username)
         {
-            return userdb.LoginCheck(username);
+            return userDAO.LoginCheck(username);
+        }
+        
+
+        public List<User> GetUsers()
+        {
+            return userDAO.Get_Users();
+        }
+
+        public User GetUserById(int userId)
+        {
+            return userDAO.GetUserById(userId);
         }
     }
 }

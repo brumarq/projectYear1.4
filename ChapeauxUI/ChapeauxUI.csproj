@@ -64,8 +64,35 @@
     <Compile Include="KitchenDisplay.Designer.cs">
       <DependentUpon>KitchenDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditAccountForm.Designer.cs">
+      <DependentUpon>EditAccountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StockAdjustmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockAdjustmentForm.Designer.cs">
+      <DependentUpon>StockAdjustmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockOverviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockOverviewForm.Designer.cs">
+      <DependentUpon>StockOverviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsersDisplayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsersDisplayForm.Designer.cs">
+      <DependentUpon>UsersDisplayForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CreateAccountForm.resx">
+      <DependentUpon>CreateAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="TableDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +124,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StockAdjustmentForm.resx">
+      <DependentUpon>StockAdjustmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockOverviewForm.resx">
+      <DependentUpon>StockOverviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersDisplayForm.resx">
+      <DependentUpon>UsersDisplayForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TableDetails.resx">
       <DependentUpon>TableDetails.cs</DependentUpon>
     </EmbeddedResource>
