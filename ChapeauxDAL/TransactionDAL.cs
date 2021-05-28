@@ -34,7 +34,14 @@ namespace ChapeauxDAL
         #endregion
 
         #region Retrieving
+        private Transaction GetByID(int transactionID)
+        {
+            Transaction transaction = null; //remove null
 
+            //some code
+
+            return transaction;
+        }
         #endregion
 
         #region Reading
