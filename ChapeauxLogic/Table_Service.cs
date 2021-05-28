@@ -19,16 +19,16 @@ namespace ChapeauxLogic
 
         public List<Table> getAllTables()
         {
-            return tabledb.getAllTables();
+            return tabledb.GetAllTables();
         }
         public Table getTable(int tableID)
         {
-            return tabledb.getTable(tableID);
+            return tabledb.GetTable(tableID);
         }
 
         public void UpdateStatus(int tableID, Status status)
         {
-            tabledb.updateStatus(tableID, status);
+            tabledb.UpdateStatus(tableID, status);
         }
     }
 }

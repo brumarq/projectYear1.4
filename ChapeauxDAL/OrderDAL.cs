@@ -11,16 +11,16 @@ namespace ChapeauxDAL
 {
     public class OrderDAL : Base
     {
-        public bool isThereAnOrder(int tableNumber)
+        public bool IsThereAnOrder(int tableNumber)
         {
             string query = "SELECT tableID FROM ORDERS WHERE tableID=@tableID AND isPaid=0";
             SqlParameter[] sqlParameters = {
                  new SqlParameter("@tableID", tableNumber),
             };
-            return readTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private bool readTables(DataTable dataTable)
+        private bool ReadTables(DataTable dataTable)
         {
             foreach (DataRow dr in dataTable.Rows)
             {

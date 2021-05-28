@@ -11,7 +11,7 @@ namespace ChapeauxDAL
 {
     public class TableDAL : Base
     {
-        public List<Table> getAllTables()
+        public List<Table> GetAllTables()
         {
             string query = "SELECT tableID, status FROM TABLES";
             SqlParameter[] sqlParameters = {
@@ -19,7 +19,7 @@ namespace ChapeauxDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public Table getTable(int tableID)
+        public Table GetTable(int tableID)
         {
             string query = "SELECT tableID, status FROM TABLES WHERE tableID=@tableID";
             SqlParameter[] sqlParameters = {
@@ -28,7 +28,7 @@ namespace ChapeauxDAL
             return ReadTable(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public void updateStatus(int tableID, Status status)
+        public void UpdateStatus(int tableID, Status status)
         {
             string query = "UPDATE TABLES SET status = @status WHERE tableID=@tableID";
             SqlParameter[] sqlParameters = {

@@ -20,12 +20,12 @@ namespace ChapeauxLogic
 
         public List<OrderItem> getDrinksStatus(int tableNumber)
         {
-            return orderItemdb.getDrinksStatus(tableNumber);
+            return orderItemdb.GetDrinksStatus(tableNumber);
         }
 
         public List<OrderItem> getFoodStatus(int tableNumber)
         {
-            return orderItemdb.getFoodStatus(tableNumber);
+            return orderItemdb.GetFoodStatus(tableNumber);
         }
     }
 }

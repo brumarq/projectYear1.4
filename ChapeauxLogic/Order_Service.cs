@@ -20,7 +20,7 @@ namespace ChapeauxLogic
 
         public bool getOrderForTable(int tableNumber)
         {
-            return orderdb.isThereAnOrder(tableNumber);
+            return orderdb.IsThereAnOrder(tableNumber);
         }
     }
 }
