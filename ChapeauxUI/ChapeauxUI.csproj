@@ -90,9 +90,6 @@
     <Compile Include="UsersDisplayForm.Designer.cs">
       <DependentUpon>UsersDisplayForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CreateAccountForm.resx">
-      <DependentUpon>CreateAccountForm.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="TableDetails.cs">
       <SubType>Form</SubType>
     </Compile>
