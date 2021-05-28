@@ -56,5 +56,10 @@ namespace ChapeauxUI
         {
 
         }
+
+        private void lblUserName_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
