@@ -6,13 +6,30 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ChapeauxModel;
 
 namespace ChapeauxDAL
 {
     public class OrderDAL : Base
     {
         #region Reading
+        private bool ReadTables(DataTable dataTable)
+        {
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        public bool IsThereAnOrder(int tableNumber)
+        {
+            string query = "SELECT tableID FROM ORDERS WHERE tableID=@tableID AND isPaid=0";
+            SqlParameter[] sqlParameters = {
+                 new SqlParameter("@tableID", tableNumber),
+            };
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
         private Order ReadOrder(SqlDataReader reader)
         {
             Order order = new Order()
