@@ -166,5 +166,14 @@
   <ItemGroup>
     <None Include="Resources\Afbeelding22.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnCloseOrder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPrintReceipt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRemoveComment.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

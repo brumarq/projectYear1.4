@@ -233,9 +233,39 @@ namespace ChapeauxUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnCloseOrder {
+            get {
+                object obj = ResourceManager.GetObject("btnCloseOrder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnCoin {
             get {
                 object obj = ResourceManager.GetObject("btnCoin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnPrintReceipt {
+            get {
+                object obj = ResourceManager.GetObject("btnPrintReceipt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnRemoveComment {
+            get {
+                object obj = ResourceManager.GetObject("btnRemoveComment", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

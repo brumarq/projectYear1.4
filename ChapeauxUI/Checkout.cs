@@ -50,6 +50,11 @@ namespace ChapeauxUI
             {
                 pnlPayment.Show();
             }
+
+            else if (panelName == "Overview")
+            {
+                pnlPaymentOverview.Show();
+            }
         }
         #endregion
 
@@ -74,15 +79,26 @@ namespace ChapeauxUI
 
         private void btnFinishPayment_Click(object sender, EventArgs e)
         {
-            //ShownPanel("");
+            ShowPanel("Overview");
 
             //Add code for saving transaction info etc.
         }
 
         private void btnCash_Click(object sender, EventArgs e)
         {
+            subPnlCard.Hide(); //!!!!!!!If used more create new method private void HideSubPanels()
             subPnlCash.Show();
         }
+
+        private void btnCard_Click(object sender, EventArgs e)
+        {
+            subPnlCash.Hide();
+            subPnlCard.Show();
+        }
+        #endregion
+
+        #region PaymentOverview
+
         #endregion
     }
 }
