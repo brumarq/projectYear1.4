@@ -40,9 +40,12 @@
   <Class Name="ChapeauxLogic.Transaction_Service">
     <Position X="9.5" Y="10.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Transaction_Service.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="transactionDAL" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ChapeauxLogic.User_Service">
     <Position X="6" Y="10.5" Width="1.5" />
@@ -92,6 +95,10 @@
   </Class>
   <Class Name="ChapeauxModel.User">
     <Position X="6" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauxDAL.TransactionDAL">
+    <Position X="9.5" Y="7.25" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Enum Name="ChapeauxModel.Status">
