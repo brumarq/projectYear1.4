@@ -4,6 +4,7 @@
     {
         Manager = 1, Chef, Bartender, Waiter
     }
+
     public class User
     {
         public int UserID { get; set; }

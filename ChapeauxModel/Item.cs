@@ -14,6 +14,6 @@ namespace ChapeauxModel
         public int Stock { get; set; }
         public string Category { get; set; }
         public decimal VATRate { get; set; }
-        public bool menuType { get; set; }
+        public bool MenuType { get; set; }
     }
 }

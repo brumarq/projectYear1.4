@@ -12,10 +12,10 @@ namespace ChapeauxDAL
         {
             conn.Open();
             //read Users values from sql database
-            SqlCommand cmd = new SqlCommand
+            SqlCommand command = new SqlCommand
                 ("select userID, firstName, lastName, userName, password, role from USERS");
 
-            SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             List<User> users = new List<User>();
 
             while (reader.Read())
@@ -31,10 +31,11 @@ namespace ChapeauxDAL
         public User GetUserById_DB(int userId)
         {
             conn.Open();
+            
             SqlCommand command = new SqlCommand
                 ("select userID, firstName, lastName, userName, password, role from USERS where userId = @userID", conn);
 
-            command.Parameters.AddWithValue("@Id", userId);
+            command.Parameters.AddWithValue("@userId", userId);
 
             SqlDataReader reader = command.ExecuteReader();
 
@@ -53,10 +54,18 @@ namespace ChapeauxDAL
         public void AddUserAccount(User user)
         {
             conn.Open();
+            
             SqlCommand command = new SqlCommand("insert into USERS values (@firstName, @lastName, @userName, @password, @role)", conn);
 
-            SqlDataReader reader = command.ExecuteReader();
-
+            SqlParameter[] parameters = new SqlParameter[5]
+            {
+                    new SqlParameter("@firstName", user.FirstName),
+                    new SqlParameter("@lastName", user.LastName),
+                    new SqlParameter("@userName", user.LoginUsername),
+                    new SqlParameter("@password", user.LoginPassword)
+                    new SqlParameter("@role", (int)user.Role)
+            };
+            ExecuteEditQuery(query, parameters);
             reader.Close();
             conn.Close();
         }
@@ -72,6 +81,7 @@ namespace ChapeauxDAL
                 LoginUsername = reader["username"].ToString(),
                 LoginPassword = reader["password"].ToString(),
             };
+            
             return user;
         }
 

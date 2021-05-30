@@ -1,33 +1,115 @@
 ﻿using ChapeauxModel;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace ChapeauxDAL
 {
     public class ItemDAL : Base
     {
-        private List<Item> GetAllItems()
+        public List<Item> GetAllItems_DB()
         {
+            conn.Open();
+            //read Items values from sql database
+            SqlCommand command = new SqlCommand
+                ("select itemID, name, price, stock, VAT, menuType from ITEMS");
+
+            SqlDataReader reader = cmd.ExecuteReader();
             List<Item> menuItems = new List<Item>();
 
-            //somecode
+            while (reader.Read())
+            {
+                Item menuItem = ReadMenuItem(reader);
+                menuItems.Add(menuItem);
+            }
 
+            conn.Close();
             return menuItems;
         }
 
-        private Item GetItemByID(int itemID)
+        public Item GetItemByID_DB(int itemId)
         {
-            Item item = null;
+            conn.Open();
 
-            //foreach (var item in collection)
-            //{
-            //   // item = ....
-            //}
+            SqlCommand command = new SqlCommand("select itemID, name, price, stock, VAT, menuType from ITEMS where itemId = @itemID", conn);
+            command.Parameters.AddValue("@itemID", itemId);
 
-            return item;
+            SqlDataReader reader = command.ExecuteReader();
+
+            Item menuItem = null;
+            if (reader.Read())
+            {
+                menuItem = ReadMenuItem(reader);
+            }
+
+            reader.Close();
+            conn.Close();
+
+            return menuItem;
+        }
+
+        public void AddMenuItem(Item menuItem)
+        {
+            try
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand("insert into ITEMS values (@itemID, @name, @price, @stock, @category, @VAT, @menuType)", conn);
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+            }
+            catch (System.Exception e)
+            {
+                System.Console.WriteLine("Oops! " + e.ToString());
+            }
+
+            try
+            {
+                conn.Close();
+            }
+            catch (System.Exception e)
+            {
+                System.Console.WriteLine("Oops! " + e.ToString());
+            }
+        }
+
+        public void EditMenuItem(Item menuItem)
+        {
+            conn.Open();
+            SqlCommand command = new SqlCommand("update ITEMS set it ");
+            conn.Close();
+        }
+
+        /*public void AddMenuItem(Item menuItem)
+        {
+            conn.Open();
+
+            SqlCommand command = new SqlCommand("insert into ITEMS values (@itemID, @name, @price, @stock, @category, @VAT, @menuType)", conn);
+
+            SqlParameter[] parameters = new SqlParameter[7]
+            {
+                    new SqlParameter("@itemID", menuItem.ItemID),
+                    new SqlParameter("@name", menuItem.Name),
+                    new SqlParameter("@price", menuItem.Price),
+                    new SqlParameter("@stock", menuItem.Stock),
+                    new SqlParameter("@category", menuItem.Category.ToString()),
+                    new SqlParameter("@VAT", (int)menuItem.VATRate),
+                    new SqlParameter("@menuType", (bool)menuItem.MenuType)
+            };
+            ExecuteEditQuery(query, parameters);
+            reader.Close();
+            conn.Close();
+        }*/
+        private Item ReadMenuItem(SqlDataReader reader)
+        {
+            Item menuItem = new Item()
+            {   //retrieve data from all fields
+                ItemID = (int)reader["itemID"],
+                Name = reader["name"].ToString(),
+                Price = (int)reader["price"],
+                Stock = (int)reader["stock"],
+                Category = reader["category"].ToString(),
+                VATRate = (decimal)reader["VAT"].ToString(),
+                MenuType = (bool)reader["menuType"].ToString(),
+            };
+            return menuItem;
         }
     }
 }
