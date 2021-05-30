@@ -13,7 +13,7 @@ namespace ChapeauxDAL
             SqlCommand command = new SqlCommand
                 ("select itemID, name, price, stock, VAT, menuType from ITEMS");
 
-            SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             List<Item> menuItems = new List<Item>();
 
             while (reader.Read())
