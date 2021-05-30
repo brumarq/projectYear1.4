@@ -50,22 +50,23 @@ namespace ChapeauxDAL
 
             return user;
         }
-
+            //QUESTIONABLE
         public void AddUserAccount(User user)
         {
             conn.Open();
             
             SqlCommand command = new SqlCommand("insert into USERS values (@firstName, @lastName, @userName, @password, @role)", conn);
-
+            SqlDataReader reader = command.ExecuteReader();
+            
             SqlParameter[] parameters = new SqlParameter[5]
             {
                     new SqlParameter("@firstName", user.FirstName),
                     new SqlParameter("@lastName", user.LastName),
                     new SqlParameter("@userName", user.LoginUsername),
-                    new SqlParameter("@password", user.LoginPassword)
+                    new SqlParameter("@password", user.LoginPassword),
                     new SqlParameter("@role", (int)user.Role)
             };
-            ExecuteEditQuery(query, parameters);
+            //ExecuteEditQuery(query, parameters);
             reader.Close();
             conn.Close();
         }

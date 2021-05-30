@@ -31,7 +31,7 @@ namespace ChapeauxDAL
             conn.Open();
 
             SqlCommand command = new SqlCommand("select itemID, name, price, stock, VAT, menuType from ITEMS where itemId = @itemID", conn);
-            command.Parameters.AddValue("@itemID", itemId);
+            command.Parameters.AddWithValue("@itemID", itemId);
 
             SqlDataReader reader = command.ExecuteReader();
 
@@ -53,7 +53,7 @@ namespace ChapeauxDAL
             {
                 conn.Open();
                 SqlCommand command = new SqlCommand("insert into ITEMS values (@itemID, @name, @price, @stock, @category, @VAT, @menuType)", conn);
-                SqlDataReader reader = sqlCommand.ExecuteReader();
+                SqlDataReader reader = command.ExecuteReader();
             }
             catch (System.Exception e)
             {
@@ -106,8 +106,8 @@ namespace ChapeauxDAL
                 Price = (int)reader["price"],
                 Stock = (int)reader["stock"],
                 Category = reader["category"].ToString(),
-                VATRate = (decimal)reader["VAT"].ToString(),
-                MenuType = (bool)reader["menuType"].ToString(),
+                VATRate = (decimal)reader["VAT"],
+                MenuType = (bool)reader["menuType"]
             };
             return menuItem;
         }
