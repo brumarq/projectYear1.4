@@ -98,7 +98,33 @@ namespace ChapeauxUI
         #endregion
 
         #region PaymentOverview
+        private void btnBackToPayment_Click(object sender, EventArgs e)
+        {
+            ShowPanel("Payment");
+        }
 
+        //*** add method to load listview of transaction/order
+        //*** add option to write and store comments: popup + open digital keyboard + store comment into order
+
+        private void btnCloseOrder_Click(object sender, EventArgs e)
+        {
+            //CLOSE ORDER
+
+            DialogResult result = MessageBox.Show("Free Up Table?", "Set Table Status", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                //set table status to free
+            }
+
+            else
+            {
+                //keep table status as occupied
+            }
+
+            //show table overview
+        }
         #endregion
+
+
     }
 }
