@@ -1,7 +1,6 @@
 ﻿using ChapeauxLogic;
 using ChapeauxModel;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Windows.Forms;

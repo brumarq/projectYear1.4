@@ -10,53 +10,35 @@ namespace ChapeauxDAL
     {
         public List<User> Get_Users_DB()
         {
-            conn.Open();
-            //read Users values from sql database
-            SqlCommand command = new SqlCommand
-                ("select userID, firstName, lastName, userName, password, role from USERS");
-
-            SqlDataReader reader = command.ExecuteReader();
-            List<User> users = new List<User>();
-
-            while (reader.Read())
-            {
-                User user = ReadUser(reader);
-                users.Add(user);
-            }
-
-            conn.Close();
-            return users;
+            //read users from database
+            String query = "select userID, firstName, lastName, userName, [password], role from USERS";
+            SqlParameter[] parameters = new SqlParameter[0];
+            
+            return ReadUsers(ExecuteSelectQuery(query, parameters));
         }
 
-        public User GetUserById_DB(int userId)
+        public User GetUserByUsername_DB(string username)
         {
-            conn.Open();
-            
-            SqlCommand command = new SqlCommand
-                ("select userID, firstName, lastName, userName, password, role from USERS where userId = @userID", conn);
-
-            command.Parameters.AddWithValue("@userId", userId);
-
-            SqlDataReader reader = command.ExecuteReader();
-
             User user = null;
-            if (reader.Read())
+            using (SqlCommand command = new SqlCommand
+                ("select userID, firstName, lastName, userName, password, role from USERS where userName = @username", conn))
             {
-                user = ReadUser(reader);
+                command.Parameters.AddWithValue("@username", username);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        user = ReadUser(reader);
+                    }
+                }
             }
-
-            reader.Close();
-            conn.Close();
-
             return user;
         }
-            //QUESTIONABLE
+        
         public void AddUserAccount(User user)
         {
-            conn.Open();
-            
-            SqlCommand command = new SqlCommand("insert into USERS values (@firstName, @lastName, @userName, @password, @role)", conn);
-            SqlDataReader reader = command.ExecuteReader();
+            String query = "insert into USERS values (@firstName, @lastName, @userName, @password, @role)";
             
             SqlParameter[] parameters = new SqlParameter[5]
             {
@@ -64,11 +46,56 @@ namespace ChapeauxDAL
                     new SqlParameter("@lastName", user.LastName),
                     new SqlParameter("@userName", user.LoginUsername),
                     new SqlParameter("@password", user.LoginPassword),
-                    new SqlParameter("@role", (int)user.Role)
+                    new SqlParameter("@role", user.Role)
             };
-            //ExecuteEditQuery(query, parameters);
-            reader.Close();
-            conn.Close();
+            
+            ExecuteEditQuery(query, parameters);
+        }
+        
+        //NOT DONE YET
+        public User GetUserAccount(string username, string password) //get an account that matches the parameters
+        {
+            User user = null;
+
+            using (SqlCommand cmd = new SqlCommand("select userID, firstName, lastName, userName, [password] from USERS where userName = @username AND [password] = @password COLLATE Shakalakaboom;", conn))
+            {
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                        user = ReadUser(reader);
+                }
+            }
+            return user;
+        }
+        
+        public void RemoveUserAccount(User user)
+        {
+            String query = "delete from USERS where username = @username";
+
+            SqlParameter[] parameters = new SqlParameter[1]
+            {
+                    new SqlParameter("@username", user.LoginUsername)
+            };
+            
+            ExecuteEditQuery(query, parameters);
+        }
+
+        public void EditUserAccount(User previousUser, User newUser)
+        {
+            String query = "update USER set role = @role, firstName = @firstname, lastName = @lastname, username = @newUsername, [password] = password where userName = @username;";
+            
+            SqlParameter[] parameters = new SqlParameter[5]
+            {
+                new SqlParameter("@firstname", newUser.FirstName),
+                new SqlParameter("@lastname", newUser.LastName),
+                new SqlParameter("@role", newUser.Role),
+                new SqlParameter("@username", previousUser.LoginUsername),
+                new SqlParameter("@password", newUser.LoginPassword)
+            };
+            
+            ExecuteEditQuery(query, parameters);
         }
 
         private User ReadUser(SqlDataReader reader)
@@ -86,7 +113,27 @@ namespace ChapeauxDAL
             return user;
         }
 
+        private List<User> ReadUsers(DataTable dataTable)
+        {
+            List<User> users = new List<User>();
 
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                User user = new User()
+                {
+                    UserID = (int)dr["userID"],
+                    Role = (Role)Enum.Parse(typeof(Role), dr["role"].ToString()),
+                    FirstName = dr["firstName"].ToString(),
+                    LastName = dr["lastName"].ToString(),
+                    LoginUsername = dr["userName"].ToString(),
+                    LoginPassword = dr["password"].ToString(),
+                };
+
+                users.Add(user);
+            }
+            return users;
+        }
+        
         public User LoginCheck(string username)
         {
             string query = "SELECT userID, role, firstName, lastName, userName, password FROM USERS WHERE userName = @userName";

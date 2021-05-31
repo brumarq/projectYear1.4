@@ -38,6 +38,11 @@ namespace ChapeauxUI
             this.txtLastname = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblRole = new System.Windows.Forms.Label();
+            this.rbManager = new System.Windows.Forms.RadioButton();
+            this.rbChef = new System.Windows.Forms.RadioButton();
+            this.rbBartender = new System.Windows.Forms.RadioButton();
+            this.rbWaiter = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // lblFirstName
@@ -78,12 +83,13 @@ namespace ChapeauxUI
             // 
             // butCreateUserAccount
             // 
-            this.butCreateUserAccount.Location = new System.Drawing.Point(602, 333);
+            this.butCreateUserAccount.Location = new System.Drawing.Point(602, 345);
             this.butCreateUserAccount.Name = "butCreateUserAccount";
             this.butCreateUserAccount.Size = new System.Drawing.Size(152, 37);
             this.butCreateUserAccount.TabIndex = 1;
             this.butCreateUserAccount.Text = "Create User Account";
             this.butCreateUserAccount.UseVisualStyleBackColor = true;
+            this.butCreateUserAccount.Click += new System.EventHandler(this.butCreateUserAccount_Click);
             // 
             // txtFirstname
             // 
@@ -113,11 +119,70 @@ namespace ChapeauxUI
             this.txtPassword.Size = new System.Drawing.Size(100, 22);
             this.txtPassword.TabIndex = 2;
             // 
+            // lblRole
+            // 
+            this.lblRole.AutoSize = true;
+            this.lblRole.Location = new System.Drawing.Point(106, 308);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(37, 17);
+            this.lblRole.TabIndex = 3;
+            this.lblRole.Text = "Role";
+            // 
+            // rbManager
+            // 
+            this.rbManager.AutoSize = true;
+            this.rbManager.Location = new System.Drawing.Point(306, 304);
+            this.rbManager.Name = "rbManager";
+            this.rbManager.Size = new System.Drawing.Size(85, 21);
+            this.rbManager.TabIndex = 4;
+            this.rbManager.TabStop = true;
+            this.rbManager.Text = "Manager";
+            this.rbManager.UseVisualStyleBackColor = true;
+            // 
+            // rbChef
+            // 
+            this.rbChef.AutoSize = true;
+            this.rbChef.Location = new System.Drawing.Point(422, 304);
+            this.rbChef.Name = "rbChef";
+            this.rbChef.Size = new System.Drawing.Size(58, 21);
+            this.rbChef.TabIndex = 5;
+            this.rbChef.TabStop = true;
+            this.rbChef.Text = "Chef";
+            this.rbChef.UseVisualStyleBackColor = true;
+            // 
+            // rbBartender
+            // 
+            this.rbBartender.AutoSize = true;
+            this.rbBartender.Location = new System.Drawing.Point(515, 304);
+            this.rbBartender.Name = "rbBartender";
+            this.rbBartender.Size = new System.Drawing.Size(92, 21);
+            this.rbBartender.TabIndex = 6;
+            this.rbBartender.TabStop = true;
+            this.rbBartender.Text = "Bartender";
+            this.rbBartender.UseVisualStyleBackColor = true;
+            this.rbBartender.CheckedChanged += new System.EventHandler(this.rbBartender_CheckedChanged);
+            // 
+            // rbWaiter
+            // 
+            this.rbWaiter.AutoSize = true;
+            this.rbWaiter.Location = new System.Drawing.Point(629, 304);
+            this.rbWaiter.Name = "rbWaiter";
+            this.rbWaiter.Size = new System.Drawing.Size(70, 21);
+            this.rbWaiter.TabIndex = 7;
+            this.rbWaiter.TabStop = true;
+            this.rbWaiter.Text = "Waiter";
+            this.rbWaiter.UseVisualStyleBackColor = true;
+            // 
             // CreateUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rbWaiter);
+            this.Controls.Add(this.rbBartender);
+            this.Controls.Add(this.rbChef);
+            this.Controls.Add(this.rbManager);
+            this.Controls.Add(this.lblRole);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.txtLastname);
@@ -145,5 +210,10 @@ namespace ChapeauxUI
         private System.Windows.Forms.TextBox txtLastname;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label lblRole;
+        private System.Windows.Forms.RadioButton rbManager;
+        private System.Windows.Forms.RadioButton rbChef;
+        private System.Windows.Forms.RadioButton rbBartender;
+        private System.Windows.Forms.RadioButton rbWaiter;
     }
 }

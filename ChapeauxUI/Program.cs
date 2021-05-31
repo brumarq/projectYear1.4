@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ChapeauxModel;
 using System.Windows.Forms;
 
 namespace ChapeauxUI
@@ -17,7 +15,8 @@ namespace ChapeauxUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-
+            //User user = new User();
+            //Application.Run(new CreateUserForm(user));
             Application.Run(new LoginScreen());
         }
     }
