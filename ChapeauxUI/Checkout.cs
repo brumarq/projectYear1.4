@@ -28,6 +28,7 @@ namespace ChapeauxUI
             //hide main panels
             pnlCheckout.Hide();
             pnlPayment.Hide();
+            pnlPaymentOverview.Hide();
 
             //hide sub-panels
             subPnlCash.Hide();
