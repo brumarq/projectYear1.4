@@ -150,10 +150,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChapeauxDAL\ChapeauxDAL.csproj">
-      <Project>{a504f277-48e0-45c9-ae25-a25d892009ae}</Project>
-      <Name>ChapeauxDAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ChapeauxLogic\ChapeauxLogic.csproj">
       <Project>{45641c85-d931-42a8-ad63-e13a2b26b812}</Project>
       <Name>ChapeauxLogic</Name>
@@ -249,6 +245,75 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btnCheckout-hover1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRemoveComment1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRemoveComment2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRemoveComment3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnRemove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picLine2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5eu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10euros.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5eu1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10euros1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2eu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1eu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\50cent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\20cent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10cent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5cent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\20euros.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\50euros.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\100eu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\200eu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maestro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mastercard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\visa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\amex.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChapeauxLogic;
+using ChapeauxModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -61,6 +63,7 @@ namespace ChapeauxUI
 
         //Panels
         #region Checkout
+        //Events
         private void btnClearTip_Click(object sender, EventArgs e)
         {
             txtTipAmount.Clear();
@@ -69,6 +72,15 @@ namespace ChapeauxUI
         private void btnToPayment_Click(object sender, EventArgs e)
         {
             ShowPanel("Payment");
+        }
+
+        //Methods
+        private void LoadOrder()
+        {
+            Order_Service orderService = new Order_Service();
+            Table_Service tableService = new Table_Service();
+            Table currentTable = tableService.getTable();
+            Order currentOrder = orderService.getOrderForTable()
         }
         #endregion
 
@@ -124,8 +136,7 @@ namespace ChapeauxUI
 
             //show table overview
         }
+
         #endregion
-
-
     }
 }

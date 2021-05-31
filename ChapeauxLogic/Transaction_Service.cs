@@ -22,5 +22,10 @@ namespace ChapeauxLogic
         {
             return transactionDAL.GetByID(transactionID);
         }
+
+        private Order GetByTableID(int tableID)
+        {
+
+        }
     }
 }

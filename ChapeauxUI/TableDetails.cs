@@ -128,7 +128,9 @@ namespace ChapeauUI
                 return;
             }
 
-            // Add code here for checkout
+            CheckoutForm checkout = new CheckoutForm();
+            checkout.Show();
+            this.Close();
         }
     }
 }

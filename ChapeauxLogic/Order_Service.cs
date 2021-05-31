@@ -22,5 +22,10 @@ namespace ChapeauxLogic
         {
             return orderdb.IsThereAnOrder(tableNumber);
         }
+
+        //public Order GetByTableID(int tableID)
+        //{
+        //
+        //}
     }
 }
