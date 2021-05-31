@@ -16,7 +16,18 @@ namespace ChapeauxModel
         public bool IsPaid { get; set; }
         public int TableID { get; set; }
         public int UserID { get; set; }
-        public decimal TotalPrice { get; set; } //add to database
+        public decimal TotalPrice
+        {
+            get
+            {
+                decimal totalPrice = 0;
+                foreach (OrderItem orderItem in orderItems)
+                {
+                    totalPrice += orderItem.Price;
+                }
+                return totalPrice;
+            }
+        }
         public decimal VATHigh
         {
             get

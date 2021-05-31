@@ -21,13 +21,14 @@ namespace ChapeauxUI
         {
             this.currentTable = currentTable;
             InitializeComponent();
+            GetOrder();
         }
 
         #region Global
         private void CheckoutForm_Load(object sender, EventArgs e)
         {
             ShowPanel("Checkout");
-            GetOrder();
+            
         }
 
         private void HideAllPanels()
@@ -79,6 +80,23 @@ namespace ChapeauxUI
             ShowPanel("Payment");
         }
 
+        private void txtTipAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToDecimal(txtTipAmount.Text) >= 0)
+            {
+                txtToPay.Text = (currentOrder.TotalPrice + Convert.ToDecimal(txtTipAmount.Text).ToString());
+            }
+
+            else if (Convert.ToDecimal(txtToPay.Text) >= currentOrder.TotalPrice)
+            {
+                txtTipAmount.Text = (Convert.ToDecimal(txtToPay.Text) - currentOrder.TotalPrice).ToString();
+            }
+            else
+            {
+                throw new Exception("Price to pay cannot be less than total order price");
+            }
+        }
+
         //Methods
         private void GetOrder()
         {
@@ -115,7 +133,7 @@ namespace ChapeauxUI
                 lblVATHighResult.Text = currentOrder.VATHigh.ToString();
                 lblVATLowResult.Text = currentOrder.VATLow.ToString();
 
-                //TEXBOX TextChanged EVENT!!!!!!
+                //TEXBOX TextChanged EVENT!!!!!! ---> DONE, REMOVE COMMENTS IF WORKS...
 
                 //decimal toPay = currentOrder.TotalPrice + Convert.ToDecimal(txtTipAmount);
                 //decimal tipAmount = Convert.ToDecimal(txtToPay) - currentOrder.TotalPrice;
@@ -190,22 +208,5 @@ namespace ChapeauxUI
         }
 
         #endregion
-
-        private void txtTipAmount_TextChanged(object sender, EventArgs e)
-        {
-            if (Convert.ToDecimal(txtTipAmount.Text) >= 0)
-            {
-                txtToPay.Text = (currentOrder.TotalPrice + Convert.ToDecimal(txtTipAmount.Text).ToString());
-            }
-
-            else if (Convert.ToDecimal(txtToPay.Text) >= currentOrder.TotalPrice)
-            {
-                txtTipAmount.Text = (Convert.ToDecimal(txtToPay.Text) - currentOrder.TotalPrice).ToString();
-            }
-            else
-            {
-                throw new Exception("Price to pay cannot be less than total order price");
-            }
-        }
     }
 }
