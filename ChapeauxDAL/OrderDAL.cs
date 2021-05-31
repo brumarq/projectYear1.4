@@ -71,6 +71,26 @@ namespace ChapeauxDAL
 
             return order;
         }
+
+        public Order GetByTableID(int tableID)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT orderID, isPaid, tableID, userID " +
+                                            "FROM ORDERS " +
+                                            "WHERE tableID = @tableID", conn);
+            OpenConnection();
+            cmd.Parameters.AddWithValue("@tableID", tableID);
+            SqlDataReader reader = cmd.ExecuteReader();
+            Order order = null;
+
+            if (reader.Read())
+            {
+                order = ReadOrder(reader);
+            }
+            reader.Close();
+            conn.Close();
+
+            return order;
+        }
         #endregion
     }
 }

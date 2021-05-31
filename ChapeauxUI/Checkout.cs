@@ -14,8 +14,12 @@ namespace ChapeauxUI
 {
     public partial class CheckoutForm : Form
     {
-        public CheckoutForm()
+        public Table currentTable;
+        private Order currentOrder;
+
+        public CheckoutForm(Table currentTable)
         {
+            this.currentTable = currentTable;
             InitializeComponent();
         }
 
@@ -23,6 +27,7 @@ namespace ChapeauxUI
         private void CheckoutForm_Load(object sender, EventArgs e)
         {
             ShowPanel("Checkout");
+            GetOrder();
         }
 
         private void HideAllPanels()
@@ -75,12 +80,59 @@ namespace ChapeauxUI
         }
 
         //Methods
-        private void LoadOrder()
+        private void GetOrder()
         {
-            Order_Service orderService = new Order_Service();
-            Table_Service tableService = new Table_Service();
-            Table currentTable = tableService.getTable();
-            Order currentOrder = orderService.getOrderForTable()
+            try
+            {
+                listViewCheckoutOrder.Clear();
+
+                Order_Service orderService = new Order_Service();
+
+                currentOrder = null;
+                if (orderService.getOrderForTable(currentTable.TableID))
+                {
+                    currentOrder = orderService.GetByTableID(currentTable.TableID);
+                }
+
+                else
+                {
+                    throw new Exception("There are no open orders for this table");
+                }
+               
+                //NULL REFERENCE?
+
+                foreach (OrderItem orderItem in currentOrder.orderItems)
+                {
+                    ListViewItem li = new ListViewItem(orderItem.ItemID.ToString(), 0);
+                    li.SubItems.Add(orderItem.Name);
+                    li.SubItems.Add(orderItem.Count.ToString());
+                    li.SubItems.Add(orderItem.Price.ToString());
+                    listViewCheckoutOrder.Items.Add(li);
+                }
+
+                lblCheckoutOrderID.Text = currentOrder.OrderID.ToString();
+                lblTotalResult.Text = currentOrder.TotalPrice.ToString();
+                lblVATHighResult.Text = currentOrder.VATHigh.ToString();
+                lblVATLowResult.Text = currentOrder.VATLow.ToString();
+
+                //TEXBOX TextChanged EVENT!!!!!!
+
+                //decimal toPay = currentOrder.TotalPrice + Convert.ToDecimal(txtTipAmount);
+                //decimal tipAmount = Convert.ToDecimal(txtToPay) - currentOrder.TotalPrice;
+                //if (Convert.ToDecimal(txtToPay) < currentOrder.TotalPrice)
+                //{
+                //    throw new Exception("Price to pay cannot be lower than the total price");
+                //}
+
+                //else if ()
+                //{
+
+                //}
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
         #endregion
 
@@ -138,5 +190,22 @@ namespace ChapeauxUI
         }
 
         #endregion
+
+        private void txtTipAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToDecimal(txtTipAmount.Text) >= 0)
+            {
+                txtToPay.Text = (currentOrder.TotalPrice + Convert.ToDecimal(txtTipAmount.Text).ToString());
+            }
+
+            else if (Convert.ToDecimal(txtToPay.Text) >= currentOrder.TotalPrice)
+            {
+                txtTipAmount.Text = (Convert.ToDecimal(txtToPay.Text) - currentOrder.TotalPrice).ToString();
+            }
+            else
+            {
+                throw new Exception("Price to pay cannot be less than total order price");
+            }
+        }
     }
 }

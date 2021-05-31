@@ -23,9 +23,13 @@ namespace ChapeauxLogic
             return orderdb.IsThereAnOrder(tableNumber);
         }
 
-        //public Order GetByTableID(int tableID)
-        //{
-        //
-        //}
+        public Order GetByTableID(int tableID)
+        {
+            if (tableID == 0)
+            {
+                throw new Exception("The selected table has no running orders");
+            }
+            return orderdb.GetByTableID(tableID);
+        }
     }
 }

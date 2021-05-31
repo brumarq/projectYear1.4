@@ -8,7 +8,7 @@ namespace ChapeauxModel
 {
     public class Order
     {
-        private List<OrderItem> orderItems;
+        public List<OrderItem> orderItems;
 
         public int OrderID { get; set; }
         public DateTime startDateTime { get; set; }
@@ -16,7 +16,38 @@ namespace ChapeauxModel
         public bool IsPaid { get; set; }
         public int TableID { get; set; }
         public int UserID { get; set; }
+        public decimal TotalPrice { get; set; } //add to database
+        public decimal VATHigh
+        {
+            get
+            {
+                decimal vatHighResult = 0;
+                foreach (OrderItem orderItem in orderItems)
+                {
+                    if (orderItem.VATRate == 0.21m)
+                    {
+                        vatHighResult += orderItem.Price / 121 * 21;
+                    }
+                }
+                return vatHighResult;
+            }
+        }
 
+        public decimal VATLow
+        {
+            get
+            {
+                decimal vatLowResult = 0;
+                foreach (OrderItem orderItem in orderItems)
+                {
+                    if (orderItem.VATRate == 0.09m)
+                    {
+                        vatLowResult += orderItem.Price / 109 * 9;
+                    }
+                }
+                return vatLowResult;
+            }
+        }
 
         public Order()
         {
