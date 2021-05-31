@@ -15,8 +15,8 @@ namespace ChapeauxUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //User user = new User();
-            //Application.Run(new CreateUserForm(user));
+            User user = new User();
+            Application.Run(new CreateUserForm(user));
             Application.Run(new LoginScreen());
         }
     }
