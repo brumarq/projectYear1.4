@@ -36,7 +36,7 @@ namespace ChapeauxLogic
 
         public User LoginCheck(string givenUsername)
         {
-            throw new NotImplementedException();
+            return userDAO.LoginCheck(givenUsername);
         }
     }
 }
