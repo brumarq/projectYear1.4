@@ -96,7 +96,8 @@ namespace ChapeauxUI
                         }
                         else if (user.Role == Role.Manager)
                         {
-                            //Add code here to open manager form
+                            new CreateUserForm(user).Show();
+                            this.Hide();
                         }
                     }
                     else
