@@ -61,5 +61,16 @@ namespace ChapeauxUI
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pnlKitchenDisplay.Hide();
+            pnlBarmanDisplay.Show();
+        }
+
+        private void listViewTableKitchen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
