@@ -8,7 +8,7 @@ namespace ChapeauxDAL
 {
     public class ItemDAL : Base
     {
-        public List<Item> GetAllItems_DB()
+        public List<Item> Get_All_Items_DB()
         {
             //read users from database
             String query = "select itemID, name, price, stock, VAT, menuType from ITEMS";
@@ -17,7 +17,7 @@ namespace ChapeauxDAL
             return ReadItems(ExecuteSelectQuery(query, parameters));
         }
 
-        public Item GetItemByID_DB(int itemId)
+        /*public Item GetItemByID_DB(int itemId)
         {
             conn.Open();
 
@@ -36,7 +36,7 @@ namespace ChapeauxDAL
             conn.Close();
 
             return menuItem;
-        }
+        }*/
 
         public void AddMenuItem(Item menuItem)
         {
@@ -72,6 +72,33 @@ namespace ChapeauxDAL
         //    ExecuteEditQuery(query, parameters);
         //}
 
+        public void RemoveMenuItem(Item menuItem) //remove an employee from DB based on username
+        {
+            conn.Open();
+            String query = "delete from ITEMS where name = @name";
+
+            SqlParameter[] parameters = new SqlParameter[1]
+            {
+                 new SqlParameter("@name", menuItem.Name)
+            };
+            ExecuteEditQuery(query, parameters);
+            conn.Close();
+        }
+
+        private Item ReadMenuItem(SqlDataReader reader)
+        {
+            Item menuItem = new Item()
+            {   //retrieve data from all fields
+                ItemID = (int)reader["itemID"],
+                Name = reader["name"].ToString(),
+                Price = (int)reader["price"],
+                Stock = (int)reader["stock"],
+                Category = reader["category"].ToString(),
+                VATRate = (decimal)reader["VAT"],
+                MenuType = (bool)reader["menuType"]
+            };
+            return menuItem;
+        }
         private List<Item> ReadItems(DataTable dataTable)
         {
             List<Item> items = new List<Item>();
@@ -92,20 +119,6 @@ namespace ChapeauxDAL
                 items.Add(menuItem);
             }
             return items;
-        }
-        private Item ReadMenuItem(SqlDataReader reader)
-        {
-            Item menuItem = new Item()
-            {   //retrieve data from all fields
-                ItemID = (int)reader["itemID"],
-                Name = reader["name"].ToString(),
-                Price = (int)reader["price"],
-                Stock = (int)reader["stock"],
-                Category = reader["category"].ToString(),
-                VATRate = (decimal)reader["VAT"],
-                MenuType = (bool)reader["menuType"]
-            };
-            return menuItem;
         }
     }
 }

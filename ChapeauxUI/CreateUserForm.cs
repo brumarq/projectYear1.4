@@ -14,48 +14,59 @@ namespace ChapeauxUI
 
         private void butCreateUserAccount_Click(object sender, EventArgs e)
         {
+            int effectedRows = 0;
+            bool emptyFields = false;
             User_Service user_Service = new User_Service();
             
-            bool emptyFields = false;
             if (string.IsNullOrEmpty(txtFirstname.Text) || string.IsNullOrEmpty(txtLastname.Text)
                 || string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
             { 
                 emptyFields = true; 
             }
             
-            if (emptyFields == true)
+            if (emptyFields)
             {
-                MessageBox.Show("Please Fill All Required Fields", "Required Fields are Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please Fill All Fields!", "Required Fields are Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-            {
-                Role userRole;
-                if (rbManager.Checked)
-                    userRole = Role.Manager;
-                else if (rbChef.Checked)
-                    userRole = Role.Chef;
-                else if (rbBartender.Checked)
-                    userRole = Role.Bartender;
-                else
-                    userRole = Role.Waiter;
-
-
-                User tempUser = user_Service.GetUserByUsername(txtUsername.Text.ToString());
-                
-                if (tempUser != null) 
-                    MessageBox.Show("Username already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                else
+            {   
+                DialogResult dialog = MessageBox.Show("Are you sure?", "Create Account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialog == DialogResult.Yes)
                 {
-                    User newUser = new User() 
+                    //assigns the role
+                    Role userRole;
+                    if (rbManager.Checked)
+                        userRole = Role.Manager;
+                    else if (rbChef.Checked)
+                        userRole = Role.Chef;
+                    else if (rbBartender.Checked)
+                        userRole = Role.Bartender;
+                    else
+                        userRole = Role.Waiter;
+
+
+                    User interimUSer = user_Service.GetUserByUsername(txtUsername.Text);
+
+                    if (interimUSer != null)
+                        MessageBox.Show("Username already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
                     {
-                        FirstName = txtFirstname.Text,
-                        LastName = txtLastname.Text,
-                        LoginUsername = txtUsername.Text,
-                        LoginPassword = txtPassword.Text,
-                        Role = userRole
-                    };
-                    user_Service.GetUsers(newUser); //add the new User to the DB
-                    MessageBox.Show("Account Creation Successful", "Added", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        User newUser = new User()
+                        {
+                            FirstName = txtFirstname.Text,
+                            LastName = txtLastname.Text,
+                            LoginUsername = txtUsername.Text,
+                            LoginPassword = txtPassword.Text,
+                            Role = userRole
+                        };
+                        if (effectedRows >= 0)
+                        {
+                            user_Service.GetUsers(newUser); //add the new User to the DB
+                            MessageBox.Show("Account Creation Successful", "Added", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        }
+                        else
+                            MessageBox.Show("Could not create the account!");
+                    }
                 }
             }
         }

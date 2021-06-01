@@ -8,69 +8,80 @@ namespace ChapeauxUI
     public partial class EditAccountForm : Form
     {
         private User existingUser;
-        private User newUser;
-        public EditAccountForm(User existingUser, User newUser)
+        private User editUser;
+        public EditAccountForm(User existingUser, User editUser)
         {
             InitializeComponent();
             this.existingUser = existingUser;
-            this.newUser = newUser;
+            this.editUser = editUser;
         }
 
         private void butEditUserAccount_Click(object sender, EventArgs e)
         {
+            bool emptyFields = false;
             User_Service user_Service = new User_Service();
 
-            //storing input from TextBoxes into the newUser variables
-            newUser.FirstName = txtFirstname.Text;
-            newUser.LastName = txtLastname.Text;
-            newUser.LoginUsername = txtUsername.Text;
-            newUser.LoginPassword = txtPassword.Text;
-            
+            //filling textboxes with current info
+            txtFirstname.Text = editUser.FirstName;
+            txtLastname.Text = editUser.LastName;
+            txtUsername.Text = editUser.LoginUsername;
+            txtPassword.Text = editUser.LoginPassword;
+
             //checking the radio button with the correct role
-            if (newUser.Role == Role.Manager)
+            if (editUser.Role == Role.Manager)
                 rbManager.Checked = true;
-            else if (newUser.Role == Role.Chef)
+            else if (editUser.Role == Role.Chef)
                 rbChef.Checked = true;
-            else if (newUser.Role == Role.Bartender)
+            else if (editUser.Role == Role.Bartender)
                 rbBartender.Checked = true;
             else
                 rbWaiter.Checked = true;
 
             //validating the variables above are not null or empty
-            bool emptyFields = false;
-            if (string.IsNullOrEmpty(txtFirstname.Text) || string.IsNullOrEmpty(txtLastname.Text)
-                || string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
+            if (string.IsNullOrEmpty(txtUsername.Text))
+            { 
+                txtUsername.Text = editUser.LoginUsername; 
+            }
+            else if (string.IsNullOrEmpty(txtFirstname.Text))
+            { 
+                txtFirstname.Text = editUser.FirstName; 
+            }
+            else if (string.IsNullOrEmpty(txtLastname.Text))
+            { 
+                txtLastname.Text = editUser.LastName; 
+            }
+            else if (string.IsNullOrEmpty(txtPassword.Text))
             {
-                emptyFields = true;
+                txtPassword.Text = editUser.LoginPassword;
             }
 
-            if (emptyFields == true)
-            {
-                MessageBox.Show("Please Fill All Required Fields", "Required Fields are Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                Role newRole;       //assigns the new role
-                if (rbManager.Checked)
-                    newRole = Role.Manager;
-                else if (rbChef.Checked)
-                    newRole = Role.Chef;
-                else if (rbBartender.Checked)
-                    newRole = Role.Bartender;
-                else
-                    newRole = Role.Waiter;
-
-                User newUser = new User()
+                if (emptyFields == true)
                 {
-                    FirstName = txtFirstname.Text,
-                    LastName = txtLastname.Text,
-                    LoginUsername = txtUsername.Text,
-                    LoginPassword = txtPassword.Text,
-                    Role = newRole
-                };
-                user_Service.EditUserAccount(existingUser, newUser); //edits the user account
-                MessageBox.Show("Account Editing Successful!", "Added", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);//messagebox asterisk contains a symbol consisting of a lowercase letter i in a circle.
-            }
+                    MessageBox.Show("Please Fill All Required Fields", "Required Fields are Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    Role newRole;       //assigns the new role
+                    if (rbManager.Checked)
+                        newRole = Role.Manager;
+                    else if (rbChef.Checked)
+                        newRole = Role.Chef;
+                    else if (rbBartender.Checked)
+                        newRole = Role.Bartender;
+                    else
+                        newRole = Role.Waiter;
+
+                    User newUser = new User()
+                    {
+                        FirstName = txtFirstname.Text,
+                        LastName = txtLastname.Text,
+                        LoginUsername = txtUsername.Text,
+                        LoginPassword = txtPassword.Text,
+                        Role = newRole
+                    };
+                    user_Service.EditUserAccount(existingUser, newUser); //edits the user account
+                    MessageBox.Show("Account Editing Successful!", "Edited", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
         }
     }
 }

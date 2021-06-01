@@ -29,6 +29,10 @@ namespace ChapeauxLogic
         {
             userDAO.EditUserAccount(previousUser, newUser);
         }
+        public void DisplayUsers(User user)
+        {
+            userDAO.DisplayUsers(user);
+        }
         public void RemoveUserAccount(User user)
         {
             userDAO.RemoveUserAccount(user);

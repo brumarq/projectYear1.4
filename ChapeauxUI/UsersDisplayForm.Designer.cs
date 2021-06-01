@@ -29,7 +29,7 @@ namespace ChapeauxUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewDisplayForm = new System.Windows.Forms.ListView();
             this.lvUserId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvFirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -38,21 +38,21 @@ namespace ChapeauxUI
             this.butClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listView1
+            // listViewDisplayForm
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewDisplayForm.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.lvUserId,
             this.lvFirstName,
             this.lvLastName,
             this.lvRole});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 0);
-            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(369, 376);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listViewDisplayForm.HideSelection = false;
+            this.listViewDisplayForm.Location = new System.Drawing.Point(0, 0);
+            this.listViewDisplayForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listViewDisplayForm.Name = "listViewDisplayForm";
+            this.listViewDisplayForm.Size = new System.Drawing.Size(491, 462);
+            this.listViewDisplayForm.TabIndex = 0;
+            this.listViewDisplayForm.UseCompatibleStateImageBehavior = false;
+            this.listViewDisplayForm.View = System.Windows.Forms.View.Details;
             // 
             // lvUserId
             // 
@@ -76,33 +76,34 @@ namespace ChapeauxUI
             // 
             // butDisplay
             // 
-            this.butDisplay.Location = new System.Drawing.Point(391, 180);
-            this.butDisplay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butDisplay.Location = new System.Drawing.Point(521, 222);
+            this.butDisplay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.butDisplay.Name = "butDisplay";
-            this.butDisplay.Size = new System.Drawing.Size(84, 38);
+            this.butDisplay.Size = new System.Drawing.Size(112, 47);
             this.butDisplay.TabIndex = 1;
             this.butDisplay.Text = "Display";
             this.butDisplay.UseVisualStyleBackColor = true;
+            this.butDisplay.Click += new System.EventHandler(this.butDisplay_Click);
             // 
             // butClear
             // 
-            this.butClear.Location = new System.Drawing.Point(495, 180);
-            this.butClear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butClear.Location = new System.Drawing.Point(660, 222);
+            this.butClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.butClear.Name = "butClear";
-            this.butClear.Size = new System.Drawing.Size(84, 38);
+            this.butClear.Size = new System.Drawing.Size(112, 47);
             this.butClear.TabIndex = 1;
             this.butClear.Text = "Clear";
             this.butClear.UseVisualStyleBackColor = true;
             // 
             // UsersDisplayForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 441);
+            this.ClientSize = new System.Drawing.Size(1149, 543);
             this.Controls.Add(this.butClear);
             this.Controls.Add(this.butDisplay);
-            this.Controls.Add(this.listView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.listViewDisplayForm);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UsersDisplayForm";
             this.Text = "UsersDisplayForm";
             this.ResumeLayout(false);
@@ -111,7 +112,7 @@ namespace ChapeauxUI
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewDisplayForm;
         private System.Windows.Forms.ColumnHeader lvUserId;
         private System.Windows.Forms.ColumnHeader lvFirstName;
         private System.Windows.Forms.ColumnHeader lvLastName;

@@ -17,8 +17,13 @@ namespace ChapeauxUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             User delUser = new User();
-            Application.Run(new LoginScreen());
+            
+            User connectedEmployee = new User();
+            User employeeToEdit = new User();
+
             Application.Run(new DeleteAccountForm(delUser));
+            Application.Run(new EditAccountForm(connectedEmployee, employeeToEdit));
+            Application.Run(new LoginScreen());
         }
     }
 }
