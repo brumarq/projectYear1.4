@@ -19,6 +19,7 @@ namespace ChapeauxDAL
 
         public User GetUserByUsername_DB(string username)
         {
+            conn.Open();
             User user = null;
             using (SqlCommand command = new SqlCommand
                 ("select userID, firstName, lastName, userName, password, role from USERS where userName = @username", conn))
@@ -33,6 +34,8 @@ namespace ChapeauxDAL
                     }
                 }
             }
+            conn.Close();
+
             return user;
         }
         
@@ -52,12 +55,12 @@ namespace ChapeauxDAL
             ExecuteEditQuery(query, parameters);
         }
         
-        //NOT DONE YET
         public User GetUserAccount(string username, string password) //get an account that matches the parameters
         {
+            conn.Open();
+            
             User user = null;
-
-            using (SqlCommand cmd = new SqlCommand("select userID, firstName, lastName, userName, [password] from USERS where userName = @username AND [password] = @password COLLATE Shakalakaboom;", conn))
+            using (SqlCommand cmd = new SqlCommand("select userID, firstName, lastName, userName, [password] from USERS where userName = @username AND [password] = @password;", conn))
             {
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@password", password);
@@ -67,16 +70,18 @@ namespace ChapeauxDAL
                         user = ReadUser(reader);
                 }
             }
+            
+            conn.Close();
             return user;
         }
         
-        public void RemoveUserAccount(User user)
+        public void RemoveUserAccount(User user) //remove an employee from DB based on username
         {
             String query = "delete from USERS where username = @username";
 
             SqlParameter[] parameters = new SqlParameter[1]
             {
-                    new SqlParameter("@username", user.LoginUsername)
+                 new SqlParameter("@username", user.LoginUsername)
             };
             
             ExecuteEditQuery(query, parameters);
@@ -105,7 +110,7 @@ namespace ChapeauxDAL
                 UserID = (int)reader["userID"],
                 FirstName = reader["firstName"].ToString(),
                 LastName = reader["lastName"].ToString(),
-                Role = (Role)reader["role"],
+                Role = (Role)Enum.Parse(typeof(Role), reader["role"].ToString()),
                 LoginUsername = reader["username"].ToString(),
                 LoginPassword = reader["password"].ToString(),
             };

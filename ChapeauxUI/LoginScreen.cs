@@ -10,6 +10,11 @@ namespace ChapeauxUI
     public partial class LoginScreen : Form
     {
         private EventLog appLog = new EventLog("Application"); // Initiate EventLog
+        User createUser = new User();
+        User prevUser = new User();
+        User curUser = new User();
+        User deleteUser = new User();
+
         public LoginScreen()
         {
             InitializeComponent();
@@ -96,8 +101,12 @@ namespace ChapeauxUI
                         }
                         else if (user.Role == Role.Manager)
                         {
-                            new CreateUserForm(user).Show();
+                            new CreateUserForm(createUser).Show();
                             this.Hide();
+
+                            new EditAccountForm(prevUser, curUser).Show();
+                            this.Hide();
+
                         }
                     }
                     else

@@ -5,24 +5,32 @@ using ChapeauxLogic;
 
 namespace ChapeauxUI
 {
-    public partial class CreateUserForm : Form
+    public partial class DeleteAccountForm : Form
     {
-        public CreateUserForm(User user)
+        private User user;
+
+        public DeleteAccountForm(User user)
         {
             InitializeComponent();
+            this.user = user;
         }
 
-        private void butCreateUserAccount_Click(object sender, EventArgs e)
+        private void rbBartender_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void butDeleteUserAccount_Click(object sender, EventArgs e)
         {
             User_Service user_Service = new User_Service();
-            
+
             bool emptyFields = false;
             if (string.IsNullOrEmpty(txtFirstname.Text) || string.IsNullOrEmpty(txtLastname.Text)
                 || string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
-            { 
-                emptyFields = true; 
+            {
+                emptyFields = true;
             }
-            
+
             if (emptyFields == true)
             {
                 MessageBox.Show("Please Fill All Required Fields", "Required Fields are Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -39,28 +47,26 @@ namespace ChapeauxUI
                 else
                     userRole = Role.Waiter;
 
-
-                User tempUser = user_Service.GetUserByUsername(txtUsername.Text.ToString());
+                User deleteUser = new User()
+                {
+                    FirstName = txtFirstname.Text,
+                    LastName = txtLastname.Text,
+                    LoginUsername = txtUsername.Text,
+                    LoginPassword = txtPassword.Text,
+                    Role = userRole
+                };
                 
-                if (tempUser != null) 
-                    MessageBox.Show("Username already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                DialogResult dialog = MessageBox.Show("Are you sure?", "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialog == DialogResult.Yes)
+                {
+                    user_Service.RemoveUserAccount(deleteUser); //delete the User from the DB 
+
+                }
                 else
                 {
-                    User newUser = new User() 
-                    {
-                        FirstName = txtFirstname.Text,
-                        LastName = txtLastname.Text,
-                        LoginUsername = txtUsername.Text,
-                        LoginPassword = txtPassword.Text,
-                        Role = userRole
-                    };
-                    user_Service.GetUsers(newUser); //add the new User to the DB
-                    MessageBox.Show("Account Creation Successful", "Added", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show("Could not delete the account!");
                 }
             }
-        }
-        private void rbBartender_CheckedChanged(object sender, EventArgs e)
-        {
 
         }
     }

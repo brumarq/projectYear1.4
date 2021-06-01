@@ -1,5 +1,7 @@
 ﻿using ChapeauxModel;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace ChapeauxDAL
@@ -8,22 +10,11 @@ namespace ChapeauxDAL
     {
         public List<Item> GetAllItems_DB()
         {
-            conn.Open();
-            //read Items values from sql database
-            SqlCommand command = new SqlCommand
-                ("select itemID, name, price, stock, VAT, menuType from ITEMS");
+            //read users from database
+            String query = "select itemID, name, price, stock, VAT, menuType from ITEMS";
+            SqlParameter[] parameters = new SqlParameter[0];
 
-            SqlDataReader reader = command.ExecuteReader();
-            List<Item> menuItems = new List<Item>();
-
-            while (reader.Read())
-            {
-                Item menuItem = ReadMenuItem(reader);
-                menuItems.Add(menuItem);
-            }
-
-            conn.Close();
-            return menuItems;
+            return ReadItems(ExecuteSelectQuery(query, parameters));
         }
 
         public Item GetItemByID_DB(int itemId)
@@ -49,39 +40,7 @@ namespace ChapeauxDAL
 
         public void AddMenuItem(Item menuItem)
         {
-            try
-            {
-                conn.Open();
-                SqlCommand command = new SqlCommand("insert into ITEMS values (@itemID, @name, @price, @stock, @category, @VAT, @menuType)", conn);
-                SqlDataReader reader = command.ExecuteReader();
-            }
-            catch (System.Exception e)
-            {
-                System.Console.WriteLine("Oops! " + e.ToString());
-            }
-
-            try
-            {
-                conn.Close();
-            }
-            catch (System.Exception e)
-            {
-                System.Console.WriteLine("Oops! " + e.ToString());
-            }
-        }
-
-        public void EditMenuItem(Item menuItem)
-        {
-            conn.Open();
-            SqlCommand command = new SqlCommand("update ITEMS set it ");
-            conn.Close();
-        }
-
-        /*public void AddMenuItem(Item menuItem)
-        {
-            conn.Open();
-
-            SqlCommand command = new SqlCommand("insert into ITEMS values (@itemID, @name, @price, @stock, @category, @VAT, @menuType)", conn);
+            String query = "insert into ITEMS values (@itemID, @name, @price, @stock, @category, @VAT, @menuType)";
 
             SqlParameter[] parameters = new SqlParameter[7]
             {
@@ -94,9 +53,46 @@ namespace ChapeauxDAL
                     new SqlParameter("@menuType", (bool)menuItem.MenuType)
             };
             ExecuteEditQuery(query, parameters);
-            reader.Close();
-            conn.Close();
-        }*/
+        }
+
+        //public void EditMenuItem(Item lastItem, Item newItem)
+        //{
+        //    String query = "update ITEMS set name = @name, price = @price, stock = @stock, category = @category, VAT = @VAT, " +
+        //        "mmenuType = @menuType ";
+        //    
+        //    SqlParameter[] parameters = new SqlParameter[7]
+        //    {
+        //            new SqlParameter("@name", newItem.Name),
+        //            new SqlParameter("@price", menuItem.Price),
+        //            new SqlParameter("@stock", menuItem.Stock),
+        //            new SqlParameter("@category", menuItem.Category.ToString()),
+        //            new SqlParameter("@VAT", (int)menuItem.VATRate),
+        //            new SqlParameter("@menuType", (bool)menuItem.MenuType)
+        //    };
+        //    ExecuteEditQuery(query, parameters);
+        //}
+
+        private List<Item> ReadItems(DataTable dataTable)
+        {
+            List<Item> items = new List<Item>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Item menuItem = new Item()
+                {
+                    ItemID = (int)dr["itemID"],
+                    Name = dr["name"].ToString(),
+                    Price = (int)dr["price"],
+                    Stock = (int)dr["stock"],
+                    Category = dr["category"].ToString(),
+                    VATRate = (decimal)dr["VAT"],
+                    MenuType = (bool)dr["menuType"]
+                };
+
+                items.Add(menuItem);
+            }
+            return items;
+        }
         private Item ReadMenuItem(SqlDataReader reader)
         {
             Item menuItem = new Item()

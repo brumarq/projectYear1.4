@@ -52,6 +52,12 @@
     <Compile Include="CreateUserForm.Designer.cs">
       <DependentUpon>CreateUserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeleteAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteAccountForm.Designer.cs">
+      <DependentUpon>DeleteAccountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,12 @@
     </Compile>
     <EmbeddedResource Include="CreateUserForm.resx">
       <DependentUpon>CreateUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteAccountForm.resx">
+      <DependentUpon>DeleteAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAccountForm.resx">
+      <DependentUpon>EditAccountForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginScreen.resx">
       <DependentUpon>LoginScreen.cs</DependentUpon>

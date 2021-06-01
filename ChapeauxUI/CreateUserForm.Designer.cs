@@ -83,7 +83,7 @@ namespace ChapeauxUI
             // 
             // butCreateUserAccount
             // 
-            this.butCreateUserAccount.Location = new System.Drawing.Point(602, 345);
+            this.butCreateUserAccount.Location = new System.Drawing.Point(602, 360);
             this.butCreateUserAccount.Name = "butCreateUserAccount";
             this.butCreateUserAccount.Size = new System.Drawing.Size(152, 37);
             this.butCreateUserAccount.TabIndex = 1;
@@ -95,28 +95,28 @@ namespace ChapeauxUI
             // 
             this.txtFirstname.Location = new System.Drawing.Point(316, 88);
             this.txtFirstname.Name = "txtFirstname";
-            this.txtFirstname.Size = new System.Drawing.Size(100, 22);
+            this.txtFirstname.Size = new System.Drawing.Size(227, 22);
             this.txtFirstname.TabIndex = 2;
             // 
             // txtLastname
             // 
             this.txtLastname.Location = new System.Drawing.Point(316, 139);
             this.txtLastname.Name = "txtLastname";
-            this.txtLastname.Size = new System.Drawing.Size(100, 22);
+            this.txtLastname.Size = new System.Drawing.Size(227, 22);
             this.txtLastname.TabIndex = 2;
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(316, 190);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(100, 22);
+            this.txtUsername.Size = new System.Drawing.Size(227, 22);
             this.txtUsername.TabIndex = 2;
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(316, 244);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(100, 22);
+            this.txtPassword.Size = new System.Drawing.Size(227, 22);
             this.txtPassword.TabIndex = 2;
             // 
             // lblRole
