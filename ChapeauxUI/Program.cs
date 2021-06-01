@@ -21,7 +21,7 @@ namespace ChapeauxUI
             User connectedEmployee = new User();
             User employeeToEdit = new User();
 
-            Application.Run(new DeleteAccountForm(delUser));
+            Application.Run(new DeleteAccountForm());
             Application.Run(new EditAccountForm(connectedEmployee, employeeToEdit));
             Application.Run(new LoginScreen());
         }

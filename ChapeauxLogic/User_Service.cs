@@ -1,6 +1,5 @@
 ﻿using ChapeauxDAL;
 using ChapeauxModel;
-using System;
 using System.Collections.Generic;
 
 namespace ChapeauxLogic
@@ -9,14 +8,16 @@ namespace ChapeauxLogic
     {
         private UserDAO userDAO = new UserDAO();
 
-        public List<User> GetUsers(User newUser)
+        public List<User> GetUsers()
         {
             return userDAO.Get_Users_DB();
         }
+
         public User GetUserAccount(string username, string password)
         {
             return userDAO.GetUserAccount(username, password);
         }
+
         public User GetUserByUsername(string username)
         {
             return userDAO.GetUserByUsername_DB(username);
@@ -24,15 +25,18 @@ namespace ChapeauxLogic
         public void AddUserAccount(User user)
         {
             userDAO.AddUserAccount(user);
-        }        
+        }
+        
         public void EditUserAccount(User previousUser, User newUser)
         {
             userDAO.EditUserAccount(previousUser, newUser);
         }
+
         public void DisplayUsers(User user)
         {
             userDAO.DisplayUsers(user);
         }
+
         public void RemoveUserAccount(User user)
         {
             userDAO.RemoveUserAccount(user);

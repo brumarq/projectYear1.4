@@ -7,12 +7,10 @@ namespace ChapeauxUI
 {
     public partial class DeleteAccountForm : Form
     {
-        private User user;
-
-        public DeleteAccountForm(User user)
+        
+        public DeleteAccountForm()
         {
             InitializeComponent();
-            this.user = user;
         }
 
         private void rbBartender_CheckedChanged(object sender, EventArgs e)
@@ -34,7 +32,7 @@ namespace ChapeauxUI
 
             if (emptyFields == true)
             {
-                MessageBox.Show("Please Fill All Required Fields", "Required Fields are Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please Fill All Required Fields To Delete", "Required Fields are Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {   //assigns the role
@@ -57,7 +55,7 @@ namespace ChapeauxUI
                     Role = userRole
                 };
 
-                DialogResult dialog = MessageBox.Show("Are you sure?", "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialog = MessageBox.Show("Are you sure?", "Delete Account!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialog == DialogResult.Yes)
                 {
                     if (effectedRows >= 0)

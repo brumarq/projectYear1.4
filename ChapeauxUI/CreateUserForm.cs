@@ -45,9 +45,9 @@ namespace ChapeauxUI
                         userRole = Role.Waiter;
 
 
-                    User interimUSer = user_Service.GetUserByUsername(txtUsername.Text);
+                    User existingUser = user_Service.GetUserByUsername(txtUsername.Text);
 
-                    if (interimUSer != null)
+                    if (existingUser != null)
                         MessageBox.Show("Username already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     else
                     {
@@ -61,7 +61,7 @@ namespace ChapeauxUI
                         };
                         if (effectedRows >= 0)
                         {
-                            user_Service.GetUsers(newUser); //add the new User to the DB
+                            user_Service.AddUserAccount(newUser); //add the new User to the DB
                             MessageBox.Show("Account Creation Successful", "Added", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         }
                         else

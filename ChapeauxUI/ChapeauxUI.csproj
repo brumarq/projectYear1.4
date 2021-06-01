@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMenuItem.Designer.cs">
+      <DependentUpon>AddMenuItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,12 @@
     </Compile>
     <Compile Include="DeleteAccountForm.Designer.cs">
       <DependentUpon>DeleteAccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteMenuItem.Designer.cs">
+      <DependentUpon>DeleteMenuItem.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginScreen.cs">
       <SubType>Form</SubType>
@@ -114,11 +126,17 @@
     <Compile Include="TableOverview.Designer.cs">
       <DependentUpon>TableOverview.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddMenuItem.resx">
+      <DependentUpon>AddMenuItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateUserForm.resx">
       <DependentUpon>CreateUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteAccountForm.resx">
       <DependentUpon>DeleteAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteMenuItem.resx">
+      <DependentUpon>DeleteMenuItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditAccountForm.resx">
       <DependentUpon>EditAccountForm.cs</DependentUpon>

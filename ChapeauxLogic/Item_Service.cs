@@ -10,12 +10,32 @@ namespace ChapeauxLogic
         
         public List<Item> GetItems()
         {
-            return itemDAO.GetAllItems_DB();
+            return itemDAO.Get_All_Items_DB();
         }
 
-        public Item GetItemById(int itemId)
+        public Item GetItemByName(string name)
         {
-            return itemDAO.GetItemByID_DB(itemId);
+            return itemDAO.GetItemByName_DB(name);
+        }
+
+        public void AddMenuItem(Item menuItem)
+        {
+            itemDAO.AddMenuItem(menuItem);
+        }
+
+        public void EditMenuItemLastItem(Item lastItem)
+        {
+            itemDAO.EditMenuItemLastItem(lastItem);
+        }
+
+        public void EditMenuItemNewItem(Item newItem)
+        {
+            itemDAO.EditMenuItemNewItem(newItem);
+        }
+
+        public void DeleteMenuItem(Item menuItem)
+        {
+            itemDAO.DeleteMenuItem(menuItem);
         }
     }
 }

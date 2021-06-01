@@ -82,15 +82,15 @@ namespace ChapeauxDAL
         public void EditUserAccount(User previousUser, User newUser)
         {
             conn.Open();
-            String query = "update USER set role = @role, firstName = @firstname, lastName = @lastname, username = @newUsername, [password] = password where userName = @username;";
+            String query = "update USERS set firstName = @firstName, lastName = @lastname, userName = @username, [password] = password, role = @role where userName = @username;";
             
             SqlParameter[] parameters = new SqlParameter[5]
             {
                 new SqlParameter("@firstname", newUser.FirstName),
                 new SqlParameter("@lastname", newUser.LastName),
-                new SqlParameter("@role", newUser.Role),
                 new SqlParameter("@username", previousUser.LoginUsername),
-                new SqlParameter("@password", newUser.LoginPassword)
+                new SqlParameter("@password", newUser.LoginPassword),
+                new SqlParameter("@role", newUser.Role)
             };
             
             ExecuteEditQuery(query, parameters);
