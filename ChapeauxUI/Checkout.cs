@@ -16,9 +16,12 @@ namespace ChapeauxUI
     {
         public Table currentTable;
         private Order currentOrder;
+        private Transaction transaction;
 
         public CheckoutForm(Table currentTable)
         {
+            transaction = new Transaction();
+            transaction.Order = currentOrder;
             this.currentTable = currentTable;
             InitializeComponent();
             GetOrder();
@@ -28,7 +31,7 @@ namespace ChapeauxUI
         private void CheckoutForm_Load(object sender, EventArgs e)
         {
             ShowPanel("Checkout");
-            
+
         }
 
         private void HideAllPanels()
@@ -97,6 +100,16 @@ namespace ChapeauxUI
             }
         }
 
+        private void txtFeedback_TextChanged(object sender, EventArgs e)
+        {
+            transaction.Feedback = txtFeedback.Text;
+        }
+
+        private void btnRemoveComment_Click(object sender, EventArgs e)
+        {
+            txtFeedback.Clear();
+        }
+
         //Methods
         private void GetOrder()
         {
@@ -106,7 +119,6 @@ namespace ChapeauxUI
 
                 Order_Service orderService = new Order_Service();
 
-                currentOrder = null;
                 if (orderService.getOrderForTable(currentTable.TableID))
                 {
                     currentOrder = orderService.GetByTableID(currentTable.TableID);
@@ -116,7 +128,7 @@ namespace ChapeauxUI
                 {
                     throw new Exception("There are no open orders for this table");
                 }
-               
+
                 //NULL REFERENCE?
 
                 foreach (OrderItem orderItem in currentOrder.orderItems)
@@ -208,5 +220,7 @@ namespace ChapeauxUI
         }
 
         #endregion
+
+
     }
 }

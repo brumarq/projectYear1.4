@@ -32,10 +32,6 @@ namespace ChapeauxUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckoutForm));
             this.label1 = new System.Windows.Forms.Label();
             this.listViewCheckoutOrder = new System.Windows.Forms.ListView();
-            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Product = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.UnitPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblVATHigh = new System.Windows.Forms.Label();
             this.lblVATLow = new System.Windows.Forms.Label();
@@ -145,6 +141,10 @@ namespace ChapeauxUI
             this.btnUserInfo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Product = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.UnitPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.pnlCheckout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frameBox)).BeginInit();
@@ -189,22 +189,6 @@ namespace ChapeauxUI
             this.listViewCheckoutOrder.Size = new System.Drawing.Size(632, 369);
             this.listViewCheckoutOrder.TabIndex = 9;
             this.listViewCheckoutOrder.UseCompatibleStateImageBehavior = false;
-            // 
-            // ID
-            // 
-            this.ID.Text = "ID";
-            // 
-            // Product
-            // 
-            this.Product.Text = "Product";
-            // 
-            // Qty
-            // 
-            this.Qty.Text = "Qty.";
-            // 
-            // UnitPrice
-            // 
-            this.UnitPrice.Text = "Unit Price";
             // 
             // lblTotal
             // 
@@ -486,6 +470,7 @@ namespace ChapeauxUI
             this.btnRemoveComment.Size = new System.Drawing.Size(156, 127);
             this.btnRemoveComment.TabIndex = 38;
             this.btnRemoveComment.UseVisualStyleBackColor = false;
+            this.btnRemoveComment.Click += new System.EventHandler(this.btnRemoveComment_Click);
             // 
             // txtFeedback
             // 
@@ -495,6 +480,7 @@ namespace ChapeauxUI
             this.txtFeedback.Name = "txtFeedback";
             this.txtFeedback.Size = new System.Drawing.Size(480, 119);
             this.txtFeedback.TabIndex = 37;
+            this.txtFeedback.TextChanged += new System.EventHandler(this.txtFeedback_TextChanged);
             // 
             // btnToPayment
             // 
@@ -1538,6 +1524,22 @@ namespace ChapeauxUI
             this.pictureBox4.TabIndex = 29;
             this.pictureBox4.TabStop = false;
             // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            // 
+            // Product
+            // 
+            this.Product.Text = "Product";
+            // 
+            // Qty
+            // 
+            this.Qty.Text = "Qty.";
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.Text = "Unit Price";
+            // 
             // CheckoutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1589,10 +1591,6 @@ namespace ChapeauxUI
         private System.Windows.Forms.PictureBox frameBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listViewCheckoutOrder;
-        private System.Windows.Forms.ColumnHeader ID;
-        private System.Windows.Forms.ColumnHeader Product;
-        private System.Windows.Forms.ColumnHeader Qty;
-        private System.Windows.Forms.ColumnHeader UnitPrice;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblVATHigh;
         private System.Windows.Forms.Label lblVATLow;
@@ -1700,5 +1698,9 @@ namespace ChapeauxUI
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ColumnHeader ID;
+        private System.Windows.Forms.ColumnHeader Product;
+        private System.Windows.Forms.ColumnHeader Qty;
+        private System.Windows.Forms.ColumnHeader UnitPrice;
     }
 }
