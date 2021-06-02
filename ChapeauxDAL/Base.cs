@@ -62,7 +62,6 @@ namespace ChapeauxDAL
         /* For Insert/Update/Delete Queries */
         protected void ExecuteEditQuery(string query, SqlParameter[] sqlParameters)
         {
-            conn.Open();
             SqlCommand command = new SqlCommand();
 
             try
@@ -83,7 +82,6 @@ namespace ChapeauxDAL
             {
                 CloseConnection();
             }
-            conn.Close();
         }
 
         /* For Select Queries */

@@ -14,7 +14,6 @@ namespace ChapeauxUI
 
         private void butCreateUserAccount_Click(object sender, EventArgs e)
         {
-            int effectedRows = 0;
             bool emptyFields = false;
             User_Service user_Service = new User_Service();
             
@@ -59,20 +58,25 @@ namespace ChapeauxUI
                             LoginPassword = txtPassword.Text,
                             Role = userRole
                         };
-                        if (effectedRows >= 0)
-                        {
-                            user_Service.AddUserAccount(newUser); //add the new User to the DB
-                            MessageBox.Show("Account Creation Successful", "Added", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        }
-                        else
-                            MessageBox.Show("Could not create the account!");
+                        
+                        user_Service.AddUserAccount(newUser); //add the new User to the DB
+                        MessageBox.Show("Account Creation Successful", "Added", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                 }
+                else
+                    MessageBox.Show("Could not create the account!");
             }
         }
         private void rbBartender_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
+            this.Close();
         }
     }
 }

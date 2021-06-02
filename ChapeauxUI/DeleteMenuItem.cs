@@ -7,7 +7,7 @@ namespace ChapeauxUI
 {
     public partial class DeleteMenuItem : Form
     {
-        public DeleteMenuItem()
+        public DeleteMenuItem(Item menuItem)
         {
             InitializeComponent();
         }

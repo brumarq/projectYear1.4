@@ -43,6 +43,12 @@ namespace ChapeauxUI
             this.rbChef = new System.Windows.Forms.RadioButton();
             this.rbBartender = new System.Windows.Forms.RadioButton();
             this.rbWaiter = new System.Windows.Forms.RadioButton();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.lblUserFullName = new System.Windows.Forms.Label();
+            this.ptcHeader = new System.Windows.Forms.PictureBox();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFirstName
@@ -173,6 +179,74 @@ namespace ChapeauxUI
             this.rbWaiter.Text = "Waiter";
             this.rbWaiter.UseVisualStyleBackColor = true;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogout.BackgroundImage = global::ChapeauxUI.Properties.Resources.logout_better;
+            this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Location = new System.Drawing.Point(592, 13);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(195, 78);
+            this.btnLogout.TabIndex = 9;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // lblUserFullName
+            // 
+            this.lblUserFullName.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblUserFullName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.lblUserFullName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblUserFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserFullName.ForeColor = System.Drawing.Color.White;
+            this.lblUserFullName.Location = new System.Drawing.Point(250, 42);
+            this.lblUserFullName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUserFullName.Name = "lblUserFullName";
+            this.lblUserFullName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblUserFullName.Size = new System.Drawing.Size(377, 30);
+            this.lblUserFullName.TabIndex = 12;
+            this.lblUserFullName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ptcHeader
+            // 
+            this.ptcHeader.Image = global::ChapeauxUI.Properties.Resources.top_bar;
+            this.ptcHeader.Location = new System.Drawing.Point(-73, -11);
+            this.ptcHeader.Margin = new System.Windows.Forms.Padding(4);
+            this.ptcHeader.Name = "ptcHeader";
+            this.ptcHeader.Size = new System.Drawing.Size(1024, 121);
+            this.ptcHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptcHeader.TabIndex = 6;
+            this.ptcHeader.TabStop = false;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Location = new System.Drawing.Point(13, 20);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(229, 58);
+            this.lblTitle.TabIndex = 7;
+            this.lblTitle.Text = "Chapeau";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.BackgroundImage = global::ChapeauxUI.Properties.Resources.backButton;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(13, 82);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(161, 82);
+            this.button1.TabIndex = 14;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // CreateUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -184,16 +258,22 @@ namespace ChapeauxUI
             this.Controls.Add(this.rbManager);
             this.Controls.Add(this.lblRole);
             this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.lblUserFullName);
             this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.txtLastname);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.txtFirstname);
             this.Controls.Add(this.butCreateUserAccount);
+            this.Controls.Add(this.ptcHeader);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblLastName);
             this.Controls.Add(this.lblFirstName);
             this.Name = "CreateUserForm";
             this.Text = "CreateUserForm";
+            ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +295,10 @@ namespace ChapeauxUI
         private System.Windows.Forms.RadioButton rbChef;
         private System.Windows.Forms.RadioButton rbBartender;
         private System.Windows.Forms.RadioButton rbWaiter;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Label lblUserFullName;
+        private System.Windows.Forms.PictureBox ptcHeader;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button button1;
     }
 }

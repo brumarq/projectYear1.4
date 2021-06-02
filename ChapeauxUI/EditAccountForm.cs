@@ -15,13 +15,14 @@ namespace ChapeauxUI
             this.existingUser = existingUser;
             this.editUser = editUser;
         }
-
-        private void butEditUserAccount_Click(object sender, EventArgs e)
+        private void EditAccountForm_Load(object sender, EventArgs e)
         {
-            bool emptyFields = false;
-            User_Service user_Service = new User_Service();
+            Initialize();
+        }
 
-            //filling textboxes with current info
+        private void Initialize()
+        {
+            // it fills the textboxes with the current information
             txtFirstname.Text = editUser.FirstName;
             txtLastname.Text = editUser.LastName;
             txtUsername.Text = editUser.LoginUsername;
@@ -29,13 +30,28 @@ namespace ChapeauxUI
 
             //checking the radio button with the correct role
             if (editUser.Role == Role.Manager)
+            {
                 rbManager.Checked = true;
+            }
+
             else if (editUser.Role == Role.Chef)
+            {
                 rbChef.Checked = true;
+            }
+
             else if (editUser.Role == Role.Bartender)
+            { 
                 rbBartender.Checked = true;
+            }
+
             else
                 rbWaiter.Checked = true;
+        }
+
+        private void butEditUserAccount_Click(object sender, EventArgs e)
+        {
+            bool emptyFields = false;
+            User_Service user_Service = new User_Service();
 
             //validating the variables above are not null or empty
             if (string.IsNullOrEmpty(txtUsername.Text))
@@ -55,11 +71,14 @@ namespace ChapeauxUI
                 txtPassword.Text = editUser.LoginPassword;
             }
 
-                if (emptyFields == true)
-                {
-                    MessageBox.Show("Please Fill All Required Fields", "Required Fields are Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
+            if (emptyFields == true)
+            {
+                MessageBox.Show("Please Fill All Required Fields", "Required Fields are Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult dialog = MessageBox.Show("Are you sure?", "Edit Account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialog == DialogResult.Yes)
                 {
                     Role newRole;       //assigns the new role
                     if (rbManager.Checked)
@@ -71,7 +90,7 @@ namespace ChapeauxUI
                     else
                         newRole = Role.Waiter;
 
-                    User newUser = new User()
+                    User newUser = new User() //assigns fields to new user
                     {
                         FirstName = txtFirstname.Text,
                         LastName = txtLastname.Text,
@@ -79,9 +98,13 @@ namespace ChapeauxUI
                         LoginPassword = txtPassword.Text,
                         Role = newRole
                     };
-                    user_Service.EditUserAccount(existingUser, newUser); //edits the user account
+                    user_Service.EditUserAccount(existingUser, newUser); //edits the user account > edited user account
                     MessageBox.Show("Account Editing Successful!", "Edited", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
+                else
+                    MessageBox.Show("Could not edit the account!");
+            }
         }
+
     }
 }

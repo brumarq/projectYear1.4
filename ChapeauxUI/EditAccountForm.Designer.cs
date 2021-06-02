@@ -193,6 +193,7 @@ namespace ChapeauxUI
             this.Controls.Add(this.lblFirstName);
             this.Name = "EditAccountForm";
             this.Text = "EditAccountForm";
+            this.Load += new System.EventHandler(this.EditAccountForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

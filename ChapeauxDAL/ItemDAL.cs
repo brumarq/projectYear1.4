@@ -20,7 +20,6 @@ namespace ChapeauxDAL
         public Item GetItemByName_DB(string name)
         {
             conn.Open();
-
             SqlCommand command = new SqlCommand("select itemID, name, price, stock, Course, VATRate from ITEMS where name = @name", conn);
             command.Parameters.AddWithValue("@name", name);
 
@@ -34,7 +33,6 @@ namespace ChapeauxDAL
 
             reader.Close();
             conn.Close();
-
             return menuItem;
         }
 
@@ -56,7 +54,6 @@ namespace ChapeauxDAL
 
         public void EditMenuItemLastItem(Item lastItem)
         {
-            conn.Open();
             String query = "update ITEMS set name = @name, price = @price, stock = @stock, category = @category, Course = @Course, VATRate = @VATRate";
             
             SqlParameter[] parameters = new SqlParameter[6]
@@ -69,12 +66,10 @@ namespace ChapeauxDAL
                 new SqlParameter("@VATRate", lastItem.VATRate)
             };
             ExecuteEditQuery(query, parameters);
-            conn.Close();
         }
 
         public void EditMenuItemNewItem(Item newItem)
         {
-            conn.Open();
             String query = "update ITEMS set name = @name, price = @price, stock = @stock, category = @category, Course = @Course, VATRate = @VATRate";
 
             SqlParameter[] parameters = new SqlParameter[6]
@@ -87,12 +82,10 @@ namespace ChapeauxDAL
                 new SqlParameter("@VATRate", newItem.VATRate)
             };
             ExecuteEditQuery(query, parameters);
-            conn.Close();
-        }
+            }
 
         public void DeleteMenuItem(Item menuItem) //remove an item from DB based on name
         {
-            conn.Open();
             String query = "delete from ITEMS where name = @name";
 
             SqlParameter[] parameters = new SqlParameter[1]
@@ -100,7 +93,6 @@ namespace ChapeauxDAL
                  new SqlParameter("@name", menuItem.Name)
             };
             ExecuteEditQuery(query, parameters);
-            conn.Close();
         }
 
         private Item ReadMenuItem(SqlDataReader reader)

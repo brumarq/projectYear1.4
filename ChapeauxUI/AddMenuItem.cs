@@ -7,17 +7,16 @@ namespace ChapeauxUI
 {
     public partial class AddMenuItem : Form
     {
-        public AddMenuItem()
+        public AddMenuItem(Item menuItem)
         {
             InitializeComponent();
         }
 
         private void butAddMenuItem_Click(object sender, EventArgs e)
         {
-            Item_Service item_Service = new Item_Service();
-            int effectedRows = 0;
             bool emptyFields = false;
-
+            Item_Service item_Service = new Item_Service();
+            
             if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtPrice.Text)
                 || string.IsNullOrEmpty(txtStock.Text) || string.IsNullOrEmpty(txtCategory.Text) || string.IsNullOrEmpty(txtCourse.Text)
                 || string.IsNullOrEmpty(txtVATRate.Text)) 
@@ -51,15 +50,13 @@ namespace ChapeauxUI
                             Course = txtCourse.Text
                         };
 
-                        if (effectedRows >= 0)
-                        {
-                            item_Service.AddMenuItem(newMenuItem);  //add the new Item to the DB
-                            MessageBox.Show("Item Added Successfully", "Added", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        }
-                        else
-                            MessageBox.Show("Could not add the item!");
+
+                        item_Service.AddMenuItem(newMenuItem);  //add the new Item to the DB
+                        MessageBox.Show("Item Added Successfully", "Added", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                 }
+                else
+                    MessageBox.Show("Could not add the item!");
             }
         }                
     }

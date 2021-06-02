@@ -82,7 +82,7 @@ namespace ChapeauxDAL
         public void EditUserAccount(User previousUser, User newUser)
         {
             conn.Open();
-            String query = "update USERS set firstName = @firstName, lastName = @lastname, userName = @username, [password] = password, role = @role where userName = @username;";
+            String query = "update USERS set firstName = @firstName, lastName = @lastname, userName = @username, [password] = @password, role = @role where userName = @username;";
             
             SqlParameter[] parameters = new SqlParameter[5]
             {
@@ -99,7 +99,7 @@ namespace ChapeauxDAL
         
         public void RemoveUserAccount(User user) //remove an employee from DB based on username
         {
-            String query = "delete from USERS where username = @username";
+            String query = "delete from USERS where userName = @username";
 
             SqlParameter[] parameters = new SqlParameter[1]
             {

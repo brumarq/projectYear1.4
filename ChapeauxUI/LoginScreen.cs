@@ -14,6 +14,7 @@ namespace ChapeauxUI
         User prevUser = new User();
         User curUser = new User();
         User deleteUser = new User();
+        Item menuItem = new Item();
 
         public LoginScreen()
         {
@@ -101,11 +102,19 @@ namespace ChapeauxUI
                         }
                         else if (user.Role == Role.Manager)
                         {
-                            new CreateUserForm(createUser).Show();
+                            /*new CreateUserForm(createUser).Show();
                             this.Hide();
 
                             new EditAccountForm(prevUser, curUser).Show();
                             this.Hide();
+
+                            new DeleteAccountForm(user);
+
+                            new AddMenuItem(menuItem);
+                            this.Hide();
+
+                            new DeleteMenuItem(menuItem); 
+                            this.Hide();*/
 
                         }
                     }

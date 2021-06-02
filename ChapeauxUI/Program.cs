@@ -16,14 +16,24 @@ namespace ChapeauxUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            User delUser = new User();
             
-            User connectedEmployee = new User();
-            User employeeToEdit = new User();
+            User addUser = new User();
+            //Application.Run(new CreateUserForm(addUser));
+            
+            User delUser = new User();
+            //Application.Run(new DeleteAccountForm(delUser));
 
-            Application.Run(new DeleteAccountForm());
-            Application.Run(new EditAccountForm(connectedEmployee, employeeToEdit));
-            Application.Run(new LoginScreen());
+            User prevUser = new User();
+            User currUser = new User();
+            Application.Run(new EditAccountForm(prevUser, currUser));
+
+
+            Item item = new Item();
+            //Application.Run(new AddMenuItem(item));
+
+            
+
+            //Application.Run(new LoginScreen());
         }
     }
 }
