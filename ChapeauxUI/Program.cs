@@ -23,9 +23,9 @@ namespace ChapeauxUI
             User delUser = new User();
             //Application.Run(new DeleteAccountForm(delUser));
 
-            //User prevUser = new User();
-            //User currUser = new User();
-            //Application.Run(new EditAccountForm(prevUser, currUser));
+            User prevUser = new User();
+            User currUser = new User();
+            Application.Run(new EditAccountForm(prevUser, currUser));
 
 
             Item item = new Item();
@@ -34,9 +34,13 @@ namespace ChapeauxUI
             Item deleteItem = new Item();
             //Application.Run(new DeleteMenuItem(deleteItem));
 
-            
+            Item lastItem = new Item();
+            Item currItem = new Item();
+            Application.Run(new EditMenuItemForm(lastItem,currItem));
+
 
             //Application.Run(new LoginScreen());
+
         }
     }
 }

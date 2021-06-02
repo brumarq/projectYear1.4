@@ -56,7 +56,6 @@ namespace ChapeauxDAL
                         user = ReadUser(reader);
                 }
             }
-            
             conn.Close();
             return user;
         }

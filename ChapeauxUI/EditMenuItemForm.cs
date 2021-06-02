@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using ChapeauxLogic;
 using ChapeauxModel;
@@ -10,10 +9,11 @@ namespace ChapeauxUI
     {
         Item existingItem;
         Item itemToEdit;
-
-        public EditMenuItemForm()
+        public EditMenuItemForm(Item existingItem, Item itemToEdit)
         {
             InitializeComponent();
+            this.existingItem = existingItem;
+            this.itemToEdit = itemToEdit;
         }
 
         private void EditMenuItemForm_Load(object sender, EventArgs e)
@@ -23,8 +23,8 @@ namespace ChapeauxUI
 
         public void Initialize()
         {
-            // it fills the textboxes with the current information
-            txtName.Text = itemToEdit.Name;
+            //it fills the textboxes with the current information
+            itemToEdit.Name = txtName.Text;
             itemToEdit.Price = double.Parse(txtPrice.Text);
             itemToEdit.Stock  = int.Parse(txtStock.Text);
             itemToEdit.Category = txtCategory.Text;
@@ -40,35 +40,29 @@ namespace ChapeauxUI
             //validating the variables above are not null or empty
             if (string.IsNullOrEmpty(txtName.Text))
             {
-                txtName.Text = editUser.LoginUsername;
+                txtName.Text = itemToEdit.Name;
             }
             else if (string.IsNullOrEmpty(txtPrice.Text))
             {
-                txtPrice.Text = editUser.FirstName;
+                itemToEdit.Price = double.Parse(txtPrice.Text);
             }
             else if (string.IsNullOrEmpty(txtStock.Text))
             {
-                txtStock.Text = editUser.LastName;
+                itemToEdit.Stock = int.Parse(txtStock.Text);
             }
             else if (string.IsNullOrEmpty(txtCategory.Text))
             {
-                txtCategory.Text = editUser.LoginPassword;
+                itemToEdit.Category = txtCategory.Text;
             }
             else if (string.IsNullOrEmpty(txtCourse.Text))
             {
-                txtCourse.Text = editUser.LoginPassword;
+                itemToEdit.Course = txtCourse.Text;
             }
             else if (string.IsNullOrEmpty(txtVATRate.Text))
             {
-                txtVATRate.Text = editUser.LoginPassword;
+                itemToEdit.VATRate = decimal.Parse(txtVATRate.Text);
             }
 
-            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtPrice.Text)
-                || string.IsNullOrEmpty(txtStock.Text) || string.IsNullOrEmpty(txtCategory.Text) || string.IsNullOrEmpty(txtCourse.Text)
-                || string.IsNullOrEmpty(txtVATRate.Text))
-            {
-                emptyFields = true;
-            }
             if (emptyFields == true)
             {
                 MessageBox.Show("Please Fill All Required Fields", "Required Fields are Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -88,7 +82,7 @@ namespace ChapeauxUI
                         Course = txtCourse.Text
                     };
 
-                    item_Service.AddMenuItem(newMenuItem);  //add the new Item to the DB
+                    item_Service.EditMenuItem(existingItem, newMenuItem);  //edits the item
                     MessageBox.Show("Item Added Successfully", "Added", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
