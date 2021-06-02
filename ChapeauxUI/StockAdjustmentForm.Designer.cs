@@ -54,6 +54,7 @@ namespace ChapeauxUI
             this.Controls.Add(this.lblStockAdjustment);
             this.Name = "StockAdjustmentForm";
             this.Text = "StockAdjustmentForm";
+            this.Load += new System.EventHandler(this.StockAdjustmentForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

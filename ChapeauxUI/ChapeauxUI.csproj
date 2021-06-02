@@ -46,17 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAccountForm.Designer.cs">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddMenuItem.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddMenuItem.Designer.cs">
       <DependentUpon>AddMenuItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreateUserForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateUserForm.Designer.cs">
-      <DependentUpon>CreateUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DeleteAccountForm.cs">
       <SubType>Form</SubType>
@@ -132,11 +132,11 @@
     <Compile Include="TableOverview.Designer.cs">
       <DependentUpon>TableOverview.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddAccountForm.resx">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddMenuItem.resx">
       <DependentUpon>AddMenuItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CreateUserForm.resx">
-      <DependentUpon>CreateUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteAccountForm.resx">
       <DependentUpon>DeleteAccountForm.cs</DependentUpon>

@@ -64,5 +64,10 @@ namespace ChapeauxUI
                     MessageBox.Show("Could not delete the account!");
             }
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

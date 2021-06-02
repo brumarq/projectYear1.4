@@ -18,7 +18,7 @@ namespace ChapeauxUI
             Application.SetCompatibleTextRenderingDefault(false);
             
             User addUser = new User();
-            Application.Run(new CreateUserForm(addUser));
+            //Application.Run(new AddAccountForm(addUser));
             
             User delUser = new User();
             //Application.Run(new DeleteAccountForm(delUser));
@@ -28,8 +28,8 @@ namespace ChapeauxUI
             //Application.Run(new EditAccountForm(prevUser, currUser));
 
 
-            Item item = new Item();
-            //Application.Run(new AddMenuItem(item));
+            Item addItem = new Item();
+            //Application.Run(new AddMenuItem(addItem));
 
             Item deleteItem = new Item();
             //Application.Run(new DeleteMenuItem(deleteItem));

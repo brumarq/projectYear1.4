@@ -102,7 +102,7 @@ namespace ChapeauxUI
                         }
                         else if (user.Role == Role.Manager)
                         {
-                            /*new CreateUserForm(createUser).Show();
+                            /*new AddAccountForm(createUser).Show();
                             this.Hide();
 
                             new EditAccountForm(prevUser, curUser).Show();

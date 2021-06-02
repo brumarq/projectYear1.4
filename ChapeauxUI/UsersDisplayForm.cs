@@ -48,5 +48,10 @@ namespace ChapeauxUI
             //    listViewDisplayForm.Columns.Add("userID");
             //}
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
