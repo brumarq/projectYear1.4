@@ -43,7 +43,6 @@ namespace ChapeauxUI
                     else
                         userRole = Role.Waiter;
 
-
                     User existingUser = user_Service.GetUserByUsername(txtUsername.Text);
 
                     if (existingUser != null)

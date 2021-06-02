@@ -23,13 +23,16 @@ namespace ChapeauxUI
             User delUser = new User();
             //Application.Run(new DeleteAccountForm(delUser));
 
-            User prevUser = new User();
-            User currUser = new User();
-            Application.Run(new EditAccountForm(prevUser, currUser));
+            //User prevUser = new User();
+            //User currUser = new User();
+            //Application.Run(new EditAccountForm(prevUser, currUser));
 
 
             Item item = new Item();
             //Application.Run(new AddMenuItem(item));
+
+            Item deleteItem = new Item();
+            //Application.Run(new DeleteMenuItem(deleteItem));
 
             
 

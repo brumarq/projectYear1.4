@@ -43,13 +43,12 @@ namespace ChapeauxUI
                         Item newMenuItem = new Item()
                         {
                             Name = txtName.Text,
-                            Price = int.Parse(txtPrice.Text),
+                            Price = double.Parse(txtPrice.Text),
                             Stock = int.Parse(txtStock.Text),
                             Category = txtCategory.Text,
                             VATRate = decimal.Parse(txtVATRate.Text),
                             Course = txtCourse.Text
                         };
-
 
                         item_Service.AddMenuItem(newMenuItem);  //add the new Item to the DB
                         MessageBox.Show("Item Added Successfully", "Added", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);

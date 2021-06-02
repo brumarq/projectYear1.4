@@ -11,7 +11,7 @@ namespace ChapeauxDAL
         public List<Item> Get_All_Items_DB()
         {
             //read users from database
-            String query = "select itemID, name, price, stock, Course, VATRate from ITEMS";
+            String query = "select itemID, [name], price, stock, xategory, Course, VATRate from ITEMS";
             SqlParameter[] parameters = new SqlParameter[0];
 
             return ReadItems(ExecuteSelectQuery(query, parameters));
@@ -20,7 +20,7 @@ namespace ChapeauxDAL
         public Item GetItemByName_DB(string name)
         {
             conn.Open();
-            SqlCommand command = new SqlCommand("select itemID, name, price, stock, Course, VATRate from ITEMS where name = @name", conn);
+            SqlCommand command = new SqlCommand("select itemID, [name], price, stock, category, Course, VATRate from ITEMS where [name] = @name", conn);
             command.Parameters.AddWithValue("@name", name);
 
             SqlDataReader reader = command.ExecuteReader();
@@ -38,7 +38,7 @@ namespace ChapeauxDAL
 
         public void AddMenuItem(Item menuItem)
         {
-            String query = "insert into ITEMS values (@name, @price, @stock, @category, Course = @Course, VATRate = @VATRate";
+            String query = "insert into ITEMS values (@name, @price, @stock, @category, @Course, @VATRate)";
 
             SqlParameter[] parameters = new SqlParameter[6]
             {
@@ -52,9 +52,9 @@ namespace ChapeauxDAL
             ExecuteEditQuery(query, parameters);
         }
 
-        public void EditMenuItemLastItem(Item lastItem)
+        public void EditMenuItem(Item lastItem, Item newItem)
         {
-            String query = "update ITEMS set name = @name, price = @price, stock = @stock, category = @category, Course = @Course, VATRate = @VATRate";
+            String query = "update ITEMS set [name] = @name, price = @price, stock = @stock, category = @category, Course = @Course, VATRate = @VATRate where [name] = @name";
             
             SqlParameter[] parameters = new SqlParameter[6]
             {
@@ -67,22 +67,6 @@ namespace ChapeauxDAL
             };
             ExecuteEditQuery(query, parameters);
         }
-
-        public void EditMenuItemNewItem(Item newItem)
-        {
-            String query = "update ITEMS set name = @name, price = @price, stock = @stock, category = @category, Course = @Course, VATRate = @VATRate";
-
-            SqlParameter[] parameters = new SqlParameter[6]
-            {
-                new SqlParameter("@name", newItem.Name),
-                new SqlParameter("@price", newItem.Price),
-                new SqlParameter("@stock", newItem.Stock),
-                new SqlParameter("@category", newItem.Category.ToString()),
-                new SqlParameter("@menuType", newItem.Course),
-                new SqlParameter("@VATRate", newItem.VATRate)
-            };
-            ExecuteEditQuery(query, parameters);
-            }
 
         public void DeleteMenuItem(Item menuItem) //remove an item from DB based on name
         {

@@ -23,14 +23,9 @@ namespace ChapeauxLogic
             itemDAO.AddMenuItem(menuItem);
         }
 
-        public void EditMenuItemLastItem(Item lastItem)
+        public void EditMenuItem(Item lastItem, Item newItem)
         {
-            itemDAO.EditMenuItemLastItem(lastItem);
-        }
-
-        public void EditMenuItemNewItem(Item newItem)
-        {
-            itemDAO.EditMenuItemNewItem(newItem);
+            itemDAO.EditMenuItem(lastItem, newItem);
         }
 
         public void DeleteMenuItem(Item menuItem)

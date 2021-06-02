@@ -9,11 +9,9 @@ namespace ChapeauxUI
     {
         private User existingUser;
         private User editUser;
-        public EditAccountForm(User existingUser, User editUser)
+        public EditAccountForm()
         {
             InitializeComponent();
-            this.existingUser = existingUser;
-            this.editUser = editUser;
         }
         private void EditAccountForm_Load(object sender, EventArgs e)
         {
