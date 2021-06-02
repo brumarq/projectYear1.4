@@ -145,6 +145,7 @@ namespace ChapeauxUI
             this.btnUserInfo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.lblNegativeError = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlCheckout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frameBox)).BeginInit();
@@ -336,6 +337,7 @@ namespace ChapeauxUI
             this.txtTipAmount.TabIndex = 25;
             this.txtTipAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTipAmount.TextChanged += new System.EventHandler(this.txtTipAmount_TextChanged);
+            this.txtTipAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTipAmount_KeyPress);
             // 
             // txtToPay
             // 
@@ -345,6 +347,8 @@ namespace ChapeauxUI
             this.txtToPay.Size = new System.Drawing.Size(81, 30);
             this.txtToPay.TabIndex = 26;
             this.txtToPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtToPay.TextChanged += new System.EventHandler(this.txtToPay_TextChanged);
+            this.txtToPay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtToPay_KeyPress);
             // 
             // lblVATLowResult
             // 
@@ -459,6 +463,7 @@ namespace ChapeauxUI
             // pnlCheckout
             // 
             this.pnlCheckout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlCheckout.Controls.Add(this.lblNegativeError);
             this.pnlCheckout.Controls.Add(this.btnRemoveComment);
             this.pnlCheckout.Controls.Add(this.txtFeedback);
             this.pnlCheckout.Controls.Add(this.btnToPayment);
@@ -1541,6 +1546,19 @@ namespace ChapeauxUI
             this.pictureBox4.TabIndex = 29;
             this.pictureBox4.TabStop = false;
             // 
+            // lblNegativeError
+            // 
+            this.lblNegativeError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNegativeError.AutoSize = true;
+            this.lblNegativeError.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.lblNegativeError.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNegativeError.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblNegativeError.Location = new System.Drawing.Point(254, 862);
+            this.lblNegativeError.Name = "lblNegativeError";
+            this.lblNegativeError.Size = new System.Drawing.Size(0, 18);
+            this.lblNegativeError.TabIndex = 39;
+            // 
             // CheckoutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1703,5 +1721,6 @@ namespace ChapeauxUI
         private System.Windows.Forms.ColumnHeader Product;
         private System.Windows.Forms.ColumnHeader Qty;
         private System.Windows.Forms.ColumnHeader UnitPrice;
+        private System.Windows.Forms.Label lblNegativeError;
     }
 }

@@ -85,18 +85,31 @@ namespace ChapeauxUI
 
         private void txtTipAmount_TextChanged(object sender, EventArgs e)
         {
-            if (Convert.ToDecimal(txtTipAmount.Text) >= 0)
-            {
-                txtToPay.Text = (currentOrder.TotalPrice + Convert.ToDecimal(txtTipAmount.Text).ToString());
-            }
+            //try
+            //{
+            //    decimal toPay = 
+            //}
+            //catch (Exception exc)
+            //{
+            //    MessageBox.Show(exc.Message);
+            //}
+        }
 
-            else if (Convert.ToDecimal(txtToPay.Text) >= currentOrder.TotalPrice)
+        private void txtToPay_TextChanged(object sender, EventArgs e)
+        {
+            try
             {
-                txtTipAmount.Text = (Convert.ToDecimal(txtToPay.Text) - currentOrder.TotalPrice).ToString();
+                lblNegativeError.ResetText();
+                decimal toPay = Convert.ToDecimal(txtToPay.Text);
+                decimal tipAmount = toPay - currentOrder.TotalPrice;
+                txtTipAmount.Text = $"{tipAmount:0.00}";
+
+                CheckForNegative(tipAmount, toPay);
+
             }
-            else
+            catch (Exception exc)
             {
-                throw new Exception("Price to pay cannot be less than total order price");
+                lblNegativeError.Text = exc.Message;
             }
         }
 
@@ -111,6 +124,27 @@ namespace ChapeauxUI
         }
 
         //Methods
+
+        private void StoreValues()
+        {
+            //add code for storing all info upon payment (ex. tip amount, comments, etc.)
+        }
+
+        private void CheckForNegative(decimal tipAmount, decimal toPay)
+        {
+            //if (tipAmount < 0)
+            //{
+            //    txtTipAmount.Text = 
+            //    throw new Exception("Negative values are not allowed!");
+            //}
+
+            if (toPay < currentOrder.TotalPrice)
+            {
+                txtToPay.Text = $"{currentOrder.TotalPrice:0.00}";
+                throw new Exception("Price to pay cannot be lower than total price!");
+            }
+        }
+
         private void GetOrder()
         {
             try
@@ -140,24 +174,11 @@ namespace ChapeauxUI
                     listViewCheckoutOrder.Items.Add(li);
                 }
 
-                lblCheckoutOrderID.Text = currentOrder.OrderID.ToString();
-                lblTotalResult.Text = currentOrder.TotalPrice.ToString();
-                lblVATHighResult.Text = currentOrder.VATHigh.ToString();
-                lblVATLowResult.Text = currentOrder.VATLow.ToString();
-
-                //TEXBOX TextChanged EVENT!!!!!! ---> DONE, REMOVE COMMENTS IF WORKS...
-
-                //decimal toPay = currentOrder.TotalPrice + Convert.ToDecimal(txtTipAmount);
-                //decimal tipAmount = Convert.ToDecimal(txtToPay) - currentOrder.TotalPrice;
-                //if (Convert.ToDecimal(txtToPay) < currentOrder.TotalPrice)
-                //{
-                //    throw new Exception("Price to pay cannot be lower than the total price");
-                //}
-
-                //else if ()
-                //{
-
-                //}
+                lblCheckoutOrderID.Text = $"#{currentOrder.OrderID}";
+                lblTotalResult.Text = $"{currentOrder.TotalPrice: 0.00}";
+                lblVATHighResult.Text = $"{currentOrder.VATHigh: 0.00}";
+                lblVATLowResult.Text = $"{currentOrder.VATLow: 0.00}";
+                txtToPay.Text = $"{currentOrder.TotalPrice: 0.00}";
             }
             catch (Exception exc)
             {
@@ -225,6 +246,18 @@ namespace ChapeauxUI
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+
+
+        private void txtTipAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',');
+        }
+
+        private void txtToPay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',');
         }
     }
 }
