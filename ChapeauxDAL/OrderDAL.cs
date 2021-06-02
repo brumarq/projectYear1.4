@@ -53,7 +53,7 @@ namespace ChapeauxDAL
         //(needed for transactions) please leave this method as it is
         public Order GetByID(int orderID)
         {
-            SqlCommand cmd = new SqlCommand("SELECT orderID, isPaid, tableID, userID " +
+            SqlCommand cmd = new SqlCommand("SELECT orderID, isPaid, tableID, userID, startDateTime, endDateTime " +
                                             "FROM ORDERS " +
                                             "WHERE orderID = @orderID", conn);
 
@@ -74,7 +74,7 @@ namespace ChapeauxDAL
 
         public Order GetByTableID(int tableID)
         {
-            SqlCommand cmd = new SqlCommand("SELECT orderID, isPaid, tableID, userID " +
+            SqlCommand cmd = new SqlCommand("SELECT orderID, startDateTime, endDateTime, isPaid, tableID, userID " +
                                             "FROM ORDERS " +
                                             "WHERE tableID = @tableID", conn);
             OpenConnection();

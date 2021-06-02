@@ -27,5 +27,15 @@ namespace ChapeauxLogic
         {
             return orderItemdb.GetFoodStatus(tableNumber);
         }
+
+        public List<OrderItem> GetFoodItems(int orderID)
+        {
+            return orderItemdb.GetOrderFood(orderID);
+        }
+
+        public List<OrderItem> GetDrinkItems(int orderID)
+        {
+            return orderItemdb.GetOrderDrinks(orderID);
+        }
     }
 }

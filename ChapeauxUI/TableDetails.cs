@@ -128,9 +128,11 @@ namespace ChapeauUI
                 return;
             }
 
-            this.Hide();
+            
             CheckoutForm checkout = new CheckoutForm(selectedTable);
-            checkout.Show();
+            this.Hide();
+            checkout.ShowDialog();
+            this.Show();
         }
     }
 }

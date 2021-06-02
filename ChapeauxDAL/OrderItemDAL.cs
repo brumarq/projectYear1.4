@@ -75,8 +75,7 @@ namespace ChapeauxDAL
                      Name = (string)dr["ITEMS.[name]"],
                      Category = (string)dr["ITEMS.category"],
                      Price = (decimal)dr["ITEMS.price"],
-                     VATRate = ,
-                        
+                     VATRate = (decimal)dr["ITEMS.VAT"]                      
                 };
 
                 listOfItems.Add(orderItem);

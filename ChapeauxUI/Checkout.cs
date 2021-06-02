@@ -219,8 +219,12 @@ namespace ChapeauxUI
             //show table overview
         }
 
+
         #endregion
 
-
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

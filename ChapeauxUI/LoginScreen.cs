@@ -85,7 +85,7 @@ namespace ChapeauxUI
                         if (user.Role == Role.Waiter)
                         {
                             new TableOverviewForm(user).Show();
-                            this.Hide();
+                            this.Close();
                         }
                         else if(user.Role == Role.Bartender)
                         {
