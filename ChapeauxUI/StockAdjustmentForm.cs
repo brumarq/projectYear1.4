@@ -11,10 +11,5 @@ namespace ChapeauxUI
         {
             InitializeComponent();
         }
-
-        private void StockAdjustmentForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

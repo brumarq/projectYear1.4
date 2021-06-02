@@ -54,7 +54,6 @@ namespace ChapeauxUI
             this.lblStockOverview.Size = new System.Drawing.Size(204, 31);
             this.lblStockOverview.TabIndex = 0;
             this.lblStockOverview.Text = "Stock Overview";
-            this.lblStockOverview.Click += new System.EventHandler(this.lblStockOverview_Click);
             // 
             // lblItemName
             // 

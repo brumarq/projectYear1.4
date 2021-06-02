@@ -12,11 +12,6 @@ namespace ChapeauxUI
             InitializeComponent();
         }
 
-        private void rbBartender_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void butDeleteUserAccount_Click(object sender, EventArgs e)
         {
             User_Service user_Service = new User_Service();
@@ -67,7 +62,9 @@ namespace ChapeauxUI
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
+            this.Close();
         }
     }
 }

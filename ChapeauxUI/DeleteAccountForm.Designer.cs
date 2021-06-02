@@ -169,7 +169,6 @@ namespace ChapeauxUI
             this.rbBartender.TabStop = true;
             this.rbBartender.Text = "Bartender";
             this.rbBartender.UseVisualStyleBackColor = true;
-            this.rbBartender.CheckedChanged += new System.EventHandler(this.rbBartender_CheckedChanged);
             // 
             // rbWaiter
             // 

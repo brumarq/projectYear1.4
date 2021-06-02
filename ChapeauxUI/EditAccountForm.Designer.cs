@@ -204,6 +204,7 @@ namespace ChapeauxUI
             this.ptcHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptcHeader.TabIndex = 6;
             this.ptcHeader.TabStop = false;
+            this.ptcHeader.Click += new System.EventHandler(this.ptcHeader);
             // 
             // btnLogout
             // 
@@ -233,7 +234,6 @@ namespace ChapeauxUI
             this.button1.Size = new System.Drawing.Size(127, 66);
             this.button1.TabIndex = 14;
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
