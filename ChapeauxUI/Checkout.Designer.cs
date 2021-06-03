@@ -58,6 +58,7 @@ namespace ChapeauxUI
             this.button1 = new System.Windows.Forms.Button();
             this.btnClearTip = new System.Windows.Forms.Button();
             this.pnlCheckout = new System.Windows.Forms.Panel();
+            this.lblNegativeError = new System.Windows.Forms.Label();
             this.btnRemoveComment = new System.Windows.Forms.Button();
             this.txtFeedback = new System.Windows.Forms.TextBox();
             this.btnToPayment = new System.Windows.Forms.Button();
@@ -145,7 +146,6 @@ namespace ChapeauxUI
             this.btnUserInfo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.lblNegativeError = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlCheckout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frameBox)).BeginInit();
@@ -183,6 +183,7 @@ namespace ChapeauxUI
             this.Product,
             this.Qty,
             this.UnitPrice});
+            this.listViewCheckoutOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewCheckoutOrder.HideSelection = false;
             this.listViewCheckoutOrder.Location = new System.Drawing.Point(46, 160);
             this.listViewCheckoutOrder.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
@@ -190,6 +191,7 @@ namespace ChapeauxUI
             this.listViewCheckoutOrder.Size = new System.Drawing.Size(632, 369);
             this.listViewCheckoutOrder.TabIndex = 9;
             this.listViewCheckoutOrder.UseCompatibleStateImageBehavior = false;
+            this.listViewCheckoutOrder.View = System.Windows.Forms.View.Details;
             // 
             // ID
             // 
@@ -198,14 +200,18 @@ namespace ChapeauxUI
             // Product
             // 
             this.Product.Text = "Product";
+            this.Product.Width = 400;
             // 
             // Qty
             // 
             this.Qty.Text = "Qty.";
+            this.Qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // UnitPrice
             // 
             this.UnitPrice.Text = "Unit Price";
+            this.UnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.UnitPrice.Width = 110;
             // 
             // lblTotal
             // 
@@ -477,6 +483,19 @@ namespace ChapeauxUI
             this.pnlCheckout.Name = "pnlCheckout";
             this.pnlCheckout.Size = new System.Drawing.Size(728, 898);
             this.pnlCheckout.TabIndex = 35;
+            // 
+            // lblNegativeError
+            // 
+            this.lblNegativeError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNegativeError.AutoSize = true;
+            this.lblNegativeError.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.lblNegativeError.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNegativeError.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblNegativeError.Location = new System.Drawing.Point(254, 862);
+            this.lblNegativeError.Name = "lblNegativeError";
+            this.lblNegativeError.Size = new System.Drawing.Size(0, 18);
+            this.lblNegativeError.TabIndex = 39;
             // 
             // btnRemoveComment
             // 
@@ -1545,19 +1564,6 @@ namespace ChapeauxUI
             this.pictureBox4.Size = new System.Drawing.Size(770, 84);
             this.pictureBox4.TabIndex = 29;
             this.pictureBox4.TabStop = false;
-            // 
-            // lblNegativeError
-            // 
-            this.lblNegativeError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNegativeError.AutoSize = true;
-            this.lblNegativeError.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.lblNegativeError.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNegativeError.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblNegativeError.Location = new System.Drawing.Point(254, 862);
-            this.lblNegativeError.Name = "lblNegativeError";
-            this.lblNegativeError.Size = new System.Drawing.Size(0, 18);
-            this.lblNegativeError.TabIndex = 39;
             // 
             // CheckoutForm
             // 

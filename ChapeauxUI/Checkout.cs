@@ -20,17 +20,22 @@ namespace ChapeauxUI
 
         public CheckoutForm(Table currentTable)
         {
-            transaction = new Transaction();
-            this.currentTable = currentTable;
             InitializeComponent();
-            ShowCurrentOrder();
+            PrepareCheckoutForm(currentTable);
         }
 
         #region Global
+        private void PrepareCheckoutForm(Table currentTable)
+        {
+            transaction = new Transaction();
+            this.currentTable = currentTable;
+            currentOrder = GetOrder(currentTable);
+            ShowCurrentOrder(currentOrder);
+        }
+
         private void CheckoutForm_Load(object sender, EventArgs e)
         {
             ShowPanel("Checkout");
-
         }
 
         private void HideAllPanels()
@@ -119,15 +124,11 @@ namespace ChapeauxUI
 
         private void btnRemoveComment_Click(object sender, EventArgs e)
         {
+            //transaction.Feedback = txtFeedback.Text; ????
             txtFeedback.Clear();
         }
 
         //Methods
-        private void StoreValues()
-        {
-            //add code for storing all info upon payment (ex. tip amount, comments, etc.)
-        }
-
         private void CheckForNegative(decimal tipAmount, decimal toPay)
         {
             //if (tipAmount < 0)
@@ -143,25 +144,17 @@ namespace ChapeauxUI
             }
         }
 
+        private Order GetOrder(Table currentTable)
+        {
+            Order_Service orderService = new Order_Service();
+            return orderService.GetByTableID(currentTable.TableID);
+        }
+
         private void ShowCurrentOrder(Order currrentOrder)
         {
             try
             {
                 listViewCheckoutOrder.Clear();
-
-                Order_Service orderService = new Order_Service();
-
-                if (orderService.getOrderForTable(currentTable.TableID)) //CHANGE CODE FOR ORDER OBJECT
-                {
-                    currentOrder = orderService.GetByTableID(currentTable.TableID);
-                }
-
-                else
-                {
-                    throw new Exception("There are no open orders for this table");
-                }
-
-                //NULL REFERENCE?
 
                 foreach (OrderItem orderItem in currentOrder.orderItems)
                 {
