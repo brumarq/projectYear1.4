@@ -20,7 +20,7 @@ namespace ChapeauxModel
         {
             get
             {
-                decimal totalPrice = 150;
+                decimal totalPrice = 0;
                 foreach (OrderItem orderItem in orderItems)
                 {
                     totalPrice += orderItem.Price;

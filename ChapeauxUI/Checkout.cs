@@ -21,10 +21,9 @@ namespace ChapeauxUI
         public CheckoutForm(Table currentTable)
         {
             transaction = new Transaction();
-            transaction.Order = currentOrder;
             this.currentTable = currentTable;
             InitializeComponent();
-            GetOrder();
+            ShowCurrentOrder();
         }
 
         #region Global
@@ -124,7 +123,6 @@ namespace ChapeauxUI
         }
 
         //Methods
-
         private void StoreValues()
         {
             //add code for storing all info upon payment (ex. tip amount, comments, etc.)
@@ -145,7 +143,7 @@ namespace ChapeauxUI
             }
         }
 
-        private void GetOrder()
+        private void ShowCurrentOrder(Order currrentOrder)
         {
             try
             {
@@ -153,7 +151,7 @@ namespace ChapeauxUI
 
                 Order_Service orderService = new Order_Service();
 
-                if (orderService.getOrderForTable(currentTable.TableID))
+                if (orderService.getOrderForTable(currentTable.TableID)) //CHANGE CODE FOR ORDER OBJECT
                 {
                     currentOrder = orderService.GetByTableID(currentTable.TableID);
                 }
@@ -247,8 +245,6 @@ namespace ChapeauxUI
         {
             this.Close();
         }
-
-
 
         private void txtTipAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
