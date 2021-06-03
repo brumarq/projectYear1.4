@@ -13,7 +13,7 @@ namespace ChapeauxDAL
     {
         public List<Order> GetAllOrders()
         {
-            string query = "SELECT orderID FROM [ORDERS]";
+            string query = "SELECT orderID, startDateTime FROM [ORDERS]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTable(ExecuteSelectQuery(query, sqlParameters));
         }

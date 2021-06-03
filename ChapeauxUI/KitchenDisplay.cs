@@ -12,10 +12,37 @@ namespace ChapeauxUI
 {
     public partial class KitchenDisplay : Form
     {
+
         public KitchenDisplay()
         {
             InitializeComponent();
         }
+        private void LoadListViews()
+        {
+            ShowRunningBarOrder();
+            ShowRunningKitchenOrder();
+        }
+        private void ShowRunningBarOrder()
+        {
+            try
+            {
+                listViewBarmanDisplay.Clear();
+                foreach (Item item in collection)
+                {
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        private void ShowRunningKitchenOrder()
+        {
+
+        }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -37,26 +64,6 @@ namespace ChapeauxUI
 
         }
 
-        private void btnAlertWaiter_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSwitchToBarman_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnEditOrder_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnOrderReadyToBeServed_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void lblUserName_Click(object sender, EventArgs e)
         {
 
@@ -69,6 +76,11 @@ namespace ChapeauxUI
         }
 
         private void listViewTableKitchen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOrderReadyToBeServed_Click_1(object sender, EventArgs e)
         {
 
         }

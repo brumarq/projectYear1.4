@@ -42,6 +42,12 @@ namespace ChapeauxUI
             this.lblKitchenScreen = new System.Windows.Forms.Label();
             this.lblOrders = new System.Windows.Forms.Label();
             this.listViewTableKitchen = new System.Windows.Forms.ListView();
+            this.OrderItemId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.OrderId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Count = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.State = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Comment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.orderDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FrameWokrKitchen = new System.Windows.Forms.PictureBox();
             this.pnlBarmanDisplay = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -53,12 +59,6 @@ namespace ChapeauxUI
             this.label3 = new System.Windows.Forms.Label();
             this.listViewBarmanDisplay = new System.Windows.Forms.ListView();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.OrderItemId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.OrderId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Count = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.State = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Comment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.orderDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.btnUserInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -140,6 +140,7 @@ namespace ChapeauxUI
             this.btnOrderReadyToBeServed.Size = new System.Drawing.Size(385, 55);
             this.btnOrderReadyToBeServed.TabIndex = 53;
             this.btnOrderReadyToBeServed.UseVisualStyleBackColor = true;
+            this.btnOrderReadyToBeServed.Click += new System.EventHandler(this.btnOrderReadyToBeServed_Click_1);
             // 
             // btnShowOrderDetails
             // 
@@ -211,6 +212,36 @@ namespace ChapeauxUI
             this.listViewTableKitchen.View = System.Windows.Forms.View.Details;
             this.listViewTableKitchen.SelectedIndexChanged += new System.EventHandler(this.listViewTableKitchen_SelectedIndexChanged);
             // 
+            // OrderItemId
+            // 
+            this.OrderItemId.Text = "OrderItemId";
+            this.OrderItemId.Width = 100;
+            // 
+            // OrderId
+            // 
+            this.OrderId.Text = "OrderId";
+            this.OrderId.Width = 100;
+            // 
+            // Count
+            // 
+            this.Count.Text = "Count";
+            this.Count.Width = 100;
+            // 
+            // State
+            // 
+            this.State.Text = "State";
+            this.State.Width = 100;
+            // 
+            // Comment
+            // 
+            this.Comment.Text = "Comment";
+            this.Comment.Width = 100;
+            // 
+            // orderDateTime
+            // 
+            this.orderDateTime.Text = "orderDateTime";
+            this.orderDateTime.Width = 100;
+            // 
             // FrameWokrKitchen
             // 
             this.FrameWokrKitchen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -229,7 +260,7 @@ namespace ChapeauxUI
             // pnlBarmanDisplay
             // 
             this.pnlBarmanDisplay.Controls.Add(this.panel1);
-            this.pnlBarmanDisplay.Location = new System.Drawing.Point(765, 91);
+            this.pnlBarmanDisplay.Location = new System.Drawing.Point(3, 88);
             this.pnlBarmanDisplay.Name = "pnlBarmanDisplay";
             this.pnlBarmanDisplay.Size = new System.Drawing.Size(740, 889);
             this.pnlBarmanDisplay.TabIndex = 54;
@@ -334,42 +365,12 @@ namespace ChapeauxUI
             this.pictureBox2.TabIndex = 48;
             this.pictureBox2.TabStop = false;
             // 
-            // OrderItemId
-            // 
-            this.OrderItemId.Text = "OrderItemId";
-            this.OrderItemId.Width = 100;
-            // 
-            // OrderId
-            // 
-            this.OrderId.Text = "OrderId";
-            this.OrderId.Width = 100;
-            // 
-            // Count
-            // 
-            this.Count.Text = "Count";
-            this.Count.Width = 100;
-            // 
-            // State
-            // 
-            this.State.Text = "State";
-            this.State.Width = 100;
-            // 
-            // Comment
-            // 
-            this.Comment.Text = "Comment";
-            this.Comment.Width = 100;
-            // 
-            // orderDateTime
-            // 
-            this.orderDateTime.Text = "orderDateTime";
-            this.orderDateTime.Width = 100;
-            // 
             // KitchenDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(1552, 985);
+            this.ClientSize = new System.Drawing.Size(752, 985);
             this.Controls.Add(this.pnlKitchenDisplay);
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.btnUserInfo);
