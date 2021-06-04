@@ -16,5 +16,17 @@ namespace ChapeauxUI
         {
             InitializeComponent();
         }
+
+        private void lblStockOverview_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
+            this.Close();
+        }
     }
 }

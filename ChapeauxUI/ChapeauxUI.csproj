@@ -46,6 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAccountForm.Designer.cs">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMenuItem.Designer.cs">
+      <DependentUpon>AddMenuItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteAccountForm.Designer.cs">
+      <DependentUpon>DeleteAccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteMenuItem.Designer.cs">
+      <DependentUpon>DeleteMenuItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditMenuItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditMenuItemForm.Designer.cs">
+      <DependentUpon>EditMenuItemForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +132,24 @@
     <Compile Include="TableOverview.Designer.cs">
       <DependentUpon>TableOverview.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddAccountForm.resx">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddMenuItem.resx">
+      <DependentUpon>AddMenuItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteAccountForm.resx">
+      <DependentUpon>DeleteAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteMenuItem.resx">
+      <DependentUpon>DeleteMenuItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAccountForm.resx">
+      <DependentUpon>EditAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditMenuItemForm.resx">
+      <DependentUpon>EditMenuItemForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginScreen.resx">
       <DependentUpon>LoginScreen.cs</DependentUpon>
     </EmbeddedResource>

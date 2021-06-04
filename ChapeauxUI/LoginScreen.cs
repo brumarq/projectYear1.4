@@ -1,7 +1,6 @@
 ﻿using ChapeauxLogic;
 using ChapeauxModel;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Windows.Forms;
@@ -11,6 +10,12 @@ namespace ChapeauxUI
     public partial class LoginScreen : Form
     {
         private EventLog appLog = new EventLog("Application"); // Initiate EventLog
+        User createUser = new User();
+        User prevUser = new User();
+        User curUser = new User();
+        User deleteUser = new User();
+        Item menuItem = new Item();
+
         public LoginScreen()
         {
             InitializeComponent();
@@ -97,7 +102,20 @@ namespace ChapeauxUI
                         }
                         else if (user.Role == Role.Manager)
                         {
-                            //Add code here to open manager form
+                            /*new AddAccountForm(createUser).Show();
+                            this.Hide();
+
+                            new EditAccountForm(prevUser, curUser).Show();
+                            this.Hide();
+
+                            new DeleteAccountForm(user);
+
+                            new AddMenuItem(menuItem);
+                            this.Hide();
+
+                            new DeleteMenuItem(menuItem); 
+                            this.Hide();*/
+
                         }
                     }
                     else

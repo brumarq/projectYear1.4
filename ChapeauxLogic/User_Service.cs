@@ -1,10 +1,6 @@
 ﻿using ChapeauxDAL;
 using ChapeauxModel;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChapeauxLogic
 {
@@ -12,22 +8,43 @@ namespace ChapeauxLogic
     {
         private UserDAO userDAO = new UserDAO();
 
-       
-
-        public User LoginCheck(string username)
-        {
-            return userDAO.LoginCheck(username);
-        }
-        
-
         public List<User> GetUsers()
         {
             return userDAO.Get_Users_DB();
         }
 
-        public User GetUserById(int userId)
+        public User GetUserAccount(string username, string password)
         {
-            return userDAO.GetUserById_DB(userId);
+            return userDAO.GetUserAccount(username, password);
+        }
+
+        public User GetUserByUsername(string username)
+        {
+            return userDAO.GetUserByUsername_DB(username);
+        }
+        public void AddUserAccount(User user)
+        {
+            userDAO.AddUserAccount(user);
+        }
+        
+        public void EditUserAccount(User previousUser, User newUser)
+        {
+            userDAO.EditUserAccount(previousUser, newUser);
+        }
+
+        public void DisplayUsers(User user)
+        {
+            userDAO.DisplayUsersById(user);
+        }
+
+        public void RemoveUserAccount(User user)
+        {
+            userDAO.RemoveUserAccount(user);
+        }
+
+        public User LoginCheck(string givenUsername)
+        {
+            return userDAO.LoginCheck(givenUsername);
         }
     }
 }
