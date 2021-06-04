@@ -15,5 +15,10 @@ namespace ChapeauxModel
         public string Category { get; set; }
         public decimal VATRate { get; set; }
         public bool menuType { get; set; }
+
+        public override string ToString()
+        {
+            return $"{ItemID} {Name} {Price} {Stock} {Category} {menuType} {VATRate}";
+        }
     }
 }

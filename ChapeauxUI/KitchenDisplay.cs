@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChapeauxLogic;
+using ChapeauxModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,12 +26,27 @@ namespace ChapeauxUI
         }
         private void ShowRunningBarOrder()
         {
+            pnlKitchenDisplay.Hide();
+
+            pnlBarmanDisplay.Show();
             try
             {
-                listViewBarmanDisplay.Clear();
-                foreach (Item item in collection)
-                {
+                Item_Service itemservice = new Item_Service();
+                List<Item> itemlist = itemservice.GetItems();
 
+                listViewBarmanDisplay.Clear();
+
+                foreach (Item item in itemlist)
+                {
+                    ListViewItem list = new ListViewItem(item.ItemID.ToString());
+                    list.SubItems.Add(item.Name.ToString());
+                    list.SubItems.Add(item.Price.ToString());
+                    list.SubItems.Add(item.Stock.ToString());
+                    list.SubItems.Add(item.Category.ToString());
+                    list.SubItems.Add(item.VATRate.ToString());
+                    list.SubItems.Add(item.menuType.ToString());
+
+                    listViewBarmanDisplay.Items.Add(list);
                 }
             }
             catch (Exception)
@@ -40,7 +57,34 @@ namespace ChapeauxUI
         }
         private void ShowRunningKitchenOrder()
         {
+            pnlBarmanDisplay.Hide();
 
+            pnlKitchenDisplay.Show();
+            try
+            {
+                Item_Service itemservice = new Item_Service();
+                List<Item> itemlist = itemservice.GetItems();
+
+                listViewBarmanDisplay.Clear();
+
+                foreach (Item item in itemlist)
+                {
+                    ListViewItem list = new ListViewItem(item.ItemID.ToString());
+                    list.SubItems.Add(item.Name.ToString());
+                    list.SubItems.Add(item.Price.ToString());
+                    list.SubItems.Add(item.Stock.ToString());
+                    list.SubItems.Add(item.Category.ToString());
+                    list.SubItems.Add(item.VATRate.ToString());
+                    list.SubItems.Add(item.menuType.ToString());
+
+                    listViewBarmanDisplay.Items.Add(list);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
 

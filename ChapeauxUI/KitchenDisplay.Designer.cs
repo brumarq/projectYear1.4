@@ -42,12 +42,13 @@ namespace ChapeauxUI
             this.lblKitchenScreen = new System.Windows.Forms.Label();
             this.lblOrders = new System.Windows.Forms.Label();
             this.listViewTableKitchen = new System.Windows.Forms.ListView();
-            this.OrderItemId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.OrderId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Count = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.State = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Comment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.orderDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.itemID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.stock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.category = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.VATRate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FrameWokrKitchen = new System.Windows.Forms.PictureBox();
             this.pnlBarmanDisplay = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -57,8 +58,15 @@ namespace ChapeauxUI
             this.listViewBarmanOrdersDetail = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.listViewBarmanDisplay = new System.Windows.Forms.ListView();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.listViewBarmanDisplay = new System.Windows.Forms.ListView();
+            this.itemID_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.name_Bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.price_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.stock_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.category_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menyType_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.VATRate_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.btnUserInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -127,7 +135,7 @@ namespace ChapeauxUI
             this.pnlKitchenDisplay.Controls.Add(this.lblOrders);
             this.pnlKitchenDisplay.Controls.Add(this.listViewTableKitchen);
             this.pnlKitchenDisplay.Controls.Add(this.FrameWokrKitchen);
-            this.pnlKitchenDisplay.Location = new System.Drawing.Point(3, 91);
+            this.pnlKitchenDisplay.Location = new System.Drawing.Point(3, 88);
             this.pnlKitchenDisplay.Name = "pnlKitchenDisplay";
             this.pnlKitchenDisplay.Size = new System.Drawing.Size(747, 907);
             this.pnlKitchenDisplay.TabIndex = 36;
@@ -197,12 +205,13 @@ namespace ChapeauxUI
             // listViewTableKitchen
             // 
             this.listViewTableKitchen.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.OrderItemId,
-            this.OrderId,
-            this.Count,
-            this.State,
-            this.Comment,
-            this.orderDateTime});
+            this.itemID,
+            this.name,
+            this.price,
+            this.stock,
+            this.category,
+            this.menuType,
+            this.VATRate});
             this.listViewTableKitchen.HideSelection = false;
             this.listViewTableKitchen.Location = new System.Drawing.Point(48, 55);
             this.listViewTableKitchen.Name = "listViewTableKitchen";
@@ -212,35 +221,39 @@ namespace ChapeauxUI
             this.listViewTableKitchen.View = System.Windows.Forms.View.Details;
             this.listViewTableKitchen.SelectedIndexChanged += new System.EventHandler(this.listViewTableKitchen_SelectedIndexChanged);
             // 
-            // OrderItemId
+            // itemID
             // 
-            this.OrderItemId.Text = "OrderItemId";
-            this.OrderItemId.Width = 100;
+            this.itemID.Text = "itemID";
+            this.itemID.Width = 100;
             // 
-            // OrderId
+            // name
             // 
-            this.OrderId.Text = "OrderId";
-            this.OrderId.Width = 100;
+            this.name.Text = "Name";
+            this.name.Width = 100;
             // 
-            // Count
+            // price
             // 
-            this.Count.Text = "Count";
-            this.Count.Width = 100;
+            this.price.Text = "Price";
+            this.price.Width = 100;
             // 
-            // State
+            // stock
             // 
-            this.State.Text = "State";
-            this.State.Width = 100;
+            this.stock.Text = "Stock";
+            this.stock.Width = 100;
             // 
-            // Comment
+            // category
             // 
-            this.Comment.Text = "Comment";
-            this.Comment.Width = 100;
+            this.category.Text = "Category";
+            this.category.Width = 100;
             // 
-            // orderDateTime
+            // menuType
             // 
-            this.orderDateTime.Text = "orderDateTime";
-            this.orderDateTime.Width = 100;
+            this.menuType.Text = "Course";
+            this.menuType.Width = 97;
+            // 
+            // VATRate
+            // 
+            this.VATRate.Text = "VATRate";
             // 
             // FrameWokrKitchen
             // 
@@ -250,7 +263,7 @@ namespace ChapeauxUI
             this.FrameWokrKitchen.BackColor = System.Drawing.Color.White;
             this.FrameWokrKitchen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FrameWokrKitchen.BackgroundImage")));
             this.FrameWokrKitchen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FrameWokrKitchen.Location = new System.Drawing.Point(15, 4);
+            this.FrameWokrKitchen.Location = new System.Drawing.Point(16, 7);
             this.FrameWokrKitchen.Name = "FrameWokrKitchen";
             this.FrameWokrKitchen.Size = new System.Drawing.Size(728, 900);
             this.FrameWokrKitchen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -268,13 +281,13 @@ namespace ChapeauxUI
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.listViewBarmanDisplay);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.listViewBarmanOrdersDetail);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.listViewBarmanDisplay);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Location = new System.Drawing.Point(3, 7);
             this.panel1.Name = "panel1";
@@ -341,15 +354,6 @@ namespace ChapeauxUI
             this.label3.TabIndex = 47;
             this.label3.Text = "Orders";
             // 
-            // listViewBarmanDisplay
-            // 
-            this.listViewBarmanDisplay.HideSelection = false;
-            this.listViewBarmanDisplay.Location = new System.Drawing.Point(48, 55);
-            this.listViewBarmanDisplay.Name = "listViewBarmanDisplay";
-            this.listViewBarmanDisplay.Size = new System.Drawing.Size(661, 330);
-            this.listViewBarmanDisplay.TabIndex = 46;
-            this.listViewBarmanDisplay.UseCompatibleStateImageBehavior = false;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -364,6 +368,59 @@ namespace ChapeauxUI
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 48;
             this.pictureBox2.TabStop = false;
+            // 
+            // listViewBarmanDisplay
+            // 
+            this.listViewBarmanDisplay.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.itemID_bar,
+            this.name_Bar,
+            this.price_bar,
+            this.stock_bar,
+            this.category_bar,
+            this.menyType_bar,
+            this.VATRate_bar});
+            this.listViewBarmanDisplay.HideSelection = false;
+            this.listViewBarmanDisplay.Location = new System.Drawing.Point(48, 55);
+            this.listViewBarmanDisplay.Name = "listViewBarmanDisplay";
+            this.listViewBarmanDisplay.Size = new System.Drawing.Size(661, 330);
+            this.listViewBarmanDisplay.TabIndex = 54;
+            this.listViewBarmanDisplay.UseCompatibleStateImageBehavior = false;
+            this.listViewBarmanDisplay.View = System.Windows.Forms.View.Details;
+            // 
+            // itemID_bar
+            // 
+            this.itemID_bar.Text = "itemID";
+            this.itemID_bar.Width = 100;
+            // 
+            // name_Bar
+            // 
+            this.name_Bar.Text = "Name";
+            this.name_Bar.Width = 100;
+            // 
+            // price_bar
+            // 
+            this.price_bar.Text = "Price";
+            this.price_bar.Width = 100;
+            // 
+            // stock_bar
+            // 
+            this.stock_bar.Text = "Stock";
+            this.stock_bar.Width = 100;
+            // 
+            // category_bar
+            // 
+            this.category_bar.Text = "Category";
+            this.category_bar.Width = 100;
+            // 
+            // menyType_bar
+            // 
+            this.menyType_bar.Text = "Course";
+            this.menyType_bar.Width = 93;
+            // 
+            // VATRate_bar
+            // 
+            this.VATRate_bar.Text = "VATRate";
+            this.VATRate_bar.Width = 100;
             // 
             // KitchenDisplay
             // 
@@ -419,13 +476,21 @@ namespace ChapeauxUI
         private System.Windows.Forms.ListView listViewBarmanOrdersDetail;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListView listViewBarmanDisplay;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.ColumnHeader OrderItemId;
-        private System.Windows.Forms.ColumnHeader OrderId;
-        private System.Windows.Forms.ColumnHeader Count;
-        private System.Windows.Forms.ColumnHeader State;
-        private System.Windows.Forms.ColumnHeader Comment;
-        private System.Windows.Forms.ColumnHeader orderDateTime;
+        private System.Windows.Forms.ColumnHeader itemID;
+        private System.Windows.Forms.ColumnHeader name;
+        private System.Windows.Forms.ColumnHeader price;
+        private System.Windows.Forms.ColumnHeader stock;
+        private System.Windows.Forms.ColumnHeader category;
+        private System.Windows.Forms.ColumnHeader menuType;
+        private System.Windows.Forms.ColumnHeader VATRate;
+        private System.Windows.Forms.ListView listViewBarmanDisplay;
+        private System.Windows.Forms.ColumnHeader itemID_bar;
+        private System.Windows.Forms.ColumnHeader name_Bar;
+        private System.Windows.Forms.ColumnHeader price_bar;
+        private System.Windows.Forms.ColumnHeader stock_bar;
+        private System.Windows.Forms.ColumnHeader category_bar;
+        private System.Windows.Forms.ColumnHeader menyType_bar;
+        private System.Windows.Forms.ColumnHeader VATRate_bar;
     }
 }
