@@ -24,6 +24,11 @@ namespace ChapeauxLogic
             return orderdb.IsThereAnOrder(tableNumber);
         }
 
+        public void AddNewOrder(Order order)
+        {
+            orderdb.AddNewOrder(order);
+        }
+
         public Order GetByTableID(int tableID)
         {
             Order order = orderdb.GetByTableID(tableID);

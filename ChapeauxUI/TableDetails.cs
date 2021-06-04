@@ -11,6 +11,7 @@ namespace ChapeauUI
         private User loggedUser;
         public Table selectedTable;
         bool tableHasOrders;
+        Order order;
 
         public TableDetails(User user, int tableNumber)
         {
@@ -94,6 +95,7 @@ namespace ChapeauUI
                     btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_enabled;
                     btnAddNewOrder.BackgroundImage = ChapeauxUI.Properties.Resources.btnAddNewOrder_enabled;
                     btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_enabled;
+                    CreateNewOrder();
                 }
             }
             else if (selectedTable.Status == Status.Free)
@@ -104,6 +106,15 @@ namespace ChapeauUI
             }
         }
 
+        private void CreateNewOrder()
+        {
+            order = new Order();
+            order.UserID = loggedUser.UserID;
+            order.TableID = selectedTable.TableID;
+            Order_Service orderService = new Order_Service();
+            orderService.AddNewOrder(order);
+        }
+
         private void btnAddNewOrder_Click(object sender, EventArgs e)
         {
             if (selectedTable.Status == Status.Free)
@@ -111,7 +122,10 @@ namespace ChapeauUI
                 return;
             }
 
-            // Add code here for new order
+            TakeOrderForm form = new TakeOrderForm(selectedTable, order);
+            this.Hide();
+            form.ShowDialog();
+            this.Show();
         }
 
         private void btnCheckout_Click(object sender, EventArgs e)

@@ -11,7 +11,7 @@ namespace ChapeauxDAL
         public List<Item> Get_All_Items_DB()
         {
             //read users from database
-            String query = "select itemID, [name], price, stock, xategory, Course, VATRate from ITEMS";
+            String query = "select itemID, [name], price, stock, category, Course, VATRate from ITEMS";
             SqlParameter[] parameters = new SqlParameter[0];
 
             return ReadItems(ExecuteSelectQuery(query, parameters));

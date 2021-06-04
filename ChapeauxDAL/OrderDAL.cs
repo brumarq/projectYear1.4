@@ -46,7 +46,20 @@ namespace ChapeauxDAL
         #endregion
 
         #region Storing
+        public void AddNewOrder(Order order)
+        {
+            SqlCommand cmd = new SqlCommand("INSERT INTO ORDERS (startDateTime, isPaid, tableID, userID) " +
+                                            "VALUES(@startDateTime, @isPaid, @tableID, @userID)", conn);
 
+            OpenConnection();
+            cmd.Parameters.AddWithValue("@startDateTime", DateTime.Now);
+            cmd.Parameters.AddWithValue("@isPaid", false);
+            cmd.Parameters.AddWithValue("@tableID", order.TableID);
+            cmd.Parameters.AddWithValue("@userID", order.UserID);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Close();
+            CloseConnection();
+        }
         #endregion
 
         #region Retrieving

@@ -114,6 +114,12 @@
     <Compile Include="StockOverviewForm.Designer.cs">
       <DependentUpon>StockOverviewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TakeOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TakeOrderForm.Designer.cs">
+      <DependentUpon>TakeOrderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsersDisplayForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StockOverviewForm.resx">
       <DependentUpon>StockOverviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TakeOrderForm.resx">
+      <DependentUpon>TakeOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsersDisplayForm.resx">
       <DependentUpon>UsersDisplayForm.cs</DependentUpon>

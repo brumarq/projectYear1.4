@@ -50,47 +50,47 @@ namespace ChapeauxUI
             List<OrderItem> listOfDrinkStatus = orderItem_Service.getDrinksStatus(table.TableID);
             List<OrderItem> listOfFoodStatus = orderItem_Service.getFoodStatus(table.TableID);
 
-            string drinkStatus = "";
+            State? drinkStatus = null;
             foreach (OrderItem drink in listOfDrinkStatus)
             {
-                if (drink.State == "served" && (drinkStatus != "ready" || drinkStatus != "loading"))
+                if (drink.State == State.served && (drinkStatus != State.ready || drinkStatus != State.loading))
                 {
-                    drinkStatus = "served";
+                    drinkStatus = State.served;
                     listOfTableStatus[count, 0].Show();
                     listOfTableStatus[count, 0].Image = ChapeauxUI.Properties.Resources.drinks_served1;
                 }
-                else if (drink.State == "ready" && drinkStatus != "loading")
+                else if (drink.State == State.ready && drinkStatus != State.loading)
                 {
-                    drinkStatus = "ready";
+                    drinkStatus = State.ready;
                     listOfTableStatus[count, 0].Show();
                     listOfTableStatus[count, 0].Image = ChapeauxUI.Properties.Resources.drinks_ReadyToBeServed1;
                 }
-                else if (drink.State == "loading")
+                else if (drink.State == State.loading)
                 {
-                    drinkStatus = "loading";
+                    drinkStatus = State.loading;
                     listOfTableStatus[count, 0].Show();
                     listOfTableStatus[count, 0].Image = ChapeauxUI.Properties.Resources.drinks_beingPrepared1;
                 }
             }
 
-            string foodStatus = "";
+            State? foodStatus = null;
             foreach (OrderItem food in listOfFoodStatus)
             {
-                if (food.State == "served" && (foodStatus != "ready" || foodStatus != "loading"))
+                if (food.State == State.served && (foodStatus != State.ready || foodStatus != State.loading))
                 {
-                    foodStatus = "served";
+                    foodStatus = State.served;
                     listOfTableStatus[count, 1].Show();
                     listOfTableStatus[count, 1].Image = ChapeauxUI.Properties.Resources.food_served1;
                 }
-                else if (food.State == "ready" && foodStatus != "loading")
+                else if (food.State == State.ready && foodStatus != State.loading)
                 {
-                    foodStatus = "ready";
+                    foodStatus = State.ready;
                     listOfTableStatus[count, 1].Show();
                     listOfTableStatus[count, 1].Image = ChapeauxUI.Properties.Resources.food_ReadyToBeServed1;
                 }
-                else if (food.State == "loading")
+                else if (food.State == State.loading)
                 {
-                    foodStatus = "loading";
+                    foodStatus = State.loading;
                     listOfTableStatus[count, 1].Show();
                     listOfTableStatus[count, 1].Image = ChapeauxUI.Properties.Resources.food_beingPrepared1;
                 }
