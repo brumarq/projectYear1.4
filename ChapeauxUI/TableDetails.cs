@@ -128,7 +128,6 @@ namespace ChapeauUI
                 return;
             }
 
-            
             CheckoutForm checkout = new CheckoutForm(selectedTable);
             this.Hide();
             checkout.ShowDialog();

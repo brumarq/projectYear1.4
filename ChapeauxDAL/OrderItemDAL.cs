@@ -32,14 +32,13 @@ namespace ChapeauxDAL
         #region Checkout
         public List<OrderItem> GetOrderFood(int orderID)
         {
-            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.itemID, ORDERITEMS.[count], ITEMS.[name], ITEMS.category, ITEMS.price " +
+            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.itemID, ORDERITEMS.[count], ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate " +
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
                             "WHERE ITEMS.category = 'Food' " +
-                            "AND ORDERs.isPaid = 0 " +
                             "AND ORDERITEMS.orderID = @orderID " +
-                            "ORDER BY ITEMS.[name]";
+                            "ORDER BY ITEMS.[itemID]";
             SqlParameter[] sqlParameters = {
                  new SqlParameter("@orderID", orderID),
             };
@@ -48,14 +47,13 @@ namespace ChapeauxDAL
 
         public List<OrderItem> GetOrderDrinks(int orderID)
         {
-            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.itemID, ORDERITEMS.[count], ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VAT " +
+            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.itemID, ORDERITEMS.[count], ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate " +
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
                             "WHERE ITEMS.category = 'Drink' " +
-                            "AND ORDERs.isPaid = 0 " +
                             "AND ORDERITEMS.orderID = @orderID " +
-                            "ORDER BY ITEMS.[name]";
+                            "ORDER BY ITEMS.[itemID]";
             SqlParameter[] sqlParameters = {
                  new SqlParameter("@orderID", orderID),
             };
@@ -69,13 +67,13 @@ namespace ChapeauxDAL
             {
                 OrderItem orderItem = new OrderItem()
                 {
-                     OrderID = (int)dr["ORDERITEMS.orderID"],
-                     ItemID = (int)dr["ORDERITEMS.itemID"],
-                     Count = (int)dr["ORDERITEMS.[count]"],
-                     Name = (string)dr["ITEMS.[name]"],
-                     Category = (string)dr["ITEMS.category"],
-                     Price = (decimal)dr["ITEMS.price"],
-                     VATRate = (decimal)dr["ITEMS.VAT"]                      
+                     OrderID = (int)dr["orderID"],
+                     ItemID = (int)dr["itemID"],
+                     Count = (int)dr["count"],
+                     Name = (string)dr["name"],
+                     Category = (string)dr["category"],
+                     Price = (decimal)dr["price"],
+                     VATRate = (decimal)dr["VATRate"]                      
                 };
 
                 listOfItems.Add(orderItem);

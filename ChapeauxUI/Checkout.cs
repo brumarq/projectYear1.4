@@ -239,6 +239,7 @@ namespace ChapeauxUI
             this.Close();
         }
 
+        //prevent unwanted input
         private void txtTipAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',');

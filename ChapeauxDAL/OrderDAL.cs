@@ -80,8 +80,8 @@ namespace ChapeauxDAL
             OpenConnection();
             cmd.Parameters.AddWithValue("@tableID", tableID);
             SqlDataReader reader = cmd.ExecuteReader();
-            Order order = null;
 
+            Order order = null;
             if (reader.Read())
             {
                 order = ReadOrder(reader);
