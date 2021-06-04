@@ -72,5 +72,25 @@ namespace ChapeauxDAL
             return order;
         }
         #endregion
+        public List<Order> GetAllOrders()
+        {
+            string query = "SELECT orderID, startDateTime FROM [ORDERS]";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public List<Order> ReadTable(DataTable dataTable)
+        {
+            List<Order> orders = new List<Order>();
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Order order = new Order()
+                {
+                    OrderID = (int)dr["orderID"]
+                };
+                orders.Add(order);
+            }
+            return orders;
+        }
     }
 }
