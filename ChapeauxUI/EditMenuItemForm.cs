@@ -25,7 +25,7 @@ namespace ChapeauxUI
         {
             //it fills the textboxes with the current information
             itemToEdit.Name = txtName.Text;
-            itemToEdit.Price = double.Parse(txtPrice.Text);
+            itemToEdit.Price = decimal.Parse(txtPrice.Text);
             itemToEdit.Stock  = int.Parse(txtStock.Text);
             itemToEdit.Category = txtCategory.Text;
             itemToEdit.Course = txtCourse.Text;
@@ -44,7 +44,7 @@ namespace ChapeauxUI
             }
             else if (string.IsNullOrEmpty(txtPrice.Text))
             {
-                itemToEdit.Price = double.Parse(txtPrice.Text);
+                itemToEdit.Price = decimal.Parse(txtPrice.Text);
             }
             else if (string.IsNullOrEmpty(txtStock.Text))
             {
@@ -75,7 +75,7 @@ namespace ChapeauxUI
                     Item newMenuItem = new Item()
                     {
                         Name = txtName.Text,
-                        Price = double.Parse(txtPrice.Text),
+                        Price = decimal.Parse(txtPrice.Text),
                         Stock = int.Parse(txtStock.Text),
                         Category = txtCategory.Text,
                         VATRate = decimal.Parse(txtVATRate.Text),

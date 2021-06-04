@@ -85,7 +85,7 @@ namespace ChapeauxDAL
             {   //retrieve data from all fields
                 ItemID = (int)reader["itemID"],
                 Name = reader["name"].ToString(),
-                Price = (double)reader["price"],
+                Price = (decimal)reader["price"],
                 Stock = (int)reader["stock"],
                 Category = reader["category"].ToString(),
                 Course = reader["Course"].ToString(),
@@ -103,12 +103,12 @@ namespace ChapeauxDAL
                 {
                     ItemID = (int)dr["itemID"],
                     Name = dr["name"].ToString(),
-                    Price = (double)dr["price"],
+                    Price = (decimal)dr["price"],
                     Stock = (int)dr["stock"],
                     Category = dr["category"].ToString(),
                     Course = dr["Course"].ToString(),
                     VATRate = (decimal)dr["VATRate"]
-                };
+                }; 
 
                 items.Add(menuItem);
             }

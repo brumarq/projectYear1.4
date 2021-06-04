@@ -54,10 +54,9 @@ namespace ChapeauUI
             this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Location = new System.Drawing.Point(67, 21);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitle.Location = new System.Drawing.Point(50, 17);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(229, 58);
+            this.lblTitle.Size = new System.Drawing.Size(181, 46);
             this.lblTitle.TabIndex = 7;
             this.lblTitle.Text = "Chapeau";
             // 
@@ -68,11 +67,10 @@ namespace ChapeauUI
             this.lblUserFullName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblUserFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserFullName.ForeColor = System.Drawing.Color.White;
-            this.lblUserFullName.Location = new System.Drawing.Point(524, 38);
-            this.lblUserFullName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUserFullName.Location = new System.Drawing.Point(395, 34);
             this.lblUserFullName.Name = "lblUserFullName";
             this.lblUserFullName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblUserFullName.Size = new System.Drawing.Size(377, 30);
+            this.lblUserFullName.Size = new System.Drawing.Size(283, 24);
             this.lblUserFullName.TabIndex = 12;
             this.lblUserFullName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -83,11 +81,10 @@ namespace ChapeauUI
             this.lblTableStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTableStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTableStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblTableStatus.Location = new System.Drawing.Point(648, 265);
-            this.lblTableStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTableStatus.Location = new System.Drawing.Point(486, 215);
             this.lblTableStatus.Name = "lblTableStatus";
             this.lblTableStatus.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTableStatus.Size = new System.Drawing.Size(273, 30);
+            this.lblTableStatus.Size = new System.Drawing.Size(205, 24);
             this.lblTableStatus.TabIndex = 13;
             this.lblTableStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -97,10 +94,9 @@ namespace ChapeauUI
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(91, 235);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(68, 191);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(317, 58);
+            this.label1.Size = new System.Drawing.Size(252, 46);
             this.label1.TabIndex = 15;
             this.label1.Text = "Table Details";
             // 
@@ -111,10 +107,9 @@ namespace ChapeauUI
             this.btnCheckout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCheckout.FlatAppearance.BorderSize = 0;
             this.btnCheckout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCheckout.Location = new System.Drawing.Point(501, 814);
-            this.btnCheckout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCheckout.Location = new System.Drawing.Point(376, 661);
             this.btnCheckout.Name = "btnCheckout";
-            this.btnCheckout.Size = new System.Drawing.Size(420, 353);
+            this.btnCheckout.Size = new System.Drawing.Size(315, 287);
             this.btnCheckout.TabIndex = 19;
             this.btnCheckout.UseVisualStyleBackColor = false;
             this.btnCheckout.Click += new System.EventHandler(this.btnCheckout_Click);
@@ -126,10 +121,9 @@ namespace ChapeauUI
             this.btnAddNewOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAddNewOrder.FlatAppearance.BorderSize = 0;
             this.btnAddNewOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNewOrder.Location = new System.Drawing.Point(99, 913);
-            this.btnAddNewOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddNewOrder.Location = new System.Drawing.Point(74, 742);
             this.btnAddNewOrder.Name = "btnAddNewOrder";
-            this.btnAddNewOrder.Size = new System.Drawing.Size(396, 254);
+            this.btnAddNewOrder.Size = new System.Drawing.Size(297, 206);
             this.btnAddNewOrder.TabIndex = 18;
             this.btnAddNewOrder.UseVisualStyleBackColor = false;
             this.btnAddNewOrder.Click += new System.EventHandler(this.btnAddNewOrder_Click);
@@ -141,10 +135,9 @@ namespace ChapeauUI
             this.btnOccupyTable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnOccupyTable.FlatAppearance.BorderSize = 0;
             this.btnOccupyTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOccupyTable.Location = new System.Drawing.Point(96, 820);
-            this.btnOccupyTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOccupyTable.Location = new System.Drawing.Point(72, 666);
             this.btnOccupyTable.Name = "btnOccupyTable";
-            this.btnOccupyTable.Size = new System.Drawing.Size(392, 97);
+            this.btnOccupyTable.Size = new System.Drawing.Size(294, 79);
             this.btnOccupyTable.TabIndex = 17;
             this.btnOccupyTable.UseVisualStyleBackColor = false;
             this.btnOccupyTable.Click += new System.EventHandler(this.btnOccupyTable_Click);
@@ -152,10 +145,9 @@ namespace ChapeauUI
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ChapeauxUI.Properties.Resources.tableDesign;
-            this.pictureBox1.Location = new System.Drawing.Point(101, 298);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(76, 242);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(820, 507);
+            this.pictureBox1.Size = new System.Drawing.Size(615, 412);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
@@ -167,10 +159,9 @@ namespace ChapeauUI
             this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Location = new System.Drawing.Point(789, 113);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogout.Location = new System.Drawing.Point(592, 92);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(195, 78);
+            this.btnLogout.Size = new System.Drawing.Size(146, 63);
             this.btnLogout.TabIndex = 9;
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
@@ -178,10 +169,9 @@ namespace ChapeauUI
             // pctBackground
             // 
             this.pctBackground.Image = global::ChapeauxUI.Properties.Resources.background_rectangle;
-            this.pctBackground.Location = new System.Drawing.Point(16, 183);
-            this.pctBackground.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pctBackground.Location = new System.Drawing.Point(12, 149);
             this.pctBackground.Name = "pctBackground";
-            this.pctBackground.Size = new System.Drawing.Size(1024, 1030);
+            this.pctBackground.Size = new System.Drawing.Size(768, 837);
             this.pctBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctBackground.TabIndex = 10;
             this.pctBackground.TabStop = false;
@@ -190,10 +180,9 @@ namespace ChapeauUI
             // 
             this.pctLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
             this.pctLogo.Image = global::ChapeauxUI.Properties.Resources.Capture;
-            this.pctLogo.Location = new System.Drawing.Point(912, 25);
-            this.pctLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pctLogo.Location = new System.Drawing.Point(684, 20);
             this.pctLogo.Name = "pctLogo";
-            this.pctLogo.Size = new System.Drawing.Size(61, 57);
+            this.pctLogo.Size = new System.Drawing.Size(46, 46);
             this.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctLogo.TabIndex = 8;
             this.pctLogo.TabStop = false;
@@ -202,9 +191,8 @@ namespace ChapeauUI
             // 
             this.ptcHeader.Image = global::ChapeauxUI.Properties.Resources.top_bar;
             this.ptcHeader.Location = new System.Drawing.Point(0, 0);
-            this.ptcHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ptcHeader.Name = "ptcHeader";
-            this.ptcHeader.Size = new System.Drawing.Size(1024, 121);
+            this.ptcHeader.Size = new System.Drawing.Size(768, 98);
             this.ptcHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptcHeader.TabIndex = 6;
             this.ptcHeader.TabStop = false;
@@ -216,20 +204,19 @@ namespace ChapeauUI
             this.btnBackToOverview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnBackToOverview.FlatAppearance.BorderSize = 0;
             this.btnBackToOverview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackToOverview.Location = new System.Drawing.Point(37, 108);
-            this.btnBackToOverview.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBackToOverview.Location = new System.Drawing.Point(28, 88);
             this.btnBackToOverview.Name = "btnBackToOverview";
-            this.btnBackToOverview.Size = new System.Drawing.Size(161, 82);
+            this.btnBackToOverview.Size = new System.Drawing.Size(121, 67);
             this.btnBackToOverview.TabIndex = 14;
             this.btnBackToOverview.UseVisualStyleBackColor = false;
             this.btnBackToOverview.Click += new System.EventHandler(this.btnBackToOverview_Click);
             // 
             // TableDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1024, 1055);
+            this.ClientSize = new System.Drawing.Size(768, 985);
             this.Controls.Add(this.btnCheckout);
             this.Controls.Add(this.btnAddNewOrder);
             this.Controls.Add(this.btnOccupyTable);
@@ -243,7 +230,6 @@ namespace ChapeauUI
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pctLogo);
             this.Controls.Add(this.ptcHeader);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TableDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chapeau - Table Details";

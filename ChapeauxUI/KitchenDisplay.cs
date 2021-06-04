@@ -26,11 +26,11 @@ namespace ChapeauxUI
         {
             try
             {
-                listViewBarmanDisplay.Clear();
-                foreach (Item item in collection)
-                {
+                //listViewBarmanDisplay.Clear();
+                //foreach (Item item in collection)
+                //{
 
-                }
+                //}
             }
             catch (Exception)
             {

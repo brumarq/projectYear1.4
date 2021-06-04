@@ -43,7 +43,7 @@ namespace ChapeauxUI
                         Item newMenuItem = new Item()
                         {
                             Name = txtName.Text,
-                            Price = double.Parse(txtPrice.Text),
+                            Price = decimal.Parse(txtPrice.Text),
                             Stock = int.Parse(txtStock.Text),
                             Category = txtCategory.Text,
                             VATRate = decimal.Parse(txtVATRate.Text),
