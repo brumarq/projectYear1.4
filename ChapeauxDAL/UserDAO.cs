@@ -108,17 +108,19 @@ namespace ChapeauxDAL
             ExecuteEditQuery(query, parameters);
         }
 
-        public void DisplayUsers(User user)
+        public void DisplayUsersById(User user)
         {
             conn.Open();
-            String query = "select userID, firstName, lastName, role from USERS";
+            String query = "select userID, firstName, lastName, userName, password, role from USERS where userID = @userID";
 
-            SqlParameter[] parameters = new SqlParameter[4]
+            SqlParameter[] parameters = new SqlParameter[6]
             {
                 new SqlParameter("@userID", user.UserID),
-                new SqlParameter("@firstName", user.FirstName),
-                new SqlParameter("@lastName", user.LastName),
-                new SqlParameter("@role", user.Role),
+                new SqlParameter("@firstname", user.FirstName),
+                new SqlParameter("@lastname", user.LastName),
+                new SqlParameter("@username", user.LoginUsername),
+                new SqlParameter("@password", user.LoginPassword),
+                new SqlParameter("@role", user.Role)
             };
             ExecuteEditQuery(query, parameters);
             conn.Close();

@@ -17,6 +17,9 @@ namespace ChapeauxUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
+            User user = new User();
+            //Application.Run(new UsersDisplayForm());
+
             User addUser = new User();
             //Application.Run(new AddAccountForm(addUser));
             
@@ -30,6 +33,10 @@ namespace ChapeauxUI
 
             Item addItem = new Item();
             //Application.Run(new AddMenuItem(addItem));
+
+            Item editItem1 = new Item();
+            Item editItem2 = new Item();
+            //Application.Run(new EditMenuItemForm(editItem1, editItem2));
 
             Item deleteItem = new Item();
             //Application.Run(new DeleteMenuItem(deleteItem));

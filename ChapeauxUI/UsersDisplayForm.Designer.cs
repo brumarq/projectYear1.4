@@ -34,6 +34,8 @@ namespace ChapeauxUI
             this.lvUserId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvFirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvUsername = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvPassword = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvRole = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.butDisplay = new System.Windows.Forms.Button();
             this.butClear = new System.Windows.Forms.Button();
@@ -52,12 +54,16 @@ namespace ChapeauxUI
             this.lvUserId,
             this.lvFirstName,
             this.lvLastName,
+            this.lvUsername,
+            this.lvPassword,
             this.lvRole});
+            this.listViewDisplayForm.FullRowSelect = true;
+            this.listViewDisplayForm.GridLines = true;
             this.listViewDisplayForm.HideSelection = false;
-            this.listViewDisplayForm.Location = new System.Drawing.Point(189, 196);
+            this.listViewDisplayForm.Location = new System.Drawing.Point(124, 209);
             this.listViewDisplayForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewDisplayForm.Name = "listViewDisplayForm";
-            this.listViewDisplayForm.Size = new System.Drawing.Size(491, 462);
+            this.listViewDisplayForm.Size = new System.Drawing.Size(707, 462);
             this.listViewDisplayForm.TabIndex = 0;
             this.listViewDisplayForm.UseCompatibleStateImageBehavior = false;
             this.listViewDisplayForm.View = System.Windows.Forms.View.Details;
@@ -75,16 +81,26 @@ namespace ChapeauxUI
             // lvLastName
             // 
             this.lvLastName.Text = "Last Name";
-            this.lvLastName.Width = 129;
+            this.lvLastName.Width = 135;
+            // 
+            // lvUsername
+            // 
+            this.lvUsername.Text = "Username";
+            this.lvUsername.Width = 135;
+            // 
+            // lvPassword
+            // 
+            this.lvPassword.Text = "Password";
+            this.lvPassword.Width = 135;
             // 
             // lvRole
             // 
             this.lvRole.Text = "Role";
-            this.lvRole.Width = 87;
+            this.lvRole.Width = 100;
             // 
             // butDisplay
             // 
-            this.butDisplay.Location = new System.Drawing.Point(710, 611);
+            this.butDisplay.Location = new System.Drawing.Point(441, 126);
             this.butDisplay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.butDisplay.Name = "butDisplay";
             this.butDisplay.Size = new System.Drawing.Size(112, 47);
@@ -95,7 +111,7 @@ namespace ChapeauxUI
             // 
             // butClear
             // 
-            this.butClear.Location = new System.Drawing.Point(849, 611);
+            this.butClear.Location = new System.Drawing.Point(577, 126);
             this.butClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.butClear.Name = "butClear";
             this.butClear.Size = new System.Drawing.Size(112, 47);
@@ -128,7 +144,6 @@ namespace ChapeauxUI
             this.btnLogout.Size = new System.Drawing.Size(154, 66);
             this.btnLogout.TabIndex = 9;
             this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // button1
             // 
@@ -172,6 +187,7 @@ namespace ChapeauxUI
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UsersDisplayForm";
             this.Text = "UsersDisplayForm";
+            this.Load += new System.EventHandler(this.UsersDisplayForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -191,5 +207,7 @@ namespace ChapeauxUI
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ColumnHeader lvUsername;
+        private System.Windows.Forms.ColumnHeader lvPassword;
     }
 }

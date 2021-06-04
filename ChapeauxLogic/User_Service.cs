@@ -34,7 +34,7 @@ namespace ChapeauxLogic
 
         public void DisplayUsers(User user)
         {
-            userDAO.DisplayUsers(user);
+            userDAO.DisplayUsersById(user);
         }
 
         public void RemoveUserAccount(User user)
