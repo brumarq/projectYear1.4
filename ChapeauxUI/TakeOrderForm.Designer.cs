@@ -31,11 +31,11 @@ namespace ChapeauxUI
         {
             this.btnAddToOrder = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.txtSelectedCount = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.ItemID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ItemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.category = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtSelectedCount = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAddToOrder
@@ -64,6 +64,21 @@ namespace ChapeauxUI
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
+            // ItemID
+            // 
+            this.ItemID.Text = "ID";
+            this.ItemID.Width = 122;
+            // 
+            // ItemName
+            // 
+            this.ItemName.Text = "Product";
+            this.ItemName.Width = 288;
+            // 
+            // category
+            // 
+            this.category.Text = "Category";
+            this.category.Width = 329;
+            // 
             // txtSelectedCount
             // 
             this.txtSelectedCount.Location = new System.Drawing.Point(12, 876);
@@ -80,21 +95,6 @@ namespace ChapeauxUI
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Choose Amount: ";
-            // 
-            // ItemID
-            // 
-            this.ItemID.Text = "ID";
-            this.ItemID.Width = 122;
-            // 
-            // ItemName
-            // 
-            this.ItemName.Text = "Product";
-            this.ItemName.Width = 288;
-            // 
-            // category
-            // 
-            this.category.Text = "Category";
-            this.category.Width = 329;
             // 
             // TakeOrderForm
             // 

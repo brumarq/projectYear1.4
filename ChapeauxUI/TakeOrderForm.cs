@@ -15,7 +15,7 @@ namespace ChapeauxUI
     public partial class TakeOrderForm : Form
     {
         Order order;
-        //OrderItem item;
+        OrderItem item;
         List<Item> selectedItems;
 
         public TakeOrderForm(Table table, Order order)
@@ -48,15 +48,15 @@ namespace ChapeauxUI
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //item = new OrderItem
-            //{
-            //    OrderItemID = Convert.ToInt32(listView1.SelectedItems[0].SubItems[0].Text),
-            //    OrderID = ,
-            //    Count = ,
-            //    State = ,
-            //    Comment = ,
-            //    orderDateTime = DateTime.Now
-            //};
+            item = new OrderItem
+            {
+                OrderItemID = Convert.ToInt32(listView1.SelectedItems[0].SubItems[0].Text),
+                OrderID = order.OrderID,
+                Count = Convert.ToInt32(txtSelectedCount.Text),
+                State = State.loading,
+                Comment = "",
+                orderDateTime = DateTime.Now
+            };
         }
 
         private void btnAddToOrder_Click(object sender, EventArgs e)
@@ -69,9 +69,9 @@ namespace ChapeauxUI
             
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txtSelectedCount_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }
