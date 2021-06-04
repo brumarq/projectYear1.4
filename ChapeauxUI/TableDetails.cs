@@ -9,7 +9,7 @@ namespace ChapeauUI
     public partial class TableDetails : Form
     {
         private User loggedUser;
-        private Table selectedTable;
+        public Table selectedTable;
         bool tableHasOrders;
 
         public TableDetails(User user, int tableNumber)
@@ -121,7 +121,10 @@ namespace ChapeauUI
                 return;
             }
 
-            // Add code here for checkout
+            CheckoutForm checkout = new CheckoutForm(selectedTable);
+            this.Hide();
+            checkout.ShowDialog();
+            this.Show();
         }
     }
 }

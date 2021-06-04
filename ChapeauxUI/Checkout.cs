@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChapeauxLogic;
+using ChapeauxModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +14,25 @@ namespace ChapeauxUI
 {
     public partial class CheckoutForm : Form
     {
-        public CheckoutForm()
+        public Table currentTable;
+        private Order currentOrder;
+        private Transaction transaction;
+
+        public CheckoutForm(Table currentTable)
         {
             InitializeComponent();
+            PrepareCheckoutForm(currentTable);
         }
 
         #region Global
+        private void PrepareCheckoutForm(Table currentTable)
+        {
+            transaction = new Transaction();
+            this.currentTable = currentTable;
+            currentOrder = GetOrder(currentTable);
+            ShowCurrentOrder(currentOrder);
+        }
+
         private void CheckoutForm_Load(object sender, EventArgs e)
         {
             ShowPanel("Checkout");
@@ -28,6 +43,7 @@ namespace ChapeauxUI
             //hide main panels
             pnlCheckout.Hide();
             pnlPayment.Hide();
+            pnlPaymentOverview.Hide();
 
             //hide sub-panels
             subPnlCash.Hide();
@@ -60,6 +76,7 @@ namespace ChapeauxUI
 
         //Panels
         #region Checkout
+        //Events
         private void btnClearTip_Click(object sender, EventArgs e)
         {
             txtTipAmount.Clear();
@@ -68,6 +85,96 @@ namespace ChapeauxUI
         private void btnToPayment_Click(object sender, EventArgs e)
         {
             ShowPanel("Payment");
+        }
+
+        private void txtTipAmount_TextChanged(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    decimal toPay = 
+            //}
+            //catch (Exception exc)
+            //{
+            //    MessageBox.Show(exc.Message);
+            //}
+        }
+
+        private void txtToPay_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                lblNegativeError.ResetText();
+                decimal toPay = Convert.ToDecimal(txtToPay.Text);
+                decimal tipAmount = toPay - currentOrder.TotalPrice;
+                txtTipAmount.Text = $"{tipAmount:0.00}";
+
+                CheckForNegative(tipAmount, toPay);
+
+            }
+            catch (Exception exc)
+            {
+                lblNegativeError.Text = exc.Message;
+            }
+        }
+
+        private void txtFeedback_TextChanged(object sender, EventArgs e)
+        {
+            transaction.Feedback = txtFeedback.Text;
+        }
+
+        private void btnRemoveComment_Click(object sender, EventArgs e)
+        {
+            //transaction.Feedback = txtFeedback.Text; ????
+            txtFeedback.Clear();
+        }
+
+        //Methods
+        private void CheckForNegative(decimal tipAmount, decimal toPay)
+        {
+            //if (tipAmount < 0)
+            //{
+            //    txtTipAmount.Text = 
+            //    throw new Exception("Negative values are not allowed!");
+            //}
+
+            if (toPay < currentOrder.TotalPrice)
+            {
+                txtToPay.Text = $"{currentOrder.TotalPrice:0.00}";
+                throw new Exception("Price to pay cannot be lower than total price!");
+            }
+        }
+
+        private Order GetOrder(Table currentTable)
+        {
+            Order_Service orderService = new Order_Service();
+            return orderService.GetByTableID(currentTable.TableID);
+        }
+
+        private void ShowCurrentOrder(Order currrentOrder)
+        {
+            try
+            {
+                listViewCheckoutOrder.Clear();
+
+                foreach (OrderItem orderItem in currentOrder.orderItems)
+                {
+                    ListViewItem li = new ListViewItem(orderItem.ItemID.ToString(), 0);
+                    li.SubItems.Add(orderItem.Name);
+                    li.SubItems.Add(orderItem.Count.ToString());
+                    li.SubItems.Add(orderItem.Price.ToString());
+                    listViewCheckoutOrder.Items.Add(li);
+                }
+
+                lblCheckoutOrderID.Text = $"#{currentOrder.OrderID}";
+                lblTotalResult.Text = $"{currentOrder.TotalPrice: 0.00}";
+                lblVATHighResult.Text = $"{currentOrder.VATHigh: 0.00}";
+                lblVATLowResult.Text = $"{currentOrder.VATLow: 0.00}";
+                txtToPay.Text = $"{currentOrder.TotalPrice: 0.00}";
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
         #endregion
 
@@ -98,7 +205,49 @@ namespace ChapeauxUI
         #endregion
 
         #region PaymentOverview
+        private void btnBackToPayment_Click(object sender, EventArgs e)
+        {
+            ShowPanel("Payment");
+        }
+
+        //*** add method to load listview of transaction/order
+        //*** add option to write and store comments: popup + open digital keyboard + store comment into order
+
+        private void btnCloseOrder_Click(object sender, EventArgs e)
+        {
+            //CLOSE ORDER
+
+            DialogResult result = MessageBox.Show("Free Up Table?", "Set Table Status", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                //set table status to free
+            }
+
+            else
+            {
+                //keep table status as occupied
+            }
+
+            //show table overview
+        }
+
 
         #endregion
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        //prevent unwanted input
+        private void txtTipAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',');
+        }
+
+        private void txtToPay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',');
+        }
     }
 }
