@@ -14,7 +14,7 @@ namespace ChapeauxUI
 {
     public partial class KitchenDisplay : Form
     {
-
+        Item item;
         public KitchenDisplay()
         {
             InitializeComponent();
@@ -31,11 +31,10 @@ namespace ChapeauxUI
             pnlBarmanDisplay.Show();
             try
             {
-                Item_Service itemservice = new Item_Service();
-                List<Item> itemlist = itemservice.GetItems();
-
                 listViewBarmanDisplay.Clear();
 
+                Item_Service itemservice = new Item_Service();
+                List<Item> itemlist = itemservice.GetItems();
                 foreach (Item item in itemlist)
                 {
                     ListViewItem list = new ListViewItem(item.ItemID.ToString());
@@ -49,10 +48,10 @@ namespace ChapeauxUI
                     listViewBarmanDisplay.Items.Add(list);
                 }
             }
-            catch (Exception)
+            catch (Exception exc)
             {
 
-                throw;
+                MessageBox.Show(exc.Message);
             }
         }
         private void ShowRunningKitchenOrder()
@@ -62,10 +61,9 @@ namespace ChapeauxUI
             pnlKitchenDisplay.Show();
             try
             {
+                listViewTableKitchen.Clear();
                 Item_Service itemservice = new Item_Service();
                 List<Item> itemlist = itemservice.GetItems();
-
-                listViewBarmanDisplay.Clear();
 
                 foreach (Item item in itemlist)
                 {
@@ -80,10 +78,9 @@ namespace ChapeauxUI
                     listViewBarmanDisplay.Items.Add(list);
                 }
             }
-            catch (Exception)
+            catch (Exception exc)
             {
-
-                throw;
+                MessageBox.Show(exc.Message);
             }
         }
 
@@ -115,13 +112,24 @@ namespace ChapeauxUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            pnlKitchenDisplay.Hide();
-            pnlBarmanDisplay.Show();
+            if (listViewKitchenOrdersDetail.SelectedItems.Count != 1)
+            {
+                return;
+            }
         }
 
         private void listViewTableKitchen_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            item = new Item
+            {
+                ItemID = Convert.ToInt32(listViewTableKitchen.SelectedItems[0].SubItems[0].Text),
+                Name = "",
+                Price = Convert.ToInt32(listViewTableKitchen.SelectedItems[0].SubItems[0].Text),
+                Stock = Convert.ToInt32(listViewTableKitchen.SelectedItems[0].SubItems[0].Text),
+                Category = "",
+                VATRate = Convert.ToInt32(listViewTableKitchen.SelectedItems[0].SubItems[0].Text),
+                menuType = true
+            };
         }
 
         private void btnOrderReadyToBeServed_Click_1(object sender, EventArgs e)

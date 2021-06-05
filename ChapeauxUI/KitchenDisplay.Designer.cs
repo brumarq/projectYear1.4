@@ -36,9 +36,9 @@ namespace ChapeauxUI
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pnlKitchenDisplay = new System.Windows.Forms.Panel();
             this.btnOrderReadyToBeServed = new System.Windows.Forms.Button();
-            this.btnShowOrderDetails = new System.Windows.Forms.Button();
+            this.btnShowKitchenOrderDetails = new System.Windows.Forms.Button();
             this.lblStatusOfTheOrder = new System.Windows.Forms.Label();
-            this.listViewOrdersDetail = new System.Windows.Forms.ListView();
+            this.listViewKitchenOrdersDetail = new System.Windows.Forms.ListView();
             this.lblKitchenScreen = new System.Windows.Forms.Label();
             this.lblOrders = new System.Windows.Forms.Label();
             this.listViewTableKitchen = new System.Windows.Forms.ListView();
@@ -52,13 +52,6 @@ namespace ChapeauxUI
             this.FrameWokrKitchen = new System.Windows.Forms.PictureBox();
             this.pnlBarmanDisplay = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listViewBarmanOrdersDetail = new System.Windows.Forms.ListView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.listViewBarmanDisplay = new System.Windows.Forms.ListView();
             this.itemID_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.name_Bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -67,6 +60,13 @@ namespace ChapeauxUI
             this.category_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menyType_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.VATRate_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listViewBarmanOrdersDetail = new System.Windows.Forms.ListView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnUserInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -128,9 +128,9 @@ namespace ChapeauxUI
             // 
             this.pnlKitchenDisplay.BackColor = System.Drawing.Color.White;
             this.pnlKitchenDisplay.Controls.Add(this.btnOrderReadyToBeServed);
-            this.pnlKitchenDisplay.Controls.Add(this.btnShowOrderDetails);
+            this.pnlKitchenDisplay.Controls.Add(this.btnShowKitchenOrderDetails);
             this.pnlKitchenDisplay.Controls.Add(this.lblStatusOfTheOrder);
-            this.pnlKitchenDisplay.Controls.Add(this.listViewOrdersDetail);
+            this.pnlKitchenDisplay.Controls.Add(this.listViewKitchenOrdersDetail);
             this.pnlKitchenDisplay.Controls.Add(this.lblKitchenScreen);
             this.pnlKitchenDisplay.Controls.Add(this.lblOrders);
             this.pnlKitchenDisplay.Controls.Add(this.listViewTableKitchen);
@@ -150,15 +150,15 @@ namespace ChapeauxUI
             this.btnOrderReadyToBeServed.UseVisualStyleBackColor = true;
             this.btnOrderReadyToBeServed.Click += new System.EventHandler(this.btnOrderReadyToBeServed_Click_1);
             // 
-            // btnShowOrderDetails
+            // btnShowKitchenOrderDetails
             // 
-            this.btnShowOrderDetails.Image = ((System.Drawing.Image)(resources.GetObject("btnShowOrderDetails.Image")));
-            this.btnShowOrderDetails.Location = new System.Drawing.Point(48, 817);
-            this.btnShowOrderDetails.Name = "btnShowOrderDetails";
-            this.btnShowOrderDetails.Size = new System.Drawing.Size(170, 55);
-            this.btnShowOrderDetails.TabIndex = 52;
-            this.btnShowOrderDetails.UseVisualStyleBackColor = true;
-            this.btnShowOrderDetails.Click += new System.EventHandler(this.button1_Click);
+            this.btnShowKitchenOrderDetails.Image = ((System.Drawing.Image)(resources.GetObject("btnShowKitchenOrderDetails.Image")));
+            this.btnShowKitchenOrderDetails.Location = new System.Drawing.Point(48, 817);
+            this.btnShowKitchenOrderDetails.Name = "btnShowKitchenOrderDetails";
+            this.btnShowKitchenOrderDetails.Size = new System.Drawing.Size(170, 55);
+            this.btnShowKitchenOrderDetails.TabIndex = 52;
+            this.btnShowKitchenOrderDetails.UseVisualStyleBackColor = true;
+            this.btnShowKitchenOrderDetails.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblStatusOfTheOrder
             // 
@@ -171,14 +171,14 @@ namespace ChapeauxUI
             this.lblStatusOfTheOrder.TabIndex = 51;
             this.lblStatusOfTheOrder.Text = "Order\'s Detail";
             // 
-            // listViewOrdersDetail
+            // listViewKitchenOrdersDetail
             // 
-            this.listViewOrdersDetail.HideSelection = false;
-            this.listViewOrdersDetail.Location = new System.Drawing.Point(48, 424);
-            this.listViewOrdersDetail.Name = "listViewOrdersDetail";
-            this.listViewOrdersDetail.Size = new System.Drawing.Size(661, 330);
-            this.listViewOrdersDetail.TabIndex = 50;
-            this.listViewOrdersDetail.UseCompatibleStateImageBehavior = false;
+            this.listViewKitchenOrdersDetail.HideSelection = false;
+            this.listViewKitchenOrdersDetail.Location = new System.Drawing.Point(48, 424);
+            this.listViewKitchenOrdersDetail.Name = "listViewKitchenOrdersDetail";
+            this.listViewKitchenOrdersDetail.Size = new System.Drawing.Size(661, 330);
+            this.listViewKitchenOrdersDetail.TabIndex = 50;
+            this.listViewKitchenOrdersDetail.UseCompatibleStateImageBehavior = false;
             // 
             // lblKitchenScreen
             // 
@@ -294,6 +294,59 @@ namespace ChapeauxUI
             this.panel1.Size = new System.Drawing.Size(747, 907);
             this.panel1.TabIndex = 37;
             // 
+            // listViewBarmanDisplay
+            // 
+            this.listViewBarmanDisplay.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.itemID_bar,
+            this.name_Bar,
+            this.price_bar,
+            this.stock_bar,
+            this.category_bar,
+            this.menyType_bar,
+            this.VATRate_bar});
+            this.listViewBarmanDisplay.HideSelection = false;
+            this.listViewBarmanDisplay.Location = new System.Drawing.Point(48, 55);
+            this.listViewBarmanDisplay.Name = "listViewBarmanDisplay";
+            this.listViewBarmanDisplay.Size = new System.Drawing.Size(661, 330);
+            this.listViewBarmanDisplay.TabIndex = 54;
+            this.listViewBarmanDisplay.UseCompatibleStateImageBehavior = false;
+            this.listViewBarmanDisplay.View = System.Windows.Forms.View.Details;
+            // 
+            // itemID_bar
+            // 
+            this.itemID_bar.Text = "itemID";
+            this.itemID_bar.Width = 100;
+            // 
+            // name_Bar
+            // 
+            this.name_Bar.Text = "Name";
+            this.name_Bar.Width = 100;
+            // 
+            // price_bar
+            // 
+            this.price_bar.Text = "Price";
+            this.price_bar.Width = 100;
+            // 
+            // stock_bar
+            // 
+            this.stock_bar.Text = "Stock";
+            this.stock_bar.Width = 100;
+            // 
+            // category_bar
+            // 
+            this.category_bar.Text = "Category";
+            this.category_bar.Width = 100;
+            // 
+            // menyType_bar
+            // 
+            this.menyType_bar.Text = "Course";
+            this.menyType_bar.Width = 93;
+            // 
+            // VATRate_bar
+            // 
+            this.VATRate_bar.Text = "VATRate";
+            this.VATRate_bar.Width = 100;
+            // 
             // button1
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
@@ -369,59 +422,6 @@ namespace ChapeauxUI
             this.pictureBox2.TabIndex = 48;
             this.pictureBox2.TabStop = false;
             // 
-            // listViewBarmanDisplay
-            // 
-            this.listViewBarmanDisplay.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.itemID_bar,
-            this.name_Bar,
-            this.price_bar,
-            this.stock_bar,
-            this.category_bar,
-            this.menyType_bar,
-            this.VATRate_bar});
-            this.listViewBarmanDisplay.HideSelection = false;
-            this.listViewBarmanDisplay.Location = new System.Drawing.Point(48, 55);
-            this.listViewBarmanDisplay.Name = "listViewBarmanDisplay";
-            this.listViewBarmanDisplay.Size = new System.Drawing.Size(661, 330);
-            this.listViewBarmanDisplay.TabIndex = 54;
-            this.listViewBarmanDisplay.UseCompatibleStateImageBehavior = false;
-            this.listViewBarmanDisplay.View = System.Windows.Forms.View.Details;
-            // 
-            // itemID_bar
-            // 
-            this.itemID_bar.Text = "itemID";
-            this.itemID_bar.Width = 100;
-            // 
-            // name_Bar
-            // 
-            this.name_Bar.Text = "Name";
-            this.name_Bar.Width = 100;
-            // 
-            // price_bar
-            // 
-            this.price_bar.Text = "Price";
-            this.price_bar.Width = 100;
-            // 
-            // stock_bar
-            // 
-            this.stock_bar.Text = "Stock";
-            this.stock_bar.Width = 100;
-            // 
-            // category_bar
-            // 
-            this.category_bar.Text = "Category";
-            this.category_bar.Width = 100;
-            // 
-            // menyType_bar
-            // 
-            this.menyType_bar.Text = "Course";
-            this.menyType_bar.Width = 93;
-            // 
-            // VATRate_bar
-            // 
-            this.VATRate_bar.Text = "VATRate";
-            this.VATRate_bar.Width = 100;
-            // 
             // KitchenDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -461,12 +461,12 @@ namespace ChapeauxUI
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Panel pnlKitchenDisplay;
         private System.Windows.Forms.Label lblStatusOfTheOrder;
-        private System.Windows.Forms.ListView listViewOrdersDetail;
+        private System.Windows.Forms.ListView listViewKitchenOrdersDetail;
         private System.Windows.Forms.Label lblKitchenScreen;
         private System.Windows.Forms.Label lblOrders;
         private System.Windows.Forms.ListView listViewTableKitchen;
         private System.Windows.Forms.PictureBox FrameWokrKitchen;
-        private System.Windows.Forms.Button btnShowOrderDetails;
+        private System.Windows.Forms.Button btnShowKitchenOrderDetails;
         private System.Windows.Forms.Button btnOrderReadyToBeServed;
         private System.Windows.Forms.Panel pnlBarmanDisplay;
         private System.Windows.Forms.Panel panel1;
