@@ -205,7 +205,7 @@ namespace ChapeauxUI
             // Qty
             // 
             this.Qty.Text = "Qty.";
-            this.Qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // UnitPrice
             // 
@@ -355,6 +355,7 @@ namespace ChapeauxUI
             this.txtToPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtToPay.TextChanged += new System.EventHandler(this.txtToPay_TextChanged);
             this.txtToPay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtToPay_KeyPress);
+            this.txtToPay.Leave += new System.EventHandler(this.txtToPay_Leave);
             // 
             // lblVATLowResult
             // 
@@ -408,7 +409,6 @@ namespace ChapeauxUI
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel1.Controls.Add(this.button11);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btnClearTip);
             this.panel1.Controls.Add(this.lblTotal);
             this.panel1.Controls.Add(this.lblVATHigh);
             this.panel1.Controls.Add(this.lblVATLow);
@@ -426,7 +426,7 @@ namespace ChapeauxUI
             this.panel1.Controls.Add(this.txtTipAmount);
             this.panel1.Location = new System.Drawing.Point(46, 667);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(480, 192);
+            this.panel1.Size = new System.Drawing.Size(373, 192);
             this.panel1.TabIndex = 34;
             // 
             // button11
@@ -455,15 +455,16 @@ namespace ChapeauxUI
             // 
             // btnClearTip
             // 
+            this.btnClearTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btnClearTip.BackgroundImage = global::ChapeauxUI.Properties.Resources.btnClear;
             this.btnClearTip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClearTip.FlatAppearance.BorderSize = 0;
             this.btnClearTip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearTip.Location = new System.Drawing.Point(377, 95);
+            this.btnClearTip.Location = new System.Drawing.Point(426, 764);
             this.btnClearTip.Name = "btnClearTip";
             this.btnClearTip.Size = new System.Drawing.Size(100, 52);
             this.btnClearTip.TabIndex = 29;
-            this.btnClearTip.UseVisualStyleBackColor = true;
+            this.btnClearTip.UseVisualStyleBackColor = false;
             this.btnClearTip.Click += new System.EventHandler(this.btnClearTip_Click);
             // 
             // pnlCheckout
@@ -471,6 +472,7 @@ namespace ChapeauxUI
             this.pnlCheckout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pnlCheckout.Controls.Add(this.lblNegativeError);
             this.pnlCheckout.Controls.Add(this.btnRemoveComment);
+            this.pnlCheckout.Controls.Add(this.btnClearTip);
             this.pnlCheckout.Controls.Add(this.txtFeedback);
             this.pnlCheckout.Controls.Add(this.btnToPayment);
             this.pnlCheckout.Controls.Add(this.btnBack);
@@ -520,7 +522,6 @@ namespace ChapeauxUI
             this.txtFeedback.Name = "txtFeedback";
             this.txtFeedback.Size = new System.Drawing.Size(480, 119);
             this.txtFeedback.TabIndex = 37;
-            this.txtFeedback.TextChanged += new System.EventHandler(this.txtFeedback_TextChanged);
             // 
             // btnToPayment
             // 
@@ -561,6 +562,7 @@ namespace ChapeauxUI
             this.frameBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.frameBox.TabIndex = 7;
             this.frameBox.TabStop = false;
+            this.frameBox.Click += new System.EventHandler(this.frameBox_Click);
             // 
             // pnlPayment
             // 
@@ -1576,9 +1578,9 @@ namespace ChapeauxUI
             this.Controls.Add(this.btnUserInfo);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pnlCheckout);
             this.Controls.Add(this.pnlPayment);
             this.Controls.Add(this.pnlPaymentOverview);
+            this.Controls.Add(this.pnlCheckout);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

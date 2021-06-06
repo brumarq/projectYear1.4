@@ -36,6 +36,7 @@ namespace ChapeauxUI
         private void CheckoutForm_Load(object sender, EventArgs e)
         {
             ShowPanel("Checkout");
+            
         }
 
         private void HideAllPanels()
@@ -79,7 +80,9 @@ namespace ChapeauxUI
         //Events
         private void btnClearTip_Click(object sender, EventArgs e)
         {
-            txtTipAmount.Clear();
+            transaction.TipAmount = 0.0m;
+            txtTipAmount.Text = $"{transaction.TipAmount:0.00}";
+            txtToPay.Text = $"{currentOrder.TotalPrice:0.00}";
         }
 
         private void btnToPayment_Click(object sender, EventArgs e)
@@ -101,35 +104,29 @@ namespace ChapeauxUI
 
         private void txtToPay_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                lblNegativeError.ResetText();
-                decimal toPay = Convert.ToDecimal(txtToPay.Text);
-                decimal tipAmount = toPay - currentOrder.TotalPrice;
-                txtTipAmount.Text = $"{tipAmount:0.00}";
+            //try
+            //{
+            //    lblNegativeError.ResetText();
+            //    decimal toPay = Convert.ToDecimal(txtToPay.Text);
+            //    decimal tipAmount = toPay - currentOrder.TotalPrice;
+            //    txtTipAmount.Text = $"{tipAmount:0.00}";
 
-                CheckForNegative(tipAmount, toPay);
+            //    CheckForNegative(tipAmount, toPay);
 
-            }
-            catch (Exception exc)
-            {
-                lblNegativeError.Text = exc.Message;
-            }
-        }
-
-        private void txtFeedback_TextChanged(object sender, EventArgs e)
-        {
-            transaction.Feedback = txtFeedback.Text;
+            //}
+            //catch (Exception exc)
+            //{
+            //    lblNegativeError.Text = exc.Message;
+            //}
         }
 
         private void btnRemoveComment_Click(object sender, EventArgs e)
         {
-            //transaction.Feedback = txtFeedback.Text; ????
             txtFeedback.Clear();
         }
 
         //Methods
-        private void CheckForNegative(decimal tipAmount, decimal toPay)
+        private bool CheckForNegative(decimal tipAmount, decimal toPay)
         {
             //if (tipAmount < 0)
             //{
@@ -142,6 +139,7 @@ namespace ChapeauxUI
                 txtToPay.Text = $"{currentOrder.TotalPrice:0.00}";
                 throw new Exception("Price to pay cannot be lower than total price!");
             }
+            return false;
         }
 
         private Order GetOrder(Table currentTable)
@@ -154,14 +152,13 @@ namespace ChapeauxUI
         {
             try
             {
-                listViewCheckoutOrder.Clear();
-
+               
                 foreach (OrderItem orderItem in currentOrder.orderItems)
                 {
                     ListViewItem li = new ListViewItem(orderItem.ItemID.ToString(), 0);
                     li.SubItems.Add(orderItem.Name);
                     li.SubItems.Add(orderItem.Count.ToString());
-                    li.SubItems.Add(orderItem.Price.ToString());
+                    li.SubItems.Add(orderItem.Price.ToString("0.00"));
                     listViewCheckoutOrder.Items.Add(li);
                 }
 
@@ -169,6 +166,7 @@ namespace ChapeauxUI
                 lblTotalResult.Text = $"{currentOrder.TotalPrice: 0.00}";
                 lblVATHighResult.Text = $"{currentOrder.VATHigh: 0.00}";
                 lblVATLowResult.Text = $"{currentOrder.VATLow: 0.00}";
+                txtTipAmount.Text = $"{transaction.TipAmount: 0.00}";
                 txtToPay.Text = $"{currentOrder.TotalPrice: 0.00}";
             }
             catch (Exception exc)
@@ -186,9 +184,13 @@ namespace ChapeauxUI
 
         private void btnFinishPayment_Click(object sender, EventArgs e)
         {
-            ShowPanel("Overview");
+            transaction.TotalPrice = Convert.ToDecimal(txtToPay.Text);
+            transaction.TipAmount = Convert.ToDecimal(txtTipAmount.Text);
+            transaction.Feedback = txtFeedback.Text;
+            transaction.TransactionDate = DateTime.Now;
+            transaction.Order = currentOrder;
 
-            //Add code for saving transaction info etc.
+            ShowPanel("Overview");
         }
 
         private void btnCash_Click(object sender, EventArgs e)
@@ -248,6 +250,30 @@ namespace ChapeauxUI
         private void txtToPay_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',');
+        }
+
+        private void frameBox_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+        }
+
+        private void txtToPay_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                lblNegativeError.ResetText();
+                decimal toPay = Convert.ToDecimal(txtToPay.Text);
+                decimal tipAmount = toPay - currentOrder.TotalPrice;
+                
+                if (!CheckForNegative(tipAmount, toPay))
+                {
+                    txtTipAmount.Text = $"{tipAmount:0.00}";
+                }
+            }
+            catch (Exception exc)
+            {
+                lblNegativeError.Text = exc.Message;
+            }
         }
     }
 }

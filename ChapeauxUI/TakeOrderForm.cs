@@ -38,6 +38,7 @@ namespace ChapeauxUI
                     ListViewItem li = new ListViewItem(menuItem.ItemID.ToString(), 0);
                     li.SubItems.Add(menuItem.Name);
                     li.SubItems.Add(menuItem.Category);
+                    listView1.Items.Add(li);
                 }
             }
             catch (Exception exc)
