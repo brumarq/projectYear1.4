@@ -15,15 +15,51 @@ namespace ChapeauxUI
     public partial class KitchenDisplay : Form
     {
         Item item;
+
+
         public KitchenDisplay()
         {
             InitializeComponent();
+            DisplayForUser();
         }
-        private void LoadListViews()
+  
+        private void DisplayForUser()
         {
-            ShowRunningBarOrder();
-            ShowRunningKitchenOrder();
+            if (loggedUser.Role == Role.Chef)
+            {
+                ShowPanel("Kitchen");
+                ShowRunningKitchenOrder();
+            }
+
+            else if (loggedUser.Role == Role.Bartender)
+            {
+                ShowPanel("Bar");
+                ShowRunningBarOrder();
+            }
+
         }
+
+        private void ShowPanel(string panelName)
+        {
+            HideAllPanels();
+
+            if (panelName == "Kitchen")
+            {
+                pnlKitchenDisplay.Show();
+            }
+
+            else if (panelName == "Bar")
+            {
+                pnlBarmanDisplay.Show();
+            }
+        }
+
+        private void HideAllPanels()
+        {
+            pnlBarmanDisplay.Hide();
+            pnlKitchenDisplay.Hide();
+        }
+
         private void ShowRunningBarOrder()
         {
             pnlKitchenDisplay.Hide();
@@ -33,6 +69,8 @@ namespace ChapeauxUI
             {
                 listViewBarmanDisplay.Clear();
 
+
+                //Change to OrderItems
                 Item_Service itemservice = new Item_Service();
                 List<Item> itemlist = itemservice.GetItems();
                 foreach (Item item in itemlist)
@@ -61,6 +99,7 @@ namespace ChapeauxUI
             pnlKitchenDisplay.Show();
             try
             {
+                //Change to OrderItems
                 listViewTableKitchen.Clear();
                 Item_Service itemservice = new Item_Service();
                 List<Item> itemlist = itemservice.GetItems();
