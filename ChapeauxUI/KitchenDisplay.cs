@@ -166,7 +166,6 @@ namespace ChapeauxUI
                 Stock = Convert.ToInt32(listViewTableKitchen.SelectedItems[0].SubItems[0].Text),
                 Category = "",
                 VATRate = Convert.ToInt32(listViewTableKitchen.SelectedItems[0].SubItems[0].Text),
-                menuType = true
             };
         }
 
