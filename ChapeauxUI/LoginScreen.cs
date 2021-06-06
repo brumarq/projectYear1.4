@@ -92,14 +92,11 @@ namespace ChapeauxUI
                             new TableOverviewForm(user).Show();
                             this.Hide();
                         }
-                        else if(user.Role == Role.Bartender)
+                        else if(user.Role == Role.Bartender || user.Role == Role.Chef)
                         {
-                            //Add code here to open bar form
+                            //new KitchenDisplay(user).Show();
                         }
-                        else if (user.Role == Role.Chef)
-                        {
-                            //Add code here to open kitchen form
-                        }
+                       
                         else if (user.Role == Role.Manager)
                         {
                             /*new AddAccountForm(createUser).Show();
