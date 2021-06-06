@@ -36,7 +36,6 @@ namespace ChapeauxUI
         private void CheckoutForm_Load(object sender, EventArgs e)
         {
             ShowPanel("Checkout");
-            
         }
 
         private void HideAllPanels()
@@ -152,7 +151,6 @@ namespace ChapeauxUI
         {
             try
             {
-               
                 foreach (OrderItem orderItem in currentOrder.orderItems)
                 {
                     ListViewItem li = new ListViewItem(orderItem.ItemID.ToString(), 0);

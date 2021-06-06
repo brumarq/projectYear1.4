@@ -31,11 +31,11 @@ namespace ChapeauxUI
         {
             this.btnAddToOrder = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.ItemID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ItemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.category = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtSelectedCount = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnAddToOrder
@@ -52,9 +52,10 @@ namespace ChapeauxUI
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ItemID,
-            this.ItemName,
-            this.category});
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
@@ -63,21 +64,6 @@ namespace ChapeauxUI
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
-            // 
-            // ItemID
-            // 
-            this.ItemID.Text = "ID";
-            this.ItemID.Width = 122;
-            // 
-            // ItemName
-            // 
-            this.ItemName.Text = "Product";
-            this.ItemName.Width = 288;
-            // 
-            // category
-            // 
-            this.category.Text = "Category";
-            this.category.Width = 329;
             // 
             // txtSelectedCount
             // 
@@ -95,6 +81,20 @@ namespace ChapeauxUI
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Choose Amount: ";
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Product";
+            this.columnHeader2.Width = 226;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Category";
+            this.columnHeader3.Width = 181;
             // 
             // TakeOrderForm
             // 
@@ -119,8 +119,8 @@ namespace ChapeauxUI
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TextBox txtSelectedCount;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ColumnHeader ItemID;
-        private System.Windows.Forms.ColumnHeader ItemName;
-        private System.Windows.Forms.ColumnHeader category;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }

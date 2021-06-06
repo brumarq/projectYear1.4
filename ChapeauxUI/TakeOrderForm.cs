@@ -23,12 +23,12 @@ namespace ChapeauxUI
             InitializeComponent();
             selectedItems = new List<Item>();
             this.order = order;
-
+            GetMenu();
         }
 
         private void TakeOrderForm_Load(object sender, EventArgs e)
         {
-            GetMenu();
+
         }
 
         private void GetMenu()
@@ -38,6 +38,11 @@ namespace ChapeauxUI
                 listView1.Clear();
                 Item_Service itemService = new Item_Service();
                 List<Item> menu = itemService.GetItems();
+
+                listView1.Columns.Add("ID", 80);
+                listView1.Columns.Add("Product", 330);
+                listView1.Columns.Add("Category", 350);
+                listView1.View = View.Details;
 
                 foreach (Item menuItem in menu)
                 {
