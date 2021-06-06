@@ -23,6 +23,12 @@ namespace ChapeauxUI
             InitializeComponent();
             selectedItems = new List<Item>();
             this.order = order;
+
+        }
+
+        private void TakeOrderForm_Load(object sender, EventArgs e)
+        {
+            GetMenu();
         }
 
         private void GetMenu()
@@ -64,15 +70,17 @@ namespace ChapeauxUI
         {
             if (listView1.SelectedItems.Count != 1)
             {
-                return;   
+                return;
             }
 
-            
+
         }
 
         private void txtSelectedCount_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
+
     }
 }

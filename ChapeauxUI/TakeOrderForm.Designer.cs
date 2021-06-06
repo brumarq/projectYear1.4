@@ -107,6 +107,7 @@ namespace ChapeauxUI
             this.Controls.Add(this.btnAddToOrder);
             this.Name = "TakeOrderForm";
             this.Text = "TakeOrderForm";
+            this.Load += new System.EventHandler(this.TakeOrderForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
