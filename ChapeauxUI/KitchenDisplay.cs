@@ -14,8 +14,8 @@ namespace ChapeauxUI
 {
     public partial class KitchenDisplay : Form
     {
-        Item item;
-        User user;
+        private Item item;
+        private User user;
 
         public KitchenDisplay(User user)
         {
@@ -82,7 +82,6 @@ namespace ChapeauxUI
                     list.SubItems.Add(item.Stock.ToString());
                     list.SubItems.Add(item.Category.ToString());
                     list.SubItems.Add(item.VATRate.ToString());
-                    list.SubItems.Add(item.menuType.ToString());
 
                     listViewBarmanDisplay.Items.Add(list);
                 }
@@ -113,7 +112,6 @@ namespace ChapeauxUI
                     list.SubItems.Add(item.Stock.ToString());
                     list.SubItems.Add(item.Category.ToString());
                     list.SubItems.Add(item.VATRate.ToString());
-                    list.SubItems.Add(item.menuType.ToString());
 
                     listViewBarmanDisplay.Items.Add(list);
                 }
