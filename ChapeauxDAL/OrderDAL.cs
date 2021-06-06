@@ -63,7 +63,6 @@ namespace ChapeauxDAL
         #endregion
 
         #region Retrieving
-        //(needed for transactions) please leave this method as it is
         public Order GetByID(int orderID)
         {
             SqlCommand cmd = new SqlCommand("SELECT orderID, isPaid, tableID, userID, startDateTime, endDateTime " +
@@ -105,6 +104,7 @@ namespace ChapeauxDAL
             return order;
         }
         #endregion
+
         public List<Order> GetAllOrders()
         {
             string query = "SELECT orderID, startDateTime FROM [ORDERS]";
