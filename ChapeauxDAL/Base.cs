@@ -8,8 +8,8 @@ namespace ChapeauxDAL
 {
     public abstract class Base
     {
-        private SqlDataAdapter adapter;
-        private SqlConnection conn;
+        protected SqlDataAdapter adapter;
+        protected SqlConnection conn;
         private EventLog appLog = new EventLog("Application"); // Initiate EventLog
 
         public Base()
@@ -36,7 +36,7 @@ namespace ChapeauxDAL
             return conn;
         }
 
-        private void CloseConnection()
+        protected void CloseConnection()
         {
             conn.Close();
         }

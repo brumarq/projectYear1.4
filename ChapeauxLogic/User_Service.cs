@@ -1,26 +1,50 @@
 ﻿using ChapeauxDAL;
 using ChapeauxModel;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChapeauxLogic
 {
     public class User_Service
     {
-        UserDAL userdb;
+        private UserDAO userDAO = new UserDAO();
 
-        public User_Service()
+        public List<User> GetUsers()
         {
-            userdb = new UserDAL();
-
+            return userDAO.Get_Users_DB();
         }
 
-        public User LoginCheck(string username)
+        public User GetUserAccount(string username, string password)
         {
-            return userdb.LoginCheck(username);
+            return userDAO.GetUserAccount(username, password);
+        }
+
+        public User GetUserByUsername(string username)
+        {
+            return userDAO.GetUserByUsername_DB(username);
+        }
+        public void AddUserAccount(User user)
+        {
+            userDAO.AddUserAccount(user);
+        }
+        
+        public void EditUserAccount(User previousUser, User newUser)
+        {
+            userDAO.EditUserAccount(previousUser, newUser);
+        }
+
+        public void DisplayUsers(User user)
+        {
+            userDAO.DisplayUsersById(user);
+        }
+
+        public void RemoveUserAccount(User user)
+        {
+            userDAO.RemoveUserAccount(user);
+        }
+
+        public User LoginCheck(string givenUsername)
+        {
+            return userDAO.LoginCheck(givenUsername);
         }
     }
 }

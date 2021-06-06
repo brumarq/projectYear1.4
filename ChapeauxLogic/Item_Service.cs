@@ -1,24 +1,37 @@
 ﻿using ChapeauxDAL;
 using ChapeauxModel;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChapeauxLogic
 {
     public class Item_Service
     {
-        ItemDAL itemdal;
-        public Item_Service()
-        {
-            itemdal = new ItemDAL();
-        }
+        ItemDAL itemDAO = new ItemDAL();
+        
         public List<Item> GetItems()
         {
-            List<Item> items = itemdal.GetAllItems();
-            return items;
+            return itemDAO.Get_All_Items_DB();
+        }
+
+        public Item GetItemByName(string name)
+        {
+            return itemDAO.GetItemByName_DB(name);
+        }
+
+        public void AddMenuItem(Item menuItem)
+        {
+            itemDAO.AddMenuItem(menuItem);
+        }
+
+        public void EditMenuItem(Item lastItem, Item newItem)
+        {
+            itemDAO.EditMenuItem(lastItem, newItem);
+        }
+
+        public void DeleteMenuItem(Item menuItem)
+        {
+            itemDAO.DeleteMenuItem(menuItem);
         }
     }
 }
+ 

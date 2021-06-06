@@ -11,6 +11,100 @@ namespace ChapeauxDAL
 {
     public class OrderDAL : Base
     {
+        #region Reading
+        private bool ReadTables(DataTable dataTable)
+        {
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        public bool IsThereAnOrder(int tableNumber)
+        {
+            string query = "SELECT tableID FROM ORDERS WHERE tableID=@tableID AND isPaid=0";
+            SqlParameter[] sqlParameters = {
+                 new SqlParameter("@tableID", tableNumber),
+            };
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        private Order ReadOrder(SqlDataReader reader)
+        {
+            Order order = new Order()
+            {
+                OrderID = (int)reader["orderID"],
+                startDateTime = (DateTime)reader["startDateTime"],
+                endDateTime = (DateTime)reader["endDateTime"],
+                IsPaid = (bool)reader["isPaid"],
+                TableID = (int)reader["tableID"],
+                UserID = (int)reader["userID"]
+            };
+            return order;
+        }
+        #endregion
+
+        #region Storing
+        public void AddNewOrder(Order order)
+        {
+            SqlCommand cmd = new SqlCommand("INSERT INTO ORDERS (startDateTime, isPaid, tableID, userID) " +
+                                            "VALUES(@startDateTime, @isPaid, @tableID, @userID)", conn);
+
+            OpenConnection();
+            cmd.Parameters.AddWithValue("@startDateTime", DateTime.Now);
+            cmd.Parameters.AddWithValue("@isPaid", false);
+            cmd.Parameters.AddWithValue("@tableID", order.TableID);
+            cmd.Parameters.AddWithValue("@userID", order.UserID);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Close();
+            CloseConnection();
+        }
+        #endregion
+
+        #region Retrieving
+        //(needed for transactions) please leave this method as it is
+        public Order GetByID(int orderID)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT orderID, isPaid, tableID, userID, startDateTime, endDateTime " +
+                                            "FROM ORDERS " +
+                                            "WHERE orderID = @orderID", conn);
+
+            OpenConnection();
+            cmd.Parameters.AddWithValue("@orderID", orderID);
+            SqlDataReader reader = cmd.ExecuteReader();
+            Order order = null;
+
+            if (reader.Read())
+            {
+                order = ReadOrder(reader);
+            }
+            reader.Close();
+            conn.Close();
+
+            return order;
+        }
+
+        public Order GetByTableID(int tableID)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT orderID, startDateTime, endDateTime, isPaid, tableID, userID " +
+                                            "FROM ORDERS " +
+                                            "WHERE tableID = @tableID", conn);
+            OpenConnection();
+            cmd.Parameters.AddWithValue("@tableID", tableID);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            Order order = null;
+            if (reader.Read())
+            {
+                order = ReadOrder(reader);
+            }
+            reader.Close();
+            conn.Close();
+
+            return order;
+        }
+        #endregion
         public List<Order> GetAllOrders()
         {
             string query = "SELECT orderID, startDateTime FROM [ORDERS]";

@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChapeauxModel
+﻿namespace ChapeauxModel
 {
+    public enum Role
+    {
+        Manager = 1, Chef, Bartender, Waiter
+    }
+
     public class User
     {
         public int UserID { get; set; }

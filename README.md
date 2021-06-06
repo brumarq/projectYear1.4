@@ -4,12 +4,15 @@
 
 - [ ] the system must be intuitive so new employees will have no troubles using it;
 - [ ] performed actions of restaurant employees with the system should be logged (e.g. when taking an order);
-- [ ] logging in with a simple (4-digit) code is sufficient, logging off should also be possible of course;
+- [x] logging in with a simple (4-digit) code is sufficient, logging off should also be possible of course;
 
 ### Restaurant overview
 
-- [ ] there must be a restaurant overview displaying all tables with an indication ‘free’ or ‘occupied’ (text or icon or color or ...); 
-- [ ] in this overview one can also see (for each table)if an order is running at the moment, and the waiting time for the order (text or icon or color or ...);
+- [X] there must be a restaurant overview displaying all tables with an indication ‘free’ or ‘occupied’ (text or icon or color or ...); 
+- [x] in this overview one can also see (for each table) if an order is running at the moment,
+- [ ] the waiting time for the order (text or icon or color or ...);
+- [ ] improve code
+- [ ] add orders to the table in table details
 
 ### Taking orders
 

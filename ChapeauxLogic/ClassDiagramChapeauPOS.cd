@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChapeauxLogic.Item_Service">
+    <Position X="13.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Item_Service.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauxLogic.Order_Service">
+    <Position X="7.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Order_Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="orderdb" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapeauxLogic.OrderItem_Service">
+    <Position X="11.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAJAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OrderItem_Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="orderItemdb" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapeauxLogic.Table_Service">
+    <Position X="4.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABEAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Table_Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="tabledb" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapeauxLogic.Transaction_Service">
+    <Position X="9.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Transaction_Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="transactionDAL" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapeauxLogic.User_Service">
+    <Position X="6" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAIAAAAAAAAAAAAAgAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>User_Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="userDAO" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapeauxDAL.TableDAL">
+    <Position X="4.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauxDAL.OrderDAL">
+    <Position X="7.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauxDAL.UserDAO">
+    <Position X="6" Y="7.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauxDAL.OrderItemDAL">
+    <Position X="11.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauxModel.Item">
+    <Position X="13.25" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauxModel.Order">
+    <Position X="7.75" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauxModel.OrderItem">
+    <Position X="11.25" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauxModel.Table">
+    <Position X="4.25" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauxModel.Transaction">
+    <Position X="9.5" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauxModel.User">
+    <Position X="6" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauxDAL.TransactionDAL">
+    <Position X="9.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Enum Name="ChapeauxModel.Status">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="ChapeauxModel.Role">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
