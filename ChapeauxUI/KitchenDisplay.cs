@@ -15,23 +15,24 @@ namespace ChapeauxUI
     public partial class KitchenDisplay : Form
     {
         Item item;
+        User user;
 
-
-        public KitchenDisplay()
+        public KitchenDisplay(User user)
         {
+            this.user = user;
             InitializeComponent();
             DisplayForUser();
         }
   
         private void DisplayForUser()
         {
-            if (loggedUser.Role == Role.Chef)
+            if (user.Role == Role.Chef)
             {
                 ShowPanel("Kitchen");
                 ShowRunningKitchenOrder();
             }
 
-            else if (loggedUser.Role == Role.Bartender)
+            else if (user.Role == Role.Bartender)
             {
                 ShowPanel("Bar");
                 ShowRunningBarOrder();
