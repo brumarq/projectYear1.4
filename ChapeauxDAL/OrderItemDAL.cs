@@ -90,7 +90,7 @@ namespace ChapeauxDAL
             {
                 OrderItem orderItem = new OrderItem()
                 {
-                    State = dr["state"].ToString(),
+                    State = (State)Enum.Parse(typeof(State), dr["state"].ToString()),
                 };
 
                 listOfItems.Add(orderItem);
