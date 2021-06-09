@@ -122,7 +122,9 @@ namespace ChapeauUI
                 return;
             }
 
-            TakeOrderForm form = new TakeOrderForm(selectedTable, order);
+            Order_Service orderService = new Order_Service();
+            order = orderService.GetByTableID(selectedTable.TableID);
+            TakeOrderForm form = new TakeOrderForm(order);
             this.Hide();
             form.ShowDialog();
             this.Show();

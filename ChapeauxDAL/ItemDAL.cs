@@ -84,11 +84,11 @@ namespace ChapeauxDAL
             Item menuItem = new Item()
             {   //retrieve data from all fields
                 ItemID = (int)reader["itemID"],
-                Name = reader["name"].ToString(),
+                Name = (string)reader["name"],
                 Price = (decimal)reader["price"],
                 Stock = (int)reader["stock"],
-                Category = reader["category"].ToString(),
-                Course = reader["Course"].ToString(),
+                Category = (string)reader["category"],
+                Course = (string)reader["Course"],
                 VATRate = (decimal)reader["VATRate"]
             };
             return menuItem;

@@ -18,6 +18,11 @@ namespace ChapeauxLogic
 
         }
 
+        public void AddItemToOrder(OrderItem orderItem)
+        {
+            orderItemdb.AddItemToOrder(orderItem);
+        }
+
         public List<OrderItem> getDrinksStatus(int tableNumber)
         {
             return orderItemdb.GetDrinksStatus(tableNumber);

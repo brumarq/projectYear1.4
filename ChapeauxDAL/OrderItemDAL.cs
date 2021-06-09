@@ -98,5 +98,23 @@ namespace ChapeauxDAL
 
             return listOfItems;
         }
+
+        public void AddItemToOrder(OrderItem orderItem)
+        {
+            SqlCommand cmd = new SqlCommand("INSERT INTO ORDERITEMS (orderID, itemID, [count], [state], comments, orderDateTime)" +
+                                            "VALUES (@orderID, @itemID, @count, @state, @comment, @dateTime)", conn);
+
+            OpenConnection();
+
+            cmd.Parameters.AddWithValue("@orderID", orderItem.OrderID);
+            cmd.Parameters.AddWithValue("@itemID", orderItem.ItemID);
+            cmd.Parameters.AddWithValue("@count", orderItem.Count);
+            cmd.Parameters.AddWithValue("@state", orderItem.State.ToString());
+            cmd.Parameters.AddWithValue("@comment", orderItem.Comment);
+            cmd.Parameters.AddWithValue("@dateTime", orderItem.orderDateTime);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            CloseConnection();
+        }
     }
 }

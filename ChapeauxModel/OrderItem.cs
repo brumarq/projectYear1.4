@@ -15,10 +15,5 @@ namespace ChapeauxModel
         public State State { get; set; }
         public string Comment { get; set; }
         public DateTime orderDateTime { get; set; }
-
-        public OrderItem()
-        {
-            OrderItemID = ItemID; //from base
-        }
     }
 }
