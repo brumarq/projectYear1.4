@@ -7,9 +7,11 @@ namespace ChapeauxUI
 {
     public partial class AddMenuItem : Form
     {
+        Item addMenuItem = new Item();
         public AddMenuItem(Item menuItem)
         {
             InitializeComponent();
+            this.addMenuItem = menuItem;
         }
 
         private void butAddMenuItem_Click(object sender, EventArgs e)
@@ -51,15 +53,22 @@ namespace ChapeauxUI
                         };
 
                         item_Service.AddMenuItem(newMenuItem);  //add the new Item to the DB
-                        MessageBox.Show("Item Added Successfully", "Added", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("Item Added Successfully!", "Added", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                 }
                 else
-                    MessageBox.Show("Could not add the item!");
+                    MessageBox.Show("Adding the item was canceled.");
             }
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void butBack_Click(object sender, EventArgs e)
+        {
+            MenuItemDisplayForm menuItemDisplayForm = new MenuItemDisplayForm(addMenuItem);
+            menuItemDisplayForm.Show();
+            this.Close();
+        }
+
+        private void butLogOut(object sender, EventArgs e)
         {
             LoginScreen loginScreen = new LoginScreen();
             loginScreen.Show();

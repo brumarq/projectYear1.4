@@ -1,6 +1,5 @@
 ﻿using System;
 using ChapeauxModel;
-using ChapeauxLogic;
 using System.Windows.Forms;
 
 namespace ChapeauxUI
@@ -16,14 +15,19 @@ namespace ChapeauxUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginScreen());
+            //Application.Run(new LoginScreen());
 
             //User user = new User();
+            //Application.Run(new UsersDisplayForm(user));
+            
+            Item item = new Item();
+            Application.Run(new MenuItemDisplayForm(item));
+
             ////Application.Run(new UsersDisplayForm());
 
             //User addUser = new User();
             ////Application.Run(new AddAccountForm(addUser));
-            
+
             //User delUser = new User();
             ////Application.Run(new DeleteAccountForm(delUser));
 
@@ -32,8 +36,8 @@ namespace ChapeauxUI
             ////Application.Run(new EditAccountForm(prevUser, currUser));
 
 
-            //Item addItem = new Item();
-            ////Application.Run(new AddMenuItem(addItem));
+            Item addItem = new Item();
+            Application.Run(new AddMenuItem(addItem));
 
             //Item editItem1 = new Item();
             //Item editItem2 = new Item();
@@ -47,7 +51,7 @@ namespace ChapeauxUI
             ////Application.Run(new EditMenuItemForm(lastItem,currItem));
 
 
-            
+
 
         }
     }

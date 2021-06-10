@@ -112,7 +112,7 @@ namespace ChapeauxUI
 
                             new DeleteMenuItem(menuItem); 
                             this.Hide();*/
-
+                            new UsersDisplayForm(user);
                         }
                     }
                     else

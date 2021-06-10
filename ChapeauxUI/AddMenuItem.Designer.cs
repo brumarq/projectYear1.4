@@ -44,7 +44,7 @@ namespace ChapeauxUI
             this.lblVATRate = new System.Windows.Forms.Label();
             this.txtVATRate = new System.Windows.Forms.TextBox();
             this.ptcHeader = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.butBack = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
@@ -176,19 +176,20 @@ namespace ChapeauxUI
             this.ptcHeader.TabIndex = 6;
             this.ptcHeader.TabStop = false;
             // 
-            // button1
+            // butBack
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = global::ChapeauxUI.Properties.Resources.btnBack;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(3, 78);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 66);
-            this.button1.TabIndex = 14;
-            this.button1.UseVisualStyleBackColor = false;
+            this.butBack.BackColor = System.Drawing.Color.Transparent;
+            this.butBack.BackgroundImage = global::ChapeauxUI.Properties.Resources.btnBack;
+            this.butBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.butBack.FlatAppearance.BorderSize = 0;
+            this.butBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butBack.Location = new System.Drawing.Point(3, 78);
+            this.butBack.Margin = new System.Windows.Forms.Padding(4);
+            this.butBack.Name = "butBack";
+            this.butBack.Size = new System.Drawing.Size(127, 66);
+            this.butBack.TabIndex = 14;
+            this.butBack.UseVisualStyleBackColor = false;
+            this.butBack.Click += new System.EventHandler(this.butBack_Click);
             // 
             // btnLogout
             // 
@@ -203,7 +204,7 @@ namespace ChapeauxUI
             this.btnLogout.Size = new System.Drawing.Size(154, 66);
             this.btnLogout.TabIndex = 9;
             this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.btnLogout.Click += new System.EventHandler(this.butLogOut);
             // 
             // pictureBox1
             // 
@@ -233,7 +234,7 @@ namespace ChapeauxUI
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.butAddMenuItem);
             this.Controls.Add(this.lblPrice);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.butBack);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lblStock);
             this.Controls.Add(this.lblCourse);
@@ -265,7 +266,7 @@ namespace ChapeauxUI
         private System.Windows.Forms.Label lblVATRate;
         private System.Windows.Forms.TextBox txtVATRate;
         private System.Windows.Forms.PictureBox ptcHeader;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button butBack;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.PictureBox pictureBox1;
     }

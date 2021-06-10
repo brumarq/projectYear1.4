@@ -100,6 +100,12 @@
     <Compile Include="EditAccountForm.Designer.cs">
       <DependentUpon>EditAccountForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuItemDisplayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuItemDisplayForm.Designer.cs">
+      <DependentUpon>MenuItemDisplayForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StockAdjustmentForm.cs">
@@ -164,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Checkout.resx">
       <DependentUpon>Checkout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuItemDisplayForm.resx">
+      <DependentUpon>MenuItemDisplayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
