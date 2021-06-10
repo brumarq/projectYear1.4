@@ -14,7 +14,7 @@ namespace ChapeauxUI
 {
     public partial class KitchenDisplay : Form
     {
-        private Item item;
+        private OrderItem orderitem;
         private User user;
 
         public KitchenDisplay(User user)
@@ -72,16 +72,16 @@ namespace ChapeauxUI
 
 
                 //Change to OrderItems
-                Item_Service itemservice = new Item_Service();
-                List<Item> itemlist = itemservice.GetItems();
-                foreach (Item item in itemlist)
+                OrderItem_Service orderitemservice = new OrderItem_Service();
+                List<OrderItem> orderitemlist = orderitemservice.GetItems();
+                foreach (OrderItem orderItem in orderitemlist)
                 {
-                    ListViewItem list = new ListViewItem(item.ItemID.ToString());
-                    list.SubItems.Add(item.Name.ToString());
-                    list.SubItems.Add(item.Price.ToString());
-                    list.SubItems.Add(item.Stock.ToString());
-                    list.SubItems.Add(item.Category.ToString());
-                    list.SubItems.Add(item.VATRate.ToString());
+                    ListViewItem list = new ListViewItem(orderItem.OrderItemID.ToString());
+                    list.SubItems.Add(orderitem.OrderID.ToString());
+                    list.SubItems.Add(orderitem.Count.ToString());
+                    list.SubItems.Add(orderitem.State.ToString());
+                    list.SubItems.Add(orderitem.Comment.ToString());
+                    list.SubItems.Add(orderitem.orderDateTime.ToString());
 
                     listViewBarmanDisplay.Items.Add(list);
                 }
@@ -101,17 +101,17 @@ namespace ChapeauxUI
             {
                 //Change to OrderItems
                 listViewTableKitchen.Clear();
-                Item_Service itemservice = new Item_Service();
-                List<Item> itemlist = itemservice.GetItems();
+                OrderItem_Service orderitemservice = new OrderItem_Service();
+                List<OrderItem> orderitemlist = orderitemservice.GetItems();
 
-                foreach (Item item in itemlist)
+                foreach (OrderItem orderitem in orderitemlist)
                 {
-                    ListViewItem list = new ListViewItem(item.ItemID.ToString());
-                    list.SubItems.Add(item.Name.ToString());
-                    list.SubItems.Add(item.Price.ToString());
-                    list.SubItems.Add(item.Stock.ToString());
-                    list.SubItems.Add(item.Category.ToString());
-                    list.SubItems.Add(item.VATRate.ToString());
+                    ListViewItem list = new ListViewItem(orderitem.OrderItemID.ToString());
+                    list.SubItems.Add(orderitem.OrderID.ToString());
+                    list.SubItems.Add(orderitem.Count.ToString());
+                    list.SubItems.Add(orderitem.State.ToString());
+                    list.SubItems.Add(orderitem.Comment.ToString());
+                    list.SubItems.Add(orderitem.orderDateTime.ToString());
 
                     listViewBarmanDisplay.Items.Add(list);
                 }
@@ -158,14 +158,14 @@ namespace ChapeauxUI
 
         private void listViewTableKitchen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            item = new Item
+            orderitem = new OrderItem
             {
-                ItemID = Convert.ToInt32(listViewTableKitchen.SelectedItems[0].SubItems[0].Text),
-                Name = "",
-                Price = Convert.ToInt32(listViewTableKitchen.SelectedItems[0].SubItems[0].Text),
-                Stock = Convert.ToInt32(listViewTableKitchen.SelectedItems[0].SubItems[0].Text),
-                Category = "",
-                VATRate = Convert.ToInt32(listViewTableKitchen.SelectedItems[0].SubItems[0].Text),
+                OrderItemID = Convert.ToInt32(listViewTableKitchen.SelectedItems[0].SubItems[0].Text),
+                OrderID = Convert.ToInt32(listViewTableKitchen.SelectedItems[0].SubItems[0].Text),
+                Count = Convert.ToInt32(listViewTableKitchen.SelectedItems[0].SubItems[0].Text),
+                State = State.loading ,
+                Comment = "",
+                orderDateTime = DateTime.Now,
             };
         }
 

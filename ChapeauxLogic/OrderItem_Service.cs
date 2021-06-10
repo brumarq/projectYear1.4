@@ -17,7 +17,10 @@ namespace ChapeauxLogic
             orderItemdb = new OrderItemDAL();
 
         }
-
+        public List<OrderItem> GetItems()
+        {
+            return orderItemdb.Get_All_Order_Items_DB();
+        }
         public List<OrderItem> getDrinksStatus(int tableNumber)
         {
             return orderItemdb.GetDrinksStatus(tableNumber);
