@@ -130,6 +130,9 @@
   <data name="btnRemove" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnRemove.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="amex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\amex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="200eu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\200eu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -192,6 +195,9 @@
   </data>
   <data name="drinks-beingPrepared1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\drinks-beingPrepared.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="food-served" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\food-served.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btnAddNewOrder-hover1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnAddNewOrder-hover1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -265,14 +271,11 @@
   <data name="drinks-served" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\drinks-served.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnRemoveComment" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnRemoveComment.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="btnCash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnCash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="food-served" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\food-served.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnCoin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnCoin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btnRemoveComment1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnRemoveComment1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -325,11 +328,14 @@
   <data name="20euros" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\20euros.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btnPayNow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnPayNow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Screenshot (57)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Screenshot (57).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnCoin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnCoin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnRemoveComment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnRemoveComment.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="100eu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\100eu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -370,7 +376,7 @@
   <data name="btnAddNewOrder-enabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnAddNewOrder-enabled.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="amex" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\amex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnResetReceivedCash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnResetReceivedCash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

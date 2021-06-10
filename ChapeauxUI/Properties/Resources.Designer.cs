@@ -523,6 +523,16 @@ namespace ChapeauxUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnPayNow {
+            get {
+                object obj = ResourceManager.GetObject("btnPayNow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnPrintReceipt {
             get {
                 object obj = ResourceManager.GetObject("btnPrintReceipt", resourceCulture);
@@ -576,6 +586,16 @@ namespace ChapeauxUI.Properties {
         internal static System.Drawing.Bitmap btnRemoveComment3 {
             get {
                 object obj = ResourceManager.GetObject("btnRemoveComment3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnResetReceivedCash {
+            get {
+                object obj = ResourceManager.GetObject("btnResetReceivedCash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

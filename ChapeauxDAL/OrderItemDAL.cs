@@ -36,7 +36,7 @@ namespace ChapeauxDAL
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
-                            "WHERE ITEMS.category = 'Food' " +
+                            "WHERE (ITEMS.category = 'Lunch' OR ITEMS.category = 'Dinner') " +
                             "AND ORDERITEMS.orderID = @orderID " +
                             "ORDER BY ITEMS.[itemID]";
             SqlParameter[] sqlParameters = {

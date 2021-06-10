@@ -13,9 +13,9 @@ namespace ChapeauxLogic
         //private OrderDAL orderDal = new OrderDAL();
         TransactionDAL transactionDAL = new TransactionDAL();
 
-        public bool AddTransaction(Transaction transaction)
+        public void AddTransaction(Transaction transaction)
         {
-            return transactionDAL.AddTransaction(transaction);
+            transactionDAL.AddTransaction(transaction);
         }
 
         private Transaction GetByID(int transactionID)
