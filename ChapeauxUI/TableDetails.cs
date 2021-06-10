@@ -28,9 +28,8 @@ namespace ChapeauUI
         {
             lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
             lblTableStatus.Text = $"Table {selectedTable.TableID}: {selectedTable.Status}";
-
+            btnCheckout.Enabled = false;
             updateStatus();
-
         }
 
         private void btnBackToOverview_Click(object sender, EventArgs e)
@@ -81,21 +80,28 @@ namespace ChapeauUI
             if (selectedTable.Status == Status.Occupied || selectedTable.Status == Status.Late)
             {
                 Order_Service order_service = new Order_Service();
-                bool thereIsAnOrder = order_service.getOrderForTable(selectedTable.TableID);
+                bool thereIsAnOrder = order_service.getOrderForTable(selectedTable.TableID); // change name
 
                 if (thereIsAnOrder)
                 {
+                    if (false)
+                    {
+                        // check if every orderitems have been served
+                        btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_hover;
+                        btnCheckout.Enabled = false;
+                    }
                     tableHasOrders = true;
                     btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_hover;
-
+                    btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_enabled;
+                    btnCheckout.Enabled = true;
                 }
                 else
                 {
                     tableHasOrders = false;
                     btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_enabled;
                     btnAddNewOrder.BackgroundImage = ChapeauxUI.Properties.Resources.btnAddNewOrder_enabled;
-                    btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_enabled;
-                    CreateNewOrder();
+                    btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_hover;
+                    btnCheckout.Enabled = false;
                 }
             }
             else if (selectedTable.Status == Status.Free)
@@ -121,6 +127,14 @@ namespace ChapeauUI
             {
                 return;
             }
+
+            if (!tableHasOrders)
+            {
+                CreateNewOrder();
+
+                tableHasOrders = true;
+            }
+
 
             Order_Service orderService = new Order_Service();
             order = orderService.GetByTableID(selectedTable.TableID);

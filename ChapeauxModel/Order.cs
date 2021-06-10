@@ -14,7 +14,7 @@ namespace ChapeauxModel
 
         public int OrderID { get; set; }
         public DateTime startDateTime { get; set; }
-        public DateTime endDateTime { get; set; }
+        public DateTime? endDateTime { get; set; }
         public bool IsPaid { get; set; }
         public int TableID { get; set; }
         public int UserID { get; set; }

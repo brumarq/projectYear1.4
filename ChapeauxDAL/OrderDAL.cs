@@ -48,11 +48,12 @@ namespace ChapeauxDAL
         #region Storing
         public void AddNewOrder(Order order)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO ORDERS (startDateTime, isPaid, tableID, userID) " +
-                                            "VALUES(@startDateTime, @isPaid, @tableID, @userID)", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO ORDERS (startDateTime, endDateTime, isPaid, tableID, userID) " +
+                                            "VALUES(@startDateTime, @endDateTime, @isPaid, @tableID, @userID)", conn);
 
             OpenConnection();
             cmd.Parameters.AddWithValue("@startDateTime", DateTime.Now);
+            cmd.Parameters.AddWithValue("@endDateTime", (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue);
             cmd.Parameters.AddWithValue("@isPaid", false);
             cmd.Parameters.AddWithValue("@tableID", order.TableID);
             cmd.Parameters.AddWithValue("@userID", order.UserID);

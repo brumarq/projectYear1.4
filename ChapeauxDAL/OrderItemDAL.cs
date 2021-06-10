@@ -22,7 +22,7 @@ namespace ChapeauxDAL
 
         public List<OrderItem> GetFoodStatus(int tableNumber)
         {
-            string query = "SELECT ORDERITEMS.state FROM ORDERITEMS INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID WHERE ITEMS.category = 'Food' AND ORDERS.tableID = @tableID AND ORDERs.isPaid = 0; ";
+            string query = "SELECT ORDERITEMS.state, ORDERS.orderID, ORDERS.tableID FROM ORDERITEMS INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID WHERE (ITEMS.category = 'Lunch' OR ITEMS.category = 'Dinner') AND ORDERS.tableID=@tableID AND ORDERs.isPaid = 0;";
             SqlParameter[] sqlParameters = {
                  new SqlParameter("@tableID", tableNumber),
             };
