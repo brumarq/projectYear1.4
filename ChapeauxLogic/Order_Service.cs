@@ -19,7 +19,7 @@ namespace ChapeauxLogic
             orderItemdb = new OrderItemDAL();
         }
 
-        public bool getOrderForTable(int tableNumber)
+        public bool tableContainsOrder(int tableNumber)
         {
             return orderdb.IsThereAnOrder(tableNumber);
         }
@@ -32,6 +32,12 @@ namespace ChapeauxLogic
         public Order GetByTableID(int tableID)
         {
             Order order = orderdb.GetByTableID(tableID);
+
+            if (order == null)
+            {
+                return null;
+            }
+
             order.foodItems = orderItemdb.GetOrderFood(order.OrderID);
             order.drinkItems = orderItemdb.GetOrderDrinks(order.OrderID);
 

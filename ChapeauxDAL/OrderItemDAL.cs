@@ -32,7 +32,7 @@ namespace ChapeauxDAL
         #region Checkout
         public List<OrderItem> GetOrderFood(int orderID)
         {
-            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.itemID, ORDERITEMS.[count], ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate " +
+            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate " +
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
@@ -47,7 +47,7 @@ namespace ChapeauxDAL
 
         public List<OrderItem> GetOrderDrinks(int orderID)
         {
-            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.itemID, ORDERITEMS.[count], ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate " +
+            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate " +
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
@@ -69,7 +69,6 @@ namespace ChapeauxDAL
                 {
                      OrderID = (int)dr["orderID"],
                      ItemID = (int)dr["itemID"],
-                     Count = (int)dr["count"],
                      Name = (string)dr["name"],
                      Category = (string)dr["category"],
                      Price = (decimal)dr["price"],
@@ -101,14 +100,13 @@ namespace ChapeauxDAL
 
         public void AddItemToOrder(OrderItem orderItem)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO ORDERITEMS (orderID, itemID, [count], [state], comments, orderDateTime)" +
-                                            "VALUES (@orderID, @itemID, @count, @state, @comment, @dateTime)", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO ORDERITEMS (orderID, itemID, [state], comments, orderDateTime)" +
+                                            "VALUES (@orderID, @itemID, @state, @comment, @dateTime)", conn);
 
             OpenConnection();
 
             cmd.Parameters.AddWithValue("@orderID", orderItem.OrderID);
             cmd.Parameters.AddWithValue("@itemID", orderItem.ItemID);
-            cmd.Parameters.AddWithValue("@count", orderItem.Count);
             cmd.Parameters.AddWithValue("@state", orderItem.State.ToString());
             cmd.Parameters.AddWithValue("@comment", orderItem.Comment);
             cmd.Parameters.AddWithValue("@dateTime", orderItem.orderDateTime);
