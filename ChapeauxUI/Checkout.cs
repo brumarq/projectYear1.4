@@ -233,6 +233,7 @@ namespace ChapeauxUI
 
         #region Payment
         #region Events
+        //Navigation
         private void btnBackToCheckout_Click(object sender, EventArgs e)
         {
             ShowPanel("Checkout");
@@ -250,8 +251,10 @@ namespace ChapeauxUI
             transactionService.AddTransaction(transaction);
 
             ShowPanel("Overview");
+            LoadPaymentOverView();
         }
 
+        //Cash
         private void btnCash_Click(object sender, EventArgs e)
         {
             btnCash.Enabled = false;
@@ -259,66 +262,6 @@ namespace ChapeauxUI
             subPnlCard.Hide();
             subPnlCash.Show();
             transaction.PaymentType = PaymentType.Cash;
-        }
-
-        private void btnCard_Click(object sender, EventArgs e)
-        {
-            btnCard.Enabled = false;
-            btnCash.Enabled = true;
-            subPnlCash.Hide();
-            subPnlCard.Show();
-            lblPaymentMethod.Text = "";
-        }
-
-        private void btnMaestro_Click(object sender, EventArgs e)
-        {
-            transaction.PaymentType = PaymentType.Maestro;
-            lblPaymentMethod.Text = transaction.PaymentType.ToString();
-        }
-
-        private void btnMasterCard_Click(object sender, EventArgs e)
-        {
-            transaction.PaymentType = PaymentType.MasterCard;
-            lblPaymentMethod.Text = transaction.PaymentType.ToString();
-        }
-
-        private void btnVisa_Click(object sender, EventArgs e)
-        {
-            transaction.PaymentType = PaymentType.VISA;
-            lblPaymentMethod.Text = transaction.PaymentType.ToString();
-        }
-
-        private void btnAmex_Click(object sender, EventArgs e)
-        {
-            transaction.PaymentType = PaymentType.AMEX;
-            lblPaymentMethod.Text = transaction.PaymentType.ToString();
-        }
-
-        private void btnPayNow_Click(object sender, EventArgs e)
-        {
-            lblCardPaymentStatus.ForeColor = Color.Orange;
-            lblCardPaymentStatus.Text = "PENDING";
-
-            DialogResult result = MessageBox.Show("Was the payment successful?", "Perform/Decline Transaction", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                transaction.Order.IsPaid = true;
-                transaction.State = PaymentState.Received;
-                DisablePaymentButtons();
-                lblCardPaymentStatus.ForeColor = Color.DarkGreen;
-                lblCardPaymentStatus.Text = "PAID";
-                btnFinishPayment.Enabled = true;
-            }
-
-            else
-            {
-                transaction.State = PaymentState.Failed;
-                MessageBox.Show("ERROR: Payment Declined!", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                lblCardPaymentStatus.ForeColor = Color.Red;
-                lblCardPaymentStatus.Text = "NOT PAID";
-            }
-
         }
 
         private void btn5eu_Click(object sender, EventArgs e)
@@ -392,19 +335,77 @@ namespace ChapeauxUI
             receivedCash = 0.05m;
             ProcessReceivedCash(receivedCash);
         }
-        #endregion
-        #region Methods
-        private void DisablePaymentButtons()
+
+        private void btnResetCash_Click(object sender, EventArgs e)
         {
-            btnCash.Enabled = false;
-            btnMaestro.Enabled = false;
-            btnMasterCard.Enabled = false;
-            btnVisa.Enabled = false;
-            btnAmex.Enabled = false;
-            btnPayNow.Enabled = false;
-            btnBackToCheckout.Enabled = false;
+            totalReceivedCash = 0;
+            changeToGive = 0;
+            ProcessReceivedCash(0);
         }
 
+        //Card
+        private void btnCard_Click(object sender, EventArgs e)
+        {
+            btnCard.Enabled = false;
+            btnCash.Enabled = true;
+            subPnlCash.Hide();
+            subPnlCard.Show();
+            lblPaymentMethod.Text = "";
+        }
+
+        private void btnMaestro_Click(object sender, EventArgs e)
+        {
+            transaction.PaymentType = PaymentType.Maestro;
+            lblPaymentMethod.Text = transaction.PaymentType.ToString();
+        }
+
+        private void btnMasterCard_Click(object sender, EventArgs e)
+        {
+            transaction.PaymentType = PaymentType.MasterCard;
+            lblPaymentMethod.Text = transaction.PaymentType.ToString();
+        }
+
+        private void btnVisa_Click(object sender, EventArgs e)
+        {
+            transaction.PaymentType = PaymentType.VISA;
+            lblPaymentMethod.Text = transaction.PaymentType.ToString();
+        }
+
+        private void btnAmex_Click(object sender, EventArgs e)
+        {
+            transaction.PaymentType = PaymentType.AMEX;
+            lblPaymentMethod.Text = transaction.PaymentType.ToString();
+        }
+
+        private void btnPayNow_Click(object sender, EventArgs e)
+        {
+            lblCardPaymentStatus.ForeColor = Color.Orange;
+            lblCardPaymentStatus.Text = "PENDING";
+
+            DialogResult result = MessageBox.Show("Was the payment successful?", "Perform/Decline Transaction", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                transaction.Order.IsPaid = true;
+                transaction.State = PaymentState.Received;
+                DisablePaymentButtons();
+                lblCardPaymentStatus.ForeColor = Color.DarkGreen;
+                lblCardPaymentStatus.Text = "PAID";
+                btnFinishPayment.Enabled = true;
+            }
+
+            else
+            {
+                transaction.State = PaymentState.Failed;
+                MessageBox.Show("ERROR: Payment Declined!", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblCardPaymentStatus.ForeColor = Color.Red;
+                lblCardPaymentStatus.Text = "NOT PAID";
+            }
+
+        }
+        #endregion
+        #region Methods
+        //Cash
         private void ProcessReceivedCash(decimal received)
         {
             totalReceivedCash += received;
@@ -423,6 +424,18 @@ namespace ChapeauxUI
             lblReceivedCash.Text = totalReceivedCash.ToString();
             lblChangeToGive.Text = changeToGive.ToString();
         }
+
+        //Card
+        private void DisablePaymentButtons()
+        {
+            btnCash.Enabled = false;
+            btnMaestro.Enabled = false;
+            btnMasterCard.Enabled = false;
+            btnVisa.Enabled = false;
+            btnAmex.Enabled = false;
+            btnPayNow.Enabled = false;
+            btnBackToCheckout.Enabled = false;
+        }
         #endregion
         #endregion
 
@@ -432,6 +445,38 @@ namespace ChapeauxUI
             ShowPanel("Payment");
             if (transaction.Order.IsPaid && transaction.PaymentType != PaymentType.Cash)
                 subPnlCard.Show();
+        }
+
+        private void LoadPaymentOverView()
+        {
+            FillListViewOverview();
+
+        }
+
+        private void FillListViewOverview()
+        {
+            try
+            {
+                foreach (OrderItem orderItem in transaction.Order.orderItems)
+                {
+                    ListViewItem li = new ListViewItem(orderItem.ItemID.ToString(), 0);
+                    li.SubItems.Add(orderItem.Name);
+                    li.SubItems.Add(orderItem.Count.ToString());
+                    li.SubItems.Add(orderItem.Price.ToString("0.00"));
+                    listViewCheckoutOrder.Items.Add(li);
+                }
+
+                lblCheckoutOrderID.Text = $"#{transaction.Order.OrderID}";
+                lblTotalResult.Text = $"{transaction.Order.TotalPrice: 0.00}";
+                lblVATHighResult.Text = $"{transaction.Order.VATHigh: 0.00}";
+                lblVATLowResult.Text = $"{transaction.Order.VATLow: 0.00}";
+                txtTipAmount.Text = $"{transaction.TipAmount: 0.00}";
+                txtToPay.Text = $"{transaction.Order.TotalPrice: 0.00}";
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         //*** add method to load listview of transaction/order
@@ -444,17 +489,12 @@ namespace ChapeauxUI
             {
                 Table_Service tableService = new Table_Service();
                 tableService.UpdateStatus(currentTable.TableID, Status.Free);
-                
+
             }
             this.Close();
         }
         #endregion
 
-        private void btnResetCash_Click(object sender, EventArgs e)
-        {
-            totalReceivedCash = 0;
-            changeToGive = 0;
-            ProcessReceivedCash(0);
-        }
+
     }
 }
