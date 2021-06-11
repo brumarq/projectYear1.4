@@ -25,6 +25,7 @@ namespace ChapeauUI
         public void Reload()
         {
             fillUpOrderDetails();
+            updateTableState();
             updateStatus();
         }
 
@@ -82,6 +83,11 @@ namespace ChapeauUI
         }
 
         private void btnOccupyTable_Click(object sender, EventArgs e)
+        {
+            updateTableState();
+        }
+        
+        private void updateTableState()
         {
             Table_Service table_service = new Table_Service();
 
