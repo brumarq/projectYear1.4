@@ -84,11 +84,6 @@ namespace ChapeauUI
 
         private void btnOccupyTable_Click(object sender, EventArgs e)
         {
-            updateTableState();
-        }
-        
-        private void updateTableState()
-        {
             Table_Service table_service = new Table_Service();
 
             if (currentTable.Status == Status.Free)
@@ -114,7 +109,13 @@ namespace ChapeauUI
             }
         }
 
-        void updateStatus()
+        private void updateTableState()
+        {
+            Table_Service table_service = new Table_Service();
+            currentTable = table_service.getTable(currentTable.TableID);
+        }
+
+        private void updateStatus()
         {
             lblTableStatus.Text = $"Table {currentTable.TableID}: {currentTable.Status}";
 
