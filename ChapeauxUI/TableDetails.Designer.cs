@@ -29,6 +29,7 @@ namespace ChapeauUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableDetails));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblUserFullName = new System.Windows.Forms.Label();
             this.lblTableStatus = new System.Windows.Forms.Label();
@@ -279,6 +280,7 @@ namespace ChapeauUI
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pctLogo);
             this.Controls.Add(this.ptcHeader);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TableDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chapeau - Table Details";
