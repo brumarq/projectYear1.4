@@ -11,5 +11,10 @@ namespace ChapeauxUI
         {
             InitializeComponent();
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

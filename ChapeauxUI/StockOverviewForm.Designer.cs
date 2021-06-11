@@ -31,16 +31,16 @@ namespace ChapeauxUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockOverviewForm));
             this.lblStockOverview = new System.Windows.Forms.Label();
-            this.lblItemName = new System.Windows.Forms.Label();
-            this.lblCost = new System.Windows.Forms.Label();
-            this.lblItemQuantity = new System.Windows.Forms.Label();
-            this.lblCategory = new System.Windows.Forms.Label();
             this.butQuantityAdd = new System.Windows.Forms.Button();
             this.butQuantityRemove = new System.Windows.Forms.Button();
             this.ptcHeader = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.lvItemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvItemQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -55,68 +55,28 @@ namespace ChapeauxUI
             this.lblStockOverview.TabIndex = 0;
             this.lblStockOverview.Text = "Stock Overview";
             // 
-            // lblItemName
-            // 
-            this.lblItemName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblItemName.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.lblItemName.Location = new System.Drawing.Point(64, 238);
-            this.lblItemName.Name = "lblItemName";
-            this.lblItemName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblItemName.Size = new System.Drawing.Size(67, 15);
-            this.lblItemName.TabIndex = 0;
-            this.lblItemName.Text = "Item name";
-            // 
-            // lblCost
-            // 
-            this.lblCost.AutoSize = true;
-            this.lblCost.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.lblCost.Location = new System.Drawing.Point(381, 238);
-            this.lblCost.Name = "lblCost";
-            this.lblCost.Size = new System.Drawing.Size(53, 15);
-            this.lblCost.TabIndex = 0;
-            this.lblCost.Text = "Cost (€)";
-            // 
-            // lblItemQuantity
-            // 
-            this.lblItemQuantity.AutoSize = true;
-            this.lblItemQuantity.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.lblItemQuantity.Location = new System.Drawing.Point(183, 238);
-            this.lblItemQuantity.Name = "lblItemQuantity";
-            this.lblItemQuantity.Size = new System.Drawing.Size(83, 15);
-            this.lblItemQuantity.TabIndex = 0;
-            this.lblItemQuantity.Text = "Item quantity";
-            // 
-            // lblCategory
-            // 
-            this.lblCategory.AutoSize = true;
-            this.lblCategory.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.lblCategory.Location = new System.Drawing.Point(299, 238);
-            this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(58, 15);
-            this.lblCategory.TabIndex = 0;
-            this.lblCategory.Text = "Category";
-            // 
             // butQuantityAdd
             // 
             this.butQuantityAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.butQuantityAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.butQuantityAdd.Location = new System.Drawing.Point(445, 221);
+            this.butQuantityAdd.Location = new System.Drawing.Point(32, 232);
             this.butQuantityAdd.Name = "butQuantityAdd";
-            this.butQuantityAdd.Size = new System.Drawing.Size(94, 34);
+            this.butQuantityAdd.Size = new System.Drawing.Size(129, 34);
             this.butQuantityAdd.TabIndex = 1;
-            this.butQuantityAdd.Text = "Quantity +";
+            this.butQuantityAdd.Text = "Add Quantity";
             this.butQuantityAdd.UseVisualStyleBackColor = false;
             // 
             // butQuantityRemove
             // 
             this.butQuantityRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.butQuantityRemove.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.butQuantityRemove.Location = new System.Drawing.Point(573, 221);
+            this.butQuantityRemove.Location = new System.Drawing.Point(167, 232);
             this.butQuantityRemove.Name = "butQuantityRemove";
-            this.butQuantityRemove.Size = new System.Drawing.Size(94, 34);
+            this.butQuantityRemove.Size = new System.Drawing.Size(129, 34);
             this.butQuantityRemove.TabIndex = 1;
-            this.butQuantityRemove.Text = "Quantity -";
+            this.butQuantityRemove.Text = "Remove Quantity";
             this.butQuantityRemove.UseVisualStyleBackColor = false;
+            this.butQuantityRemove.Click += new System.EventHandler(this.butQuantityRemove_Click);
             // 
             // ptcHeader
             // 
@@ -171,20 +131,50 @@ namespace ChapeauxUI
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // listView1
+            // 
+            this.listView1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvItemName,
+            this.lvItemQuantity,
+            this.lvCategory});
+            this.listView1.GridLines = true;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(82, 304);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(484, 685);
+            this.listView1.TabIndex = 33;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // lvItemName
+            // 
+            this.lvItemName.Text = "Item Name";
+            this.lvItemName.Width = 225;
+            // 
+            // lvItemQuantity
+            // 
+            this.lvItemQuantity.Text = "Item Quantity";
+            this.lvItemQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lvItemQuantity.Width = 90;
+            // 
+            // lvCategory
+            // 
+            this.lvCategory.Text = "Category";
+            this.lvCategory.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lvCategory.Width = 120;
+            // 
             // StockOverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(706, 981);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.butQuantityRemove);
             this.Controls.Add(this.lblStockOverview);
             this.Controls.Add(this.butQuantityAdd);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lblItemName);
-            this.Controls.Add(this.lblCategory);
-            this.Controls.Add(this.lblCost);
-            this.Controls.Add(this.lblItemQuantity);
             this.Controls.Add(this.ptcHeader);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnLogout);
@@ -205,15 +195,15 @@ namespace ChapeauxUI
         #endregion
 
         private System.Windows.Forms.Label lblStockOverview;
-        private System.Windows.Forms.Label lblCost;
-        private System.Windows.Forms.Label lblItemQuantity;
-        private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.Button butQuantityAdd;
         private System.Windows.Forms.Button butQuantityRemove;
-        private System.Windows.Forms.Label lblItemName;
         private System.Windows.Forms.PictureBox ptcHeader;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader lvItemName;
+        private System.Windows.Forms.ColumnHeader lvItemQuantity;
+        private System.Windows.Forms.ColumnHeader lvCategory;
     }
 }

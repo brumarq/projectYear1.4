@@ -12,11 +12,10 @@ namespace ChapeauxUI
         User_Service userService;
         ListViewItem lvItem;
 
-
-        public UsersDisplayForm(User currUser)
+        public UsersDisplayForm(User user)
         {
             InitializeComponent();
-            user = currUser;
+            this.user = user;
         }
 
         private void UsersDisplayForm_Load(object sender, EventArgs e)
@@ -50,18 +49,43 @@ namespace ChapeauxUI
 
         private void listViewDisplayForm_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listViewDisplayForm.SelectedItems.Count == 1)
-            {
-                user.UserID = int.Parse(listViewDisplayForm.SelectedItems[0].Text);
-                // fetch data for that user
-            }
         }
-        
-        private void btnLogout_Click(object sender, EventArgs e)
+
+        private void butAdd_Click(object sender, EventArgs e)
+        {
+            AddAccountForm addAccount = new AddAccountForm(user);
+            addAccount.Show();
+            this.Hide();
+
+        }
+
+        private void butLogOut_Click(object sender, EventArgs e)
         {
             LoginScreen loginScreen = new LoginScreen();
             loginScreen.Show();
-            this.Close();
+            this.Hide();
+
+        }
+
+        private void butBack_Click(object sender, EventArgs e)
+        {
+            UsersDisplayForm usersDisplayForm = new UsersDisplayForm(user);
+            usersDisplayForm.Show();
+            this.Hide();
+        }
+        private void Delete()
+        {
+            if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                GetUserList();
+                userService.RemoveUserAccount(user);
+            }
+            else
+                return;
+        }
+        private void butDelete_Click(object sender, EventArgs e)
+        {
+            Delete();
         }
     }
 }

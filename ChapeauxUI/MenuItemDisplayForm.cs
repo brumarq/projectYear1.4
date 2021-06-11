@@ -8,7 +8,7 @@ namespace ChapeauxUI
 {
     public partial class MenuItemDisplayForm : Form
     {
-        Item menuItem;
+        Item menuItem = new Item();
         Item_Service itemService;
         ListViewItem lvItem;
 
@@ -20,12 +20,8 @@ namespace ChapeauxUI
 
         private void listViewDisplayForm_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listViewDisplayForm.SelectedItems.Count == 1)
-            {
-                menuItem.ItemID = int.Parse(listViewDisplayForm.SelectedItems[0].Text);
-                // fetch data for that user
-            }
         }
+
         private void GetItemList()
         {
             itemService = new Item_Service();
@@ -37,7 +33,7 @@ namespace ChapeauxUI
                 lvItem = new ListViewItem(i.ItemID.ToString(), 0);
                 lvItem.SubItems.Add(i.Name);
                 lvItem.SubItems.Add(i.Price.ToString("0.00"));
-                lvItem.SubItems.Add(i.Stock.ToString());
+                lvItem.SubItems.Add(i.Stock.ToString("0"));
                 lvItem.SubItems.Add(i.Category.ToString());
                 lvItem.SubItems.Add(i.Course.ToString());
                 lvItem.SubItems.Add(i.VATRate.ToString("0.00"));
@@ -56,6 +52,22 @@ namespace ChapeauxUI
             AddMenuItem addMenuItem = new AddMenuItem(menuItem);
             addMenuItem.Show();
             this.Close();
+        }
+
+        private void Delete()
+        {
+            if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                GetItemList();
+                itemService.DeleteMenuItem(menuItem);
+            }
+            else
+                return;
+        }
+
+        private void butDelete_Click(object sender, EventArgs e)
+        {
+            Delete();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

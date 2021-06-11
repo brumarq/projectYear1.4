@@ -7,11 +7,12 @@ namespace ChapeauxUI
 {
     public partial class AddMenuItem : Form
     {
-        Item addMenuItem = new Item();
+        Item menuItem = new Item();
+
         public AddMenuItem(Item menuItem)
         {
             InitializeComponent();
-            this.addMenuItem = menuItem;
+            this.menuItem = menuItem;
         }
 
         private void butAddMenuItem_Click(object sender, EventArgs e)
@@ -63,16 +64,16 @@ namespace ChapeauxUI
 
         private void butBack_Click(object sender, EventArgs e)
         {
-            MenuItemDisplayForm menuItemDisplayForm = new MenuItemDisplayForm(addMenuItem);
+            MenuItemDisplayForm menuItemDisplayForm = new MenuItemDisplayForm(menuItem);
             menuItemDisplayForm.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void butLogOut(object sender, EventArgs e)
         {
             LoginScreen loginScreen = new LoginScreen();
             loginScreen.Show();
-            this.Close();
+            this.Hide();
         }
     }
 }

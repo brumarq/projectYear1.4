@@ -38,11 +38,12 @@ namespace ChapeauxUI
             this.lvPassword = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvRole = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.butDisplay = new System.Windows.Forms.Button();
-            this.butClear = new System.Windows.Forms.Button();
+            this.butAdd = new System.Windows.Forms.Button();
             this.ptcHeader = new System.Windows.Forms.PictureBox();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.butBack = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.butDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +61,7 @@ namespace ChapeauxUI
             this.listViewDisplayForm.FullRowSelect = true;
             this.listViewDisplayForm.GridLines = true;
             this.listViewDisplayForm.HideSelection = false;
-            this.listViewDisplayForm.Location = new System.Drawing.Point(39, 212);
+            this.listViewDisplayForm.Location = new System.Drawing.Point(39, 244);
             this.listViewDisplayForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewDisplayForm.MultiSelect = false;
             this.listViewDisplayForm.Name = "listViewDisplayForm";
@@ -102,24 +103,25 @@ namespace ChapeauxUI
             // 
             // butDisplay
             // 
-            this.butDisplay.Location = new System.Drawing.Point(441, 126);
+            this.butDisplay.Location = new System.Drawing.Point(610, 207);
             this.butDisplay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.butDisplay.Name = "butDisplay";
-            this.butDisplay.Size = new System.Drawing.Size(112, 47);
+            this.butDisplay.Size = new System.Drawing.Size(112, 32);
             this.butDisplay.TabIndex = 1;
             this.butDisplay.Text = "Display";
             this.butDisplay.UseVisualStyleBackColor = true;
             this.butDisplay.Click += new System.EventHandler(this.butDisplay_Click);
             // 
-            // butClear
+            // butAdd
             // 
-            this.butClear.Location = new System.Drawing.Point(577, 126);
-            this.butClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.butClear.Name = "butClear";
-            this.butClear.Size = new System.Drawing.Size(112, 47);
-            this.butClear.TabIndex = 1;
-            this.butClear.Text = "Clear";
-            this.butClear.UseVisualStyleBackColor = true;
+            this.butAdd.Location = new System.Drawing.Point(728, 207);
+            this.butAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.butAdd.Name = "butAdd";
+            this.butAdd.Size = new System.Drawing.Size(112, 32);
+            this.butAdd.TabIndex = 1;
+            this.butAdd.Text = "Add";
+            this.butAdd.UseVisualStyleBackColor = true;
+            this.butAdd.Click += new System.EventHandler(this.butAdd_Click);
             // 
             // ptcHeader
             // 
@@ -146,20 +148,22 @@ namespace ChapeauxUI
             this.btnLogout.Size = new System.Drawing.Size(154, 66);
             this.btnLogout.TabIndex = 9;
             this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.butLogOut_Click);
             // 
-            // button1
+            // butBack
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = global::ChapeauxUI.Properties.Resources.btnBack;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(3, 77);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 66);
-            this.button1.TabIndex = 14;
-            this.button1.UseVisualStyleBackColor = false;
+            this.butBack.BackColor = System.Drawing.Color.Transparent;
+            this.butBack.BackgroundImage = global::ChapeauxUI.Properties.Resources.btnBack;
+            this.butBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.butBack.FlatAppearance.BorderSize = 0;
+            this.butBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butBack.Location = new System.Drawing.Point(3, 77);
+            this.butBack.Margin = new System.Windows.Forms.Padding(4);
+            this.butBack.Name = "butBack";
+            this.butBack.Size = new System.Drawing.Size(127, 66);
+            this.butBack.TabIndex = 14;
+            this.butBack.UseVisualStyleBackColor = false;
+            this.butBack.Click += new System.EventHandler(this.butBack_Click);
             // 
             // pictureBox1
             // 
@@ -173,19 +177,30 @@ namespace ChapeauxUI
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
             // 
+            // butDelete
+            // 
+            this.butDelete.Location = new System.Drawing.Point(846, 207);
+            this.butDelete.Name = "butDelete";
+            this.butDelete.Size = new System.Drawing.Size(112, 32);
+            this.butDelete.TabIndex = 33;
+            this.butDelete.Text = "Delete";
+            this.butDelete.UseVisualStyleBackColor = true;
+            this.butDelete.Click += new System.EventHandler(this.butDelete_Click);
+            // 
             // UsersDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1010, 717);
-            this.Controls.Add(this.butClear);
+            this.Controls.Add(this.butDelete);
+            this.Controls.Add(this.butAdd);
             this.Controls.Add(this.butDisplay);
             this.Controls.Add(this.listViewDisplayForm);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.ptcHeader);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.butBack);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UsersDisplayForm";
             this.Text = "UsersDisplayForm";
@@ -204,12 +219,13 @@ namespace ChapeauxUI
         private System.Windows.Forms.ColumnHeader lvLastName;
         private System.Windows.Forms.ColumnHeader lvRole;
         private System.Windows.Forms.Button butDisplay;
-        private System.Windows.Forms.Button butClear;
+        private System.Windows.Forms.Button butAdd;
         private System.Windows.Forms.PictureBox ptcHeader;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button butBack;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ColumnHeader lvUsername;
         private System.Windows.Forms.ColumnHeader lvPassword;
+        private System.Windows.Forms.Button butDelete;
     }
 }

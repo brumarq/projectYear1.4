@@ -28,5 +28,10 @@ namespace ChapeauxUI
             loginScreen.Show();
             this.Close();
         }
+
+        private void butQuantityRemove_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

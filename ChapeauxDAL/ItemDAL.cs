@@ -68,13 +68,13 @@ namespace ChapeauxDAL
             ExecuteEditQuery(query, parameters);
         }
 
-        public void DeleteMenuItem(Item menuItem) //remove an item from DB based on name
+        public void DeleteMenuItem(Item menuItem) //remove an item from DB based on ID
         {
-            String query = "delete from ITEMS where name = @name";
+            String query = "delete from ITEMS where itemID = @itemID";
 
             SqlParameter[] parameters = new SqlParameter[1]
             {
-                 new SqlParameter("@name", menuItem.Name)
+                 new SqlParameter("@itemID", menuItem.Name)
             };
             ExecuteEditQuery(query, parameters);
         }

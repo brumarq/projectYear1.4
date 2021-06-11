@@ -7,9 +7,11 @@ namespace ChapeauxUI
 {
     public partial class AddAccountForm : Form
     {
+        User user = new User();
         public AddAccountForm(User user)
-        {
+        { 
             InitializeComponent();
+            this.user = user;
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -77,6 +79,13 @@ namespace ChapeauxUI
                 else
                     MessageBox.Show("Could not create the account!");
             }
+        }
+
+        private void butBack_Click(object sender, EventArgs e)
+        {
+            UsersDisplayForm displayForm = new UsersDisplayForm(user);
+            displayForm.Show();
+            this.Hide();
         }
     }
 }

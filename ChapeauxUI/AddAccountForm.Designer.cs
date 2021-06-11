@@ -31,7 +31,7 @@ namespace ChapeauxUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddAccountForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.butBack = new System.Windows.Forms.Button();
             this.ptcHeader = new System.Windows.Forms.PictureBox();
             this.btnLogout = new System.Windows.Forms.Button();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -64,19 +64,20 @@ namespace ChapeauxUI
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // butBack
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = global::ChapeauxUI.Properties.Resources.btnBack;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(13, 69);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 66);
-            this.button1.TabIndex = 14;
-            this.button1.UseVisualStyleBackColor = false;
+            this.butBack.BackColor = System.Drawing.Color.Transparent;
+            this.butBack.BackgroundImage = global::ChapeauxUI.Properties.Resources.btnBack;
+            this.butBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.butBack.FlatAppearance.BorderSize = 0;
+            this.butBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butBack.Location = new System.Drawing.Point(13, 69);
+            this.butBack.Margin = new System.Windows.Forms.Padding(4);
+            this.butBack.Name = "butBack";
+            this.butBack.Size = new System.Drawing.Size(127, 66);
+            this.butBack.TabIndex = 14;
+            this.butBack.UseVisualStyleBackColor = false;
+            this.butBack.Click += new System.EventHandler(this.butBack_Click);
             // 
             // ptcHeader
             // 
@@ -256,7 +257,7 @@ namespace ChapeauxUI
             this.Controls.Add(this.butCreateUserAccount);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.rbWaiter);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.butBack);
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.ptcHeader);
             this.Controls.Add(this.btnLogout);
@@ -283,7 +284,7 @@ namespace ChapeauxUI
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button butBack;
         private System.Windows.Forms.PictureBox ptcHeader;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.TextBox txtUsername;

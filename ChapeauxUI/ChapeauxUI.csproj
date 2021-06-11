@@ -58,12 +58,6 @@
     <Compile Include="AddMenuItem.Designer.cs">
       <DependentUpon>AddMenuItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="DeleteAccountForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DeleteAccountForm.Designer.cs">
-      <DependentUpon>DeleteAccountForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="DeleteMenuItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,9 +143,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddMenuItem.resx">
       <DependentUpon>AddMenuItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DeleteAccountForm.resx">
-      <DependentUpon>DeleteAccountForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteMenuItem.resx">
       <DependentUpon>DeleteMenuItem.cs</DependentUpon>
