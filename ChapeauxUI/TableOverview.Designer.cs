@@ -31,6 +31,7 @@ namespace ChapeauxUI
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblUserFullName = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pctT10_DrinkStatus = new System.Windows.Forms.PictureBox();
             this.pctT10_FoodStatus = new System.Windows.Forms.PictureBox();
             this.pctT8_DrinkStatus = new System.Windows.Forms.PictureBox();
@@ -65,6 +66,7 @@ namespace ChapeauxUI
             this.btnLogout = new System.Windows.Forms.Button();
             this.ptcHeader = new System.Windows.Forms.PictureBox();
             this.pctBackground = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctT10_DrinkStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctT10_FoodStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctT8_DrinkStatus)).BeginInit();
@@ -115,6 +117,15 @@ namespace ChapeauxUI
             this.lblUserFullName.Size = new System.Drawing.Size(283, 24);
             this.lblUserFullName.TabIndex = 2;
             this.lblUserFullName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ChapeauxUI.Properties.Resources.description;
+            this.pictureBox1.Location = new System.Drawing.Point(357, 110);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(373, 42);
+            this.pictureBox1.TabIndex = 43;
+            this.pictureBox1.TabStop = false;
             // 
             // pctT10_DrinkStatus
             // 
@@ -348,9 +359,10 @@ namespace ChapeauxUI
             this.btnTable10.Name = "btnTable10";
             this.btnTable10.Size = new System.Drawing.Size(146, 146);
             this.btnTable10.TabIndex = 22;
+            this.btnTable10.Tag = "10";
             this.btnTable10.Text = "10";
             this.btnTable10.UseVisualStyleBackColor = false;
-            this.btnTable10.Click += new System.EventHandler(this.btnTable10_Click);
+            this.btnTable10.Click += new System.EventHandler(this.btnTable1_Click);
             // 
             // btnTable9
             // 
@@ -364,9 +376,10 @@ namespace ChapeauxUI
             this.btnTable9.Name = "btnTable9";
             this.btnTable9.Size = new System.Drawing.Size(146, 146);
             this.btnTable9.TabIndex = 21;
+            this.btnTable9.Tag = "9";
             this.btnTable9.Text = "9";
             this.btnTable9.UseVisualStyleBackColor = false;
-            this.btnTable9.Click += new System.EventHandler(this.btnTable9_Click);
+            this.btnTable9.Click += new System.EventHandler(this.btnTable1_Click);
             // 
             // btnTable8
             // 
@@ -380,9 +393,10 @@ namespace ChapeauxUI
             this.btnTable8.Name = "btnTable8";
             this.btnTable8.Size = new System.Drawing.Size(146, 146);
             this.btnTable8.TabIndex = 20;
+            this.btnTable8.Tag = "8";
             this.btnTable8.Text = "8";
             this.btnTable8.UseVisualStyleBackColor = false;
-            this.btnTable8.Click += new System.EventHandler(this.btnTable8_Click);
+            this.btnTable8.Click += new System.EventHandler(this.btnTable1_Click);
             // 
             // btnTable7
             // 
@@ -396,9 +410,10 @@ namespace ChapeauxUI
             this.btnTable7.Name = "btnTable7";
             this.btnTable7.Size = new System.Drawing.Size(146, 146);
             this.btnTable7.TabIndex = 19;
+            this.btnTable7.Tag = "7";
             this.btnTable7.Text = "7";
             this.btnTable7.UseVisualStyleBackColor = false;
-            this.btnTable7.Click += new System.EventHandler(this.btnTable7_Click);
+            this.btnTable7.Click += new System.EventHandler(this.btnTable1_Click);
             // 
             // btnTable6
             // 
@@ -412,9 +427,10 @@ namespace ChapeauxUI
             this.btnTable6.Name = "btnTable6";
             this.btnTable6.Size = new System.Drawing.Size(146, 146);
             this.btnTable6.TabIndex = 18;
+            this.btnTable6.Tag = "6";
             this.btnTable6.Text = "6";
             this.btnTable6.UseVisualStyleBackColor = false;
-            this.btnTable6.Click += new System.EventHandler(this.btnTable6_Click);
+            this.btnTable6.Click += new System.EventHandler(this.btnTable1_Click);
             // 
             // btnTable5
             // 
@@ -428,9 +444,10 @@ namespace ChapeauxUI
             this.btnTable5.Name = "btnTable5";
             this.btnTable5.Size = new System.Drawing.Size(146, 146);
             this.btnTable5.TabIndex = 17;
+            this.btnTable5.Tag = "5";
             this.btnTable5.Text = "5";
             this.btnTable5.UseVisualStyleBackColor = false;
-            this.btnTable5.Click += new System.EventHandler(this.btnTable5_Click);
+            this.btnTable5.Click += new System.EventHandler(this.btnTable1_Click);
             // 
             // btnTable4
             // 
@@ -444,9 +461,10 @@ namespace ChapeauxUI
             this.btnTable4.Name = "btnTable4";
             this.btnTable4.Size = new System.Drawing.Size(146, 146);
             this.btnTable4.TabIndex = 16;
+            this.btnTable4.Tag = "4";
             this.btnTable4.Text = "4";
             this.btnTable4.UseVisualStyleBackColor = false;
-            this.btnTable4.Click += new System.EventHandler(this.btnTable4_Click);
+            this.btnTable4.Click += new System.EventHandler(this.btnTable1_Click);
             // 
             // btnTable3
             // 
@@ -460,9 +478,10 @@ namespace ChapeauxUI
             this.btnTable3.Name = "btnTable3";
             this.btnTable3.Size = new System.Drawing.Size(146, 146);
             this.btnTable3.TabIndex = 15;
+            this.btnTable3.Tag = "3";
             this.btnTable3.Text = "3";
             this.btnTable3.UseVisualStyleBackColor = false;
-            this.btnTable3.Click += new System.EventHandler(this.btnTable3_Click);
+            this.btnTable3.Click += new System.EventHandler(this.btnTable1_Click);
             // 
             // btnTable2
             // 
@@ -476,9 +495,10 @@ namespace ChapeauxUI
             this.btnTable2.Name = "btnTable2";
             this.btnTable2.Size = new System.Drawing.Size(146, 146);
             this.btnTable2.TabIndex = 8;
+            this.btnTable2.Tag = "2";
             this.btnTable2.Text = "2";
             this.btnTable2.UseVisualStyleBackColor = false;
-            this.btnTable2.Click += new System.EventHandler(this.btnTable2_Click);
+            this.btnTable2.Click += new System.EventHandler(this.btnTable1_Click);
             // 
             // btnTable1
             // 
@@ -492,6 +512,7 @@ namespace ChapeauxUI
             this.btnTable1.Name = "btnTable1";
             this.btnTable1.Size = new System.Drawing.Size(146, 146);
             this.btnTable1.TabIndex = 7;
+            this.btnTable1.Tag = "1";
             this.btnTable1.Text = "1";
             this.btnTable1.UseVisualStyleBackColor = false;
             this.btnTable1.Click += new System.EventHandler(this.btnTable1_Click);
@@ -547,6 +568,7 @@ namespace ChapeauxUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(768, 985);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pctT10_DrinkStatus);
             this.Controls.Add(this.pctT10_FoodStatus);
             this.Controls.Add(this.pctT8_DrinkStatus);
@@ -587,6 +609,7 @@ namespace ChapeauxUI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chapeau - Table Overview";
             this.Load += new System.EventHandler(this.TableOverviewForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctT10_DrinkStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctT10_FoodStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctT8_DrinkStatus)).EndInit();
@@ -652,5 +675,6 @@ namespace ChapeauxUI
         private System.Windows.Forms.PictureBox pctT4_FoodStatus;
         private System.Windows.Forms.PictureBox pctT2_DrinkStatus;
         private System.Windows.Forms.PictureBox pctT2_FoodStatus;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

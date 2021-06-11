@@ -42,6 +42,11 @@ namespace ChapeauUI
             this.pctLogo = new System.Windows.Forms.PictureBox();
             this.ptcHeader = new System.Windows.Forms.PictureBox();
             this.btnBackToOverview = new System.Windows.Forms.Button();
+            this.listViewOrderOverview4 = new System.Windows.Forms.ListView();
+            this.Product = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.UnitPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.orderStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
@@ -211,12 +216,56 @@ namespace ChapeauUI
             this.btnBackToOverview.UseVisualStyleBackColor = false;
             this.btnBackToOverview.Click += new System.EventHandler(this.btnBackToOverview_Click);
             // 
+            // listViewOrderOverview4
+            // 
+            this.listViewOrderOverview4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewOrderOverview4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewOrderOverview4.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Product,
+            this.Qty,
+            this.UnitPrice,
+            this.orderStatus});
+            this.listViewOrderOverview4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewOrderOverview4.HideSelection = false;
+            this.listViewOrderOverview4.Location = new System.Drawing.Point(84, 254);
+            this.listViewOrderOverview4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.listViewOrderOverview4.Name = "listViewOrderOverview4";
+            this.listViewOrderOverview4.Size = new System.Drawing.Size(602, 390);
+            this.listViewOrderOverview4.TabIndex = 20;
+            this.listViewOrderOverview4.UseCompatibleStateImageBehavior = false;
+            this.listViewOrderOverview4.View = System.Windows.Forms.View.Details;
+            // 
+            // Product
+            // 
+            this.Product.Text = "Product";
+            this.Product.Width = 286;
+            // 
+            // Qty
+            // 
+            this.Qty.Text = "Qty.";
+            this.Qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.Text = "Unit Price";
+            this.UnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.UnitPrice.Width = 123;
+            // 
+            // orderStatus
+            // 
+            this.orderStatus.Text = "Status";
+            this.orderStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.orderStatus.Width = 124;
+            // 
             // TableDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(768, 985);
+            this.Controls.Add(this.listViewOrderOverview4);
             this.Controls.Add(this.btnCheckout);
             this.Controls.Add(this.btnAddNewOrder);
             this.Controls.Add(this.btnOccupyTable);
@@ -258,5 +307,10 @@ namespace ChapeauUI
         private System.Windows.Forms.Button btnAddNewOrder;
         private System.Windows.Forms.Button btnCheckout;
         private System.Windows.Forms.Button btnBackToOverview;
+        private System.Windows.Forms.ListView listViewOrderOverview4;
+        private System.Windows.Forms.ColumnHeader Product;
+        private System.Windows.Forms.ColumnHeader Qty;
+        private System.Windows.Forms.ColumnHeader UnitPrice;
+        private System.Windows.Forms.ColumnHeader orderStatus;
     }
 }

@@ -21,7 +21,7 @@ namespace ChapeauxUI
             lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
 
             Table_Service table_service = new Table_Service();
-            
+
             List<Table> listOfTables = table_service.getAllTables();
             Button[] listOfTableButtons = { btnTable1, btnTable2, btnTable3, btnTable4, btnTable5, btnTable6, btnTable7, btnTable8, btnTable9, btnTable10 };
             int count = 0;
@@ -42,58 +42,60 @@ namespace ChapeauxUI
             }
         }
 
-        void getOrderStatus( Table table, int count) 
+        void getOrderStatus(Table table, int count)
         {
             OrderItem_Service orderItem_Service = new OrderItem_Service();
-            PictureBox[,] listOfTableStatus = new PictureBox[,] { { pctT1_DrinkStatus, pctT1_FoodStatus }, { pctT2_DrinkStatus, pctT2_FoodStatus }, { pctT3_DrinkStatus, pctT3_FoodStatus }, { pctT4_DrinkStatus, pctT4_FoodStatus }, { pctT5_DrinkStatus, pctT5_FoodStatus }, { pctT6_DrinkStatus, pctT6_FoodStatus }, { pctT7_DrinkStatus, pctT7_FoodStatus }, { pctT8_DrinkStatus, pctT8_FoodStatus }, { pctT9_DrinkStatus, pctT9_FoodStatus }, { pctT10_DrinkStatus, pctT10_FoodStatus } };
+            PictureBox[,] listOfTableStatus = new PictureBox[,] { { pctT1_FoodStatus, pctT1_DrinkStatus }, { pctT2_FoodStatus, pctT2_DrinkStatus }, { pctT3_FoodStatus, pctT3_DrinkStatus }, { pctT4_FoodStatus, pctT4_DrinkStatus }, { pctT5_FoodStatus, pctT5_DrinkStatus }, { pctT6_FoodStatus, pctT6_DrinkStatus }, { pctT7_FoodStatus, pctT7_DrinkStatus }, { pctT8_FoodStatus, pctT8_DrinkStatus }, { pctT9_FoodStatus, pctT9_DrinkStatus }, { pctT10_FoodStatus, pctT10_DrinkStatus } };
 
             List<OrderItem> listOfDrinkStatus = orderItem_Service.getDrinksStatus(table.TableID);
             List<OrderItem> listOfFoodStatus = orderItem_Service.getFoodStatus(table.TableID);
 
-            State? drinkStatus = null;
-            foreach (OrderItem drink in listOfDrinkStatus)
-            {
-                if (drink.State == State.served && (drinkStatus != State.ready || drinkStatus != State.loading))
-                {
-                    drinkStatus = State.served;
-                    listOfTableStatus[count, 0].Show();
-                    listOfTableStatus[count, 0].Image = ChapeauxUI.Properties.Resources.drinks_served1;
-                }
-                else if (drink.State == State.ready && drinkStatus != State.loading)
-                {
-                    drinkStatus = State.ready;
-                    listOfTableStatus[count, 0].Show();
-                    listOfTableStatus[count, 0].Image = ChapeauxUI.Properties.Resources.drinks_ReadyToBeServed1;
-                }
-                else if (drink.State == State.loading)
-                {
-                    drinkStatus = State.loading;
-                    listOfTableStatus[count, 0].Show();
-                    listOfTableStatus[count, 0].Image = ChapeauxUI.Properties.Resources.drinks_beingPrepared1;
-                }
-            }
+            List<List<OrderItem>> foodAndDrink = new List<List<OrderItem>>();
 
-            State? foodStatus = null;
-            foreach (OrderItem food in listOfFoodStatus)
+            foodAndDrink.Add(listOfDrinkStatus);
+            foodAndDrink.Add(listOfFoodStatus);
+
+
+            int foodOrDrink = 0;
+            foreach (List<OrderItem> orderType in foodAndDrink)
             {
-                if (food.State == State.served && (foodStatus != State.ready || foodStatus != State.loading))
+                State? status = null;
+                foreach (OrderItem item in orderType)
                 {
-                    foodStatus = State.served;
-                    listOfTableStatus[count, 1].Show();
-                    listOfTableStatus[count, 1].Image = ChapeauxUI.Properties.Resources.food_served1;
+                    if (item.State == State.served && (status != State.ready || status != State.loading))
+                    {
+                        status = State.served;
+                        listOfTableStatus[count, foodOrDrink].Show();
+
+                        if (foodOrDrink == 0)
+                            listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_served1;
+                        else
+                            listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_served1;
+
+                    }
+                    else if (item.State == State.ready && status != State.loading)
+                    {
+                        status = State.ready;
+                        listOfTableStatus[count, foodOrDrink].Show();
+
+                        if (foodOrDrink == 0)
+                            listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_ReadyToBeServed1;
+                        else
+                            listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_ReadyToBeServed1;
+                    }
+                    else if (item.State == State.loading)
+                    {
+                        status = State.loading;
+                        listOfTableStatus[count, foodOrDrink].Show();
+
+                        if (foodOrDrink == 0)
+                            listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_beingPrepared1;
+                        else
+                            listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_beingPrepared1;
+                    }
                 }
-                else if (food.State == State.ready && foodStatus != State.loading)
-                {
-                    foodStatus = State.ready;
-                    listOfTableStatus[count, 1].Show();
-                    listOfTableStatus[count, 1].Image = ChapeauxUI.Properties.Resources.food_ReadyToBeServed1;
-                }
-                else if (food.State == State.loading)
-                {
-                    foodStatus = State.loading;
-                    listOfTableStatus[count, 1].Show();
-                    listOfTableStatus[count, 1].Image = ChapeauxUI.Properties.Resources.food_beingPrepared1;
-                }
+
+                foodOrDrink++;
             }
         }
 
@@ -104,61 +106,12 @@ namespace ChapeauxUI
             this.Close();
         }
 
-        private void tableClicked(int tableNumber)
+        private void btnTable1_Click(object sender, EventArgs e)
         {
+            int tableNumber = int.Parse(sender.ToString().Substring(35));
             TableDetails tableDetails = new TableDetails(loggedUser, tableNumber);
             tableDetails.Show();
             this.Close();
-        }
-
-        private void btnTable1_Click(object sender, EventArgs e)
-        {
-            tableClicked(1);
-        }
-
-        private void btnTable2_Click(object sender, EventArgs e)
-        {
-            tableClicked(2);
-        }
-
-        private void btnTable3_Click(object sender, EventArgs e)
-        {
-            tableClicked(3);
-        }
-
-        private void btnTable4_Click(object sender, EventArgs e)
-        {
-            tableClicked(4);
-        }
-
-        private void btnTable5_Click(object sender, EventArgs e)
-        {
-            tableClicked(5);
-        }
-
-        private void btnTable6_Click(object sender, EventArgs e)
-        {
-            tableClicked(6);
-        }
-
-        private void btnTable7_Click(object sender, EventArgs e)
-        {
-            tableClicked(7);
-        }
-
-        private void btnTable8_Click(object sender, EventArgs e)
-        {
-            tableClicked(8);
-        }
-
-        private void btnTable9_Click(object sender, EventArgs e)
-        {
-            tableClicked(9);
-        }
-
-        private void btnTable10_Click(object sender, EventArgs e)
-        {
-            tableClicked(10);
         }
     }
 }

@@ -387,5 +387,8 @@
   <ItemGroup>
     <None Include="Resources\btnResetReceivedCash.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\description.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
