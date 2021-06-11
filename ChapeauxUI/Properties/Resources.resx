@@ -124,11 +124,20 @@
   <data name="picLine1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\picLine1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="background_rectangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background_rectangle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="table-late" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\table-late.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btnRemove" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnRemove.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="amex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\amex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnCoin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnCoin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="200eu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\200eu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,11 +154,11 @@
   <data name="drinks-served1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\drinks-served.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="mastercard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mastercard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="btnCheckout-hover1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnCheckout-hover1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="testingg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\testingg.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Afbeelding2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Afbeelding2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -174,9 +183,6 @@
   </data>
   <data name="food-served1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\food-served.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnBack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Afbeelding6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Afbeelding6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -235,14 +241,11 @@
   <data name="picLine2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\picLine2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Afbeelding8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Afbeelding8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="drinks-ReadyToBeServed1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\drinks-ReadyToBeServed.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="background_rectangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\background_rectangle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="testingg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\testingg.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Afbeelding7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Afbeelding7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -264,9 +267,6 @@
   </data>
   <data name="drinks-served" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\drinks-served.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnRemoveComment" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnRemoveComment.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btnCash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnCash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -298,6 +298,9 @@
   <data name="Afbeelding13" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Afbeelding13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btnAddNewOrder-hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnAddNewOrder-hover.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="btnCloseOrder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnCloseOrder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -310,8 +313,8 @@
   <data name="20cent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\20cent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnAddNewOrder-hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnAddNewOrder-hover.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnBack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="10cent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\10cent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -328,8 +331,8 @@
   <data name="Screenshot (57)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Screenshot (57).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnCoin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnCoin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnRemoveComment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnRemoveComment.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="100eu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\100eu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -343,8 +346,8 @@
   <data name="1eu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1eu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mastercard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mastercard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Afbeelding8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Afbeelding8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Afbeeldagasg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Afbeeldagasg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -370,7 +373,7 @@
   <data name="btnAddNewOrder-enabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnAddNewOrder-enabled.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="amex" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\amex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="description" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\description.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

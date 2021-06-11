@@ -32,11 +32,11 @@ namespace ChapeauxDAL
         #region Checkout
         public List<OrderItem> GetOrderFood(int orderID)
         {
-            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate " +
+            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state " +
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
-                            "WHERE ITEMS.category = 'Food' " +
+                            "WHERE (ITEMS.category = 'Lunch' OR ITEMS.category = 'Dinner') " +
                             "AND ORDERITEMS.orderID = @orderID " +
                             "ORDER BY ITEMS.[itemID]";
             SqlParameter[] sqlParameters = {
@@ -47,11 +47,11 @@ namespace ChapeauxDAL
 
         public List<OrderItem> GetOrderDrinks(int orderID)
         {
-            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate " +
+            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state " +
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
-                            "WHERE ITEMS.category = 'Drink' " +
+                            "WHERE ITEMS.category = 'Drink'" +
                             "AND ORDERITEMS.orderID = @orderID " +
                             "ORDER BY ITEMS.[itemID]";
             SqlParameter[] sqlParameters = {
@@ -69,10 +69,12 @@ namespace ChapeauxDAL
                 {
                      OrderID = (int)dr["orderID"],
                      ItemID = (int)dr["itemID"],
+                     Count = (int)dr["count"],
                      Name = (string)dr["name"],
                      Category = (string)dr["category"],
                      Price = (decimal)dr["price"],
-                     VATRate = (decimal)dr["VATRate"]                      
+                     VATRate = (decimal)dr["VATRate"],
+                     State = (State)Enum.Parse(typeof(State), dr["state"].ToString()),
                 };
 
                 listOfItems.Add(orderItem);

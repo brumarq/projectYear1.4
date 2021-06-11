@@ -89,7 +89,7 @@ namespace ChapeauxDAL
         {
             SqlCommand cmd = new SqlCommand("SELECT orderID, startDateTime, endDateTime, isPaid, tableID, userID " +
                                             "FROM ORDERS " +
-                                            "WHERE tableID = @tableID", conn);
+                                            "WHERE tableID = @tableID AND isPaid = 0", conn);
             OpenConnection();
             cmd.Parameters.AddWithValue("@tableID", tableID);
             SqlDataReader reader = cmd.ExecuteReader();

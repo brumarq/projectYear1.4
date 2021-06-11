@@ -21,7 +21,11 @@ namespace ChapeauUI
             Table selectedTable = table_service.getTable(tableNumber);
             this.currentTable = selectedTable;
             InitializeComponent();
+        }
+        public void Reload()
+        {
             fillUpOrderDetails();
+            updateStatus();
         }
 
         private void TableDetails_Load(object sender, EventArgs e)
@@ -29,7 +33,7 @@ namespace ChapeauUI
             lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
             lblTableStatus.Text = $"Table {currentTable.TableID}: {currentTable.Status}";
             btnCheckout.Enabled = false;
-            //fillUpOrderDetails();
+            fillUpOrderDetails();
             updateStatus();
         }
 
@@ -52,7 +56,8 @@ namespace ChapeauUI
             try
             {
                 Order_Service orderService = new Order_Service();
-                Order order = orderService.GetByTableID(currentTable.TableID);
+                order = orderService.GetByTableID(currentTable.TableID);
+                listViewOrderOverview4.Items.Clear();
 
                 if (order == null)
                 {
@@ -110,20 +115,41 @@ namespace ChapeauUI
             if (currentTable.Status == Status.Occupied || currentTable.Status == Status.Late)
             {
                 Order_Service order_service = new Order_Service();
-                bool thereIsAnOrder = order_service.tableContainsOrder(currentTable.TableID); // change name
+                bool thereIsAnOrder = order_service.tableContainsOrder(currentTable.TableID);
 
                 if (thereIsAnOrder)
                 {
-                    if (false)
+                    tableHasOrders = true;
+                    bool itemsServed = true;
+                    if (order.orderItems.Count != 0)
                     {
                         // check if every orderitems have been served
+                        foreach (OrderItem orderItem in order.orderItems)
+                        {
+                            if (orderItem.State != State.served)
+                            {
+                                itemsServed = false;
+                            }
+                        }
+
+                        if (itemsServed == false)
+                        {
+                            btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_hover;
+                            btnCheckout.Enabled = false;
+                        }
+                        else
+                        {
+                            btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_enabled;
+                            btnCheckout.Enabled = true;
+                        }
+                    }
+                    else
+                    {
                         btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_hover;
                         btnCheckout.Enabled = false;
                     }
-                    tableHasOrders = true;
+
                     btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_hover;
-                    btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_enabled;
-                    btnCheckout.Enabled = true;
                 }
                 else
                 {
@@ -169,9 +195,12 @@ namespace ChapeauUI
             Order_Service orderService = new Order_Service();
             order = orderService.GetByTableID(currentTable.TableID);
             TakeOrderForm form = new TakeOrderForm(order);
+
             this.Hide();
             form.ShowDialog();
+            Reload();
             this.Show();
+
         }
 
         private void btnCheckout_Click(object sender, EventArgs e)
@@ -180,11 +209,13 @@ namespace ChapeauUI
             {
                 return;
             }
-
             CheckoutForm checkout = new CheckoutForm(currentTable);
             this.Hide();
+
             checkout.ShowDialog();
+            Reload();
             this.Show();
+
         }
     }
 }
