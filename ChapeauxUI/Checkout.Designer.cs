@@ -51,7 +51,6 @@ namespace ChapeauxUI
             this.txtToPay = new System.Windows.Forms.TextBox();
             this.lblVATLowResult = new System.Windows.Forms.Label();
             this.lblVATHighResult = new System.Windows.Forms.Label();
-            this.lblUserName = new System.Windows.Forms.Label();
             this.lblCheckoutOrderID = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button11 = new System.Windows.Forms.Button();
@@ -145,9 +144,10 @@ namespace ChapeauxUI
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.btnUserInfo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.lblUserFullName = new System.Windows.Forms.Label();
+            this.pctLogo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.pnlCheckout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frameBox)).BeginInit();
@@ -158,9 +158,9 @@ namespace ChapeauxUI
             this.pnlPaymentOverview.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnUserInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -380,18 +380,6 @@ namespace ChapeauxUI
             this.lblVATHighResult.TabIndex = 28;
             this.lblVATHighResult.Text = "...";
             this.lblVATHighResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblUserName
-            // 
-            this.lblUserName.AutoSize = true;
-            this.lblUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
-            this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.ForeColor = System.Drawing.Color.White;
-            this.lblUserName.Location = new System.Drawing.Point(650, 25);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(76, 16);
-            this.lblUserName.TabIndex = 31;
-            this.lblUserName.Text = "[username]";
             // 
             // lblCheckoutOrderID
             // 
@@ -1583,17 +1571,6 @@ namespace ChapeauxUI
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
             // 
-            // btnUserInfo
-            // 
-            this.btnUserInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
-            this.btnUserInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnUserInfo.Image")));
-            this.btnUserInfo.Location = new System.Drawing.Point(612, 18);
-            this.btnUserInfo.Name = "btnUserInfo";
-            this.btnUserInfo.Size = new System.Drawing.Size(33, 33);
-            this.btnUserInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnUserInfo.TabIndex = 30;
-            this.btnUserInfo.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
@@ -1615,6 +1592,31 @@ namespace ChapeauxUI
             this.pictureBox4.TabIndex = 29;
             this.pictureBox4.TabStop = false;
             // 
+            // lblUserFullName
+            // 
+            this.lblUserFullName.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblUserFullName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.lblUserFullName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblUserFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserFullName.ForeColor = System.Drawing.Color.White;
+            this.lblUserFullName.Location = new System.Drawing.Point(391, 23);
+            this.lblUserFullName.Name = "lblUserFullName";
+            this.lblUserFullName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblUserFullName.Size = new System.Drawing.Size(283, 24);
+            this.lblUserFullName.TabIndex = 39;
+            this.lblUserFullName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pctLogo
+            // 
+            this.pctLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.pctLogo.Image = global::ChapeauxUI.Properties.Resources.Capture;
+            this.pctLogo.Location = new System.Drawing.Point(677, 12);
+            this.pctLogo.Name = "pctLogo";
+            this.pctLogo.Size = new System.Drawing.Size(46, 46);
+            this.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctLogo.TabIndex = 38;
+            this.pctLogo.TabStop = false;
+            // 
             // CheckoutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1622,8 +1624,8 @@ namespace ChapeauxUI
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(752, 985);
-            this.Controls.Add(this.lblUserName);
-            this.Controls.Add(this.btnUserInfo);
+            this.Controls.Add(this.lblUserFullName);
+            this.Controls.Add(this.pctLogo);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pnlPaymentOverview);
@@ -1653,11 +1655,10 @@ namespace ChapeauxUI
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnUserInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1682,8 +1683,6 @@ namespace ChapeauxUI
         private System.Windows.Forms.Label lblVATLowResult;
         private System.Windows.Forms.Label lblVATHighResult;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox btnUserInfo;
-        private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Label lblCheckoutOrderID;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlCheckout;
@@ -1780,5 +1779,7 @@ namespace ChapeauxUI
         private System.Windows.Forms.Label lblNegativeError;
         private System.Windows.Forms.Button btnPayNow;
         private System.Windows.Forms.Button btnResetCash;
+        private System.Windows.Forms.Label lblUserFullName;
+        private System.Windows.Forms.PictureBox pctLogo;
     }
 }

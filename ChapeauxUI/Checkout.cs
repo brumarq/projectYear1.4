@@ -21,15 +21,16 @@ namespace ChapeauxUI
         private decimal totalReceivedCash;  //      +
         private decimal changeToGive;       //bills and coins
 
-        public CheckoutForm(Table currentTable)
+        public CheckoutForm(Table currentTable, User user)
         {
             InitializeComponent();
-            PrepareCheckoutForm(currentTable);
+            PrepareCheckoutForm(currentTable, user);
         }
 
         #region Global
-        private void PrepareCheckoutForm(Table currentTable)
+        private void PrepareCheckoutForm(Table currentTable, User user)
         {
+            lblUserFullName.Text = $"{user.FirstName} {user.LastName}";
             transaction = new Transaction();
             this.currentTable = currentTable;
             transaction.Order = GetOrder(currentTable);
