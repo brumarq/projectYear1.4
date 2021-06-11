@@ -8,7 +8,7 @@ namespace ChapeauxUI
 {
     public partial class UsersDisplayForm : Form
     {
-        User user;
+        User user = new User();
         User_Service userService;
         ListViewItem lvItem;
 
@@ -16,11 +16,8 @@ namespace ChapeauxUI
         {
             InitializeComponent();
             this.user = user;
-        }
 
-        private void UsersDisplayForm_Load(object sender, EventArgs e)
-        {
-            
+            GetUserList();
         }
 
         private void GetUserList()
@@ -42,11 +39,6 @@ namespace ChapeauxUI
             }
         }
 
-        private void butDisplay_Click(object sender, EventArgs e)
-        {
-            GetUserList();
-        }
-
         private void listViewDisplayForm_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
@@ -56,16 +48,8 @@ namespace ChapeauxUI
             AddAccountForm addAccount = new AddAccountForm(user);
             addAccount.Show();
             this.Hide();
-
         }
 
-        private void butLogOut_Click(object sender, EventArgs e)
-        {
-            LoginScreen loginScreen = new LoginScreen();
-            loginScreen.Show();
-            this.Hide();
-
-        }
 
         private void butBack_Click(object sender, EventArgs e)
         {
@@ -73,8 +57,14 @@ namespace ChapeauxUI
             usersDisplayForm.Show();
             this.Hide();
         }
-        private void Delete()
+
+        private void DeleteUser()
         {
+            if (listViewDisplayForm.Items.Count == 1)
+            {
+                user = listViewDisplayForm.SelectedItems[0].Tag as User;
+            }
+
             if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 GetUserList();
@@ -83,9 +73,17 @@ namespace ChapeauxUI
             else
                 return;
         }
+
         private void butDelete_Click(object sender, EventArgs e)
         {
-            Delete();
+            DeleteUser();
+        }
+        private void butLogOut_Click(object sender, EventArgs e)
+        {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
+            this.Hide();
+
         }
     }
 }

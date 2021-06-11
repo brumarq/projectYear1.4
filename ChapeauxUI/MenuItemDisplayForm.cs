@@ -16,11 +16,10 @@ namespace ChapeauxUI
         {
             InitializeComponent();
             this.menuItem = menuItem;
+         
+            GetItemList();
         }
 
-        private void listViewDisplayForm_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
 
         private void GetItemList()
         {
@@ -42,9 +41,8 @@ namespace ChapeauxUI
             }
         }
 
-        private void butDisplay_Click(object sender, EventArgs e)
+        private void listViewDisplayForm_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GetItemList();
         }
 
         private void butAdd_Click(object sender, EventArgs e)
@@ -54,8 +52,13 @@ namespace ChapeauxUI
             this.Close();
         }
 
-        private void Delete()
+        private void DeleteItem()
         {
+            if (listViewDisplayForm.Items.Count == 1)
+            {
+                menuItem = listViewDisplayForm.SelectedItems[0].Tag as Item;
+            }
+
             if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 GetItemList();
@@ -67,7 +70,7 @@ namespace ChapeauxUI
 
         private void butDelete_Click(object sender, EventArgs e)
         {
-            Delete();
+            DeleteItem();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

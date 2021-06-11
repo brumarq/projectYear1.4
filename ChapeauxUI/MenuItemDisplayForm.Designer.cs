@@ -42,7 +42,6 @@ namespace ChapeauxUI
             this.lvCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvCourse = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvVAT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.butDisplay = new System.Windows.Forms.Button();
             this.butAdd = new System.Windows.Forms.Button();
             this.butDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
@@ -113,6 +112,7 @@ namespace ChapeauxUI
             this.lvCategory,
             this.lvCourse,
             this.lvVAT});
+            this.listViewDisplayForm.FullRowSelect = true;
             this.listViewDisplayForm.GridLines = true;
             this.listViewDisplayForm.HideSelection = false;
             this.listViewDisplayForm.Location = new System.Drawing.Point(50, 280);
@@ -160,16 +160,6 @@ namespace ChapeauxUI
             this.lvVAT.Text = "VAT Rate";
             this.lvVAT.Width = 90;
             // 
-            // butDisplay
-            // 
-            this.butDisplay.Location = new System.Drawing.Point(607, 230);
-            this.butDisplay.Name = "butDisplay";
-            this.butDisplay.Size = new System.Drawing.Size(112, 36);
-            this.butDisplay.TabIndex = 34;
-            this.butDisplay.Text = "Display";
-            this.butDisplay.UseVisualStyleBackColor = true;
-            this.butDisplay.Click += new System.EventHandler(this.butDisplay_Click);
-            // 
             // butAdd
             // 
             this.butAdd.Location = new System.Drawing.Point(725, 230);
@@ -198,7 +188,6 @@ namespace ChapeauxUI
             this.ClientSize = new System.Drawing.Size(1010, 717);
             this.Controls.Add(this.butDelete);
             this.Controls.Add(this.butAdd);
-            this.Controls.Add(this.butDisplay);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ptcHeader);
             this.Controls.Add(this.listViewDisplayForm);
@@ -226,7 +215,6 @@ namespace ChapeauxUI
         private System.Windows.Forms.ColumnHeader lvCategory;
         private System.Windows.Forms.ColumnHeader lvCourse;
         private System.Windows.Forms.ColumnHeader lvVAT;
-        private System.Windows.Forms.Button butDisplay;
         private System.Windows.Forms.Button butAdd;
         private System.Windows.Forms.Button butDelete;
     }

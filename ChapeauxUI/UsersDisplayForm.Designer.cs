@@ -37,13 +37,13 @@ namespace ChapeauxUI
             this.lvUsername = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvPassword = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvRole = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.butDisplay = new System.Windows.Forms.Button();
             this.butAdd = new System.Windows.Forms.Button();
             this.ptcHeader = new System.Windows.Forms.PictureBox();
             this.btnLogout = new System.Windows.Forms.Button();
             this.butBack = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.butDelete = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -100,17 +100,6 @@ namespace ChapeauxUI
             // 
             this.lvRole.Text = "Role";
             this.lvRole.Width = 100;
-            // 
-            // butDisplay
-            // 
-            this.butDisplay.Location = new System.Drawing.Point(610, 207);
-            this.butDisplay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.butDisplay.Name = "butDisplay";
-            this.butDisplay.Size = new System.Drawing.Size(112, 32);
-            this.butDisplay.TabIndex = 1;
-            this.butDisplay.Text = "Display";
-            this.butDisplay.UseVisualStyleBackColor = true;
-            this.butDisplay.Click += new System.EventHandler(this.butDisplay_Click);
             // 
             // butAdd
             // 
@@ -187,15 +176,24 @@ namespace ChapeauxUI
             this.butDelete.UseVisualStyleBackColor = true;
             this.butDelete.Click += new System.EventHandler(this.butDelete_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(610, 207);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 32);
+            this.button1.TabIndex = 34;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // UsersDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1010, 717);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.butDelete);
             this.Controls.Add(this.butAdd);
-            this.Controls.Add(this.butDisplay);
             this.Controls.Add(this.listViewDisplayForm);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLogout);
@@ -204,7 +202,6 @@ namespace ChapeauxUI
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UsersDisplayForm";
             this.Text = "UsersDisplayForm";
-            this.Load += new System.EventHandler(this.UsersDisplayForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -218,7 +215,6 @@ namespace ChapeauxUI
         private System.Windows.Forms.ColumnHeader lvFirstName;
         private System.Windows.Forms.ColumnHeader lvLastName;
         private System.Windows.Forms.ColumnHeader lvRole;
-        private System.Windows.Forms.Button butDisplay;
         private System.Windows.Forms.Button butAdd;
         private System.Windows.Forms.PictureBox ptcHeader;
         private System.Windows.Forms.Button btnLogout;
@@ -227,5 +223,6 @@ namespace ChapeauxUI
         private System.Windows.Forms.ColumnHeader lvUsername;
         private System.Windows.Forms.ColumnHeader lvPassword;
         private System.Windows.Forms.Button butDelete;
+        private System.Windows.Forms.Button button1;
     }
 }

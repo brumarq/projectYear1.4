@@ -95,11 +95,11 @@ namespace ChapeauxUI
                        
                         else if (user.Role == Role.Manager)
                         {
-                            /*new UsersDisplayForm(user).Show();
+                            new UsersDisplayForm(user).Show();
                             this.Hide();
 
                             new MenuItemDisplayForm(menuItem).Show();
-                            this.Hide();*/
+                            this.Hide();
                         }
                     }
                     else

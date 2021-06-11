@@ -98,6 +98,7 @@ namespace ChapeauxDAL
         
         public void RemoveUserAccount(User user) //remove an employee from DB based on username
         {
+            conn.Open();
             String query = "delete from USERS where userName = @username";
 
             SqlParameter[] parameters = new SqlParameter[1]
@@ -106,6 +107,7 @@ namespace ChapeauxDAL
             };
             
             ExecuteEditQuery(query, parameters);
+            conn.Close();
         }
 
         public void DisplayUsersById(User user)
