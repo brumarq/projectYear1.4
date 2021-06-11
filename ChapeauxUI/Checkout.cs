@@ -16,7 +16,7 @@ namespace ChapeauxUI
     {
         public Table currentTable;
         private Transaction transaction;
-        private decimal toPay;          //for processing cash
+        private decimal toPay;              //for processing cash
         private decimal receivedCash;       //      +
         private decimal totalReceivedCash;  //      +
         private decimal changeToGive;       //bills and coins

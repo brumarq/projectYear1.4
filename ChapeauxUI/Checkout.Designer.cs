@@ -202,7 +202,7 @@ namespace ChapeauxUI
             // Product
             // 
             this.Product.Text = "Product";
-            this.Product.Width = 400;
+            this.Product.Width = 350;
             // 
             // Qty
             // 
