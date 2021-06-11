@@ -244,6 +244,7 @@ namespace ChapeauxUI
             transaction.TotalPrice = Convert.ToDecimal(lblTotalResult.Text);
             transaction.TipAmount = Convert.ToDecimal(txtTipAmount.Text);
             transaction.Feedback = txtFeedback.Text;
+            transaction.Order.endDateTime = DateTime.Now;
             transaction.TransactionDate = DateTime.Now;
             transaction.VAT = transaction.Order.VATHigh + transaction.Order.VATLow;
 
@@ -455,28 +456,7 @@ namespace ChapeauxUI
 
         private void FillListViewOverview()
         {
-            try
-            {
-                foreach (OrderItem orderItem in transaction.Order.orderItems)
-                {
-                    ListViewItem li = new ListViewItem(orderItem.ItemID.ToString(), 0);
-                    li.SubItems.Add(orderItem.Name);
-                    li.SubItems.Add(orderItem.Count.ToString());
-                    li.SubItems.Add(orderItem.Price.ToString("0.00"));
-                    listViewCheckoutOrder.Items.Add(li);
-                }
-
-                lblCheckoutOrderID.Text = $"#{transaction.Order.OrderID}";
-                lblTotalResult.Text = $"{transaction.Order.TotalPrice: 0.00}";
-                lblVATHighResult.Text = $"{transaction.Order.VATHigh: 0.00}";
-                lblVATLowResult.Text = $"{transaction.Order.VATLow: 0.00}";
-                txtTipAmount.Text = $"{transaction.TipAmount: 0.00}";
-                txtToPay.Text = $"{transaction.Order.TotalPrice: 0.00}";
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
+            
         }
 
         //*** add method to load listview of transaction/order

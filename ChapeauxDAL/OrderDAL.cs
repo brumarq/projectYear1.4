@@ -49,11 +49,12 @@ namespace ChapeauxDAL
         public void UpdateOrderIsPaid(Order order)
         {
             SqlCommand cmd = new SqlCommand("UPDATE ORDERS " +
-                                            "SET isPaid = @isPaid " +
+                                            "SET isPaid = @isPaid, endDateTime = @endDateTime " +
                                             "WHERE orderID = @orderID", conn);
 
             OpenConnection();
             cmd.Parameters.AddWithValue("@isPaid", order.IsPaid);
+            cmd.Parameters.AddWithValue("@endDateTime", order.endDateTime);
             cmd.Parameters.AddWithValue("@orderID", order.OrderID);
             SqlDataReader reader = cmd.ExecuteReader();
         }
