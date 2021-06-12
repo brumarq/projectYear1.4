@@ -10,6 +10,7 @@ namespace ChapeauxUI
     public partial class TableOverviewForm : Form
     {
         User loggedUser;
+
         public TableOverviewForm(User user)
         {
             loggedUser = user;
@@ -22,6 +23,28 @@ namespace ChapeauxUI
             getTableStatus();
         }
 
+        #region Buttons
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
+            this.Close();
+        }
+
+        private void btnTable1_Click(object sender, EventArgs e)
+        {
+            // Get the button ID from the sender text
+            int tableNumber = int.Parse(sender.ToString().Substring(35));
+
+            // Open a new table details with the retrieved table number
+            TableDetails tableDetails = new TableDetails(loggedUser, tableNumber);
+            tableDetails.Show();
+            this.Close();
+        }
+        #endregion
+
+
+        #region Table status and Order status update methods
         void getTableStatus()
         {
             Table_Service table_service = new Table_Service();
@@ -80,18 +103,19 @@ namespace ChapeauxUI
             // Iterate through Food and Drink, it first will go through food Drink Items and then Food Items
             foreach (List<OrderItem> orderType in foodAndDrink)
             {
-                //Show specific food or drink
-                FoodAndDrinksIcons[tableId, foodOrDrink].Show();
-
                 State? previousItemsState = null;
                 foreach (OrderItem item in orderType)
                 {
+                    //Show specific standard food or drink icon
+                    FoodAndDrinksIcons[tableId, foodOrDrink].Show();
+
                     // Checking if the icon should be shown as served
                     if (item.State == State.served && (previousItemsState != State.ready || previousItemsState != State.loading))
                     {
                         previousItemsState = State.served;
 
-                        if (foodOrDrink == 1)
+                        // Change icon to served
+                        if (foodOrDrink == 0)
                             FoodAndDrinksIcons[tableId, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_served1;
                         else
                             FoodAndDrinksIcons[tableId, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_served1;
@@ -103,7 +127,8 @@ namespace ChapeauxUI
                         previousItemsState = State.ready;
                         FoodAndDrinksIcons[tableId, foodOrDrink].Show();
 
-                        if (foodOrDrink == 1)
+                        // Change icon to ready
+                        if (foodOrDrink == 0)
                             FoodAndDrinksIcons[tableId, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_ReadyToBeServed1;
                         else
                             FoodAndDrinksIcons[tableId, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_ReadyToBeServed1;
@@ -114,30 +139,17 @@ namespace ChapeauxUI
                         previousItemsState = State.loading;
                         FoodAndDrinksIcons[tableId, foodOrDrink].Show();
 
-                        if (foodOrDrink == 1)
+                        // Change icon to loading
+                        if (foodOrDrink == 0)
                             FoodAndDrinksIcons[tableId, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_beingPrepared1;
                         else
                             FoodAndDrinksIcons[tableId, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_beingPrepared1;
                     }
                 }
-
                 foodOrDrink++;
             }
         }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            LoginScreen loginScreen = new LoginScreen();
-            loginScreen.Show();
-            this.Close();
-        }
-
-        private void btnTable1_Click(object sender, EventArgs e)
-        {
-            int tableNumber = int.Parse(sender.ToString().Substring(35));
-            TableDetails tableDetails = new TableDetails(loggedUser, tableNumber);
-            tableDetails.Show();
-            this.Close();
-        }
+        #endregion
     }
 }
+        
