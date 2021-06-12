@@ -98,7 +98,7 @@ namespace ChapeauxUI
             this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
             this.lblTitle.Font = new System.Drawing.Font("Roboto", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Location = new System.Drawing.Point(50, 18);
+            this.lblTitle.Location = new System.Drawing.Point(50, 17);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(177, 48);
             this.lblTitle.TabIndex = 0;
@@ -111,7 +111,7 @@ namespace ChapeauxUI
             this.lblUserFullName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblUserFullName.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserFullName.ForeColor = System.Drawing.Color.White;
-            this.lblUserFullName.Location = new System.Drawing.Point(393, 31);
+            this.lblUserFullName.Location = new System.Drawing.Point(392, 31);
             this.lblUserFullName.Name = "lblUserFullName";
             this.lblUserFullName.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblUserFullName.Size = new System.Drawing.Size(283, 24);
@@ -121,9 +121,9 @@ namespace ChapeauxUI
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ChapeauxUI.Properties.Resources.description;
-            this.pictureBox1.Location = new System.Drawing.Point(357, 110);
+            this.pictureBox1.Location = new System.Drawing.Point(484, 111);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(373, 42);
+            this.pictureBox1.Size = new System.Drawing.Size(238, 42);
             this.pictureBox1.TabIndex = 43;
             this.pictureBox1.TabStop = false;
             // 
@@ -521,7 +521,7 @@ namespace ChapeauxUI
             // 
             this.pctLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
             this.pctLogo.Image = global::ChapeauxUI.Properties.Resources.Capture;
-            this.pctLogo.Location = new System.Drawing.Point(684, 20);
+            this.pctLogo.Location = new System.Drawing.Point(684, 19);
             this.pctLogo.Name = "pctLogo";
             this.pctLogo.Size = new System.Drawing.Size(46, 46);
             this.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -545,7 +545,7 @@ namespace ChapeauxUI
             // ptcHeader
             // 
             this.ptcHeader.Image = global::ChapeauxUI.Properties.Resources.top_bar;
-            this.ptcHeader.Location = new System.Drawing.Point(0, 2);
+            this.ptcHeader.Location = new System.Drawing.Point(0, 0);
             this.ptcHeader.Name = "ptcHeader";
             this.ptcHeader.Size = new System.Drawing.Size(768, 98);
             this.ptcHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -567,7 +567,7 @@ namespace ChapeauxUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(768, 985);
+            this.ClientSize = new System.Drawing.Size(767, 985);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pctT10_DrinkStatus);
             this.Controls.Add(this.pctT10_FoodStatus);

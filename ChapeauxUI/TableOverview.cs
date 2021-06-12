@@ -94,8 +94,8 @@ namespace ChapeauxUI
 
             // List of Drink and Food
             List<List<OrderItem>> foodAndDrink = new List<List<OrderItem>>();
-            foodAndDrink.Add(listOfDrinkStatus);
             foodAndDrink.Add(listOfFoodStatus);
+            foodAndDrink.Add(listOfDrinkStatus);
 
             int foodOrDrink = 0; // This is used to decide if we need the food icons or drink icons
             tableId = --tableId; // Changed this to use in the array

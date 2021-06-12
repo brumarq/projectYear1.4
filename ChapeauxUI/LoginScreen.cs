@@ -21,11 +21,6 @@ namespace ChapeauxUI
             InitializeComponent();
         }
 
-        private void ChapeauxUI_Load(object sender, EventArgs e)
-        {
-        
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string givenUsername = txtUsername.Text;
@@ -75,7 +70,6 @@ namespace ChapeauxUI
                 {
                     throw new Exception("Incorrect password!");
                 }
-                
             }
             catch (Exception err)
             {

@@ -49,7 +49,7 @@ namespace ChapeauUI
             this.Qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UnitPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.orderStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.LblLocalTime = new System.Windows.Forms.Label();
+            this.LblTimer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
@@ -75,7 +75,7 @@ namespace ChapeauUI
             this.lblUserFullName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblUserFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserFullName.ForeColor = System.Drawing.Color.White;
-            this.lblUserFullName.Location = new System.Drawing.Point(395, 34);
+            this.lblUserFullName.Location = new System.Drawing.Point(394, 32);
             this.lblUserFullName.Name = "lblUserFullName";
             this.lblUserFullName.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblUserFullName.Size = new System.Drawing.Size(283, 24);
@@ -89,7 +89,7 @@ namespace ChapeauUI
             this.lblTableStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTableStatus.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTableStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblTableStatus.Location = new System.Drawing.Point(486, 215);
+            this.lblTableStatus.Location = new System.Drawing.Point(485, 215);
             this.lblTableStatus.Name = "lblTableStatus";
             this.lblTableStatus.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTableStatus.Size = new System.Drawing.Size(205, 24);
@@ -238,7 +238,7 @@ namespace ChapeauUI
             this.listViewOrderOverview.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.listViewOrderOverview.MultiSelect = false;
             this.listViewOrderOverview.Name = "listViewOrderOverview";
-            this.listViewOrderOverview.Size = new System.Drawing.Size(602, 390);
+            this.listViewOrderOverview.Size = new System.Drawing.Size(601, 390);
             this.listViewOrderOverview.TabIndex = 20;
             this.listViewOrderOverview.UseCompatibleStateImageBehavior = false;
             this.listViewOrderOverview.View = System.Windows.Forms.View.Details;
@@ -271,27 +271,27 @@ namespace ChapeauUI
             this.orderStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.orderStatus.Width = 124;
             // 
-            // LblLocalTime
+            // LblTimer
             // 
-            this.LblLocalTime.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.LblLocalTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.LblLocalTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LblLocalTime.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblLocalTime.ForeColor = System.Drawing.Color.Black;
-            this.LblLocalTime.Location = new System.Drawing.Point(486, 181);
-            this.LblLocalTime.Name = "LblLocalTime";
-            this.LblLocalTime.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.LblLocalTime.Size = new System.Drawing.Size(205, 24);
-            this.LblLocalTime.TabIndex = 22;
-            this.LblLocalTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LblTimer.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.LblTimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.LblTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LblTimer.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTimer.ForeColor = System.Drawing.Color.Black;
+            this.LblTimer.Location = new System.Drawing.Point(485, 181);
+            this.LblTimer.Name = "LblTimer";
+            this.LblTimer.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblTimer.Size = new System.Drawing.Size(205, 24);
+            this.LblTimer.TabIndex = 22;
+            this.LblTimer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TableDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(768, 985);
-            this.Controls.Add(this.LblLocalTime);
+            this.ClientSize = new System.Drawing.Size(767, 985);
+            this.Controls.Add(this.LblTimer);
             this.Controls.Add(this.listViewOrderOverview);
             this.Controls.Add(this.btnCheckout);
             this.Controls.Add(this.btnAddNewOrder);
@@ -341,6 +341,6 @@ namespace ChapeauUI
         private System.Windows.Forms.ColumnHeader UnitPrice;
         private System.Windows.Forms.ColumnHeader orderStatus;
         private System.Windows.Forms.ColumnHeader ID;
-        private System.Windows.Forms.Label LblLocalTime;
+        private System.Windows.Forms.Label LblTimer;
     }
 }
