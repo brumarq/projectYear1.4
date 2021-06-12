@@ -235,6 +235,7 @@ namespace ChapeauxUI
         {
             OrderItem_Service orderItem_Service = new OrderItem_Service();
             orderItem_Service.UpdateOrderItemStatus(orderItem, State.ready);
+            ShowRunningKitchenOrder();//Update method
         }
 
         private void listViewKitchenOrdersDetail_SelectedIndexChanged(object sender, EventArgs e)
