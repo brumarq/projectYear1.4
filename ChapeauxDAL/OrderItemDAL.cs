@@ -11,6 +11,20 @@ namespace ChapeauxDAL
 {
     public class OrderItemDAL : Base
     {
+        public void UpdateOrderItemStatus(OrderItem orderItem, State status)
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE ORDERITEMS " +
+                                            "SET [state] = @state " +
+                                            "WHERE orderItemID = @orderItemID; ", conn);
+
+            OpenConnection();
+
+            cmd.Parameters.AddWithValue("@state", status.ToString());
+            cmd.Parameters.AddWithValue("@orderItemID", orderItem.OrderItemID);
+            cmd.ExecuteReader();
+
+            CloseConnection();
+        }
         public List<OrderItem> GetDrinksStatus(int tableNumber)
         {
             string query = "SELECT ORDERITEMS.state FROM ORDERITEMS INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID WHERE ITEMS.category = 'Drink' AND ORDERS.tableID = @tableID AND ORDERs.isPaid = 0; ";
@@ -32,7 +46,7 @@ namespace ChapeauxDAL
         #region Checkout
         public List<OrderItem> GetOrderFood(int orderID)
         {
-            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state, ORDERITEMS.comments " +
+            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ORDERITEMS.orderDateTime, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state, ORDERITEMS.comments " +
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
@@ -47,7 +61,7 @@ namespace ChapeauxDAL
 
         public List<OrderItem> GetOrderDrinks(int orderID)
         {
-            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state, ORDERITEMS.comments " +
+            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ORDERITEMS.orderDateTime, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state, ORDERITEMS.comment " +
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
@@ -67,15 +81,17 @@ namespace ChapeauxDAL
             {
                 OrderItem orderItem = new OrderItem()
                 {
-                     OrderID = (int)dr["orderID"],
-                     ItemID = (int)dr["itemID"],
-                     Count = (int)dr["count"],
-                     Name = (string)dr["name"],
-                     Category = (string)dr["category"],
-                     Price = (decimal)dr["price"],
-                     VATRate = (decimal)dr["VATRate"],
-                     State = (State)Enum.Parse(typeof(State), dr["state"].ToString()),
-                     Comment = (string)dr["comments"]
+                    OrderItemID = (int)dr["orderItemID"],
+                    OrderID = (int)dr["orderID"],
+                    ItemID = (int)dr["itemID"],
+                    Count = (int)dr["count"],
+                    Name = (string)dr["name"],
+                    OrderDateTime = (DateTime)dr["orderDateTime"],
+                    Category = (string)dr["category"],
+                    Price = (decimal)dr["price"],
+                    VATRate = (decimal)dr["VATRate"],
+                    State = (State)Enum.Parse(typeof(State), dr["state"].ToString()),
+                    Comment = (string)dr["comments"]
                 };
 
                 listOfItems.Add(orderItem);
@@ -113,7 +129,7 @@ namespace ChapeauxDAL
             cmd.Parameters.AddWithValue("@state", orderItem.State.ToString());
             cmd.Parameters.AddWithValue("@count", orderItem.Count);
             cmd.Parameters.AddWithValue("@comment", orderItem.Comment);
-            cmd.Parameters.AddWithValue("@dateTime", orderItem.orderDateTime);
+            cmd.Parameters.AddWithValue("@dateTime", orderItem.OrderDateTime);
             SqlDataReader reader = cmd.ExecuteReader();
 
             CloseConnection();

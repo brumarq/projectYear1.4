@@ -2,6 +2,8 @@
 using ChapeauxModel;
 using ChapeauxUI;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ChapeauUI
@@ -10,12 +12,17 @@ namespace ChapeauUI
     {
         private User loggedUser;
         public Table currentTable;
-        bool tableHasOrders;
+        Timer tmr;
+        bool tableHasOrder;
+        bool tableHasItems;
+
         Order order;
+        List<OrderItem> itemsThatHaveNotBeenServed;
 
         public TableDetails(User user, int tableNumber)
         {
             this.loggedUser = user;
+            itemsThatHaveNotBeenServed = new List<OrderItem>();
 
             Table_Service table_service = new Table_Service();
             Table selectedTable = table_service.getTable(tableNumber);
@@ -27,6 +34,7 @@ namespace ChapeauUI
             fillUpOrderDetails();
             updateTableState();
             updateStatus();
+            startTimer();
         }
 
         private void TableDetails_Load(object sender, EventArgs e)
@@ -34,8 +42,54 @@ namespace ChapeauUI
             lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
             lblTableStatus.Text = $"Table {currentTable.TableID}: {currentTable.Status}";
             btnCheckout.Enabled = false;
+
+            tmr = new Timer();
+            tmr.Interval = 1000;//ticks every 1 second
+
             fillUpOrderDetails();
             updateStatus();
+            startTimer();
+        }
+
+        private void startTimer()
+        {
+
+            bool everyOrderServed = true;
+
+            foreach (OrderItem orderItems in order.orderItems)
+            {
+                if (orderItems.State != State.served)
+                {
+                    itemsThatHaveNotBeenServed.Add(orderItems);
+                    everyOrderServed = false;
+                }
+            }
+
+            if (order != null && !everyOrderServed)
+            {
+                tmr.Tick += new EventHandler(tmr_Tick);
+                tmr.Start();
+            }
+            else if(order != null && everyOrderServed)
+            {
+                tmr.Stop();
+                LblLocalTime.Text = "";
+            }
+            else
+            {
+                tmr.Stop();
+                LblLocalTime.Text = "";
+            }
+        }
+
+        
+        //change the label text inside the tick event
+        private void tmr_Tick(object sender, EventArgs e)
+        {
+            List<OrderItem> orderedListByID = itemsThatHaveNotBeenServed.OrderBy(o => o.OrderItemID).ToList();
+            TimeSpan diff = DateTime.Now - orderedListByID[0].OrderDateTime;
+
+            LblLocalTime.Text = $"{diff:hh\\:mm\\:ss}";
         }
 
         private void btnBackToOverview_Click(object sender, EventArgs e)
@@ -58,22 +112,24 @@ namespace ChapeauUI
             {
                 Order_Service orderService = new Order_Service();
                 order = orderService.GetByTableID(currentTable.TableID);
-                listViewOrderOverview4.Items.Clear();
+                listViewOrderOverview.Items.Clear();
 
                 if (order == null)
                 {
                     return;
                 }
 
-                listViewOrderOverview4.Items.Clear();
+                listViewOrderOverview.Items.Clear();
 
                 foreach (OrderItem orderItem in order.orderItems)
                 {
-                    ListViewItem li = new ListViewItem(orderItem.Name);
+                    ListViewItem li = new ListViewItem(orderItem.OrderItemID.ToString());
+                    li.SubItems.Add(orderItem.Name);
                     li.SubItems.Add(orderItem.Count.ToString());
                     li.SubItems.Add(orderItem.Price.ToString("0.00"));
                     li.SubItems.Add(orderItem.State.ToString());
-                    listViewOrderOverview4.Items.Add(li);
+                    li.Tag = orderItem;
+                    listViewOrderOverview.Items.Add(li);
                 }
             }
             catch (Exception exc)
@@ -85,26 +141,37 @@ namespace ChapeauUI
         private void btnOccupyTable_Click(object sender, EventArgs e)
         {
             Table_Service table_service = new Table_Service();
+            Order_Service order_Service = new Order_Service();
 
             if (currentTable.Status == Status.Free)
             {
                 // Change value in databse to occupied
                 table_service.UpdateStatus(currentTable.TableID, Status.Occupied);
                 currentTable.Status = Status.Occupied;
-                updateStatus();
+                Reload();
             }
             else
             {
-                if (tableHasOrders)
+                if (tableHasOrder && tableHasItems)
                 {
-                    updateStatus();
                     return;
+                }
+                else if (tableHasOrder && !tableHasItems)
+                {
+                    table_service.UpdateStatus(currentTable.TableID, Status.Free);
+                    order_Service.DeleteOrder(order);
+
+                    order = null;
+                    currentTable.Status = Status.Free;
+                    
+                    Reload();
                 }
                 else
                 {
                     table_service.UpdateStatus(currentTable.TableID, Status.Free);
                     currentTable.Status = Status.Free;
-                    updateStatus();
+
+                    Reload();
                 }
             }
         }
@@ -126,11 +193,17 @@ namespace ChapeauUI
 
                 if (thereIsAnOrder)
                 {
-                    tableHasOrders = true;
+                    tableHasOrder = true;
                     bool itemsServed = true;
                     if (order.orderItems.Count != 0)
                     {
                         // check if every orderitems have been served
+                        tableHasItems = true;
+                        btnOccupyTable.Enabled = false;
+
+                        btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_hover;
+
+
                         foreach (OrderItem orderItem in order.orderItems)
                         {
                             if (orderItem.State != State.served)
@@ -153,14 +226,16 @@ namespace ChapeauUI
                     else
                     {
                         btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_hover;
+                        btnAddNewOrder.BackgroundImage = ChapeauxUI.Properties.Resources.btnAddNewOrder_enabled;
+                        btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_enabled;
                         btnCheckout.Enabled = false;
+                        btnOccupyTable.Enabled = true;
+                        tableHasItems = false;
                     }
-
-                    btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_hover;
                 }
                 else
                 {
-                    tableHasOrders = false;
+                    tableHasOrder = false;
                     btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_enabled;
                     btnAddNewOrder.BackgroundImage = ChapeauxUI.Properties.Resources.btnAddNewOrder_enabled;
                     btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_hover;
@@ -191,11 +266,11 @@ namespace ChapeauUI
                 return;
             }
 
-            if (!tableHasOrders)
+            if (!tableHasOrder)
             {
                 CreateNewOrder();
 
-                tableHasOrders = true;
+                tableHasOrder = true;
             }
 
 
@@ -223,6 +298,26 @@ namespace ChapeauUI
             Reload();
             this.Show();
 
+        }
+
+        private void listViewOrderOverview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewOrderOverview.SelectedItems.Count == 1)
+            {
+                OrderItem item = listViewOrderOverview.SelectedItems[0].Tag as OrderItem;
+
+                if (item.State == State.ready)
+                {
+                    OrderItem_Service orderItem_service = new OrderItem_Service();
+                    orderItem_service.UpdateOrderItemStatus(item, State.served);
+                    Reload();
+                }
+                else
+                {
+                    return;
+                }
+                
+            }
         }
     }
 }

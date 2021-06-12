@@ -43,11 +43,13 @@ namespace ChapeauUI
             this.pctLogo = new System.Windows.Forms.PictureBox();
             this.ptcHeader = new System.Windows.Forms.PictureBox();
             this.btnBackToOverview = new System.Windows.Forms.Button();
-            this.listViewOrderOverview4 = new System.Windows.Forms.ListView();
+            this.listViewOrderOverview = new System.Windows.Forms.ListView();
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Product = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UnitPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.orderStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.LblLocalTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
@@ -85,7 +87,7 @@ namespace ChapeauUI
             this.lblTableStatus.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblTableStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.lblTableStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTableStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTableStatus.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTableStatus.ForeColor = System.Drawing.Color.Black;
             this.lblTableStatus.Location = new System.Drawing.Point(486, 215);
             this.lblTableStatus.Name = "lblTableStatus";
@@ -217,42 +219,51 @@ namespace ChapeauUI
             this.btnBackToOverview.UseVisualStyleBackColor = false;
             this.btnBackToOverview.Click += new System.EventHandler(this.btnBackToOverview_Click);
             // 
-            // listViewOrderOverview4
+            // listViewOrderOverview
             // 
-            this.listViewOrderOverview4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listViewOrderOverview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewOrderOverview4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listViewOrderOverview4.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewOrderOverview.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewOrderOverview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ID,
             this.Product,
             this.Qty,
             this.UnitPrice,
             this.orderStatus});
-            this.listViewOrderOverview4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listViewOrderOverview4.HideSelection = false;
-            this.listViewOrderOverview4.Location = new System.Drawing.Point(84, 254);
-            this.listViewOrderOverview4.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.listViewOrderOverview4.Name = "listViewOrderOverview4";
-            this.listViewOrderOverview4.Size = new System.Drawing.Size(602, 390);
-            this.listViewOrderOverview4.TabIndex = 20;
-            this.listViewOrderOverview4.UseCompatibleStateImageBehavior = false;
-            this.listViewOrderOverview4.View = System.Windows.Forms.View.Details;
+            this.listViewOrderOverview.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewOrderOverview.FullRowSelect = true;
+            this.listViewOrderOverview.HideSelection = false;
+            this.listViewOrderOverview.Location = new System.Drawing.Point(84, 254);
+            this.listViewOrderOverview.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.listViewOrderOverview.MultiSelect = false;
+            this.listViewOrderOverview.Name = "listViewOrderOverview";
+            this.listViewOrderOverview.Size = new System.Drawing.Size(602, 390);
+            this.listViewOrderOverview.TabIndex = 20;
+            this.listViewOrderOverview.UseCompatibleStateImageBehavior = false;
+            this.listViewOrderOverview.View = System.Windows.Forms.View.Details;
+            this.listViewOrderOverview.SelectedIndexChanged += new System.EventHandler(this.listViewOrderOverview_SelectedIndexChanged);
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
             // 
             // Product
             // 
             this.Product.Text = "Product";
-            this.Product.Width = 286;
+            this.Product.Width = 233;
             // 
             // Qty
             // 
             this.Qty.Text = "Qty.";
             this.Qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Qty.Width = 93;
             // 
             // UnitPrice
             // 
             this.UnitPrice.Text = "Unit Price";
             this.UnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.UnitPrice.Width = 123;
+            this.UnitPrice.Width = 92;
             // 
             // orderStatus
             // 
@@ -260,13 +271,28 @@ namespace ChapeauUI
             this.orderStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.orderStatus.Width = 124;
             // 
+            // LblLocalTime
+            // 
+            this.LblLocalTime.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.LblLocalTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.LblLocalTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LblLocalTime.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblLocalTime.ForeColor = System.Drawing.Color.Black;
+            this.LblLocalTime.Location = new System.Drawing.Point(486, 181);
+            this.LblLocalTime.Name = "LblLocalTime";
+            this.LblLocalTime.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LblLocalTime.Size = new System.Drawing.Size(205, 24);
+            this.LblLocalTime.TabIndex = 22;
+            this.LblLocalTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // TableDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(768, 985);
-            this.Controls.Add(this.listViewOrderOverview4);
+            this.Controls.Add(this.LblLocalTime);
+            this.Controls.Add(this.listViewOrderOverview);
             this.Controls.Add(this.btnCheckout);
             this.Controls.Add(this.btnAddNewOrder);
             this.Controls.Add(this.btnOccupyTable);
@@ -309,10 +335,12 @@ namespace ChapeauUI
         private System.Windows.Forms.Button btnAddNewOrder;
         private System.Windows.Forms.Button btnCheckout;
         private System.Windows.Forms.Button btnBackToOverview;
-        private System.Windows.Forms.ListView listViewOrderOverview4;
+        private System.Windows.Forms.ListView listViewOrderOverview;
         private System.Windows.Forms.ColumnHeader Product;
         private System.Windows.Forms.ColumnHeader Qty;
         private System.Windows.Forms.ColumnHeader UnitPrice;
         private System.Windows.Forms.ColumnHeader orderStatus;
+        private System.Windows.Forms.ColumnHeader ID;
+        private System.Windows.Forms.Label LblLocalTime;
     }
 }
