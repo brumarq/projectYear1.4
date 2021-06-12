@@ -24,7 +24,7 @@ namespace ChapeauxUI
             listViewReceipt.Items.Clear();
             foreach (OrderItem orderItem in transaction.Order.orderItems)
             {
-                ListViewItem li = new ListViewItem(orderItem.Name);
+                ListViewItem li = new ListViewItem($"{orderItem.Name}     (X{orderItem.Count})");
                 li.SubItems.Add((orderItem.Price * orderItem.Count).ToString("0.00"));
                 listViewReceipt.Items.Add(li);
             }

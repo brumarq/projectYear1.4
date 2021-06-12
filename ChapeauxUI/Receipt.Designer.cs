@@ -373,7 +373,7 @@ namespace ChapeauxUI
             this.lblComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblComment.Location = new System.Drawing.Point(113, 576);
             this.lblComment.Name = "lblComment";
-            this.lblComment.Size = new System.Drawing.Size(273, 76);
+            this.lblComment.Size = new System.Drawing.Size(248, 76);
             this.lblComment.TabIndex = 89;
             this.lblComment.Text = "...";
             this.lblComment.TextAlign = System.Drawing.ContentAlignment.TopRight;

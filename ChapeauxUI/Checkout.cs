@@ -37,6 +37,7 @@ namespace ChapeauxUI
             transaction.Order = GetOrder(currentTable);
             ShowCurrentOrder(transaction.Order);
             btnFinishPayment.Enabled = false;
+            btnPayNow.Enabled = false;
         }
 
         private void CheckoutForm_Load(object sender, EventArgs e)
@@ -368,24 +369,28 @@ namespace ChapeauxUI
         {
             transaction.PaymentType = PaymentType.Maestro;
             lblPaymentMethod.Text = transaction.PaymentType.ToString();
+            btnPayNow.Enabled = true;
         }
 
         private void btnMasterCard_Click(object sender, EventArgs e)
         {
             transaction.PaymentType = PaymentType.MasterCard;
             lblPaymentMethod.Text = transaction.PaymentType.ToString();
+            btnPayNow.Enabled = true;
         }
 
         private void btnVisa_Click(object sender, EventArgs e)
         {
             transaction.PaymentType = PaymentType.VISA;
             lblPaymentMethod.Text = transaction.PaymentType.ToString();
+            btnPayNow.Enabled = true;
         }
 
         private void btnAmex_Click(object sender, EventArgs e)
         {
             transaction.PaymentType = PaymentType.AMEX;
             lblPaymentMethod.Text = transaction.PaymentType.ToString();
+            btnPayNow.Enabled = true;
         }
 
         private void btnPayNow_Click(object sender, EventArgs e)
@@ -459,6 +464,7 @@ namespace ChapeauxUI
             ShowPanel("Overview");
             FillListViewOverview();
 
+            lblOverViewOrderID.Text = $"#{transaction.Order.OrderID}";
             lblOverviewPaymentMethod.Text = $"{transaction.PaymentType}";
             lblOverviewTotalPrice.Text = $"{transaction.Order.TotalPrice: 0.00}";
             lblOverviewVatHigh.Text = $"{transaction.Order.VATHigh: 0.00}";
@@ -483,9 +489,6 @@ namespace ChapeauxUI
                     li.SubItems.Add(orderItem.VATRate.ToString("#0.##%"));
                     listViewOverview.Items.Add(li);
                 }
-
-                listViewOverview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                listViewOverview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
             catch (Exception exc)
             {
