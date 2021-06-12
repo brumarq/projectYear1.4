@@ -17,7 +17,7 @@ namespace ChapeauxLogic
         //{
         //    orderdb.UpdateOrderIsPaid(order);
         //}
-        
+
         public Order_Service()
         {
             orderdb = new OrderDAL();
@@ -29,49 +29,8 @@ namespace ChapeauxLogic
             return orderdb.IsThereAnOrder(tableNumber);
         }
         #region GetFood And Drinks Orders
-        public List<Order> GetFoodOrders()
-        {
-            List<Order> foodorders = orderdb.GetFoodOrders();
-            for (int i = 0; i < foodorders.Count; i++)
-            {
-                foodorders[i].orderItems = orderItemdb.GetOrderFood(foodorders[i].OrderID);
-                for (int j = 0; j < foodorders[i].orderItems.Count; j++)
-                {
-                    if (foodorders[i].orderItems[j].State == State.loading)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        foodorders.Remove(foodorders[i]);
-                    }
-                }
-               
-            }
-
-            return foodorders;
-
-        }
-        public List<Order> GetDrinkOrders()
-        {
-            List<Order> drinkorder = orderdb.GetDrinkOrders();
-            for (int i = 0; i < drinkorder.Count; i++)
-            {
-                drinkorder[i].orderItems = orderItemdb.GetOrderDrinks(drinkorder[i].UserID);
-                for (int j = 0; j < drinkorder[i].orderItems.Count; j++)
-                {
-                    if (drinkorder[i].orderItems[j].State == State.loading)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        drinkorder.Remove(drinkorder[i]);
-                    }
-                }
-            }
-            return drinkorder;
-        }
+    
+      
         #endregion
 
         public void AddNewOrder(Order order)

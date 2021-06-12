@@ -85,7 +85,7 @@ namespace ChapeauxDAL
                 State = (State)reader["state"],
                 Comment = reader["category"].ToString(),
                 Course = reader["comments"].ToString(),
-                orderDateTime = (DateTime)reader["orderDateTime"]
+                OrderDateTime = (DateTime)reader["orderDateTime"]
             };
             return menuItem;
         }
@@ -100,7 +100,7 @@ namespace ChapeauxDAL
                     new SqlParameter("@itemID", menuItem.Count),
                     new SqlParameter("@state", menuItem.State),
                     new SqlParameter("@comments", menuItem.Comment),
-                    new SqlParameter("@orderDateTime", menuItem.orderDateTime)
+                    new SqlParameter("@orderDateTime", menuItem.OrderDateTime)
             };
             ExecuteEditQuery(query, parameters);
         }
@@ -116,7 +116,7 @@ namespace ChapeauxDAL
                 new SqlParameter("@itemID", lastItem.Count),
                 new SqlParameter("@state", lastItem.State),
                 new SqlParameter("@comments", lastItem.Comment),
-                new SqlParameter("@orderDateTime", lastItem.orderDateTime)
+                new SqlParameter("@orderDateTime", lastItem.OrderDateTime)
             };
             ExecuteEditQuery(query, parameters);
         }
@@ -133,7 +133,7 @@ namespace ChapeauxDAL
                     Count = (int)dr["itemID"],
                     State = (State)dr["state"],
                     Comment = dr["comments"].ToString(),
-                    orderDateTime = (DateTime)dr["orderDateTime"]
+                    OrderDateTime = (DateTime)dr["orderDateTime"]
                 };
 
                 orderitems.Add(orderitem);
@@ -169,6 +169,36 @@ namespace ChapeauxDAL
                             "ORDER BY ITEMS.[itemID]";
             SqlParameter[] sqlParameters = {
                  new SqlParameter("@orderID", orderID),
+            };
+            return ReadOrderItems(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public List<OrderItem> GetLoadingFoodItems()
+        {
+            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ORDERITEMS.orderDateTime, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state, ORDERITEMS.comments " +
+                           "FROM ORDERITEMS " +
+                           "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
+                           "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
+                           "WHERE(ITEMS.category = 'Lunch' OR ITEMS.category = 'Dinner') " +
+                           "AND ORDERITEMS.[state] = 'loading' " +
+                           "ORDER BY ORDERITEMS.orderDateTime";
+            SqlParameter[] sqlParameters = {
+                 
+            };
+            return ReadOrderItems(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public List<OrderItem> GetLoadingDrinkItems()
+        {
+            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ORDERITEMS.orderDateTime, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state, ORDERITEMS.comments " +
+                           "FROM ORDERITEMS " +
+                           "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
+                           "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
+                           "WHERE ITEMS.category = 'Drink' " +
+                           "AND ORDERITEMS.[state] = 'loading' " +
+                           "ORDER BY ORDERITEMS.orderDateTime";
+            SqlParameter[] sqlParameters = {
+               
             };
             return ReadOrderItems(ExecuteSelectQuery(query, sqlParameters));
         }

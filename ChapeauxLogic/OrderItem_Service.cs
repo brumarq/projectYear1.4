@@ -15,8 +15,10 @@ namespace ChapeauxLogic
         public OrderItem_Service()
         {
             orderItemdb = new OrderItemDAL();
-
         }
+
+        
+
         public void UpdateOrderItemStatus(OrderItem orderItem, State status)
         {
             orderItemdb.UpdateOrderItemStatus(orderItem, status);
@@ -49,6 +51,16 @@ namespace ChapeauxLogic
         public List<OrderItem> GetDrinkItems(int orderID)
         {
             return orderItemdb.GetOrderDrinks(orderID);
+        }
+
+        public List<OrderItem> GetLoadingFoodItems()
+        {
+            return orderItemdb.GetLoadingFoodItems();
+        }
+
+        public List<OrderItem> GetLoadingDrinkItems()
+        {
+            return orderItemdb.GetLoadingDrinkItems();
         }
         #endregion
     }
