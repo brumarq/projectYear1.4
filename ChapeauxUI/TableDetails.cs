@@ -34,7 +34,11 @@ namespace ChapeauUI
             fillUpOrderDetails();
             updateTableState();
             updateStatus();
-            startTimer();
+            if (order != null)
+            {
+                startTimer();
+            }
+
         }
 
         private void TableDetails_Load(object sender, EventArgs e)
@@ -48,7 +52,11 @@ namespace ChapeauUI
 
             fillUpOrderDetails();
             updateStatus();
-            startTimer();
+            if (order != null)
+            {
+                startTimer();
+            }
+
         }
 
         private void startTimer()
@@ -70,7 +78,7 @@ namespace ChapeauUI
                 tmr.Tick += new EventHandler(tmr_Tick);
                 tmr.Start();
             }
-            else if(order != null && everyOrderServed)
+            else if (order != null && everyOrderServed)
             {
                 tmr.Stop();
                 LblLocalTime.Text = "";
@@ -82,7 +90,7 @@ namespace ChapeauUI
             }
         }
 
-        
+
         //change the label text inside the tick event
         private void tmr_Tick(object sender, EventArgs e)
         {
@@ -163,7 +171,7 @@ namespace ChapeauUI
 
                     order = null;
                     currentTable.Status = Status.Free;
-                    
+
                     Reload();
                 }
                 else
@@ -316,7 +324,7 @@ namespace ChapeauUI
                 {
                     return;
                 }
-                
+
             }
         }
     }

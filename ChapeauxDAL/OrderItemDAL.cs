@@ -61,7 +61,7 @@ namespace ChapeauxDAL
 
         public List<OrderItem> GetOrderDrinks(int orderID)
         {
-            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ORDERITEMS.orderDateTime, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state, ORDERITEMS.comment " +
+            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ORDERITEMS.orderDateTime, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state, ORDERITEMS.comments " +
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
