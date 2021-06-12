@@ -13,13 +13,18 @@ namespace ChapeauxLogic
         OrderDAL orderdb;
         OrderItemDAL orderItemdb;
 
+        //public void UpdateIsPaid(Order orderID)
+        //{
+        //    orderdb.UpdateOrderIsPaid(order);
+        //}
+        
         public Order_Service()
         {
             orderdb = new OrderDAL();
             orderItemdb = new OrderItemDAL();
         }
 
-        public bool getOrderForTable(int tableNumber)
+        public bool tableContainsOrder(int tableNumber)
         {
             return orderdb.IsThereAnOrder(tableNumber);
         }
@@ -74,9 +79,20 @@ namespace ChapeauxLogic
             orderdb.AddNewOrder(order);
         }
 
+        public void DeleteOrder(Order order)
+        {
+            orderdb.DeleteOrder(order);
+        }
+
         public Order GetByTableID(int tableID)
         {
             Order order = orderdb.GetByTableID(tableID);
+
+            if (order == null)
+            {
+                return null;
+            }
+
             order.foodItems = orderItemdb.GetOrderFood(order.OrderID);
             order.drinkItems = orderItemdb.GetOrderDrinks(order.OrderID);
 

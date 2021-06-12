@@ -42,9 +42,9 @@ namespace ChapeauxLogic
             userDAO.RemoveUserAccount(user);
         }
 
-        public User LoginCheck(string givenUsername)
+        public User LoginCheck(string givenUsername, string givenPassword)
         {
-            return userDAO.LoginCheck(givenUsername);
+            return userDAO.LoginCheck(givenUsername, givenPassword);
         }
     }
 }

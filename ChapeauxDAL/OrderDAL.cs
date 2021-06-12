@@ -47,13 +47,27 @@ namespace ChapeauxDAL
         #endregion
 
         #region Storing
+        public void UpdateOrderIsPaid(Order order)
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE ORDERS " +
+                                            "SET isPaid = @isPaid, endDateTime = @endDateTime " +
+                                            "WHERE orderID = @orderID", conn);
+
+            OpenConnection();
+            cmd.Parameters.AddWithValue("@isPaid", order.IsPaid);
+            cmd.Parameters.AddWithValue("@endDateTime", order.endDateTime);
+            cmd.Parameters.AddWithValue("@orderID", order.OrderID);
+            SqlDataReader reader = cmd.ExecuteReader();
+        }
+
         public void AddNewOrder(Order order)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO ORDERS (startDateTime, isPaid, tableID, userID) " +
-                                            "VALUES(@startDateTime, @isPaid, @tableID, @userID)", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO ORDERS (startDateTime, endDateTime, isPaid, tableID, userID) " +
+                                            "VALUES(@startDateTime, @endDateTime, @isPaid, @tableID, @userID)", conn);
 
             OpenConnection();
             cmd.Parameters.AddWithValue("@startDateTime", DateTime.Now);
+            cmd.Parameters.AddWithValue("@endDateTime", (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue);
             cmd.Parameters.AddWithValue("@isPaid", false);
             cmd.Parameters.AddWithValue("@tableID", order.TableID);
             cmd.Parameters.AddWithValue("@userID", order.UserID);
@@ -64,7 +78,6 @@ namespace ChapeauxDAL
         #endregion
 
         #region Retrieving
-        //(needed for transactions) please leave this method as it is
         public Order GetByID(int orderID)
         {
             SqlCommand cmd = new SqlCommand("SELECT orderID, isPaid, tableID, userID, startDateTime, endDateTime " +
@@ -90,7 +103,7 @@ namespace ChapeauxDAL
         {
             SqlCommand cmd = new SqlCommand("SELECT orderID, startDateTime, endDateTime, isPaid, tableID, userID " +
                                             "FROM ORDERS " +
-                                            "WHERE tableID = @tableID", conn);
+                                            "WHERE tableID = @tableID AND isPaid = 0", conn);
             OpenConnection();
             cmd.Parameters.AddWithValue("@tableID", tableID);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -106,6 +119,19 @@ namespace ChapeauxDAL
             return order;
         }
         #endregion
+
+        public void DeleteOrder(Order order)
+        {
+            SqlCommand cmd = new SqlCommand("DELETE FROM ORDERS WHERE orderID=@orderID;", conn);
+
+            OpenConnection();
+
+            cmd.Parameters.AddWithValue("@orderID", order.OrderID.ToString());
+            cmd.ExecuteReader();
+
+            CloseConnection();
+        }
+
         public List<Order> GetAllOrders()
         {
             string query = "SELECT orderID, startDateTime, endDateTime, isPaid, tableID, userID FROM ORDERS";

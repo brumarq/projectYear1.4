@@ -14,7 +14,7 @@ namespace ChapeauxModel
 
         public int OrderID { get; set; }
         public DateTime startDateTime { get; set; }
-        public DateTime endDateTime { get; set; }
+        public DateTime? endDateTime { get; set; }
         public bool IsPaid { get; set; }
         public int TableID { get; set; }
         public int UserID { get; set; }
@@ -26,7 +26,8 @@ namespace ChapeauxModel
 
                 foreach (OrderItem orderItem in orderItems)
                 {
-                    totalPrice += orderItem.Price;
+                    
+                    totalPrice += (orderItem.Price * orderItem.Count);
                 }
 
                 return totalPrice;
@@ -42,7 +43,7 @@ namespace ChapeauxModel
                     {
                         if (orderItem.VATRate == 0.21m)
                         {
-                            vatHighResult += orderItem.Price / 121 * 21;
+                            vatHighResult += orderItem.Price * orderItem.Count / 121 * 21;
                         }
                     }
                 
@@ -60,7 +61,7 @@ namespace ChapeauxModel
                     {
                         if (orderItem.VATRate == 0.09m)
                         {
-                            vatLowResult += orderItem.Price / 109 * 9;
+                            vatLowResult += orderItem.Price * orderItem.Count / 109 * 9;
                         }
                     }
                 
