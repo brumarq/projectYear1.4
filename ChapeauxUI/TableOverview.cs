@@ -67,7 +67,7 @@ namespace ChapeauxUI
                         status = State.served;
                         listOfTableStatus[count, foodOrDrink].Show();
 
-                        if (foodOrDrink == 0)
+                        if (foodOrDrink == 1)
                             listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_served1;
                         else
                             listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_served1;
@@ -78,7 +78,7 @@ namespace ChapeauxUI
                         status = State.ready;
                         listOfTableStatus[count, foodOrDrink].Show();
 
-                        if (foodOrDrink == 0)
+                        if (foodOrDrink == 1)
                             listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_ReadyToBeServed1;
                         else
                             listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_ReadyToBeServed1;
@@ -88,7 +88,7 @@ namespace ChapeauxUI
                         status = State.loading;
                         listOfTableStatus[count, foodOrDrink].Show();
 
-                        if (foodOrDrink == 0)
+                        if (foodOrDrink == 1)
                             listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_beingPrepared1;
                         else
                             listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_beingPrepared1;

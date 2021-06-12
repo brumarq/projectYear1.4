@@ -58,22 +58,24 @@ namespace ChapeauUI
             {
                 Order_Service orderService = new Order_Service();
                 order = orderService.GetByTableID(currentTable.TableID);
-                listViewOrderOverview4.Items.Clear();
+                listViewOrderOverview.Items.Clear();
 
                 if (order == null)
                 {
                     return;
                 }
 
-                listViewOrderOverview4.Items.Clear();
+                listViewOrderOverview.Items.Clear();
 
                 foreach (OrderItem orderItem in order.orderItems)
                 {
-                    ListViewItem li = new ListViewItem(orderItem.Name);
+                    ListViewItem li = new ListViewItem(orderItem.OrderItemID.ToString());
+                    li.SubItems.Add(orderItem.Name);
                     li.SubItems.Add(orderItem.Count.ToString());
                     li.SubItems.Add(orderItem.Price.ToString("0.00"));
                     li.SubItems.Add(orderItem.State.ToString());
-                    listViewOrderOverview4.Items.Add(li);
+                    li.Tag = orderItem;
+                    listViewOrderOverview.Items.Add(li);
                 }
             }
             catch (Exception exc)
@@ -223,6 +225,26 @@ namespace ChapeauUI
             Reload();
             this.Show();
 
+        }
+
+        private void listViewOrderOverview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewOrderOverview.SelectedItems.Count == 1)
+            {
+                OrderItem item = listViewOrderOverview.SelectedItems[0].Tag as OrderItem;
+
+                if (item.State == State.ready)
+                {
+                    OrderItem_Service orderItem_service = new OrderItem_Service();
+                    orderItem_service.UpdateOrderItemStatus(item, State.served);
+                    fillUpOrderDetails();
+                }
+                else
+                {
+                    return;
+                }
+                
+            }
         }
     }
 }

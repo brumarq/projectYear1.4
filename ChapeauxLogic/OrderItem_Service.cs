@@ -17,6 +17,10 @@ namespace ChapeauxLogic
             orderItemdb = new OrderItemDAL();
 
         }
+        public void UpdateOrderItemStatus(OrderItem orderItem, State status)
+        {
+            orderItemdb.UpdateOrderItemStatus(orderItem, status);
+        }
 
         public void AddItemToOrder(OrderItem orderItem)
         {

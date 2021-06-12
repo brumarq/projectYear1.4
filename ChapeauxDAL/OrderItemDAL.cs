@@ -11,6 +11,20 @@ namespace ChapeauxDAL
 {
     public class OrderItemDAL : Base
     {
+        public void UpdateOrderItemStatus(OrderItem orderItem, State status)
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE ORDERITEMS " +
+                                            "SET [state] = @state " +
+                                            "WHERE orderItemID = @orderItemID; ", conn);
+
+            OpenConnection();
+
+            cmd.Parameters.AddWithValue("@state", status.ToString());
+            cmd.Parameters.AddWithValue("@orderItemID", orderItem.OrderItemID);
+            cmd.ExecuteReader();
+
+            CloseConnection();
+        }
         public List<OrderItem> GetDrinksStatus(int tableNumber)
         {
             string query = "SELECT ORDERITEMS.state FROM ORDERITEMS INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID WHERE ITEMS.category = 'Drink' AND ORDERS.tableID = @tableID AND ORDERs.isPaid = 0; ";
@@ -32,7 +46,7 @@ namespace ChapeauxDAL
         #region Checkout
         public List<OrderItem> GetOrderFood(int orderID)
         {
-            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state " +
+            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state " +
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
@@ -47,7 +61,7 @@ namespace ChapeauxDAL
 
         public List<OrderItem> GetOrderDrinks(int orderID)
         {
-            string query = "SELECT ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state " +
+            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state " +
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
@@ -67,6 +81,7 @@ namespace ChapeauxDAL
             {
                 OrderItem orderItem = new OrderItem()
                 {
+                    OrderItemID = (int)dr["orderItemID"],
                      OrderID = (int)dr["orderID"],
                      ItemID = (int)dr["itemID"],
                      Count = (int)dr["count"],
