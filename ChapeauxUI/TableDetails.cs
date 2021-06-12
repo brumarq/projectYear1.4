@@ -2,6 +2,8 @@
 using ChapeauxModel;
 using ChapeauxUI;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ChapeauUI
@@ -10,14 +12,17 @@ namespace ChapeauUI
     {
         private User loggedUser;
         public Table currentTable;
+        Timer tmr;
         bool tableHasOrder;
         bool tableHasItems;
 
         Order order;
+        List<OrderItem> itemsThatHaveNotBeenServed;
 
         public TableDetails(User user, int tableNumber)
         {
             this.loggedUser = user;
+            itemsThatHaveNotBeenServed = new List<OrderItem>();
 
             Table_Service table_service = new Table_Service();
             Table selectedTable = table_service.getTable(tableNumber);
@@ -29,6 +34,7 @@ namespace ChapeauUI
             fillUpOrderDetails();
             updateTableState();
             updateStatus();
+            startTimer();
         }
 
         private void TableDetails_Load(object sender, EventArgs e)
@@ -36,8 +42,54 @@ namespace ChapeauUI
             lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
             lblTableStatus.Text = $"Table {currentTable.TableID}: {currentTable.Status}";
             btnCheckout.Enabled = false;
+
+            tmr = new Timer();
+            tmr.Interval = 1000;//ticks every 1 second
+
             fillUpOrderDetails();
             updateStatus();
+            startTimer();
+        }
+
+        private void startTimer()
+        {
+
+            bool everyOrderServed = true;
+
+            foreach (OrderItem orderItems in order.orderItems)
+            {
+                if (orderItems.State != State.served)
+                {
+                    itemsThatHaveNotBeenServed.Add(orderItems);
+                    everyOrderServed = false;
+                }
+            }
+
+            if (order != null && !everyOrderServed)
+            {
+                tmr.Tick += new EventHandler(tmr_Tick);
+                tmr.Start();
+            }
+            else if(order != null && everyOrderServed)
+            {
+                tmr.Stop();
+                LblLocalTime.Text = "";
+            }
+            else
+            {
+                tmr.Stop();
+                LblLocalTime.Text = "";
+            }
+        }
+
+        
+        //change the label text inside the tick event
+        private void tmr_Tick(object sender, EventArgs e)
+        {
+            List<OrderItem> orderedListByID = itemsThatHaveNotBeenServed.OrderBy(o => o.OrderItemID).ToList();
+            TimeSpan diff = DateTime.Now - orderedListByID[0].OrderDateTime;
+
+            LblLocalTime.Text = $"{diff:hh\\:mm\\:ss}";
         }
 
         private void btnBackToOverview_Click(object sender, EventArgs e)
@@ -96,27 +148,30 @@ namespace ChapeauUI
                 // Change value in databse to occupied
                 table_service.UpdateStatus(currentTable.TableID, Status.Occupied);
                 currentTable.Status = Status.Occupied;
-                updateStatus();
+                Reload();
             }
             else
             {
                 if (tableHasOrder && tableHasItems)
                 {
-                    updateStatus();
                     return;
                 }
                 else if (tableHasOrder && !tableHasItems)
                 {
                     table_service.UpdateStatus(currentTable.TableID, Status.Free);
                     order_Service.DeleteOrder(order);
+
+                    order = null;
                     currentTable.Status = Status.Free;
-                    updateStatus();
+                    
+                    Reload();
                 }
                 else
                 {
                     table_service.UpdateStatus(currentTable.TableID, Status.Free);
                     currentTable.Status = Status.Free;
-                    updateStatus();
+
+                    Reload();
                 }
             }
         }

@@ -14,6 +14,6 @@ namespace ChapeauxModel
         public int Count { get; set; }
         public State State { get; set; }
         public string Comment { get; set; }
-        public DateTime orderDateTime { get; set; }
+        public DateTime OrderDateTime { get; set; }
     }
 }

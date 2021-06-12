@@ -19,79 +19,105 @@ namespace ChapeauxUI
         private void TableOverviewForm_Load(object sender, EventArgs e)
         {
             lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
+            getTableStatus();
+        }
 
+        void getTableStatus()
+        {
             Table_Service table_service = new Table_Service();
-
             List<Table> listOfTables = table_service.getAllTables();
+
             Button[] listOfTableButtons = { btnTable1, btnTable2, btnTable3, btnTable4, btnTable5, btnTable6, btnTable7, btnTable8, btnTable9, btnTable10 };
+
             int count = 0;
+            // Iterate through every table, and use the listOfTableButtons to get the table status
             foreach (Table table in listOfTables)
             {
                 if (table.Status == Status.Occupied)
                 {
                     listOfTableButtons[count].BackgroundImage = ChapeauxUI.Properties.Resources.table_occupied;
-                    getOrderStatus(table, count);
+                    getOrderStatus(table); // After getting table status, get the Order status
                 }
                 else if (table.Status == Status.Late)
                 {
                     listOfTableButtons[count].BackgroundImage = ChapeauxUI.Properties.Resources.table_late;
-                    getOrderStatus(table, count);
+                    getOrderStatus(table); // After getting table status, get the Order status
                 }
 
                 count++;
             }
         }
 
-        void getOrderStatus(Table table, int count)
+        void getOrderStatus(Table table)
         {
+            int tableId = table.TableID;
+
             OrderItem_Service orderItem_Service = new OrderItem_Service();
-            PictureBox[,] listOfTableStatus = new PictureBox[,] { { pctT1_FoodStatus, pctT1_DrinkStatus }, { pctT2_FoodStatus, pctT2_DrinkStatus }, { pctT3_FoodStatus, pctT3_DrinkStatus }, { pctT4_FoodStatus, pctT4_DrinkStatus }, { pctT5_FoodStatus, pctT5_DrinkStatus }, { pctT6_FoodStatus, pctT6_DrinkStatus }, { pctT7_FoodStatus, pctT7_DrinkStatus }, { pctT8_FoodStatus, pctT8_DrinkStatus }, { pctT9_FoodStatus, pctT9_DrinkStatus }, { pctT10_FoodStatus, pctT10_DrinkStatus } };
+            List<OrderItem> listOfDrinkStatus = orderItem_Service.getDrinksStatus(tableId);
+            List<OrderItem> listOfFoodStatus = orderItem_Service.getFoodStatus(tableId);
 
-            List<OrderItem> listOfDrinkStatus = orderItem_Service.getDrinksStatus(table.TableID);
-            List<OrderItem> listOfFoodStatus = orderItem_Service.getFoodStatus(table.TableID);
+            // Array with food and drink icons name, for every table
+            PictureBox[,] FoodAndDrinksIcons = new PictureBox[,] { { pctT1_FoodStatus, pctT1_DrinkStatus }, 
+                                                                  { pctT2_FoodStatus, pctT2_DrinkStatus }, 
+                                                                  { pctT3_FoodStatus, pctT3_DrinkStatus }, 
+                                                                  { pctT4_FoodStatus, pctT4_DrinkStatus }, 
+                                                                  { pctT5_FoodStatus, pctT5_DrinkStatus }, 
+                                                                  { pctT6_FoodStatus, pctT6_DrinkStatus }, 
+                                                                  { pctT7_FoodStatus, pctT7_DrinkStatus }, 
+                                                                  { pctT8_FoodStatus, pctT8_DrinkStatus }, 
+                                                                  { pctT9_FoodStatus, pctT9_DrinkStatus }, 
+                                                                  { pctT10_FoodStatus, pctT10_DrinkStatus } 
+                                                                };
 
+            // List of Drink and Food
             List<List<OrderItem>> foodAndDrink = new List<List<OrderItem>>();
-
             foodAndDrink.Add(listOfDrinkStatus);
             foodAndDrink.Add(listOfFoodStatus);
 
+            int foodOrDrink = 0; // This is used to decide if we need the food icons or drink icons
+            tableId = --tableId; // Changed this to use in the array
 
-            int foodOrDrink = 0;
+            // Iterate through Food and Drink, it first will go through food Drink Items and then Food Items
             foreach (List<OrderItem> orderType in foodAndDrink)
             {
-                State? status = null;
+                //Show specific food or drink
+                FoodAndDrinksIcons[tableId, foodOrDrink].Show();
+
+                State? previousItemsState = null;
                 foreach (OrderItem item in orderType)
                 {
-                    if (item.State == State.served && (status != State.ready || status != State.loading))
+                    // Checking if the icon should be shown as served
+                    if (item.State == State.served && (previousItemsState != State.ready || previousItemsState != State.loading))
                     {
-                        status = State.served;
-                        listOfTableStatus[count, foodOrDrink].Show();
+                        previousItemsState = State.served;
 
                         if (foodOrDrink == 1)
-                            listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_served1;
+                            FoodAndDrinksIcons[tableId, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_served1;
                         else
-                            listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_served1;
+                            FoodAndDrinksIcons[tableId, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_served1;
 
                     }
-                    else if (item.State == State.ready && status != State.loading)
+                    // Checking if the icon should be shown as Ready
+                    else if (item.State == State.ready && previousItemsState != State.loading)
                     {
-                        status = State.ready;
-                        listOfTableStatus[count, foodOrDrink].Show();
+                        previousItemsState = State.ready;
+                        FoodAndDrinksIcons[tableId, foodOrDrink].Show();
 
                         if (foodOrDrink == 1)
-                            listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_ReadyToBeServed1;
+                            FoodAndDrinksIcons[tableId, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_ReadyToBeServed1;
                         else
-                            listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_ReadyToBeServed1;
+                            FoodAndDrinksIcons[tableId, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_ReadyToBeServed1;
                     }
+                    // Checking if the icon should be shown as Loading
                     else if (item.State == State.loading)
                     {
-                        status = State.loading;
-                        listOfTableStatus[count, foodOrDrink].Show();
+                        previousItemsState = State.loading;
+                        FoodAndDrinksIcons[tableId, foodOrDrink].Show();
 
                         if (foodOrDrink == 1)
-                            listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_beingPrepared1;
+                            FoodAndDrinksIcons[tableId, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_beingPrepared1;
                         else
-                            listOfTableStatus[count, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_beingPrepared1;
+                            FoodAndDrinksIcons[tableId, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_beingPrepared1;
                     }
                 }
 

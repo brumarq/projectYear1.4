@@ -46,7 +46,7 @@ namespace ChapeauxDAL
         #region Checkout
         public List<OrderItem> GetOrderFood(int orderID)
         {
-            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state " +
+            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ORDERITEMS.orderDateTime, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state " +
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
@@ -61,7 +61,7 @@ namespace ChapeauxDAL
 
         public List<OrderItem> GetOrderDrinks(int orderID)
         {
-            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state " +
+            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ORDERITEMS.orderDateTime, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state " +
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
@@ -82,14 +82,15 @@ namespace ChapeauxDAL
                 OrderItem orderItem = new OrderItem()
                 {
                     OrderItemID = (int)dr["orderItemID"],
-                     OrderID = (int)dr["orderID"],
-                     ItemID = (int)dr["itemID"],
-                     Count = (int)dr["count"],
-                     Name = (string)dr["name"],
-                     Category = (string)dr["category"],
-                     Price = (decimal)dr["price"],
-                     VATRate = (decimal)dr["VATRate"],
-                     State = (State)Enum.Parse(typeof(State), dr["state"].ToString()),
+                    OrderID = (int)dr["orderID"],
+                    ItemID = (int)dr["itemID"],
+                    Count = (int)dr["count"],
+                    Name = (string)dr["name"],
+                    OrderDateTime = (DateTime)dr["orderDateTime"],
+                    Category = (string)dr["category"],
+                    Price = (decimal)dr["price"],
+                    VATRate = (decimal)dr["VATRate"],
+                    State = (State)Enum.Parse(typeof(State), dr["state"].ToString()),
                 };
 
                 listOfItems.Add(orderItem);
@@ -127,7 +128,7 @@ namespace ChapeauxDAL
             cmd.Parameters.AddWithValue("@state", orderItem.State.ToString());
             cmd.Parameters.AddWithValue("@count", orderItem.Count);
             cmd.Parameters.AddWithValue("@comment", orderItem.Comment);
-            cmd.Parameters.AddWithValue("@dateTime", orderItem.orderDateTime);
+            cmd.Parameters.AddWithValue("@dateTime", orderItem.OrderDateTime);
             SqlDataReader reader = cmd.ExecuteReader();
 
             CloseConnection();
