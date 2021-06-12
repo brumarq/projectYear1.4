@@ -283,6 +283,16 @@ namespace ChapeauxUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Afbeelding21 {
+            get {
+                object obj = ResourceManager.GetObject("Afbeelding21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Afbeelding22 {
             get {
                 object obj = ResourceManager.GetObject("Afbeelding22", resourceCulture);
@@ -623,6 +633,16 @@ namespace ChapeauxUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Chapeau {
+            get {
+                object obj = ResourceManager.GetObject("Chapeau", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap description {
             get {
                 object obj = ResourceManager.GetObject("description", resourceCulture);
@@ -826,6 +846,16 @@ namespace ChapeauxUI.Properties {
         internal static System.Drawing.Bitmap picLine2 {
             get {
                 object obj = ResourceManager.GetObject("picLine2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Schermafbeelding_2021_06_12_143009 {
+            get {
+                object obj = ResourceManager.GetObject("Schermafbeelding 2021-06-12 143009", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
