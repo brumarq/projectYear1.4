@@ -119,6 +119,18 @@ namespace ChapeauxDAL
         }
         #endregion
 
+        public void DeleteOrder(Order order)
+        {
+            SqlCommand cmd = new SqlCommand("DELETE FROM ORDERS WHERE orderID=@orderID;", conn);
+
+            OpenConnection();
+
+            cmd.Parameters.AddWithValue("@orderID", order.OrderID.ToString());
+            cmd.ExecuteReader();
+
+            CloseConnection();
+        }
+
         public List<Order> GetAllOrders()
         {
             string query = "SELECT orderID, startDateTime FROM [ORDERS]";

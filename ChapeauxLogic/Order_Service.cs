@@ -29,6 +29,11 @@ namespace ChapeauxLogic
             orderdb.AddNewOrder(order);
         }
 
+        public void DeleteOrder(Order order)
+        {
+            orderdb.DeleteOrder(order);
+        }
+
         public Order GetByTableID(int tableID)
         {
             Order order = orderdb.GetByTableID(tableID);

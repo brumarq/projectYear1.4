@@ -10,7 +10,9 @@ namespace ChapeauUI
     {
         private User loggedUser;
         public Table currentTable;
-        bool tableHasOrders;
+        bool tableHasOrder;
+        bool tableHasItems;
+
         Order order;
 
         public TableDetails(User user, int tableNumber)
@@ -87,6 +89,7 @@ namespace ChapeauUI
         private void btnOccupyTable_Click(object sender, EventArgs e)
         {
             Table_Service table_service = new Table_Service();
+            Order_Service order_Service = new Order_Service();
 
             if (currentTable.Status == Status.Free)
             {
@@ -97,10 +100,17 @@ namespace ChapeauUI
             }
             else
             {
-                if (tableHasOrders)
+                if (tableHasOrder && tableHasItems)
                 {
                     updateStatus();
                     return;
+                }
+                else if (tableHasOrder && !tableHasItems)
+                {
+                    table_service.UpdateStatus(currentTable.TableID, Status.Free);
+                    order_Service.DeleteOrder(order);
+                    currentTable.Status = Status.Free;
+                    updateStatus();
                 }
                 else
                 {
@@ -128,11 +138,17 @@ namespace ChapeauUI
 
                 if (thereIsAnOrder)
                 {
-                    tableHasOrders = true;
+                    tableHasOrder = true;
                     bool itemsServed = true;
                     if (order.orderItems.Count != 0)
                     {
                         // check if every orderitems have been served
+                        tableHasItems = true;
+                        btnOccupyTable.Enabled = false;
+
+                        btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_hover;
+
+
                         foreach (OrderItem orderItem in order.orderItems)
                         {
                             if (orderItem.State != State.served)
@@ -155,14 +171,16 @@ namespace ChapeauUI
                     else
                     {
                         btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_hover;
+                        btnAddNewOrder.BackgroundImage = ChapeauxUI.Properties.Resources.btnAddNewOrder_enabled;
+                        btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_enabled;
                         btnCheckout.Enabled = false;
+                        btnOccupyTable.Enabled = true;
+                        tableHasItems = false;
                     }
-
-                    btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_hover;
                 }
                 else
                 {
-                    tableHasOrders = false;
+                    tableHasOrder = false;
                     btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_enabled;
                     btnAddNewOrder.BackgroundImage = ChapeauxUI.Properties.Resources.btnAddNewOrder_enabled;
                     btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_hover;
@@ -193,11 +211,11 @@ namespace ChapeauUI
                 return;
             }
 
-            if (!tableHasOrders)
+            if (!tableHasOrder)
             {
                 CreateNewOrder();
 
-                tableHasOrders = true;
+                tableHasOrder = true;
             }
 
 
@@ -237,7 +255,7 @@ namespace ChapeauUI
                 {
                     OrderItem_Service orderItem_service = new OrderItem_Service();
                     orderItem_service.UpdateOrderItemStatus(item, State.served);
-                    fillUpOrderDetails();
+                    Reload();
                 }
                 else
                 {
