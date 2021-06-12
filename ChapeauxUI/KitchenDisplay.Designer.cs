@@ -42,24 +42,10 @@ namespace ChapeauxUI
             this.lblKitchenScreen = new System.Windows.Forms.Label();
             this.lblOrders = new System.Windows.Forms.Label();
             this.listViewTableKitchen = new System.Windows.Forms.ListView();
-            this.itemID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.stock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.category = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.menuType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.VATRate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FrameWokrKitchen = new System.Windows.Forms.PictureBox();
             this.pnlBarmanDisplay = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.listViewBarmanDisplay = new System.Windows.Forms.ListView();
-            this.itemID_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.name_Bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.price_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.stock_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.category_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.menyType_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.VATRate_bar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,6 +53,24 @@ namespace ChapeauxUI
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnLogOutBarman = new System.Windows.Forms.Button();
+            this.btnLogOutKitchen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnUserInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -127,6 +131,7 @@ namespace ChapeauxUI
             // pnlKitchenDisplay
             // 
             this.pnlKitchenDisplay.BackColor = System.Drawing.Color.White;
+            this.pnlKitchenDisplay.Controls.Add(this.btnLogOutKitchen);
             this.pnlKitchenDisplay.Controls.Add(this.btnOrderReadyToBeServed);
             this.pnlKitchenDisplay.Controls.Add(this.btnShowKitchenOrderDetails);
             this.pnlKitchenDisplay.Controls.Add(this.lblStatusOfTheOrder);
@@ -165,7 +170,7 @@ namespace ChapeauxUI
             this.lblStatusOfTheOrder.AutoSize = true;
             this.lblStatusOfTheOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.lblStatusOfTheOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatusOfTheOrder.Location = new System.Drawing.Point(43, 392);
+            this.lblStatusOfTheOrder.Location = new System.Drawing.Point(43, 449);
             this.lblStatusOfTheOrder.Name = "lblStatusOfTheOrder";
             this.lblStatusOfTheOrder.Size = new System.Drawing.Size(160, 29);
             this.lblStatusOfTheOrder.TabIndex = 51;
@@ -173,19 +178,27 @@ namespace ChapeauxUI
             // 
             // listViewKitchenOrdersDetail
             // 
+            this.listViewKitchenOrdersDetail.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8});
             this.listViewKitchenOrdersDetail.HideSelection = false;
-            this.listViewKitchenOrdersDetail.Location = new System.Drawing.Point(48, 424);
+            this.listViewKitchenOrdersDetail.Location = new System.Drawing.Point(48, 481);
             this.listViewKitchenOrdersDetail.Name = "listViewKitchenOrdersDetail";
             this.listViewKitchenOrdersDetail.Size = new System.Drawing.Size(661, 330);
             this.listViewKitchenOrdersDetail.TabIndex = 50;
             this.listViewKitchenOrdersDetail.UseCompatibleStateImageBehavior = false;
+            this.listViewKitchenOrdersDetail.View = System.Windows.Forms.View.Details;
+            this.listViewKitchenOrdersDetail.SelectedIndexChanged += new System.EventHandler(this.listViewKitchenOrdersDetail_SelectedIndexChanged);
             // 
             // lblKitchenScreen
             // 
             this.lblKitchenScreen.AutoSize = true;
             this.lblKitchenScreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.lblKitchenScreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKitchenScreen.Location = new System.Drawing.Point(476, 27);
+            this.lblKitchenScreen.Location = new System.Drawing.Point(476, 84);
             this.lblKitchenScreen.Name = "lblKitchenScreen";
             this.lblKitchenScreen.Size = new System.Drawing.Size(233, 25);
             this.lblKitchenScreen.TabIndex = 49;
@@ -196,7 +209,7 @@ namespace ChapeauxUI
             this.lblOrders.AutoSize = true;
             this.lblOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.lblOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrders.Location = new System.Drawing.Point(43, 23);
+            this.lblOrders.Location = new System.Drawing.Point(46, 84);
             this.lblOrders.Name = "lblOrders";
             this.lblOrders.Size = new System.Drawing.Size(88, 29);
             this.lblOrders.TabIndex = 47;
@@ -205,55 +218,19 @@ namespace ChapeauxUI
             // listViewTableKitchen
             // 
             this.listViewTableKitchen.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.itemID,
-            this.name,
-            this.price,
-            this.stock,
-            this.category,
-            this.menuType,
-            this.VATRate});
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listViewTableKitchen.FullRowSelect = true;
             this.listViewTableKitchen.HideSelection = false;
-            this.listViewTableKitchen.Location = new System.Drawing.Point(48, 55);
+            this.listViewTableKitchen.Location = new System.Drawing.Point(48, 116);
+            this.listViewTableKitchen.MultiSelect = false;
             this.listViewTableKitchen.Name = "listViewTableKitchen";
             this.listViewTableKitchen.Size = new System.Drawing.Size(661, 330);
             this.listViewTableKitchen.TabIndex = 46;
             this.listViewTableKitchen.UseCompatibleStateImageBehavior = false;
             this.listViewTableKitchen.View = System.Windows.Forms.View.Details;
             this.listViewTableKitchen.SelectedIndexChanged += new System.EventHandler(this.listViewTableKitchen_SelectedIndexChanged);
-            // 
-            // itemID
-            // 
-            this.itemID.Text = "itemID";
-            this.itemID.Width = 100;
-            // 
-            // name
-            // 
-            this.name.Text = "Name";
-            this.name.Width = 100;
-            // 
-            // price
-            // 
-            this.price.Text = "Price";
-            this.price.Width = 100;
-            // 
-            // stock
-            // 
-            this.stock.Text = "Stock";
-            this.stock.Width = 100;
-            // 
-            // category
-            // 
-            this.category.Text = "Category";
-            this.category.Width = 100;
-            // 
-            // menuType
-            // 
-            this.menuType.Text = "Course";
-            this.menuType.Width = 97;
-            // 
-            // VATRate
-            // 
-            this.VATRate.Text = "VATRate";
             // 
             // FrameWokrKitchen
             // 
@@ -281,6 +258,7 @@ namespace ChapeauxUI
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnLogOutBarman);
             this.panel1.Controls.Add(this.listViewBarmanDisplay);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button2);
@@ -297,55 +275,19 @@ namespace ChapeauxUI
             // listViewBarmanDisplay
             // 
             this.listViewBarmanDisplay.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.itemID_bar,
-            this.name_Bar,
-            this.price_bar,
-            this.stock_bar,
-            this.category_bar,
-            this.menyType_bar,
-            this.VATRate_bar});
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11});
+            this.listViewBarmanDisplay.FullRowSelect = true;
             this.listViewBarmanDisplay.HideSelection = false;
-            this.listViewBarmanDisplay.Location = new System.Drawing.Point(48, 55);
+            this.listViewBarmanDisplay.Location = new System.Drawing.Point(48, 116);
+            this.listViewBarmanDisplay.MultiSelect = false;
             this.listViewBarmanDisplay.Name = "listViewBarmanDisplay";
             this.listViewBarmanDisplay.Size = new System.Drawing.Size(661, 330);
             this.listViewBarmanDisplay.TabIndex = 54;
             this.listViewBarmanDisplay.UseCompatibleStateImageBehavior = false;
             this.listViewBarmanDisplay.View = System.Windows.Forms.View.Details;
-            // 
-            // itemID_bar
-            // 
-            this.itemID_bar.Text = "itemID";
-            this.itemID_bar.Width = 100;
-            // 
-            // name_Bar
-            // 
-            this.name_Bar.Text = "Name";
-            this.name_Bar.Width = 100;
-            // 
-            // price_bar
-            // 
-            this.price_bar.Text = "Price";
-            this.price_bar.Width = 100;
-            // 
-            // stock_bar
-            // 
-            this.stock_bar.Text = "Stock";
-            this.stock_bar.Width = 100;
-            // 
-            // category_bar
-            // 
-            this.category_bar.Text = "Category";
-            this.category_bar.Width = 100;
-            // 
-            // menyType_bar
-            // 
-            this.menyType_bar.Text = "Course";
-            this.menyType_bar.Width = 93;
-            // 
-            // VATRate_bar
-            // 
-            this.VATRate_bar.Text = "VATRate";
-            this.VATRate_bar.Width = 100;
+            this.listViewBarmanDisplay.SelectedIndexChanged += new System.EventHandler(this.listViewBarmanDisplay_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -370,7 +312,7 @@ namespace ChapeauxUI
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(43, 392);
+            this.label1.Location = new System.Drawing.Point(43, 449);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(160, 29);
             this.label1.TabIndex = 51;
@@ -378,19 +320,27 @@ namespace ChapeauxUI
             // 
             // listViewBarmanOrdersDetail
             // 
+            this.listViewBarmanOrdersDetail.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14,
+            this.columnHeader15,
+            this.columnHeader16});
             this.listViewBarmanOrdersDetail.HideSelection = false;
-            this.listViewBarmanOrdersDetail.Location = new System.Drawing.Point(48, 424);
+            this.listViewBarmanOrdersDetail.Location = new System.Drawing.Point(48, 481);
             this.listViewBarmanOrdersDetail.Name = "listViewBarmanOrdersDetail";
             this.listViewBarmanOrdersDetail.Size = new System.Drawing.Size(661, 330);
             this.listViewBarmanOrdersDetail.TabIndex = 50;
             this.listViewBarmanOrdersDetail.UseCompatibleStateImageBehavior = false;
+            this.listViewBarmanOrdersDetail.View = System.Windows.Forms.View.Details;
+            this.listViewBarmanOrdersDetail.SelectedIndexChanged += new System.EventHandler(this.listViewBarmanOrdersDetail_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(515, 27);
+            this.label2.Location = new System.Drawing.Point(515, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(194, 25);
             this.label2.TabIndex = 49;
@@ -401,7 +351,7 @@ namespace ChapeauxUI
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(43, 23);
+            this.label3.Location = new System.Drawing.Point(43, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 29);
             this.label3.TabIndex = 47;
@@ -422,6 +372,92 @@ namespace ChapeauxUI
             this.pictureBox2.TabIndex = 48;
             this.pictureBox2.TabStop = false;
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "OrderNumber";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "TableNumber";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "OrderTime";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "ItemID";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Qty";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "State";
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Comment";
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "OrderTime";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "OrderNumber";
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "TableNumber";
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "OrderTime";
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "ItemID";
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Qty";
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "State";
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Comment";
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "OrderTime";
+            // 
+            // btnLogOutBarman
+            // 
+            this.btnLogOutBarman.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnLogOutBarman.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogOutBarman.BackgroundImage")));
+            this.btnLogOutBarman.Location = new System.Drawing.Point(553, 22);
+            this.btnLogOutBarman.Name = "btnLogOutBarman";
+            this.btnLogOutBarman.Size = new System.Drawing.Size(156, 63);
+            this.btnLogOutBarman.TabIndex = 55;
+            this.btnLogOutBarman.UseVisualStyleBackColor = false;
+            this.btnLogOutBarman.Click += new System.EventHandler(this.btnLogOutBarman_Click);
+            // 
+            // btnLogOutKitchen
+            // 
+            this.btnLogOutKitchen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnLogOutKitchen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogOutKitchen.BackgroundImage")));
+            this.btnLogOutKitchen.Location = new System.Drawing.Point(556, 22);
+            this.btnLogOutKitchen.Name = "btnLogOutKitchen";
+            this.btnLogOutKitchen.Size = new System.Drawing.Size(153, 59);
+            this.btnLogOutKitchen.TabIndex = 54;
+            this.btnLogOutKitchen.UseVisualStyleBackColor = false;
+            this.btnLogOutKitchen.Click += new System.EventHandler(this.btnLogOutKitchen_Click);
+            // 
             // KitchenDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -434,6 +470,7 @@ namespace ChapeauxUI
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pnlBarmanDisplay);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "KitchenDisplay";
             this.Text = "KitchenDisplay";
@@ -477,20 +514,24 @@ namespace ChapeauxUI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.ColumnHeader itemID;
-        private System.Windows.Forms.ColumnHeader name;
-        private System.Windows.Forms.ColumnHeader price;
-        private System.Windows.Forms.ColumnHeader stock;
-        private System.Windows.Forms.ColumnHeader category;
-        private System.Windows.Forms.ColumnHeader menuType;
-        private System.Windows.Forms.ColumnHeader VATRate;
         private System.Windows.Forms.ListView listViewBarmanDisplay;
-        private System.Windows.Forms.ColumnHeader itemID_bar;
-        private System.Windows.Forms.ColumnHeader name_Bar;
-        private System.Windows.Forms.ColumnHeader price_bar;
-        private System.Windows.Forms.ColumnHeader stock_bar;
-        private System.Windows.Forms.ColumnHeader category_bar;
-        private System.Windows.Forms.ColumnHeader menyType_bar;
-        private System.Windows.Forms.ColumnHeader VATRate_bar;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.Button btnLogOutKitchen;
+        private System.Windows.Forms.Button btnLogOutBarman;
     }
 }

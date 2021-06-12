@@ -22,11 +22,17 @@ namespace ChapeauxDAL
 
         public List<OrderItem> GetFoodStatus(int tableNumber)
         {
-            string query = "SELECT ORDERITEMS.state FROM ORDERITEMS INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID WHERE ITEMS.category = 'Food' AND ORDERS.tableID = @tableID AND ORDERs.isPaid = 0; ";
+            string query = "SELECT ORDERITEMS.state FROM ORDERITEMS INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID WHERE ITEMS.category = 'Lunch' OR ITEMS.category = 'Dinner' AND ORDERS.tableID = @tableID AND ORDERs.isPaid = 0; ";
             SqlParameter[] sqlParameters = {
                  new SqlParameter("@tableID", tableNumber),
             };
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+        public List<OrderItem> CheckForLoadin()
+        {
+            string query = "SELECT DISTINCT ORDERITEMS.orderID, ORDERITEMS.[state] FROM ORDERITEMS where ORDERITEMS.state = 'loading'";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadOrdersItems(ExecuteSelectQuery(query, sqlParameters));
         }
         public List<OrderItem> Get_All_Order_Items_DB()
         {
@@ -120,6 +126,7 @@ namespace ChapeauxDAL
             }
             return orderitems;
         }
+        
 
         #region Checkout
         public List<OrderItem> GetOrderFood(int orderID)
@@ -128,7 +135,7 @@ namespace ChapeauxDAL
                             "FROM ORDERITEMS " +
                             "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                             "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
-                            "WHERE ITEMS.category = 'Food' " +
+                            "WHERE ITEMS.category = 'Lunch' OR ITEMS.category = 'Dinner'" +
                             "AND ORDERITEMS.orderID = @orderID " +
                             "ORDER BY ITEMS.[itemID]";
             SqlParameter[] sqlParameters = {

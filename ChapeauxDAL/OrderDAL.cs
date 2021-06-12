@@ -12,6 +12,7 @@ namespace ChapeauxDAL
     public class OrderDAL : Base
     {
         #region Reading
+        
         private bool ReadTables(DataTable dataTable)
         {
             foreach (DataRow dr in dataTable.Rows)
@@ -107,11 +108,23 @@ namespace ChapeauxDAL
         #endregion
         public List<Order> GetAllOrders()
         {
-            string query = "SELECT orderID, startDateTime FROM [ORDERS]";
+            string query = "SELECT orderID, startDateTime, endDateTime, isPaid, tableID, userID FROM ORDERS";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTable(ExecuteSelectQuery(query, sqlParameters));
         }
-
+#region GetFoodAndDrinks
+        public List<Order> GetFoodOrders()
+        {
+            string query = "SELECT orderID, startDateTime, endDateTime, isPaid, tableID, userID FROM ORDERS WHERE isPaid=0 ORDER BY startDateTime";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
+        }
+        public List<Order> GetDrinkOrders()
+        {
+            string query = "SELECT orderID, startDateTime, endDateTime, isPaid, tableID, userID FROM ORDERS WHERE ispaid=0 ORDER BY startDateTIme";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
+        }
         public List<Order> ReadTable(DataTable dataTable)
         {
             List<Order> orders = new List<Order>();
@@ -119,11 +132,17 @@ namespace ChapeauxDAL
             {
                 Order order = new Order()
                 {
-                    OrderID = (int)dr["orderID"]
+                    OrderID = (int)dr["orderID"],
+                    startDateTime = (DateTime)dr["startDateTime"],
+                    endDateTime = (DateTime)dr["endDateTime"],
+                    IsPaid = (bool)dr["isPaid"],
+                    TableID = (int)dr["tableID"],
+                    UserID = (int)dr["userID"]
                 };
                 orders.Add(order);
             }
             return orders;
         }
+#endregion
     }
 }

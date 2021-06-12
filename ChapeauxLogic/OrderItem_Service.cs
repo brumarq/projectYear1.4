@@ -30,7 +30,7 @@ namespace ChapeauxLogic
         {
             return orderItemdb.GetFoodStatus(tableNumber);
         }
-
+        #region GetFood/Drink
         public List<OrderItem> GetFoodItems(int orderID)
         {
             return orderItemdb.GetOrderFood(orderID);
@@ -40,5 +40,6 @@ namespace ChapeauxLogic
         {
             return orderItemdb.GetOrderDrinks(orderID);
         }
+        #endregion
     }
 }
