@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace ChapeauxUI
 {
@@ -240,7 +241,7 @@ namespace ChapeauxUI
             ShowPanel("Checkout");
         }
 
-        private void btnFinishPayment_Click(object sender, EventArgs e)
+        private void StorePayment()
         {
             transaction.TotalPrice = Convert.ToDecimal(lblTotalResult.Text);
             transaction.TipAmount = Convert.ToDecimal(txtTipAmount.Text);
@@ -248,12 +249,19 @@ namespace ChapeauxUI
             transaction.Order.endDateTime = DateTime.Now;
             transaction.TransactionDate = DateTime.Now;
             transaction.VAT = transaction.Order.VATHigh + transaction.Order.VATLow;
+            transaction.State = PaymentState.Received;
+            transaction.Order.IsPaid = true;
 
             Transaction_Service transactionService = new Transaction_Service();
             transactionService.AddTransaction(transaction);
 
-            ShowPanel("Overview");
             LoadPaymentOverView();
+        }
+
+        private void btnFinishPayment_Click(object sender, EventArgs e)
+        {
+            StorePayment();
+            DisablePaymentButtons();
         }
 
         //Cash
@@ -340,6 +348,7 @@ namespace ChapeauxUI
 
         private void btnResetCash_Click(object sender, EventArgs e)
         {
+            btnFinishPayment.Enabled = false;
             totalReceivedCash = 0;
             changeToGive = 0;
             ProcessReceivedCash(0);
@@ -388,12 +397,12 @@ namespace ChapeauxUI
 
             if (result == DialogResult.Yes)
             {
-                transaction.Order.IsPaid = true;
-                transaction.State = PaymentState.Received;
+                StorePayment();
                 DisablePaymentButtons();
                 lblCardPaymentStatus.ForeColor = Color.DarkGreen;
                 lblCardPaymentStatus.Text = "PAID";
-                btnFinishPayment.Enabled = true;
+                Thread.Sleep(3000);
+                LoadPaymentOverView();
             }
 
             else
@@ -403,7 +412,6 @@ namespace ChapeauxUI
                 lblCardPaymentStatus.ForeColor = Color.Red;
                 lblCardPaymentStatus.Text = "NOT PAID";
             }
-
         }
         #endregion
         #region Methods
@@ -412,14 +420,10 @@ namespace ChapeauxUI
         {
             totalReceivedCash += received;
 
-            if (toPay <= 0)
-            {
-                btnFinishPayment.Enabled = true;
-            }
-
-            if (totalReceivedCash > toPay)
+            if (totalReceivedCash >= toPay)
             {
                 changeToGive = totalReceivedCash - toPay;
+                btnFinishPayment.Enabled = true;
             }
 
             lblToPayCash.Text = toPay.ToString();
@@ -430,6 +434,7 @@ namespace ChapeauxUI
         //Card
         private void DisablePaymentButtons()
         {
+            btnBackToPayment.Enabled = false;
             btnCash.Enabled = false;
             btnMaestro.Enabled = false;
             btnMasterCard.Enabled = false;
@@ -451,13 +456,41 @@ namespace ChapeauxUI
 
         private void LoadPaymentOverView()
         {
+            ShowPanel("Overview");
             FillListViewOverview();
 
+            lblOverviewPaymentMethod.Text = $"{transaction.PaymentType}";
+            lblOverviewTotalPrice.Text = $"{transaction.Order.TotalPrice: 0.00}";
+            lblOverviewVatHigh.Text = $"{transaction.Order.VATHigh: 0.00}";
+            lblOverviewVatLow.Text = $"{transaction.Order.VATLow: 0.00}";
+            lblOverviewTipAmount.Text = $"{transaction.TipAmount: 0.00}";
+            lblOverviewTotalInclTip.Text = (transaction.Order.TotalPrice + transaction.TipAmount).ToString("0.00");
         }
 
         private void FillListViewOverview()
         {
-            
+            try
+            {
+                listViewOverview.Items.Clear();
+
+                foreach (OrderItem orderItem in transaction.Order.orderItems)
+                {
+                    ListViewItem li = new ListViewItem(orderItem.ItemID.ToString(), 0);
+                    li.SubItems.Add(orderItem.Name);
+                    li.SubItems.Add(orderItem.Count.ToString());
+                    li.SubItems.Add(orderItem.Price.ToString("0.00"));
+                    li.SubItems.Add((orderItem.Price / (1.00m + orderItem.VATRate) * orderItem.VATRate).ToString("0.00"));
+                    li.SubItems.Add(orderItem.VATRate.ToString("#0.##%"));
+                    listViewOverview.Items.Add(li);
+                }
+
+                listViewOverview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                listViewOverview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         //*** add method to load listview of transaction/order
@@ -474,8 +507,13 @@ namespace ChapeauxUI
             }
             this.Close();
         }
+
         #endregion
 
-
+        private void btnPrintReceipt_Click(object sender, EventArgs e)
+        {
+            Form receipt = new Receipt(transaction);
+            receipt.ShowDialog();
+        }
     }
 }

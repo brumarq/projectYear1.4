@@ -13,6 +13,11 @@ namespace ChapeauxLogic
         OrderDAL orderdb;
         OrderItemDAL orderItemdb;
 
+        //public void UpdateIsPaid(Order orderID)
+        //{
+        //    orderdb.UpdateOrderIsPaid(order);
+        //}
+        
         public Order_Service()
         {
             orderdb = new OrderDAL();
