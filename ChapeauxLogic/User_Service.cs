@@ -27,15 +27,15 @@ namespace ChapeauxLogic
             userDAO.AddUserAccount(user);
         }
         
-        public void EditUserAccount(User previousUser, User newUser)
+        public void EditUserAccount(User user)
         {
-            userDAO.EditUserAccount(previousUser, newUser);
+            userDAO.EditUserAccount(user);
         }
 
-        public void DisplayUsers(User user)
+        /*public void DisplayUsers(User user)
         {
             userDAO.DisplayUsersById(user);
-        }
+        }*/
 
         public void RemoveUserAccount(User username)
         {

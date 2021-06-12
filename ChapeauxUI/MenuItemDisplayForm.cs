@@ -8,7 +8,7 @@ namespace ChapeauxUI
 {
     public partial class MenuItemDisplayForm : Form
     {
-        Item menuItem = new Item();
+        Item menuItem;
         Item_Service itemService;
         ListViewItem lvItem;
 
@@ -43,34 +43,99 @@ namespace ChapeauxUI
 
         private void listViewDisplayForm_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (listViewDisplayForm.SelectedItems.Count == 1)
+            {
+                menuItem = listViewDisplayForm.SelectedItems[0].Tag as Item;
+
+                txtName.Text = menuItem.Name.ToString();
+                txtPrice.Text = menuItem.Price.ToString();
+                txtStock.Text = menuItem.Stock.ToString();
+                txtCategory.Text = menuItem.Category.ToString();
+                txtCourse.Text = menuItem.Course.ToString();
+                txtVatRate.Text = menuItem.VATRate.ToString();
+            }
         }
 
+        public void AddItem()
+        {
+
+            menuItem.Name = txtName.Text;
+            menuItem.Price = decimal.Parse(txtPrice.Text);
+            menuItem.Stock = int.Parse(txtStock.Text);
+            menuItem.Category = txtCategory.Text;
+            menuItem.Course = txtCourse.Text;
+            menuItem.VATRate = decimal.Parse(txtVatRate.Text);
+
+            itemService.AddMenuItem(menuItem);
+
+            MessageBox.Show($"Menu Item added successfully.");
+
+        }
         private void butAdd_Click(object sender, EventArgs e)
         {
-            AddMenuItem addMenuItem = new AddMenuItem(menuItem);
-            addMenuItem.Show();
-            this.Close();
+            AddItem();
         }
 
         private void DeleteItem()
         {
-            if (listViewDisplayForm.Items.Count == 1)
+            try 
             {
-                menuItem = listViewDisplayForm.SelectedItems[0].Tag as Item;
+                if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    GetItemList();
+                    menuItem = listViewDisplayForm.SelectedItems[0].Tag as Item;
+                    itemService.DeleteMenuItem(menuItem);
+                    MessageBox.Show("Menu item deleted successfully.");
+                }
+                else
+                    return;
+                
+                if (listViewDisplayForm.SelectedItems.Count < 1)
+                {
+                    throw new Exception("Please select a row.");
+                }
+                
             }
-
-            if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            catch (Exception ex)
             {
-                GetItemList();
-                itemService.DeleteMenuItem(menuItem);
+                MessageBox.Show(ex.Message);
             }
-            else
-                return;
         }
 
         private void butDelete_Click(object sender, EventArgs e)
         {
             DeleteItem();
+        }
+
+        public void EditItem()
+        {
+            try
+            {
+                menuItem = listViewDisplayForm.SelectedItems[0].Tag as Item;
+                menuItem.Name = txtName.Text;
+                menuItem.Price = decimal.Parse(txtPrice.Text);
+                menuItem.Stock = int.Parse(txtStock.Text);
+                menuItem.Category = txtCategory.Text;
+                menuItem.Course = txtCourse.Text;
+                menuItem.VATRate = decimal.Parse(txtVatRate.Text);
+
+                if (MessageBox.Show("Are you sure?", "Edit", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    itemService.EditMenuItem(menuItem);
+                    MessageBox.Show("Menu item edit successful.");
+                }
+                else
+                    return;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("");
+            }
+        }
+
+        private void butEdit_Click(object sender, EventArgs e)
+        {
+            EditItem();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

@@ -44,6 +44,20 @@ namespace ChapeauxUI
             this.lvVAT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.butAdd = new System.Windows.Forms.Button();
             this.butDelete = new System.Windows.Forms.Button();
+            this.butEdit = new System.Windows.Forms.Button();
+            this.lblMenu = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.txtStock = new System.Windows.Forms.TextBox();
+            this.txtCategory = new System.Windows.Forms.TextBox();
+            this.txtCourse = new System.Windows.Forms.TextBox();
+            this.txtVatRate = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblPrice = new System.Windows.Forms.Label();
+            this.lblStock = new System.Windows.Forms.Label();
+            this.lblCategory = new System.Windows.Forms.Label();
+            this.lblCourse = new System.Windows.Forms.Label();
+            this.lblVatRate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +78,7 @@ namespace ChapeauxUI
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, -1);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 13);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(137, 62);
@@ -115,11 +129,11 @@ namespace ChapeauxUI
             this.listViewDisplayForm.FullRowSelect = true;
             this.listViewDisplayForm.GridLines = true;
             this.listViewDisplayForm.HideSelection = false;
-            this.listViewDisplayForm.Location = new System.Drawing.Point(50, 280);
+            this.listViewDisplayForm.Location = new System.Drawing.Point(48, 255);
             this.listViewDisplayForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewDisplayForm.MultiSelect = false;
             this.listViewDisplayForm.Name = "listViewDisplayForm";
-            this.listViewDisplayForm.Size = new System.Drawing.Size(905, 385);
+            this.listViewDisplayForm.Size = new System.Drawing.Size(905, 426);
             this.listViewDisplayForm.TabIndex = 0;
             this.listViewDisplayForm.UseCompatibleStateImageBehavior = false;
             this.listViewDisplayForm.View = System.Windows.Forms.View.Details;
@@ -162,9 +176,9 @@ namespace ChapeauxUI
             // 
             // butAdd
             // 
-            this.butAdd.Location = new System.Drawing.Point(725, 230);
+            this.butAdd.Location = new System.Drawing.Point(710, 739);
             this.butAdd.Name = "butAdd";
-            this.butAdd.Size = new System.Drawing.Size(112, 36);
+            this.butAdd.Size = new System.Drawing.Size(87, 36);
             this.butAdd.TabIndex = 35;
             this.butAdd.Text = "Add";
             this.butAdd.UseVisualStyleBackColor = true;
@@ -172,20 +186,150 @@ namespace ChapeauxUI
             // 
             // butDelete
             // 
-            this.butDelete.Location = new System.Drawing.Point(843, 230);
+            this.butDelete.Location = new System.Drawing.Point(896, 739);
             this.butDelete.Name = "butDelete";
-            this.butDelete.Size = new System.Drawing.Size(112, 36);
+            this.butDelete.Size = new System.Drawing.Size(87, 35);
             this.butDelete.TabIndex = 36;
             this.butDelete.Text = "Delete";
             this.butDelete.UseVisualStyleBackColor = true;
             this.butDelete.Click += new System.EventHandler(this.butDelete_Click);
+            // 
+            // butEdit
+            // 
+            this.butEdit.Location = new System.Drawing.Point(803, 739);
+            this.butEdit.Name = "butEdit";
+            this.butEdit.Size = new System.Drawing.Size(87, 35);
+            this.butEdit.TabIndex = 37;
+            this.butEdit.Text = "Edit";
+            this.butEdit.UseVisualStyleBackColor = true;
+            this.butEdit.Click += new System.EventHandler(this.butEdit_Click);
+            // 
+            // lblMenu
+            // 
+            this.lblMenu.AutoSize = true;
+            this.lblMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMenu.Location = new System.Drawing.Point(42, 185);
+            this.lblMenu.Name = "lblMenu";
+            this.lblMenu.Size = new System.Drawing.Size(290, 32);
+            this.lblMenu.TabIndex = 38;
+            this.lblMenu.Text = "Menu Item Overview";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(10, 746);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(100, 22);
+            this.txtName.TabIndex = 39;
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(116, 746);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(100, 22);
+            this.txtPrice.TabIndex = 39;
+            // 
+            // txtStock
+            // 
+            this.txtStock.Location = new System.Drawing.Point(222, 746);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(100, 22);
+            this.txtStock.TabIndex = 39;
+            // 
+            // txtCategory
+            // 
+            this.txtCategory.Location = new System.Drawing.Point(328, 746);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.Size = new System.Drawing.Size(100, 22);
+            this.txtCategory.TabIndex = 39;
+            // 
+            // txtCourse
+            // 
+            this.txtCourse.Location = new System.Drawing.Point(434, 746);
+            this.txtCourse.Name = "txtCourse";
+            this.txtCourse.Size = new System.Drawing.Size(100, 22);
+            this.txtCourse.TabIndex = 39;
+            // 
+            // txtVatRate
+            // 
+            this.txtVatRate.Location = new System.Drawing.Point(540, 746);
+            this.txtVatRate.Name = "txtVatRate";
+            this.txtVatRate.Size = new System.Drawing.Size(100, 22);
+            this.txtVatRate.TabIndex = 39;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(10, 723);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(45, 17);
+            this.lblName.TabIndex = 40;
+            this.lblName.Text = "Name";
+            // 
+            // lblPrice
+            // 
+            this.lblPrice.AutoSize = true;
+            this.lblPrice.Location = new System.Drawing.Point(113, 726);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(40, 17);
+            this.lblPrice.TabIndex = 40;
+            this.lblPrice.Text = "Price";
+            // 
+            // lblStock
+            // 
+            this.lblStock.AutoSize = true;
+            this.lblStock.Location = new System.Drawing.Point(219, 726);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(43, 17);
+            this.lblStock.TabIndex = 40;
+            this.lblStock.Text = "Stock";
+            // 
+            // lblCategory
+            // 
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Location = new System.Drawing.Point(325, 726);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(65, 17);
+            this.lblCategory.TabIndex = 40;
+            this.lblCategory.Text = "Category";
+            // 
+            // lblCourse
+            // 
+            this.lblCourse.AutoSize = true;
+            this.lblCourse.Location = new System.Drawing.Point(431, 726);
+            this.lblCourse.Name = "lblCourse";
+            this.lblCourse.Size = new System.Drawing.Size(53, 17);
+            this.lblCourse.TabIndex = 40;
+            this.lblCourse.Text = "Course";
+            // 
+            // lblVatRate
+            // 
+            this.lblVatRate.AutoSize = true;
+            this.lblVatRate.Location = new System.Drawing.Point(537, 726);
+            this.lblVatRate.Name = "lblVatRate";
+            this.lblVatRate.Size = new System.Drawing.Size(69, 17);
+            this.lblVatRate.TabIndex = 40;
+            this.lblVatRate.Text = "VAT Rate";
             // 
             // MenuItemDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1010, 717);
+            this.ClientSize = new System.Drawing.Size(1010, 816);
+            this.Controls.Add(this.lblVatRate);
+            this.Controls.Add(this.lblCourse);
+            this.Controls.Add(this.lblCategory);
+            this.Controls.Add(this.lblStock);
+            this.Controls.Add(this.lblPrice);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.txtVatRate);
+            this.Controls.Add(this.txtCourse);
+            this.Controls.Add(this.txtCategory);
+            this.Controls.Add(this.txtStock);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.lblMenu);
+            this.Controls.Add(this.butEdit);
             this.Controls.Add(this.butDelete);
             this.Controls.Add(this.butAdd);
             this.Controls.Add(this.pictureBox1);
@@ -198,6 +342,7 @@ namespace ChapeauxUI
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -217,5 +362,19 @@ namespace ChapeauxUI
         private System.Windows.Forms.ColumnHeader lvVAT;
         private System.Windows.Forms.Button butAdd;
         private System.Windows.Forms.Button butDelete;
+        private System.Windows.Forms.Button butEdit;
+        private System.Windows.Forms.Label lblMenu;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.TextBox txtStock;
+        private System.Windows.Forms.TextBox txtCategory;
+        private System.Windows.Forms.TextBox txtCourse;
+        private System.Windows.Forms.TextBox txtVatRate;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblPrice;
+        private System.Windows.Forms.Label lblStock;
+        private System.Windows.Forms.Label lblCategory;
+        private System.Windows.Forms.Label lblCourse;
+        private System.Windows.Forms.Label lblVatRate;
     }
 }

@@ -43,7 +43,18 @@ namespace ChapeauxUI
             this.butBack = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.butDelete = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.butEdit = new System.Windows.Forms.Button();
+            this.lblUserOverview = new System.Windows.Forms.Label();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblFirstName = new System.Windows.Forms.Label();
+            this.lblLastName = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.lblRole = new System.Windows.Forms.Label();
+            this.cbRole = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -61,11 +72,11 @@ namespace ChapeauxUI
             this.listViewDisplayForm.FullRowSelect = true;
             this.listViewDisplayForm.GridLines = true;
             this.listViewDisplayForm.HideSelection = false;
-            this.listViewDisplayForm.Location = new System.Drawing.Point(39, 244);
+            this.listViewDisplayForm.Location = new System.Drawing.Point(53, 226);
             this.listViewDisplayForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewDisplayForm.MultiSelect = false;
             this.listViewDisplayForm.Name = "listViewDisplayForm";
-            this.listViewDisplayForm.Size = new System.Drawing.Size(919, 462);
+            this.listViewDisplayForm.Size = new System.Drawing.Size(890, 462);
             this.listViewDisplayForm.TabIndex = 0;
             this.listViewDisplayForm.UseCompatibleStateImageBehavior = false;
             this.listViewDisplayForm.View = System.Windows.Forms.View.Details;
@@ -74,7 +85,7 @@ namespace ChapeauxUI
             // lvUserId
             // 
             this.lvUserId.Text = "User Id";
-            this.lvUserId.Width = 63;
+            this.lvUserId.Width = 40;
             // 
             // lvFirstName
             // 
@@ -103,7 +114,7 @@ namespace ChapeauxUI
             // 
             // butAdd
             // 
-            this.butAdd.Location = new System.Drawing.Point(728, 207);
+            this.butAdd.Location = new System.Drawing.Point(622, 720);
             this.butAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.butAdd.Name = "butAdd";
             this.butAdd.Size = new System.Drawing.Size(112, 32);
@@ -168,7 +179,7 @@ namespace ChapeauxUI
             // 
             // butDelete
             // 
-            this.butDelete.Location = new System.Drawing.Point(846, 207);
+            this.butDelete.Location = new System.Drawing.Point(858, 720);
             this.butDelete.Name = "butDelete";
             this.butDelete.Size = new System.Drawing.Size(112, 32);
             this.butDelete.TabIndex = 33;
@@ -176,22 +187,131 @@ namespace ChapeauxUI
             this.butDelete.UseVisualStyleBackColor = true;
             this.butDelete.Click += new System.EventHandler(this.butDelete_Click);
             // 
-            // button1
+            // butEdit
             // 
-            this.button1.Location = new System.Drawing.Point(610, 207);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 32);
-            this.button1.TabIndex = 34;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.butEdit.Location = new System.Drawing.Point(740, 720);
+            this.butEdit.Name = "butEdit";
+            this.butEdit.Size = new System.Drawing.Size(112, 32);
+            this.butEdit.TabIndex = 34;
+            this.butEdit.Text = "Edit";
+            this.butEdit.UseVisualStyleBackColor = true;
+            this.butEdit.Click += new System.EventHandler(this.butEdit_Click);
+            // 
+            // lblUserOverview
+            // 
+            this.lblUserOverview.AutoSize = true;
+            this.lblUserOverview.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserOverview.Location = new System.Drawing.Point(47, 169);
+            this.lblUserOverview.Name = "lblUserOverview";
+            this.lblUserOverview.Size = new System.Drawing.Size(212, 32);
+            this.lblUserOverview.TabIndex = 35;
+            this.lblUserOverview.Text = "User Overview";
+            // 
+            // txtFirstName
+            // 
+            this.txtFirstName.Location = new System.Drawing.Point(18, 730);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(100, 22);
+            this.txtFirstName.TabIndex = 36;
+            // 
+            // txtLastName
+            // 
+            this.txtLastName.Location = new System.Drawing.Point(124, 730);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(100, 22);
+            this.txtLastName.TabIndex = 36;
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(230, 730);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(100, 22);
+            this.txtUsername.TabIndex = 36;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(336, 730);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(100, 22);
+            this.txtPassword.TabIndex = 36;
+            // 
+            // lblFirstName
+            // 
+            this.lblFirstName.AutoSize = true;
+            this.lblFirstName.Location = new System.Drawing.Point(18, 707);
+            this.lblFirstName.Name = "lblFirstName";
+            this.lblFirstName.Size = new System.Drawing.Size(76, 17);
+            this.lblFirstName.TabIndex = 37;
+            this.lblFirstName.Text = "First Name";
+            // 
+            // lblLastName
+            // 
+            this.lblLastName.AutoSize = true;
+            this.lblLastName.Location = new System.Drawing.Point(121, 707);
+            this.lblLastName.Name = "lblLastName";
+            this.lblLastName.Size = new System.Drawing.Size(76, 17);
+            this.lblLastName.TabIndex = 37;
+            this.lblLastName.Text = "Last Name";
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(227, 707);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(73, 17);
+            this.lblUsername.TabIndex = 37;
+            this.lblUsername.Text = "Username";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Location = new System.Drawing.Point(333, 707);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(69, 17);
+            this.lblPassword.TabIndex = 37;
+            this.lblPassword.Text = "Password";
+            // 
+            // lblRole
+            // 
+            this.lblRole.AutoSize = true;
+            this.lblRole.Location = new System.Drawing.Point(439, 707);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(37, 17);
+            this.lblRole.TabIndex = 37;
+            this.lblRole.Text = "Role";
+            // 
+            // cbRole
+            // 
+            this.cbRole.AllowDrop = true;
+            this.cbRole.FormattingEnabled = true;
+            this.cbRole.Items.AddRange(new object[] {
+            "Manager",
+            "Chef",
+            "Bartender",
+            "Waiter"});
+            this.cbRole.Location = new System.Drawing.Point(442, 728);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Size = new System.Drawing.Size(121, 24);
+            this.cbRole.TabIndex = 38;
             // 
             // UsersDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1010, 717);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1010, 816);
+            this.Controls.Add(this.cbRole);
+            this.Controls.Add(this.lblRole);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.lblUsername);
+            this.Controls.Add(this.lblLastName);
+            this.Controls.Add(this.lblFirstName);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.txtLastName);
+            this.Controls.Add(this.txtFirstName);
+            this.Controls.Add(this.lblUserOverview);
+            this.Controls.Add(this.butEdit);
             this.Controls.Add(this.butDelete);
             this.Controls.Add(this.butAdd);
             this.Controls.Add(this.listViewDisplayForm);
@@ -205,6 +325,7 @@ namespace ChapeauxUI
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -223,6 +344,17 @@ namespace ChapeauxUI
         private System.Windows.Forms.ColumnHeader lvUsername;
         private System.Windows.Forms.ColumnHeader lvPassword;
         private System.Windows.Forms.Button butDelete;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button butEdit;
+        private System.Windows.Forms.Label lblUserOverview;
+        private System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.TextBox txtLastName;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label lblFirstName;
+        private System.Windows.Forms.Label lblLastName;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Label lblRole;
+        private System.Windows.Forms.ComboBox cbRole;
     }
 }
