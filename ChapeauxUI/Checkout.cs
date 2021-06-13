@@ -21,6 +21,7 @@ namespace ChapeauxUI
         private decimal receivedCash;       //      +
         private decimal totalReceivedCash;  //      +
         private decimal changeToGive;       //bills and coins
+        int sequenceCount;                  //for preventing unwanted input
         bool escapeText = false;
 
         public CheckoutForm(Table currentTable, User user)
@@ -88,6 +89,7 @@ namespace ChapeauxUI
             transaction.TipAmount = 0.0m;
             txtTipAmount.Text = $"{transaction.TipAmount:0.00}";
             txtToPay.Text = $"{transaction.Order.TotalPrice:0.00}";
+            lblNegativeError.ResetText();
         }
 
         private void btnToPayment_Click(object sender, EventArgs e)
@@ -118,7 +120,6 @@ namespace ChapeauxUI
             }
 
             escapeText = true;
-
             lblNegativeError.ResetText();
 
             if (txtTipAmount.Text == "")
@@ -126,13 +127,26 @@ namespace ChapeauxUI
                 txtTipAmount.Text = 0.00.ToString("0.00");
             }
 
-            decimal tipAmount = Convert.ToDecimal(txtTipAmount.Text);
-            decimal toPay = transaction.Order.TotalPrice + tipAmount;
-            txtToPay.Text = $"{toPay:0.00}";
+            try
+            {
+                if (txtTipAmount.Text == ",")
+                {
+                    txtTipAmount.Text = 0.00.ToString("0.00");
+                }
 
-            txtTipAmount.Focus();
-            txtTipAmount.SelectionStart = txtTipAmount.Text.Length;
-            escapeText = false;
+                decimal tipAmount = Convert.ToDecimal(txtTipAmount.Text);
+                decimal toPay = transaction.Order.TotalPrice + tipAmount;
+                txtToPay.Text = $"{toPay:0.00}";
+
+                txtTipAmount.Focus();
+                txtTipAmount.SelectionStart = txtTipAmount.Text.Length;
+                escapeText = false;
+
+            }
+            catch (Exception exc)
+            {
+                lblNegativeError.Text = exc.Message;
+            }
         }
 
         private void txtToPay_TextChanged(object sender, EventArgs e)
@@ -143,21 +157,32 @@ namespace ChapeauxUI
             }
 
             escapeText = true;
+            lblNegativeError.ResetText();
 
             if (txtToPay.Text == "")
             {
                 txtToPay.Text = 0.00.ToString("0.00");
             }
 
-            lblNegativeError.ResetText();
+            try
+            {
+                if (txtToPay.Text == ",")
+                {
+                    txtToPay.Text = transaction.Order.TotalPrice.ToString("0.00");
+                }
 
-            decimal toPay = Convert.ToDecimal(txtToPay.Text);
-            decimal tipAmount = toPay - transaction.Order.TotalPrice;
-            txtTipAmount.Text = $"{tipAmount:0.00}";
+                decimal toPay = Convert.ToDecimal(txtToPay.Text);
+                decimal tipAmount = toPay - transaction.Order.TotalPrice;
+                txtTipAmount.Text = $"{tipAmount:0.00}";
 
-            txtToPay.Focus();
-            txtToPay.SelectionStart = txtToPay.Text.Length;
-            escapeText = false;
+                txtToPay.Focus();
+                txtToPay.SelectionStart = txtToPay.Text.Length;
+                escapeText = false;
+            }
+            catch (Exception exc)
+            {
+                lblNegativeError.Text = exc.Message;
+            }
         }
 
         private void btnRemoveComment_Click(object sender, EventArgs e)
@@ -173,12 +198,28 @@ namespace ChapeauxUI
         //prevent unwanted input
         private void txtTipAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',');
+            if (e.KeyChar == ',')
+            {
+                sequenceCount++;
+            }
+            else
+            {
+                sequenceCount = 0;
+            }
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',') || sequenceCount > 1;
         }
 
         private void txtToPay_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',');
+            if (e.KeyChar == ',')
+            {
+                sequenceCount++;
+            }
+            else
+            {
+                sequenceCount = 0;
+            }
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',') || sequenceCount > 1;
         }
 
         //Change text in tip upon entering total
@@ -191,7 +232,7 @@ namespace ChapeauxUI
         {
             try
             {
-                CheckForNegative(Convert.ToDecimal(txtTipAmount.Text), Convert.ToDecimal(txtToPay.Text));
+                CheckUnwantedInput(Convert.ToDecimal(txtTipAmount.Text), Convert.ToDecimal(txtToPay.Text));
             }
             catch (Exception exc)
             {
@@ -200,7 +241,7 @@ namespace ChapeauxUI
         }
         #endregion
         #region Methods
-        private void CheckForNegative(decimal tipAmount, decimal toPay)
+        private void CheckUnwantedInput(decimal tipAmount, decimal toPay)
         {
             if (tipAmount < 0)
             {
