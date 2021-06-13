@@ -47,6 +47,7 @@ namespace ChapeauxUI
                     else if(user.Role == Role.Bartender || user.Role == Role.Chef)
                     {
                         new KitchenDisplay(user).Show();
+                        this.Hide();
                     }
                        
                     else if (user.Role == Role.Manager)

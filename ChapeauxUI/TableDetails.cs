@@ -75,7 +75,7 @@ namespace ChapeauUI
                 }
             }
         }
-        
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             // Order the items by orderItemID, so we can select the latest one
@@ -104,12 +104,12 @@ namespace ChapeauUI
                 Order_Service orderService = new Order_Service();
                 order = orderService.GetByTableID(currentTable.TableID);
 
+                listViewOrderOverview.Items.Clear();
+
                 if (order == null)
                 {
                     return;
                 }
-
-                listViewOrderOverview.Items.Clear();
 
                 foreach (OrderItem orderItem in order.orderItems)
                 {
@@ -148,7 +148,7 @@ namespace ChapeauUI
                 {
                     tableHasOrder = true;
                     bool itemsServed = true;
-                    
+
                     if (order.orderItems.Count != 0)
                     {
                         tableHasItems = true;
@@ -188,7 +188,7 @@ namespace ChapeauUI
 
                         btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_enabled;
                         btnOccupyTable.Enabled = true;
-                        
+
                         tableHasItems = false;
                     }
                 }
@@ -196,10 +196,10 @@ namespace ChapeauUI
                 {
                     // Table has no order, we can Free up table, add new order but not checkout
                     tableHasOrder = false;
-                    
+
                     btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnFreeTable_enabled;
                     btnAddNewOrder.BackgroundImage = ChapeauxUI.Properties.Resources.btnAddNewOrder_enabled;
-                    
+
                     btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_hover;
                     btnCheckout.Enabled = false;
                 }
@@ -207,6 +207,7 @@ namespace ChapeauUI
             else if (currentTable.Status == Status.Free)
             {
                 // Table is free, so we can only occupy the table
+                btnOccupyTable.Enabled = true;
                 btnOccupyTable.BackgroundImage = ChapeauxUI.Properties.Resources.btnOccupyTable_enabled;
                 btnAddNewOrder.BackgroundImage = ChapeauxUI.Properties.Resources.btnAddNewOrder_hover1;
                 btnCheckout.BackgroundImage = ChapeauxUI.Properties.Resources.btnCheckout_hover1;
@@ -222,7 +223,7 @@ namespace ChapeauUI
             {
                 OrderItem item = listViewOrderOverview.SelectedItems[0].Tag as OrderItem;
 
-                
+
                 if (item.State == State.ready)
                 {
                     OrderItem_Service orderItem_service = new OrderItem_Service();
@@ -320,8 +321,8 @@ namespace ChapeauUI
             this.Hide();
 
             checkout.ShowDialog();
-            Reload();
             this.Show();
+            Reload();
 
         }
 
