@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChapeauxLogic;
+using ChapeauxModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,37 +14,133 @@ namespace ChapeauxUI
 {
     public partial class KitchenDisplay : Form
     {
+        private OrderItem orderItem;
+        private User user;
 
-        public KitchenDisplay()
+        public KitchenDisplay(User user)
         {
+            this.user = user;
             InitializeComponent();
+            DisplayForUser();
         }
-        private void LoadListViews()
+
+        private void DisplayForUser()
         {
-            ShowRunningBarOrder();
-            ShowRunningKitchenOrder();
+            if (user.Role == Role.Chef)
+            {
+                ShowPanel("Kitchen");
+                ShowRunningKitchenOrder();
+            }
+
+            else if (user.Role == Role.Bartender)
+            {
+                ShowPanel("Bar");
+                ShowRunningBarOrder();
+            }
+
         }
+
+        private void ShowPanel(string panelName)
+        {
+            HideAllPanels();
+
+            if (panelName == "Kitchen")
+            {
+                pnlKitchenDisplay.Show();
+            }
+
+            else if (panelName == "Bar")
+            {
+                pnlBarmanDisplay.Show();
+            }
+        }
+
+        private void HideAllPanels()
+        {
+            pnlBarmanDisplay.Hide();
+            pnlKitchenDisplay.Hide();
+        }
+        #region ShowRunningKitchen And BarOrder
         private void ShowRunningBarOrder()
         {
             try
             {
-                //listViewBarmanDisplay.Clear();
-                //foreach (Item item in collection)
-                //{
 
-                //}
+                //Change to OrderItems
+                listViewBarmanOrdersDetail.Items.Clear();
+                OrderItem_Service orderitemservice = new OrderItem_Service();
+                Order_Service orderservice = new Order_Service();
+                //Order order
+                List<OrderItem> orderitemlist = orderitemservice.GetLoadingDrinkItems();
+
+                foreach (OrderItem orderitem in orderitemlist)
+                {
+                    Order order = orderservice.GetOrderByID(orderitem.OrderID);
+                    ListViewItem list = new ListViewItem(orderitem.OrderItemID.ToString());
+                    list.SubItems.Add(order.TableID.ToString());
+                    list.SubItems.Add(orderitem.Name);
+                    list.SubItems.Add(orderitem.Count.ToString());
+                    list.SubItems.Add(orderitem.State.ToString());
+                    list.SubItems.Add(orderitem.Comment);
+                    list.SubItems.Add(orderitem.OrderDateTime.ToString("HH:mm"));
+                    list.Tag = orderitem;
+
+                    listViewBarmanOrdersDetail.Items.Add(list);
+
+                    listViewBarmanOrdersDetail.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    listViewBarmanOrdersDetail.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }
+
+
+
             }
-            catch (Exception)
+            catch (Exception exc)
             {
-
-                throw;
+                MessageBox.Show(exc.Message);
             }
+           
         }
         private void ShowRunningKitchenOrder()
         {
+            try
+            {
+                
+
+                //Change to OrderItems
+                listViewKitchenOrdersDetail.Items.Clear();
+                OrderItem_Service orderitemservice = new OrderItem_Service();
+                Order_Service orderservice = new Order_Service();
+                //Order order
+                List<OrderItem> orderitemlist = orderitemservice.GetLoadingFoodItems();
+                
+                foreach (OrderItem orderitem in orderitemlist)
+                {
+                    Order order = orderservice.GetOrderByID(orderitem.OrderID);
+                    ListViewItem list = new ListViewItem(orderitem.OrderItemID.ToString());
+                    list.SubItems.Add(order.TableID.ToString());
+                    list.SubItems.Add(orderitem.Name);
+                    list.SubItems.Add(orderitem.Count.ToString());
+                    list.SubItems.Add(orderitem.State.ToString());
+                    list.SubItems.Add(orderitem.Comment);
+                    list.SubItems.Add(orderitem.OrderDateTime.ToString("HH:mm:ss"));
+                    list.Tag = orderitem;
+                    listViewKitchenOrdersDetail.Items.Add(list);
+                    
+                }
+                listViewKitchenOrdersDetail.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                listViewKitchenOrdersDetail.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            
 
         }
-
+        #endregion
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -68,21 +166,50 @@ namespace ChapeauxUI
         {
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        #region ListviewsOfBothKitchenAndBar
+        private void listViewKitchenOrdersDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
-            pnlKitchenDisplay.Hide();
-            pnlBarmanDisplay.Show();
+            if(listViewKitchenOrdersDetail.SelectedItems.Count == 1)
+            {
+                orderItem = listViewKitchenOrdersDetail.SelectedItems[0].Tag as OrderItem;
+            }
         }
-
-        private void listViewTableKitchen_SelectedIndexChanged(object sender, EventArgs e)
+        
+        private void listViewBarmanOrdersDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (listViewBarmanOrdersDetail.SelectedItems.Count == 1)
+            {
+                orderItem = listViewBarmanOrdersDetail.SelectedItems[0].Tag as OrderItem;
+            }
         }
-
+        #endregion
+        #region Buttons
         private void btnOrderReadyToBeServed_Click_1(object sender, EventArgs e)
         {
-
+            OrderItem_Service orderItem_Service = new OrderItem_Service();
+            orderItem_Service.UpdateOrderItemStatus(orderItem, State.ready);
+            ShowRunningKitchenOrder();//Updated method for Kitchen
         }
+        private void btnLogOutKitchen_Click(object sender, EventArgs e)
+        {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
+            this.Close();
+        }
+
+        private void btnLogOutBarman_Click(object sender, EventArgs e)
+        {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
+            this.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            OrderItem_Service orderItem_Service = new OrderItem_Service();
+            orderItem_Service.UpdateOrderItemStatus(orderItem, State.ready);
+            ShowRunningBarOrder();//Updated method for Bar
+        }
+        #endregion
     }
 }

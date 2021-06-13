@@ -40,6 +40,105 @@ namespace ChapeauxDAL
             };
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+        public List<OrderItem> CheckForLoadin()
+        {
+            string query = "SELECT DISTINCT ORDERITEMS.orderID, ORDERITEMS.[state] FROM ORDERITEMS where ORDERITEMS.state = 'loading'";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadOrdersItems(ExecuteSelectQuery(query, sqlParameters));
+        }
+        public List<OrderItem> Get_All_Order_Items_DB()
+        {
+            //read users from database
+            String query = "select orderItemID, [orderID], itemID, state, comments, orderDateTime from ORDERITEMS";
+            SqlParameter[] parameters = new SqlParameter[0];
+
+            return ReadOrdersItems(ExecuteSelectQuery(query, parameters));
+        }
+
+        public Item GetOrderItemByName_DB(string name)
+        {
+            conn.Open();
+            SqlCommand command = new SqlCommand("select orderItemID, [orderID], itemID, state, comments, orderDateTime from ORDERITEMS where [orderID] = @orderID", conn);
+            command.Parameters.AddWithValue("@orderID", name);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            OrderItem menuItem = null;
+            if (reader.Read())
+            {
+                menuItem = ReadMenuItem(reader);
+            }
+
+            reader.Close();
+            conn.Close();
+            return menuItem;
+        }
+        private OrderItem ReadMenuItem(SqlDataReader reader)
+        {
+            OrderItem menuItem = new OrderItem()
+            {   //retrieve data from all fields
+                OrderItemID = (int)reader["orderItemID"],
+                OrderID = (int)reader["orderID"],
+                Count = (int)reader["itemID"],
+                State = (State)reader["state"],
+                Comment = reader["category"].ToString(),
+                Course = reader["comments"].ToString(),
+                OrderDateTime = (DateTime)reader["orderDateTime"]
+            };
+            return menuItem;
+        }
+        public void AddMenuOrderItem(OrderItem menuItem)
+        {
+            String query = "insert into ORDERITEMS values (@orderItemID, @orderID, @itemID, @state, @comments, @orderDateTime)";
+
+            SqlParameter[] parameters = new SqlParameter[6]
+            {
+                    new SqlParameter("@orderItemID", menuItem.OrderItemID),
+                    new SqlParameter("@orderID", menuItem.OrderID),
+                    new SqlParameter("@itemID", menuItem.Count),
+                    new SqlParameter("@state", menuItem.State),
+                    new SqlParameter("@comments", menuItem.Comment),
+                    new SqlParameter("@orderDateTime", menuItem.OrderDateTime)
+            };
+            ExecuteEditQuery(query, parameters);
+        }
+
+        public void EditMenuOrderItem(OrderItem lastItem, OrderItem newItem)
+        {
+            String query = "update ORDERITEMS set [orderItemID] = @orderItemID, orderID = @orderID, itemID = @itemID, state = @state, comments = @comments, orderDateTime = @orderDateTIme where [orderItemID] = @orderItemID";
+
+            SqlParameter[] parameters = new SqlParameter[6]
+            {
+                new SqlParameter("@orderItemID", lastItem.OrderItemID),
+                new SqlParameter("@orderID", lastItem.OrderID),
+                new SqlParameter("@itemID", lastItem.Count),
+                new SqlParameter("@state", lastItem.State),
+                new SqlParameter("@comments", lastItem.Comment),
+                new SqlParameter("@orderDateTime", lastItem.OrderDateTime)
+            };
+            ExecuteEditQuery(query, parameters);
+        }
+        private List<OrderItem> ReadOrdersItems(DataTable dataTable)
+        {
+            List<OrderItem> orderitems = new List<OrderItem>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                OrderItem orderitem = new OrderItem()
+                {
+                    OrderItemID = (int)dr["orderItemID"],
+                    OrderID = (int)dr["orderID"],
+                    Count = (int)dr["itemID"],
+                    State = (State)dr["state"],
+                    Comment = dr["comments"].ToString(),
+                    OrderDateTime = (DateTime)dr["orderDateTime"]
+                };
+
+                orderitems.Add(orderitem);
+            }
+            return orderitems;
+        }
+        
 
         public List<Tuple<OrderItem, Order>> GetAllDrinksStatus()
         {
@@ -96,6 +195,36 @@ namespace ChapeauxDAL
                             "ORDER BY ITEMS.[itemID]";
             SqlParameter[] sqlParameters = {
                  new SqlParameter("@orderID", orderID),
+            };
+            return ReadOrderItems(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public List<OrderItem> GetLoadingFoodItems()
+        {
+            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ORDERITEMS.orderDateTime, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state, ORDERITEMS.comments " +
+                           "FROM ORDERITEMS " +
+                           "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
+                           "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
+                           "WHERE(ITEMS.category = 'Lunch' OR ITEMS.category = 'Dinner') " +
+                           "AND ORDERITEMS.[state] = 'loading' " +
+                           "ORDER BY ORDERITEMS.orderDateTime";
+            SqlParameter[] sqlParameters = {
+                 
+            };
+            return ReadOrderItems(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public List<OrderItem> GetLoadingDrinkItems()
+        {
+            string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ORDERITEMS.orderDateTime, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state, ORDERITEMS.comments " +
+                           "FROM ORDERITEMS " +
+                           "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
+                           "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
+                           "WHERE ITEMS.category = 'Drink' " +
+                           "AND ORDERITEMS.[state] = 'loading' " +
+                           "ORDER BY ORDERITEMS.orderDateTime";
+            SqlParameter[] sqlParameters = {
+               
             };
             return ReadOrderItems(ExecuteSelectQuery(query, sqlParameters));
         }

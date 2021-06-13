@@ -13,11 +13,6 @@ namespace ChapeauxLogic
         OrderDAL orderdb;
         OrderItemDAL orderItemdb;
 
-        //public void UpdateIsPaid(Order orderID)
-        //{
-        //    orderdb.UpdateOrderIsPaid(order);
-        //}
-        
         public Order_Service()
         {
             orderdb = new OrderDAL();
@@ -37,6 +32,10 @@ namespace ChapeauxLogic
         public void DeleteOrder(Order order)
         {
             orderdb.DeleteOrder(order);
+        }
+        public Order GetOrderByID(int orderid)
+        {
+            return orderdb.GetByID(orderid);
         }
 
         public Order GetByTableID(int tableID)
