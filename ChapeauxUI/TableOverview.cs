@@ -71,13 +71,13 @@ namespace ChapeauxUI
                     listOfTableButtons[count].BackgroundImage = ChapeauxUI.Properties.Resources.table_occupied;
                     getOrderStatus(table, listOfDrinkAndFoodStatus); // After getting table status, get the Order status
                 }
-                else if (table.Status == Status.Late)
+                else if (table.Status == Status.Free)
                 {
-                    listOfTableButtons[count].BackgroundImage = ChapeauxUI.Properties.Resources.table_late;
+                    listOfTableButtons[count].BackgroundImage = ChapeauxUI.Properties.Resources.table_free;
                     getOrderStatus(table, listOfDrinkAndFoodStatus); // After getting table status, get the Order status
                 }
 
-                count++;
+                    count++;
             }
         }
 
@@ -102,8 +102,18 @@ namespace ChapeauxUI
             foreach (List<Tuple<OrderItem, Order>> orderType in listOfDrinkAndFoodStatus)
             {
                 State? previousItemsState = null;
+                int previousOrderID = -1; // This will allow the program to know if the order is different than before
+
                 foreach (Tuple<OrderItem, Order> tuple in orderType)
                 {
+                    //Checking if the order is different than before
+                    if (previousOrderID != tuple.Item2.OrderID)
+                    {
+                        // Change the variable to the new orderId and reset the state
+                        previousOrderID = tuple.Item2.OrderID;
+                        previousItemsState = null;
+                    }
+
                     // This variable is used to choose which table the needed icon belongs to
                     int tableID = tuple.Item2.TableID - 1;
 
@@ -111,7 +121,7 @@ namespace ChapeauxUI
                     FoodAndDrinksIcons[tableID, foodOrDrink].Show();
 
                     // Checking if the icon should be shown as served
-                    if (tuple.Item1.State == State.served && (previousItemsState != State.ready || previousItemsState != State.loading))
+                    if (tuple.Item1.State == State.served && (previousItemsState != State.ready && previousItemsState != State.loading))
                     {
                         previousItemsState = State.served;
 
@@ -145,9 +155,14 @@ namespace ChapeauxUI
                             FoodAndDrinksIcons[tableID, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_beingPrepared1;
                     }
                 }
-                foodOrDrink++; // Continue with food icons
+                foodOrDrink++; // Continue with drink icons
             }
         }
         #endregion
+
+        private void loadingTimer_Tick(object sender, EventArgs e)
+        {
+            getTableStatus();
+        }
     }
 }

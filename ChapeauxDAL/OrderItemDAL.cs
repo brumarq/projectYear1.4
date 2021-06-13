@@ -47,7 +47,8 @@ namespace ChapeauxDAL
                            "FROM ORDERITEMS " +
                            "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                            "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
-                           "WHERE ITEMS.category = 'Drink' AND ORDERs.isPaid = 0; ";
+                           "WHERE ITEMS.category = 'Drink' AND ORDERs.isPaid = 0" +
+                           "ORDER BY orderID; ";
 
             SqlParameter[] sqlParameters = { };
             return GettingFoodAndDrinkStatus(ExecuteSelectQuery(query, sqlParameters));
@@ -59,7 +60,8 @@ namespace ChapeauxDAL
                            "FROM ORDERITEMS " +
                            "INNER JOIN ORDERS ON ORDERS.orderID = ORDERITEMS.orderID " +
                            "INNER JOIN ITEMS ON ITEMS.itemID = ORDERITEMS.itemID " +
-                           "WHERE (ITEMS.category = 'Lunch' OR ITEMS.category = 'Dinner') AND ORDERs.isPaid = 0;";
+                           "WHERE (ITEMS.category = 'Lunch' OR ITEMS.category = 'Dinner') AND ORDERs.isPaid = 0" +
+                           "ORDER BY orderID; ";
 
             SqlParameter[] sqlParameters = { };
             return GettingFoodAndDrinkStatus(ExecuteSelectQuery(query, sqlParameters));

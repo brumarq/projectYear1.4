@@ -36,17 +36,22 @@ namespace ChapeauUI
             lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
             btnCheckout.Enabled = false;
 
+            tmr = new Timer();
+            tmr.Interval = 1000;
+            itemsThatHaveNotBeenServed = null;
+            tmr.Tick += new EventHandler(Timer_Tick);
+
+
             Reload();
         }
 
         #region Timer
         private void StartTimer()
         {
-            tmr = new Timer();
-            tmr.Interval = 1000;
-
             if (order != null)
             {
+                itemsThatHaveNotBeenServed = new List<OrderItem>();
+
                 // Getting all the orderItems that have not been served yet
                 foreach (OrderItem orderItems in order.orderItems)
                 {
@@ -59,12 +64,13 @@ namespace ChapeauUI
                 // Only create timer if there is at least one ordertime with loading or ready
                 if (itemsThatHaveNotBeenServed.Count != 0)
                 {
-                    tmr.Tick += new EventHandler(Timer_Tick);
+                    //tmr.Tick += new EventHandler(Timer_Tick);
+                    tmr.Enabled = true;
                     tmr.Start();
                 }
                 else
                 {
-                    tmr.Stop();
+                    tmr.Enabled = false;
                     LblTimer.Text = "";
                 }
             }
@@ -132,7 +138,7 @@ namespace ChapeauUI
 
         private void UpdateTableDetailsFunctionality()
         {
-            if (currentTable.Status == Status.Occupied || currentTable.Status == Status.Late)
+            if (currentTable.Status == Status.Occupied)
             {
                 // Checking if there is an order
                 Order_Service order_service = new Order_Service();

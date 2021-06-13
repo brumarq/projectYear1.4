@@ -29,6 +29,7 @@ namespace ChapeauxUI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblUserFullName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -66,6 +67,7 @@ namespace ChapeauxUI
             this.btnLogout = new System.Windows.Forms.Button();
             this.ptcHeader = new System.Windows.Forms.PictureBox();
             this.pctBackground = new System.Windows.Forms.PictureBox();
+            this.loadingTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctT10_DrinkStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctT10_FoodStatus)).BeginInit();
@@ -562,6 +564,11 @@ namespace ChapeauxUI
             this.pctBackground.TabIndex = 4;
             this.pctBackground.TabStop = false;
             // 
+            // loadingTimer
+            // 
+            this.loadingTimer.Enabled = true;
+            this.loadingTimer.Tick += new System.EventHandler(this.loadingTimer_Tick);
+            // 
             // TableOverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -676,5 +683,6 @@ namespace ChapeauxUI
         private System.Windows.Forms.PictureBox pctT2_DrinkStatus;
         private System.Windows.Forms.PictureBox pctT2_FoodStatus;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer loadingTimer;
     }
 }
