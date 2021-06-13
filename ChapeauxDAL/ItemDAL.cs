@@ -37,7 +37,7 @@ namespace ChapeauxDAL
         public void EditMenuItem(Item menuItem)
         {
             conn.Open();
-            String query = "update ITEMS set [name] = @name, price = @price, stock = @stock, category = @category, Course = @Course, VATRate = @VATRate where itemID = '@itemID'";
+            String query = "update ITEMS set [name] = @name, price = @price, stock = @stock, category = @category, Course = @Course, VATRate = @VATRate where itemID = @itemID";
             
             SqlParameter[] parameters = new SqlParameter[7]
             {
@@ -56,7 +56,7 @@ namespace ChapeauxDAL
         public void DeleteMenuItem(Item menuItem)
         {
             conn.Open();
-            String query = "delete from ITEMS where itemID = '@itemID'";
+            String query = "delete from ITEMS where itemID = @itemID";
 
             SqlParameter[] parameters = new SqlParameter[1]
             {

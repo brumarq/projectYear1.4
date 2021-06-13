@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using ChapeauxModel;
 using ChapeauxLogic;
+using System.Drawing;
 
 namespace ChapeauxUI
 {
@@ -19,23 +20,27 @@ namespace ChapeauxUI
 
             GetUserList();
         }
-
+        
         private void GetUserList()
         {
             try
             {
                 userService = new User_Service();
                 List<User> users = userService.GetUsers();
-                
+
+                listViewDisplayForm.Items.Clear();
+
                 foreach (User u in users)
                 {
-                    lvItem = new ListViewItem(u.UserID.ToString(), 0);
+                    lvItem = new ListViewItem(u.UserID.ToString(), "0");
                     lvItem.SubItems.Add(u.FirstName);
                     lvItem.SubItems.Add(u.LastName);
                     lvItem.SubItems.Add(u.LoginUsername);
                     lvItem.SubItems.Add(u.LoginPassword);
                     lvItem.SubItems.Add(u.Role.ToString());
-                    lvItem.Tag = users;
+
+                    lvItem.Tag = u;
+
                     listViewDisplayForm.Items.Add(lvItem);
                 }
             }
@@ -50,11 +55,11 @@ namespace ChapeauxUI
             if (listViewDisplayForm.SelectedItems.Count == 1)
             {
                 user = listViewDisplayForm.SelectedItems[0].Tag as User;
-                
-                txtFirstName.Text = user.FirstName.ToString();
-                txtLastName.Text = user.LastName.ToString();
-                txtUsername.Text = user.LoginUsername.ToString();
-                txtPassword.Text = user.LoginPassword.ToString();
+
+                txtFirstName.Text = user.FirstName;
+                txtLastName.Text = user.LastName;
+                txtUsername.Text = user.LoginUsername;
+                txtPassword.Text = user.LoginPassword;
                 cbRole.Text = user.Role.ToString();
             }
         }
@@ -63,14 +68,21 @@ namespace ChapeauxUI
         {
             try
             {
-                txtFirstName.Text = user.FirstName.ToString();
-                txtLastName.Text = user.LastName.ToString();
-                txtUsername.Text = user.LoginUsername.ToString();
-                txtPassword.Text = user.LoginPassword.ToString();
-                cbRole.Text = user.Role.ToString();
+                if (MessageBox.Show("Are you sure?", "Add", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    user.FirstName = txtFirstName.Text;
+                    user.LastName = txtLastName.Text;
+                    user.LoginUsername = txtUsername.Text;
+                    user.LoginPassword = txtPassword.Text;
+                    cbRole.Text = user.Role.ToString();
 
-                userService.AddUserAccount(user);
-                MessageBox.Show($"User added successfully.");
+                    userService.AddUserAccount(user);
+                    MessageBox.Show($"User added successfully.");
+                }
+                else
+                    return;
+
+                GetUserList();
             }
             catch (Exception ex)
             {
@@ -93,11 +105,15 @@ namespace ChapeauxUI
                     if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                     {
                         user = listViewDisplayForm.SelectedItems[0].Tag as User;
+
                         userService.RemoveUserAccount(user);
                         MessageBox.Show("Account deletion successful!");
+                        listViewDisplayForm.Refresh();
                     }
                     else
                         return;
+
+                    GetUserList();
                 }
 
             }
@@ -119,13 +135,18 @@ namespace ChapeauxUI
                 if (MessageBox.Show("Are you sure?", "Edit", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     user = listViewDisplayForm.SelectedItems[0].Tag as User;
+
                     user.FirstName = txtFirstName.Text;
                     user.LastName = txtFirstName.Text;
                     user.LoginUsername = txtUsername.Text;
                     user.LoginPassword = txtPassword.Text;
-                    userService.EditUserAccount(user);
+                    //user.Role = cbRole.Text.ToString();
 
+                    userService.EditUserAccount(user);
                     MessageBox.Show("User successfully updated.");
+                    listViewDisplayForm.Refresh();
+
+                    GetUserList();
                 }
                 else
                     return;
@@ -153,6 +174,26 @@ namespace ChapeauxUI
             LoginScreen loginScreen = new LoginScreen();
             loginScreen.Show();
             this.Hide();
+        }
+
+        private void butMenuItemOverview_Click(object sender, EventArgs e)
+        {
+            if (butMenuItemOverview.Enabled)
+            {
+                Item menuItem = new Item();
+                MenuItemDisplayForm menuItemDisplayForm = new MenuItemDisplayForm(menuItem);
+                menuItemDisplayForm.Show();
+            }
+        }
+
+        private void butUserOverview_Click(object sender, EventArgs e)
+        {
+            GetUserList();
+        }
+
+        private void UsersDisplayForm_Load(object sender, EventArgs e)
+        {
+            butUserOverview.BackColor = Color.Yellow;
         }
     }
 }

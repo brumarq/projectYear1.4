@@ -44,6 +44,27 @@ namespace ChapeauxDAL
         }
         #endregion
 
+        public List<Transaction> GetIncomeList()
+        {
+            conn.Open();
+            
+            List<Transaction> incomes = new List<Transaction>();
+            
+            String query = "sum(totalPrice) as Revenue, convert(DATE, transactionDate) as [date] From payments GROUP BY CAST(transactionDate as DATE)";
+
+            foreach (Transaction t in incomes)
+            {
+                SqlParameter[] parameters = new SqlParameter[1]
+                {
+                    new SqlParameter("@totalPrice", t.TotalPrice)
+                };
+                ExecuteEditQuery(query, parameters);
+            }
+            conn.Close();
+
+            return incomes;
+        }
+
         #region Reading
         private List<Transaction> ReadTables(DataTable dataTable)
         {

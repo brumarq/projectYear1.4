@@ -62,7 +62,7 @@ namespace ChapeauxDAL
 
             SqlParameter[] parameters = new SqlParameter[1]
             {
-                 new SqlParameter("@userID", user.LoginUsername)
+                 new SqlParameter("@userID", user.UserID)
             };
             
             ExecuteEditQuery(query, parameters);
