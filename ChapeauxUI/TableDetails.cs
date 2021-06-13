@@ -53,7 +53,7 @@ namespace ChapeauUI
                 itemsThatHaveNotBeenServed = new List<OrderItem>();
 
                 // Getting all the orderItems that have not been served yet
-                foreach (OrderItem orderItems in order.orderItems)
+                foreach (OrderItem orderItems in order.OrderItems)
                 {
                     if (orderItems.State != State.served)
                     {
@@ -111,7 +111,7 @@ namespace ChapeauUI
                     return;
                 }
 
-                foreach (OrderItem orderItem in order.orderItems)
+                foreach (OrderItem orderItem in order.OrderItems)
                 {
                     ListViewItem li = new ListViewItem(orderItem.OrderItemID.ToString());
                     li.SubItems.Add(orderItem.Name);
@@ -149,7 +149,7 @@ namespace ChapeauUI
                     tableHasOrder = true;
                     bool itemsServed = true;
 
-                    if (order.orderItems.Count != 0)
+                    if (order.OrderItems.Count != 0)
                     {
                         tableHasItems = true;
 
@@ -158,7 +158,7 @@ namespace ChapeauUI
                         btnOccupyTable.Enabled = false;
 
                         // Checking if every Item is served
-                        foreach (OrderItem orderItem in order.orderItems)
+                        foreach (OrderItem orderItem in order.OrderItems)
                         {
                             if (orderItem.State != State.served)
                             {

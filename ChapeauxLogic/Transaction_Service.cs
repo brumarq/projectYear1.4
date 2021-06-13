@@ -13,16 +13,5 @@ namespace ChapeauxLogic
         {
             transactionDAL.AddTransaction(transaction);
         }
-
-        private Transaction GetByID(int transactionID)
-        {
-            return transactionDAL.GetByID(transactionID);
-        }
-
-        public List<Transaction> GetIncomes()
-        {
-            return transactionDAL.GetIncomeList();
-        }
-
     }
 }

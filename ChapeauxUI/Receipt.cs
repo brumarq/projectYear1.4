@@ -22,14 +22,14 @@ namespace ChapeauxUI
         private void PrintReceipt(Transaction transaction)
         {
             listViewReceipt.Items.Clear();
-            foreach (OrderItem orderItem in transaction.Order.orderItems)
+            foreach (OrderItem orderItem in transaction.Order.OrderItems)
             {
                 ListViewItem li = new ListViewItem($"{orderItem.Name}  (X{orderItem.Count})");
                 li.SubItems.Add($"{(orderItem.Price * orderItem.Count):0.00}  ");
                 listViewReceipt.Items.Add(li);
             }
 
-            lblOrderDate.Text = $"{transaction.Order.endDateTime:dd/MM/yyyy HH:mm}";
+            lblOrderDate.Text = $"{transaction.Order.EndDateTime:dd/MM/yyyy HH:mm}";
             lblTotalWTip.Text = $"€ {(transaction.TotalPrice + transaction.TipAmount):0.00}";
             lblTotal.Text = $"{transaction.TotalPrice:0.00}";
             lblTipAmount.Text = $"{transaction.TipAmount:0.00}";

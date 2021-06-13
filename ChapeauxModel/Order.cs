@@ -8,13 +8,13 @@ namespace ChapeauxModel
 {
     public class Order
     {
-        public List<OrderItem> orderItems { get; set; } //To seperate food and drinks within the listview
-        public List<OrderItem> foodItems { get; set; }
-        public List<OrderItem> drinkItems { get; set; }
+        public List<OrderItem> OrderItems { get; set; } //To seperate food and drinks within the listview
+        public List<OrderItem> FoodItems { get; set; }
+        public List<OrderItem> DrinkItems { get; set; }
 
         public int OrderID { get; set; }
-        public DateTime startDateTime { get; set; }
-        public DateTime? endDateTime { get; set; }
+        public DateTime StartDateTime { get; set; }
+        public DateTime? EndDateTime { get; set; }
         public bool IsPaid { get; set; }
         public int TableID { get; set; }
         public int UserID { get; set; }
@@ -24,7 +24,7 @@ namespace ChapeauxModel
             {
                 decimal totalPrice = 0;
 
-                foreach (OrderItem orderItem in orderItems)
+                foreach (OrderItem orderItem in OrderItems)
                 {
                     
                     totalPrice += (orderItem.Price * orderItem.Count);
@@ -39,7 +39,7 @@ namespace ChapeauxModel
             {
                 decimal vatHighResult = 0;
                 
-                    foreach (OrderItem orderItem in orderItems)
+                    foreach (OrderItem orderItem in OrderItems)
                     {
                         if (orderItem.VATRate == 0.21m)
                         {
@@ -57,7 +57,7 @@ namespace ChapeauxModel
             {
                 decimal vatLowResult = 0;
               
-                    foreach (OrderItem orderItem in orderItems)
+                    foreach (OrderItem orderItem in OrderItems)
                     {
                         if (orderItem.VATRate == 0.09m)
                         {
@@ -71,7 +71,7 @@ namespace ChapeauxModel
 
         public Order()
         {
-            orderItems = new List<OrderItem>();
+            OrderItems = new List<OrderItem>();
         }
     }
 }

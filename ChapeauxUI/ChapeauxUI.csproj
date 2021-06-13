@@ -78,18 +78,6 @@
     <Compile Include="Receipt.Designer.cs">
       <DependentUpon>Receipt.cs</DependentUpon>
     </Compile>
-    <Compile Include="StockAdjustmentForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StockAdjustmentForm.Designer.cs">
-      <DependentUpon>StockAdjustmentForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StockOverviewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StockOverviewForm.Designer.cs">
-      <DependentUpon>StockOverviewForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="TakeOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,12 +126,6 @@
     </Compile>
     <EmbeddedResource Include="Receipt.resx">
       <DependentUpon>Receipt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StockAdjustmentForm.resx">
-      <DependentUpon>StockAdjustmentForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StockOverviewForm.resx">
-      <DependentUpon>StockOverviewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TakeOrderForm.resx">
       <DependentUpon>TakeOrderForm.cs</DependentUpon>

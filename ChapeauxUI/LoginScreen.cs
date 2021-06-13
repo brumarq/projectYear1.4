@@ -33,27 +33,25 @@ namespace ChapeauxUI
                 User_Service userService = new User_Service();
                 User user = userService.LoginCheck(givenUsername, givenPassword);
 
-                if (user != null) 
+                if (user != null)
                 {
                     if (user.Role == Role.Waiter)
                     {
                         new TableOverviewForm(user).Show();
                         this.Hide();
                     }
-                    else if(user.Role == Role.Bartender || user.Role == Role.Chef)
+                    else if (user.Role == Role.Bartender || user.Role == Role.Chef)
                     {
                         new KitchenDisplay(user).Show();
                         this.Hide();
                     }
-                       
-                        else if (user.Role == Role.Manager)
-                        {
-                            new UsersDisplayForm(user).Show();
-                            this.Hide();
+                    else if (user.Role == Role.Manager)
+                    {
+                        new UsersDisplayForm(user).Show();
+                        this.Hide();
 
-                            new MenuItemDisplayForm(menuItem).Show();
-                            this.Hide();
-                        }
+                        new MenuItemDisplayForm(menuItem).Show();
+                        this.Hide();
                     }
                     else
                     {

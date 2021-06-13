@@ -265,7 +265,7 @@ namespace ChapeauxUI
         {
             try
             {
-                foreach (OrderItem orderItem in transaction.Order.orderItems)
+                foreach (OrderItem orderItem in transaction.Order.OrderItems)
                 {
                     ListViewItem li = new ListViewItem(orderItem.ItemID.ToString(), 0);
                     li.SubItems.Add(orderItem.Name);
@@ -491,7 +491,7 @@ namespace ChapeauxUI
             transaction.TotalPrice = Convert.ToDecimal(lblTotalResult.Text);
             transaction.TipAmount = Convert.ToDecimal(txtTipAmount.Text);
             transaction.Feedback = txtFeedback.Text;
-            transaction.Order.endDateTime = DateTime.Now;
+            transaction.Order.EndDateTime = DateTime.Now;
             transaction.TransactionDate = DateTime.Now;
             transaction.VAT = transaction.Order.VATHigh + transaction.Order.VATLow;
             transaction.State = PaymentState.Received;
@@ -553,7 +553,7 @@ namespace ChapeauxUI
             {
                 listViewOverview.Items.Clear();
 
-                foreach (OrderItem orderItem in transaction.Order.orderItems)
+                foreach (OrderItem orderItem in transaction.Order.OrderItems)
                 {
                     ListViewItem li = new ListViewItem(orderItem.ItemID.ToString(), 0);
                     li.SubItems.Add(orderItem.Name);
@@ -570,9 +570,7 @@ namespace ChapeauxUI
             }
         }
         #endregion
-
         #endregion
-
 
     }
 }

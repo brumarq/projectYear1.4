@@ -140,30 +140,11 @@ namespace ChapeauxUI
         }
         #endregion
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void KitchenDisplay_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void FrameBoxKitchen_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblUserName_Click(object sender, EventArgs e)
-        {
-
-        }
         #region ListviewsOfBothKitchenAndBar
         private void listViewKitchenOrdersDetail_SelectedIndexChanged(object sender, EventArgs e)
         {

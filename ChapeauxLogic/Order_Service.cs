@@ -47,17 +47,17 @@ namespace ChapeauxLogic
                 return null;
             }
 
-            order.foodItems = orderItemdb.GetOrderFood(order.OrderID);
-            order.drinkItems = orderItemdb.GetOrderDrinks(order.OrderID);
+            order.FoodItems = orderItemdb.GetOrderFood(order.OrderID);
+            order.DrinkItems = orderItemdb.GetOrderDrinks(order.OrderID);
 
-            foreach (OrderItem foodItem in order.foodItems)
+            foreach (OrderItem foodItem in order.FoodItems)
             {
-                order.orderItems.Add(foodItem);
+                order.OrderItems.Add(foodItem);
             }
 
-            foreach (OrderItem drinkItem in order.drinkItems)
+            foreach (OrderItem drinkItem in order.DrinkItems)
             {
-                order.orderItems.Add(drinkItem);
+                order.OrderItems.Add(drinkItem);
             }
             return order;
         }

@@ -36,8 +36,8 @@ namespace ChapeauxDAL
             Order order = new Order()
             {
                 OrderID = (int)reader["orderID"],
-                startDateTime = (DateTime)reader["startDateTime"],
-                endDateTime = (DateTime)reader["endDateTime"],
+                StartDateTime = (DateTime)reader["startDateTime"],
+                EndDateTime = (DateTime)reader["endDateTime"],
                 IsPaid = (bool)reader["isPaid"],
                 TableID = (int)reader["tableID"],
                 UserID = (int)reader["userID"]
@@ -55,7 +55,7 @@ namespace ChapeauxDAL
 
             OpenConnection();
             cmd.Parameters.AddWithValue("@isPaid", order.IsPaid);
-            cmd.Parameters.AddWithValue("@endDateTime", order.endDateTime);
+            cmd.Parameters.AddWithValue("@endDateTime", order.EndDateTime);
             cmd.Parameters.AddWithValue("@orderID", order.OrderID);
             SqlDataReader reader = cmd.ExecuteReader();
         }
@@ -131,45 +131,5 @@ namespace ChapeauxDAL
             return order;
         }
         #endregion
-
-     
-        public List<Order> GetAllOrders()
-        {
-            string query = "SELECT orderID, startDateTime, endDateTime, isPaid, tableID, userID FROM ORDERS";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
-        }
-#region GetFoodAndDrinks
-        public List<Order> GetFoodOrders()
-        {
-            string query = "SELECT orderID, startDateTime, endDateTime, isPaid, tableID, userID FROM ORDERS WHERE isPaid=0 ORDER BY startDateTime";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
-        }
-        public List<Order> GetDrinkOrders()
-        {
-            string query = "SELECT orderID, startDateTime, endDateTime, isPaid, tableID, userID FROM ORDERS WHERE ispaid=0 ORDER BY startDateTIme";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
-        }
-        public List<Order> ReadTable(DataTable dataTable)
-        {
-            List<Order> orders = new List<Order>();
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                Order order = new Order()
-                {
-                    OrderID = (int)dr["orderID"],
-                    startDateTime = (DateTime)dr["startDateTime"],
-                    endDateTime = (DateTime)dr["endDateTime"],
-                    IsPaid = (bool)dr["isPaid"],
-                    TableID = (int)dr["tableID"],
-                    UserID = (int)dr["userID"]
-                };
-                orders.Add(order);
-            }
-            return orders;
-        }
-#endregion
     }
 }
