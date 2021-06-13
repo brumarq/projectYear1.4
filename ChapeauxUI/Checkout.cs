@@ -22,7 +22,7 @@ namespace ChapeauxUI
         private decimal totalReceivedCash;  //      +
         private decimal changeToGive;       //bills and coins
         int sequenceCount;                  //for preventing unwanted input
-        bool escapeText = false;
+        bool escapeText = false;            //
 
         public CheckoutForm(Table currentTable, User user)
         {
