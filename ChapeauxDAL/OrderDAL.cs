@@ -45,7 +45,7 @@ namespace ChapeauxDAL
         }
         #endregion
 
-        #region Storing
+        #region Updating
         public void UpdateOrderIsPaid(Order order)
         {
             SqlCommand cmd = new SqlCommand("UPDATE ORDERS " +
@@ -57,6 +57,18 @@ namespace ChapeauxDAL
             cmd.Parameters.AddWithValue("@endDateTime", order.endDateTime);
             cmd.Parameters.AddWithValue("@orderID", order.OrderID);
             SqlDataReader reader = cmd.ExecuteReader();
+        }
+
+        public void DeleteOrder(Order order)
+        {
+            SqlCommand cmd = new SqlCommand("DELETE FROM ORDERS WHERE orderID=@orderID;", conn);
+
+            OpenConnection();
+
+            cmd.Parameters.AddWithValue("@orderID", order.OrderID.ToString());
+            cmd.ExecuteReader();
+
+            CloseConnection();
         }
 
         public void AddNewOrder(Order order)
@@ -118,38 +130,5 @@ namespace ChapeauxDAL
             return order;
         }
         #endregion
-
-        public void DeleteOrder(Order order)
-        {
-            SqlCommand cmd = new SqlCommand("DELETE FROM ORDERS WHERE orderID=@orderID;", conn);
-
-            OpenConnection();
-
-            cmd.Parameters.AddWithValue("@orderID", order.OrderID.ToString());
-            cmd.ExecuteReader();
-
-            CloseConnection();
-        }
-
-        public List<Order> GetAllOrders()
-        {
-            string query = "SELECT orderID, startDateTime FROM [ORDERS]";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
-        }
-
-        public List<Order> ReadTable(DataTable dataTable)
-        {
-            List<Order> orders = new List<Order>();
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                Order order = new Order()
-                {
-                    OrderID = (int)dr["orderID"]
-                };
-                orders.Add(order);
-            }
-            return orders;
-        }
     }
 }

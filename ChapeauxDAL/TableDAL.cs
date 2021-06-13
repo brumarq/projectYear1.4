@@ -11,6 +11,7 @@ namespace ChapeauxDAL
 {
     public class TableDAL : Base
     {
+        // Get all the available tables
         public List<Table> GetAllTables()
         {
             string query = "SELECT tableID, status FROM TABLES";
@@ -19,6 +20,7 @@ namespace ChapeauxDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        // Only get one specific table using a tableID
         public Table GetTable(int tableID)
         {
             string query = "SELECT tableID, status FROM TABLES WHERE tableID=@tableID";
@@ -28,6 +30,7 @@ namespace ChapeauxDAL
             return ReadTable(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        // Update table status
         public void UpdateStatus(int tableID, Status status)
         {
             string query = "UPDATE TABLES SET status = @status WHERE tableID=@tableID";

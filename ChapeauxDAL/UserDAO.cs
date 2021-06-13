@@ -142,15 +142,6 @@ namespace ChapeauxDAL
             return user;
         }
 
-        public User LoginCheck(string username, string givenPassword)
-        {
-            string query = "SELECT userID, role, firstName, lastName, userName, password FROM USERS WHERE userName = @userName";
-            SqlParameter[] sqlParameters = {
-                new SqlParameter("@userName", username),
-            };
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters), givenPassword);
-        }
-        
         private List<User> ReadUsers(DataTable dataTable)
         {
             List<User> users = new List<User>();
@@ -172,9 +163,24 @@ namespace ChapeauxDAL
             return users;
         }
 
-        private User ReadTables(DataTable dataTable, string givenPassword)
+        #region Login
+        public User LoginCheck(string username, string givenPassword)
+        {
+            string query = "SELECT userID, role, firstName, lastName, userName, password FROM USERS WHERE userName = @userName";
+            SqlParameter[] sqlParameters = {
+                new SqlParameter("@userName", username),
+            };
+            return ReadLoginInformation(ExecuteSelectQuery(query, sqlParameters), givenPassword);
+        }
+
+        private User ReadLoginInformation(DataTable dataTable, string givenPassword)
         {
             User foundUser = null;
+            if (dataTable == null)
+            {
+                return foundUser;
+            }
+
             foreach (DataRow dr in dataTable.Rows)
             {
                 User user = new User()
@@ -209,6 +215,6 @@ namespace ChapeauxDAL
 
             return foundUser;
         }
-
+        #endregion
     }
 }
