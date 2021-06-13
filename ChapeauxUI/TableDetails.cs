@@ -36,11 +36,11 @@ namespace ChapeauUI
             lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
             btnCheckout.Enabled = false;
 
+            // Creating Timer object
             tmr = new Timer();
             tmr.Interval = 1000;
             itemsThatHaveNotBeenServed = null;
             tmr.Tick += new EventHandler(Timer_Tick);
-
 
             Reload();
         }
