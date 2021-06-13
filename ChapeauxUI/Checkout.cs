@@ -21,6 +21,7 @@ namespace ChapeauxUI
         private decimal receivedCash;       //      +
         private decimal totalReceivedCash;  //      +
         private decimal changeToGive;       //bills and coins
+        bool escapeText = false;
 
         public CheckoutForm(Table currentTable, User user)
         {
@@ -108,34 +109,55 @@ namespace ChapeauxUI
             lblCardPaymentStatus.Text = "NOT PAID";
         }
 
+        //Dynamically change tip/topay
         private void txtTipAmount_TextChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    decimal toPay = 
-            //}
-            //catch (Exception exc)
-            //{
-            //    MessageBox.Show(exc.Message);
-            //}
+            if (escapeText)
+            {
+                return;
+            }
+
+            escapeText = true;
+
+            lblNegativeError.ResetText();
+
+            if (txtTipAmount.Text == "")
+            {
+                txtTipAmount.Text = 0.00.ToString("0.00");
+            }
+
+            decimal tipAmount = Convert.ToDecimal(txtTipAmount.Text);
+            decimal toPay = transaction.Order.TotalPrice + tipAmount;
+            txtToPay.Text = $"{toPay:0.00}";
+
+            txtTipAmount.Focus();
+            txtTipAmount.SelectionStart = txtTipAmount.Text.Length;
+            escapeText = false;
         }
 
         private void txtToPay_TextChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    lblNegativeError.ResetText();
-            //    decimal toPay = Convert.ToDecimal(txtToPay.Text);
-            //    decimal tipAmount = toPay - currentOrder.TotalPrice;
-            //    txtTipAmount.Text = $"{tipAmount:0.00}";
+            if (escapeText)
+            {
+                return;
+            }
 
-            //    CheckForNegative(tipAmount, toPay);
+            escapeText = true;
 
-            //}
-            //catch (Exception exc)
-            //{
-            //    lblNegativeError.Text = exc.Message;
-            //}
+            if (txtToPay.Text == "")
+            {
+                txtToPay.Text = 0.00.ToString("0.00");
+            }
+
+            lblNegativeError.ResetText();
+
+            decimal toPay = Convert.ToDecimal(txtToPay.Text);
+            decimal tipAmount = toPay - transaction.Order.TotalPrice;
+            txtTipAmount.Text = $"{tipAmount:0.00}";
+
+            txtToPay.Focus();
+            txtToPay.SelectionStart = txtToPay.Text.Length;
+            escapeText = false;
         }
 
         private void btnRemoveComment_Click(object sender, EventArgs e)
@@ -159,6 +181,7 @@ namespace ChapeauxUI
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',');
         }
 
+        //Change text in tip upon entering total
         private void frameBox_Click(object sender, EventArgs e)
         {
             this.ActiveControl = null;
@@ -168,14 +191,7 @@ namespace ChapeauxUI
         {
             try
             {
-                lblNegativeError.ResetText();
-                decimal toPay = Convert.ToDecimal(txtToPay.Text);
-                decimal tipAmount = toPay - transaction.Order.TotalPrice;
-
-                if (!CheckForNegative(tipAmount, toPay))
-                {
-                    txtTipAmount.Text = $"{tipAmount:0.00}";
-                }
+                CheckForNegative(Convert.ToDecimal(txtTipAmount.Text), Convert.ToDecimal(txtToPay.Text));
             }
             catch (Exception exc)
             {
@@ -184,20 +200,18 @@ namespace ChapeauxUI
         }
         #endregion
         #region Methods
-        private bool CheckForNegative(decimal tipAmount, decimal toPay)
+        private void CheckForNegative(decimal tipAmount, decimal toPay)
         {
-            //if (tipAmount < 0)
-            //{
-            //    txtTipAmount.Text = 
-            //    throw new Exception("Negative values are not allowed!");
-            //}
+            if (tipAmount < 0)
+            {
+                txtToPay.Text = $"{transaction.Order.TotalPrice:0.00}";
+                throw new Exception("Negative values are not allowed!");
+            }
 
             if (toPay < transaction.Order.TotalPrice)
             {
                 txtToPay.Text = $"{transaction.Order.TotalPrice:0.00}";
-                throw new Exception("Price to pay cannot be lower than total price!");
             }
-            return false;
         }
 
         private Order GetOrder(Table currentTable)
@@ -240,23 +254,6 @@ namespace ChapeauxUI
         private void btnBackToCheckout_Click(object sender, EventArgs e)
         {
             ShowPanel("Checkout");
-        }
-
-        private void StorePayment()
-        {
-            transaction.TotalPrice = Convert.ToDecimal(lblTotalResult.Text);
-            transaction.TipAmount = Convert.ToDecimal(txtTipAmount.Text);
-            transaction.Feedback = txtFeedback.Text;
-            transaction.Order.endDateTime = DateTime.Now;
-            transaction.TransactionDate = DateTime.Now;
-            transaction.VAT = transaction.Order.VATHigh + transaction.Order.VATLow;
-            transaction.State = PaymentState.Received;
-            transaction.Order.IsPaid = true;
-
-            Transaction_Service transactionService = new Transaction_Service();
-            transactionService.AddTransaction(transaction);
-
-            LoadPaymentOverView();
         }
 
         private void btnFinishPayment_Click(object sender, EventArgs e)
@@ -448,10 +445,27 @@ namespace ChapeauxUI
             btnPayNow.Enabled = false;
             btnBackToCheckout.Enabled = false;
         }
+        private void StorePayment()
+        {
+            transaction.TotalPrice = Convert.ToDecimal(lblTotalResult.Text);
+            transaction.TipAmount = Convert.ToDecimal(txtTipAmount.Text);
+            transaction.Feedback = txtFeedback.Text;
+            transaction.Order.endDateTime = DateTime.Now;
+            transaction.TransactionDate = DateTime.Now;
+            transaction.VAT = transaction.Order.VATHigh + transaction.Order.VATLow;
+            transaction.State = PaymentState.Received;
+            transaction.Order.IsPaid = true;
+
+            Transaction_Service transactionService = new Transaction_Service();
+            transactionService.AddTransaction(transaction);
+
+            LoadPaymentOverView();
+        }
         #endregion
         #endregion
 
         #region PaymentOverview
+        #region Events
         private void btnBackToPayment_Click(object sender, EventArgs e)
         {
             ShowPanel("Payment");
@@ -459,6 +473,25 @@ namespace ChapeauxUI
                 subPnlCard.Show();
         }
 
+        private void btnCloseOrder_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Free Up Table?", "Set Table Status", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Table_Service tableService = new Table_Service();
+                tableService.UpdateStatus(currentTable.TableID, Status.Free);
+
+            }
+            this.Close();
+        }
+
+        private void btnPrintReceipt_Click(object sender, EventArgs e)
+        {
+            Form receipt = new Receipt(transaction);
+            receipt.ShowDialog();
+        }
+        #endregion
+        #region Methods
         private void LoadPaymentOverView()
         {
             ShowPanel("Overview");
@@ -495,28 +528,10 @@ namespace ChapeauxUI
                 MessageBox.Show(exc.Message);
             }
         }
-
-        //*** add method to load listview of transaction/order
-        //*** add option to write and store comments: popup + open digital keyboard + store comment into order
-
-        private void btnCloseOrder_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Free Up Table?", "Set Table Status", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                Table_Service tableService = new Table_Service();
-                tableService.UpdateStatus(currentTable.TableID, Status.Free);
-
-            }
-            this.Close();
-        }
+        #endregion
 
         #endregion
 
-        private void btnPrintReceipt_Click(object sender, EventArgs e)
-        {
-            Form receipt = new Receipt(transaction);
-            receipt.ShowDialog();
-        }
+
     }
 }
