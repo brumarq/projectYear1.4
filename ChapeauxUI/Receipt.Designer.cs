@@ -122,13 +122,13 @@ namespace ChapeauxUI
             // columnHeader1
             // 
             this.columnHeader1.Text = "Items";
-            this.columnHeader1.Width = 159;
+            this.columnHeader1.Width = 237;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Price";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader2.Width = 159;
+            this.columnHeader2.Width = 82;
             // 
             // label7
             // 

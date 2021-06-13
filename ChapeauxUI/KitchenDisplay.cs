@@ -21,6 +21,9 @@ namespace ChapeauxUI
         {
             this.user = user;
             InitializeComponent();
+
+            lblUserFullName.Text = $"{this.user.FirstName} {this.user.LastName}";
+
             DisplayForUser();
         }
 
@@ -65,7 +68,6 @@ namespace ChapeauxUI
         {
             try
             {
-
                 //Change to OrderItems
                 listViewBarmanOrdersDetail.Items.Clear();
                 OrderItem_Service orderitemservice = new OrderItem_Service();
@@ -86,12 +88,10 @@ namespace ChapeauxUI
                     list.Tag = orderitem;
 
                     listViewBarmanOrdersDetail.Items.Add(list);
-
-                    listViewBarmanOrdersDetail.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                    listViewBarmanOrdersDetail.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 }
 
-
+                /*listViewBarmanOrdersDetail.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                listViewBarmanOrdersDetail.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);*/
 
             }
             catch (Exception exc)
@@ -104,8 +104,6 @@ namespace ChapeauxUI
         {
             try
             {
-                
-
                 //Change to OrderItems
                 listViewKitchenOrdersDetail.Items.Clear();
                 OrderItem_Service orderitemservice = new OrderItem_Service();
@@ -127,8 +125,8 @@ namespace ChapeauxUI
                     listViewKitchenOrdersDetail.Items.Add(list);
                     
                 }
-                listViewKitchenOrdersDetail.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                listViewKitchenOrdersDetail.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+               /* listViewKitchenOrdersDetail.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                listViewKitchenOrdersDetail.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);*/
 
 
 
@@ -211,5 +209,22 @@ namespace ChapeauxUI
             ShowRunningBarOrder();//Updated method for Bar
         }
         #endregion
+
+        private void btnReloadBar_Click(object sender, EventArgs e)
+        {
+            ShowRunningBarOrder();
+
+        }
+
+        private void btnReloadKitchen_Click(object sender, EventArgs e)
+        {
+            ShowRunningKitchenOrder();
+        }
+
+        private void tmrReloadListViews_Tick(object sender, EventArgs e)
+        {
+            ShowRunningKitchenOrder();
+            ShowRunningBarOrder();
+        }
     }
 }

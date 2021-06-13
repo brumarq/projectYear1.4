@@ -269,7 +269,7 @@ namespace ChapeauUI
             // 
             this.orderStatus.Text = "Status";
             this.orderStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.orderStatus.Width = 124;
+            this.orderStatus.Width = 120;
             // 
             // LblTimer
             // 
