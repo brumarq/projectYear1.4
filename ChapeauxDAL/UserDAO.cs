@@ -30,7 +30,7 @@ namespace ChapeauxDAL
                     new SqlParameter("@lastName", user.LastName),
                     new SqlParameter("@userName", user.LoginUsername),
                     new SqlParameter("@password", user.LoginPassword),
-                    new SqlParameter("@role", user.Role)
+                    new SqlParameter("@role", user.Role.ToString())
             };
             
             ExecuteEditQuery(query, parameters);
@@ -49,7 +49,7 @@ namespace ChapeauxDAL
                 new SqlParameter("@lastname", user.LastName),
                 new SqlParameter("@username", user.LoginUsername),
                 new SqlParameter("@password", user.LoginPassword),
-                new SqlParameter("@role", user.Role)
+                new SqlParameter("@role", user.Role.ToString())
             };
             
             ExecuteEditQuery(query, parameters);

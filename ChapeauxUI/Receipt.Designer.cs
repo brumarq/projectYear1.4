@@ -413,6 +413,7 @@ namespace ChapeauxUI
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Receipt";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Receipt";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

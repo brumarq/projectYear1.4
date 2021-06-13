@@ -23,9 +23,13 @@ namespace ChapeauxLogic
             userDAO.EditUserAccount(user);
         }
 
-        public void RemoveUserAccount(User username)
+        public void RemoveUserAccount(User user)
         {
-            userDAO.RemoveUserAccount(username);
+            if (user.Role == Role.Waiter)
+            {
+                throw new System.Exception("Waiter cannot be deleted, in case they have orders!");
+            }
+            userDAO.RemoveUserAccount(user);
         }
 
         public User LoginCheck(string givenUsername, string givenPassword)

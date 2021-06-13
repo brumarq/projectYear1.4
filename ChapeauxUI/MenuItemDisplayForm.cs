@@ -193,6 +193,7 @@ namespace ChapeauxUI
                 User user = new User();
                 UsersDisplayForm usersDisplayForm = new UsersDisplayForm(user);
                 usersDisplayForm.Show();
+                this.Close();
             }
         }
 

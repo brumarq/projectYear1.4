@@ -34,6 +34,7 @@ namespace ChapeauxUI
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pnlKitchenDisplay = new System.Windows.Forms.Panel();
+            this.btnReloadKitchen = new System.Windows.Forms.Button();
             this.btnLogOutKitchen = new System.Windows.Forms.Button();
             this.btnOrderReadyToBeServed = new System.Windows.Forms.Button();
             this.lblStatusOfTheOrder = new System.Windows.Forms.Label();
@@ -49,6 +50,7 @@ namespace ChapeauxUI
             this.FrameWokrKitchen = new System.Windows.Forms.PictureBox();
             this.pnlBarmanDisplay = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnReloadBar = new System.Windows.Forms.Button();
             this.btnLogOutBarman = new System.Windows.Forms.Button();
             this.btnBarOrderReady = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,8 +64,6 @@ namespace ChapeauxUI
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnReloadKitchen = new System.Windows.Forms.Button();
-            this.btnReloadBar = new System.Windows.Forms.Button();
             this.pctLogo = new System.Windows.Forms.PictureBox();
             this.lblUserFullName = new System.Windows.Forms.Label();
             this.tmrReloadListViews = new System.Windows.Forms.Timer(this.components);
@@ -112,6 +112,22 @@ namespace ChapeauxUI
             this.pnlKitchenDisplay.Name = "pnlKitchenDisplay";
             this.pnlKitchenDisplay.Size = new System.Drawing.Size(747, 907);
             this.pnlKitchenDisplay.TabIndex = 36;
+            // 
+            // btnReloadKitchen
+            // 
+            this.btnReloadKitchen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.btnReloadKitchen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReloadKitchen.FlatAppearance.BorderSize = 0;
+            this.btnReloadKitchen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReloadKitchen.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReloadKitchen.ForeColor = System.Drawing.Color.White;
+            this.btnReloadKitchen.Location = new System.Drawing.Point(51, 837);
+            this.btnReloadKitchen.Name = "btnReloadKitchen";
+            this.btnReloadKitchen.Size = new System.Drawing.Size(83, 33);
+            this.btnReloadKitchen.TabIndex = 55;
+            this.btnReloadKitchen.Text = "Reload";
+            this.btnReloadKitchen.UseVisualStyleBackColor = false;
+            this.btnReloadKitchen.Click += new System.EventHandler(this.btnReloadKitchen_Click);
             // 
             // btnLogOutKitchen
             // 
@@ -256,6 +272,22 @@ namespace ChapeauxUI
             this.panel1.Size = new System.Drawing.Size(747, 914);
             this.panel1.TabIndex = 37;
             // 
+            // btnReloadBar
+            // 
+            this.btnReloadBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.btnReloadBar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReloadBar.FlatAppearance.BorderSize = 0;
+            this.btnReloadBar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReloadBar.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReloadBar.ForeColor = System.Drawing.Color.White;
+            this.btnReloadBar.Location = new System.Drawing.Point(42, 827);
+            this.btnReloadBar.Name = "btnReloadBar";
+            this.btnReloadBar.Size = new System.Drawing.Size(83, 33);
+            this.btnReloadBar.TabIndex = 56;
+            this.btnReloadBar.Text = "Reload";
+            this.btnReloadBar.UseVisualStyleBackColor = false;
+            this.btnReloadBar.Click += new System.EventHandler(this.btnReloadBar_Click);
+            // 
             // btnLogOutBarman
             // 
             this.btnLogOutBarman.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -366,38 +398,6 @@ namespace ChapeauxUI
             this.pictureBox2.TabIndex = 48;
             this.pictureBox2.TabStop = false;
             // 
-            // btnReloadKitchen
-            // 
-            this.btnReloadKitchen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
-            this.btnReloadKitchen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReloadKitchen.FlatAppearance.BorderSize = 0;
-            this.btnReloadKitchen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReloadKitchen.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReloadKitchen.ForeColor = System.Drawing.Color.White;
-            this.btnReloadKitchen.Location = new System.Drawing.Point(51, 837);
-            this.btnReloadKitchen.Name = "btnReloadKitchen";
-            this.btnReloadKitchen.Size = new System.Drawing.Size(83, 33);
-            this.btnReloadKitchen.TabIndex = 55;
-            this.btnReloadKitchen.Text = "Reload";
-            this.btnReloadKitchen.UseVisualStyleBackColor = false;
-            this.btnReloadKitchen.Click += new System.EventHandler(this.btnReloadKitchen_Click);
-            // 
-            // btnReloadBar
-            // 
-            this.btnReloadBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
-            this.btnReloadBar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReloadBar.FlatAppearance.BorderSize = 0;
-            this.btnReloadBar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReloadBar.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReloadBar.ForeColor = System.Drawing.Color.White;
-            this.btnReloadBar.Location = new System.Drawing.Point(42, 827);
-            this.btnReloadBar.Name = "btnReloadBar";
-            this.btnReloadBar.Size = new System.Drawing.Size(83, 33);
-            this.btnReloadBar.TabIndex = 56;
-            this.btnReloadBar.Text = "Reload";
-            this.btnReloadBar.UseVisualStyleBackColor = false;
-            this.btnReloadBar.Click += new System.EventHandler(this.btnReloadBar_Click);
-            // 
             // pctLogo
             // 
             this.pctLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
@@ -444,6 +444,7 @@ namespace ChapeauxUI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "KitchenDisplay";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KitchenDisplay";
             this.Load += new System.EventHandler(this.KitchenDisplay_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
