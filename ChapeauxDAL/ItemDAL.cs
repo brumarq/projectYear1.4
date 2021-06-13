@@ -10,89 +10,62 @@ namespace ChapeauxDAL
     {
         public List<Item> Get_All_Items_DB()
         {
-            //read users from database
             String query = "select itemID, [name], price, stock, category, Course, VATRate from ITEMS";
             SqlParameter[] parameters = new SqlParameter[0];
 
             return ReadItems(ExecuteSelectQuery(query, parameters));
         }
 
-        public Item GetItemByName_DB(string name)
-        {
-            conn.Open();
-            SqlCommand command = new SqlCommand("select itemID, [name], price, stock, category, Course, VATRate from ITEMS where [name] = @name", conn);
-            command.Parameters.AddWithValue("@name", name);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            Item menuItem = null;
-            if (reader.Read())
-            {
-                menuItem = ReadMenuItem(reader);
-            }
-
-            reader.Close();
-            conn.Close();
-            return menuItem;
-        }
-
         public void AddMenuItem(Item menuItem)
         {
+            conn.Open();
             String query = "insert into ITEMS values (@name, @price, @stock, @category, @Course, @VATRate)";
 
             SqlParameter[] parameters = new SqlParameter[6]
             {
-                    new SqlParameter("@name", menuItem.Name),
-                    new SqlParameter("@price", menuItem.Price),
-                    new SqlParameter("@stock", menuItem.Stock),
-                    new SqlParameter("@category", menuItem.Category.ToString()),
-                    new SqlParameter("@Course", menuItem.Course),
-                    new SqlParameter("@VATRate", menuItem.VATRate)
+                new SqlParameter("@name", menuItem.Name),
+                new SqlParameter("@price", menuItem.Price),
+                new SqlParameter("@stock", menuItem.Stock),
+                new SqlParameter("@category", menuItem.Category),
+                new SqlParameter("@Course", menuItem.Course),
+                new SqlParameter("@VATRate", menuItem.VATRate)
             };
             ExecuteEditQuery(query, parameters);
+            conn.Close();
         }
 
-        public void EditMenuItem(Item lastItem, Item newItem)
+        public void EditMenuItem(Item menuItem)
         {
-            String query = "update ITEMS set [name] = @name, price = @price, stock = @stock, category = @category, Course = @Course, VATRate = @VATRate where [name] = @name";
+            conn.Open();
+            String query = "update ITEMS set [name] = @name, price = @price, stock = @stock, category = @category, Course = @Course, VATRate = @VATRate where itemID = @itemID";
             
-            SqlParameter[] parameters = new SqlParameter[6]
+            SqlParameter[] parameters = new SqlParameter[7]
             {
-                new SqlParameter("@name", lastItem.Name),
-                new SqlParameter("@price", lastItem.Price),
-                new SqlParameter("@stock", lastItem.Stock),
-                new SqlParameter("@category", lastItem.Category.ToString()),
-                new SqlParameter("@Course", lastItem.Course),
-                new SqlParameter("@VATRate", lastItem.VATRate)
+                new SqlParameter("@itemID", menuItem.ItemID),
+                new SqlParameter("@name", menuItem.Name),
+                new SqlParameter("@price", menuItem.Price),
+                new SqlParameter("@stock", menuItem.Stock),
+                new SqlParameter("@category", menuItem.Category),
+                new SqlParameter("@Course", menuItem.Course),
+                new SqlParameter("@VATRate", menuItem.VATRate)
             };
             ExecuteEditQuery(query, parameters);
+            conn.Close();
         }
 
-        public void DeleteMenuItem(Item menuItem) //remove an item from DB based on name
+        public void DeleteMenuItem(Item menuItem)
         {
-            String query = "delete from ITEMS where name = @name";
+            conn.Open();
+            String query = "delete from ITEMS where itemID = @itemID";
 
             SqlParameter[] parameters = new SqlParameter[1]
             {
-                 new SqlParameter("@name", menuItem.Name)
+                 new SqlParameter("@itemID", menuItem.ItemID)
             };
             ExecuteEditQuery(query, parameters);
+            conn.Close();
         }
-
-        private Item ReadMenuItem(SqlDataReader reader)
-        {
-            Item menuItem = new Item()
-            {   //retrieve data from all fields
-                ItemID = (int)reader["itemID"],
-                Name = (string)reader["name"],
-                Price = (decimal)reader["price"],
-                Stock = (int)reader["stock"],
-                Category = (string)reader["category"],
-                Course = (string)reader["Course"],
-                VATRate = (decimal)reader["VATRate"]
-            };
-            return menuItem;
-        }
+        
         private List<Item> ReadItems(DataTable dataTable)
         {
             List<Item> items = new List<Item>();

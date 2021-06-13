@@ -1,10 +1,6 @@
-﻿using ChapeauxDAL;
+﻿using System.Collections.Generic;
+using ChapeauxDAL;
 using ChapeauxModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChapeauxLogic
 {
@@ -22,5 +18,11 @@ namespace ChapeauxLogic
         {
             return transactionDAL.GetByID(transactionID);
         }
+
+        public List<Transaction> GetIncomes()
+        {
+            return transactionDAL.GetIncomeList();
+        }
+
     }
 }

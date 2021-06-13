@@ -13,33 +13,19 @@ namespace ChapeauxLogic
             return userDAO.Get_Users_DB();
         }
 
-        public User GetUserAccount(string username, string password)
-        {
-            return userDAO.GetUserAccount(username, password);
-        }
-
-        public User GetUserByUsername(string username)
-        {
-            return userDAO.GetUserByUsername_DB(username);
-        }
         public void AddUserAccount(User user)
         {
             userDAO.AddUserAccount(user);
         }
         
-        public void EditUserAccount(User previousUser, User newUser)
+        public void EditUserAccount(User user)
         {
-            userDAO.EditUserAccount(previousUser, newUser);
+            userDAO.EditUserAccount(user);
         }
 
-        public void DisplayUsers(User user)
+        public void RemoveUserAccount(User username)
         {
-            userDAO.DisplayUsersById(user);
-        }
-
-        public void RemoveUserAccount(User user)
-        {
-            userDAO.RemoveUserAccount(user);
+            userDAO.RemoveUserAccount(username);
         }
 
         public User LoginCheck(string givenUsername, string givenPassword)

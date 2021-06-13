@@ -10,10 +10,6 @@ namespace ChapeauxUI
     public partial class LoginScreen : Form
     {
         private EventLog appLog = new EventLog("Application"); // Initiate EventLog
-        User createUser = new User();
-        User prevUser = new User();
-        User curUser = new User();
-        User deleteUser = new User();
         Item menuItem = new Item();
 
         public LoginScreen()
@@ -50,29 +46,19 @@ namespace ChapeauxUI
                         this.Hide();
                     }
                        
-                    else if (user.Role == Role.Manager)
-                    {
-                        /*new AddAccountForm(createUser).Show();
-                        this.Hide();
+                        else if (user.Role == Role.Manager)
+                        {
+                            new UsersDisplayForm(user).Show();
+                            this.Hide();
 
-                        new EditAccountForm(prevUser, curUser).Show();
-                        this.Hide();
-
-                        new DeleteAccountForm(user);
-
-                        new AddMenuItem(menuItem);
-                        this.Hide();
-
-                        new DeleteMenuItem(menuItem); 
-                        this.Hide();*/
-
+                            new MenuItemDisplayForm(menuItem).Show();
+                            this.Hide();
+                        }
                     }
-
-                    lblError.Text = "";
-                }
-                else
-                {
-                    lblError.Text = "Incorrect Password!";
+                    else
+                    {
+                        throw new Exception("Incorrect password!");
+                    }
                 }
             }
             catch (Exception err)

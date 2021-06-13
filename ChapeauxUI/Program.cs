@@ -1,6 +1,5 @@
 ﻿using System;
 using ChapeauxModel;
-using ChapeauxLogic;
 using System.Windows.Forms;
 
 namespace ChapeauxUI
