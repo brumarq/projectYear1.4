@@ -30,7 +30,6 @@ namespace ChapeauUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableDetails));
-            this.lblTitle = new System.Windows.Forms.Label();
             this.lblUserFullName = new System.Windows.Forms.Label();
             this.lblTableStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,23 +49,13 @@ namespace ChapeauUI
             this.UnitPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.orderStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LblTimer = new System.Windows.Forms.Label();
+            this.picChapeau = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picChapeau)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Location = new System.Drawing.Point(50, 17);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(181, 46);
-            this.lblTitle.TabIndex = 7;
-            this.lblTitle.Text = "Chapeau";
             // 
             // lblUserFullName
             // 
@@ -87,7 +76,7 @@ namespace ChapeauUI
             this.lblTableStatus.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblTableStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.lblTableStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTableStatus.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTableStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTableStatus.ForeColor = System.Drawing.Color.Black;
             this.lblTableStatus.Location = new System.Drawing.Point(485, 215);
             this.lblTableStatus.Name = "lblTableStatus";
@@ -276,7 +265,7 @@ namespace ChapeauUI
             this.LblTimer.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.LblTimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.LblTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LblTimer.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTimer.ForeColor = System.Drawing.Color.Black;
             this.LblTimer.Location = new System.Drawing.Point(485, 181);
             this.LblTimer.Name = "LblTimer";
@@ -285,12 +274,24 @@ namespace ChapeauUI
             this.LblTimer.TabIndex = 22;
             this.LblTimer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // picChapeau
+            // 
+            this.picChapeau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.picChapeau.Image = ((System.Drawing.Image)(resources.GetObject("picChapeau.Image")));
+            this.picChapeau.Location = new System.Drawing.Point(12, 12);
+            this.picChapeau.Name = "picChapeau";
+            this.picChapeau.Size = new System.Drawing.Size(120, 60);
+            this.picChapeau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picChapeau.TabIndex = 23;
+            this.picChapeau.TabStop = false;
+            // 
             // TableDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(767, 985);
+            this.Controls.Add(this.picChapeau);
             this.Controls.Add(this.LblTimer);
             this.Controls.Add(this.listViewOrderOverview);
             this.Controls.Add(this.btnCheckout);
@@ -303,7 +304,6 @@ namespace ChapeauUI
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnBackToOverview);
             this.Controls.Add(this.pctBackground);
-            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pctLogo);
             this.Controls.Add(this.ptcHeader);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -315,6 +315,7 @@ namespace ChapeauUI
             ((System.ComponentModel.ISupportInitialize)(this.pctBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picChapeau)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,7 +324,6 @@ namespace ChapeauUI
         #endregion
 
         private System.Windows.Forms.PictureBox ptcHeader;
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pctLogo;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.PictureBox pctBackground;
@@ -342,5 +342,6 @@ namespace ChapeauUI
         private System.Windows.Forms.ColumnHeader orderStatus;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.Label LblTimer;
+        private System.Windows.Forms.PictureBox picChapeau;
     }
 }

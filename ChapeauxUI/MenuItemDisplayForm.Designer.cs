@@ -58,8 +58,11 @@ namespace ChapeauxUI
             this.cbCourse = new System.Windows.Forms.ComboBox();
             this.butMenuItemOverview = new System.Windows.Forms.Button();
             this.butUserOverview = new System.Windows.Forms.Button();
+            this.lblUserFullName = new System.Windows.Forms.Label();
+            this.pctLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // ptcHeader
@@ -68,7 +71,7 @@ namespace ChapeauxUI
             this.ptcHeader.Image = global::ChapeauxUI.Properties.Resources.top_bar;
             this.ptcHeader.Location = new System.Drawing.Point(-233, -1);
             this.ptcHeader.Name = "ptcHeader";
-            this.ptcHeader.Size = new System.Drawing.Size(1120, 76);
+            this.ptcHeader.Size = new System.Drawing.Size(998, 76);
             this.ptcHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptcHeader.TabIndex = 7;
             this.ptcHeader.TabStop = false;
@@ -113,7 +116,7 @@ namespace ChapeauxUI
             this.listViewDisplayForm.GridLines = true;
             this.listViewDisplayForm.HideSelection = false;
             this.listViewDisplayForm.Location = new System.Drawing.Point(37, 134);
-            this.listViewDisplayForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewDisplayForm.Margin = new System.Windows.Forms.Padding(2);
             this.listViewDisplayForm.MultiSelect = false;
             this.listViewDisplayForm.Name = "listViewDisplayForm";
             this.listViewDisplayForm.Size = new System.Drawing.Size(680, 397);
@@ -160,7 +163,7 @@ namespace ChapeauxUI
             // butAdd
             // 
             this.butAdd.Location = new System.Drawing.Point(538, 567);
-            this.butAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butAdd.Margin = new System.Windows.Forms.Padding(2);
             this.butAdd.Name = "butAdd";
             this.butAdd.Size = new System.Drawing.Size(65, 29);
             this.butAdd.TabIndex = 35;
@@ -171,7 +174,7 @@ namespace ChapeauxUI
             // butDelete
             // 
             this.butDelete.Location = new System.Drawing.Point(677, 567);
-            this.butDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butDelete.Margin = new System.Windows.Forms.Padding(2);
             this.butDelete.Name = "butDelete";
             this.butDelete.Size = new System.Drawing.Size(65, 28);
             this.butDelete.TabIndex = 36;
@@ -182,7 +185,7 @@ namespace ChapeauxUI
             // butEdit
             // 
             this.butEdit.Location = new System.Drawing.Point(608, 567);
-            this.butEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butEdit.Margin = new System.Windows.Forms.Padding(2);
             this.butEdit.Name = "butEdit";
             this.butEdit.Size = new System.Drawing.Size(65, 28);
             this.butEdit.TabIndex = 37;
@@ -193,7 +196,7 @@ namespace ChapeauxUI
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(13, 574);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(76, 20);
             this.txtName.TabIndex = 39;
@@ -201,7 +204,7 @@ namespace ChapeauxUI
             // txtPrice
             // 
             this.txtPrice.Location = new System.Drawing.Point(92, 574);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(76, 20);
             this.txtPrice.TabIndex = 39;
@@ -209,7 +212,7 @@ namespace ChapeauxUI
             // txtStock
             // 
             this.txtStock.Location = new System.Drawing.Point(172, 574);
-            this.txtStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtStock.Margin = new System.Windows.Forms.Padding(2);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(76, 20);
             this.txtStock.TabIndex = 39;
@@ -217,7 +220,7 @@ namespace ChapeauxUI
             // txtVatRate
             // 
             this.txtVatRate.Location = new System.Drawing.Point(442, 574);
-            this.txtVatRate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtVatRate.Margin = new System.Windows.Forms.Padding(2);
             this.txtVatRate.Name = "txtVatRate";
             this.txtVatRate.Size = new System.Drawing.Size(76, 20);
             this.txtVatRate.TabIndex = 39;
@@ -290,7 +293,7 @@ namespace ChapeauxUI
             "Dinner",
             "Drink"});
             this.cbCategory.Location = new System.Drawing.Point(251, 572);
-            this.cbCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(92, 21);
             this.cbCategory.TabIndex = 41;
@@ -306,7 +309,7 @@ namespace ChapeauxUI
             "Dessert",
             "Drink"});
             this.cbCourse.Location = new System.Drawing.Point(346, 572);
-            this.cbCourse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbCourse.Margin = new System.Windows.Forms.Padding(2);
             this.cbCourse.Name = "cbCourse";
             this.cbCourse.Size = new System.Drawing.Size(92, 21);
             this.cbCourse.TabIndex = 41;
@@ -315,7 +318,7 @@ namespace ChapeauxUI
             // 
             this.butMenuItemOverview.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.butMenuItemOverview.Location = new System.Drawing.Point(179, 79);
-            this.butMenuItemOverview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butMenuItemOverview.Margin = new System.Windows.Forms.Padding(2);
             this.butMenuItemOverview.Name = "butMenuItemOverview";
             this.butMenuItemOverview.Size = new System.Drawing.Size(205, 28);
             this.butMenuItemOverview.TabIndex = 39;
@@ -327,7 +330,7 @@ namespace ChapeauxUI
             // 
             this.butUserOverview.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.butUserOverview.Location = new System.Drawing.Point(14, 79);
-            this.butUserOverview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butUserOverview.Margin = new System.Windows.Forms.Padding(2);
             this.butUserOverview.Name = "butUserOverview";
             this.butUserOverview.Size = new System.Drawing.Size(175, 28);
             this.butUserOverview.TabIndex = 39;
@@ -335,12 +338,39 @@ namespace ChapeauxUI
             this.butUserOverview.UseVisualStyleBackColor = true;
             this.butUserOverview.Click += new System.EventHandler(this.butUserOverview_Click);
             // 
+            // lblUserFullName
+            // 
+            this.lblUserFullName.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblUserFullName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.lblUserFullName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblUserFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserFullName.ForeColor = System.Drawing.Color.White;
+            this.lblUserFullName.Location = new System.Drawing.Point(410, 17);
+            this.lblUserFullName.Name = "lblUserFullName";
+            this.lblUserFullName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblUserFullName.Size = new System.Drawing.Size(283, 24);
+            this.lblUserFullName.TabIndex = 43;
+            this.lblUserFullName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pctLogo
+            // 
+            this.pctLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.pctLogo.Image = global::ChapeauxUI.Properties.Resources.Capture;
+            this.pctLogo.Location = new System.Drawing.Point(696, 6);
+            this.pctLogo.Name = "pctLogo";
+            this.pctLogo.Size = new System.Drawing.Size(46, 46);
+            this.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctLogo.TabIndex = 42;
+            this.pctLogo.TabStop = false;
+            // 
             // MenuItemDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(758, 663);
+            this.Controls.Add(this.lblUserFullName);
+            this.Controls.Add(this.pctLogo);
             this.Controls.Add(this.butMenuItemOverview);
             this.Controls.Add(this.butUserOverview);
             this.Controls.Add(this.cbCourse);
@@ -362,13 +392,14 @@ namespace ChapeauxUI
             this.Controls.Add(this.ptcHeader);
             this.Controls.Add(this.listViewDisplayForm);
             this.Controls.Add(this.btnLogout);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MenuItemDisplayForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuItemDisplayForm";
             this.Load += new System.EventHandler(this.MenuItemDisplayForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +435,7 @@ namespace ChapeauxUI
         private System.Windows.Forms.ComboBox cbCourse;
         private System.Windows.Forms.Button butMenuItemOverview;
         private System.Windows.Forms.Button butUserOverview;
+        private System.Windows.Forms.Label lblUserFullName;
+        private System.Windows.Forms.PictureBox pctLogo;
     }
 }

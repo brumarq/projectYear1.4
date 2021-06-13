@@ -30,7 +30,7 @@ namespace ChapeauxUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lblTitle = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableOverviewForm));
             this.lblUserFullName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pctT10_DrinkStatus = new System.Windows.Forms.PictureBox();
@@ -68,6 +68,7 @@ namespace ChapeauxUI
             this.ptcHeader = new System.Windows.Forms.PictureBox();
             this.pctBackground = new System.Windows.Forms.PictureBox();
             this.loadingTimer = new System.Windows.Forms.Timer(this.components);
+            this.picChapeau = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctT10_DrinkStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctT10_FoodStatus)).BeginInit();
@@ -92,26 +93,15 @@ namespace ChapeauxUI
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBackground)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picChapeau)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
-            this.lblTitle.Font = new System.Drawing.Font("Roboto", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Location = new System.Drawing.Point(50, 17);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(177, 48);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Chapeau";
             // 
             // lblUserFullName
             // 
             this.lblUserFullName.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblUserFullName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
             this.lblUserFullName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblUserFullName.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserFullName.ForeColor = System.Drawing.Color.White;
             this.lblUserFullName.Location = new System.Drawing.Point(392, 31);
             this.lblUserFullName.Name = "lblUserFullName";
@@ -356,7 +346,7 @@ namespace ChapeauxUI
             this.btnTable10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTable10.FlatAppearance.BorderSize = 0;
             this.btnTable10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTable10.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTable10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTable10.Location = new System.Drawing.Point(477, 819);
             this.btnTable10.Name = "btnTable10";
             this.btnTable10.Size = new System.Drawing.Size(146, 146);
@@ -373,7 +363,7 @@ namespace ChapeauxUI
             this.btnTable9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTable9.FlatAppearance.BorderSize = 0;
             this.btnTable9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTable9.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTable9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTable9.Location = new System.Drawing.Point(130, 819);
             this.btnTable9.Name = "btnTable9";
             this.btnTable9.Size = new System.Drawing.Size(146, 146);
@@ -390,7 +380,7 @@ namespace ChapeauxUI
             this.btnTable8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTable8.FlatAppearance.BorderSize = 0;
             this.btnTable8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTable8.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTable8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTable8.Location = new System.Drawing.Point(477, 657);
             this.btnTable8.Name = "btnTable8";
             this.btnTable8.Size = new System.Drawing.Size(146, 146);
@@ -407,7 +397,7 @@ namespace ChapeauxUI
             this.btnTable7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTable7.FlatAppearance.BorderSize = 0;
             this.btnTable7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTable7.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTable7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTable7.Location = new System.Drawing.Point(130, 657);
             this.btnTable7.Name = "btnTable7";
             this.btnTable7.Size = new System.Drawing.Size(146, 146);
@@ -424,7 +414,7 @@ namespace ChapeauxUI
             this.btnTable6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTable6.FlatAppearance.BorderSize = 0;
             this.btnTable6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTable6.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTable6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTable6.Location = new System.Drawing.Point(477, 494);
             this.btnTable6.Name = "btnTable6";
             this.btnTable6.Size = new System.Drawing.Size(146, 146);
@@ -441,7 +431,7 @@ namespace ChapeauxUI
             this.btnTable5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTable5.FlatAppearance.BorderSize = 0;
             this.btnTable5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTable5.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTable5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTable5.Location = new System.Drawing.Point(130, 494);
             this.btnTable5.Name = "btnTable5";
             this.btnTable5.Size = new System.Drawing.Size(146, 146);
@@ -458,7 +448,7 @@ namespace ChapeauxUI
             this.btnTable4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTable4.FlatAppearance.BorderSize = 0;
             this.btnTable4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTable4.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTable4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTable4.Location = new System.Drawing.Point(477, 331);
             this.btnTable4.Name = "btnTable4";
             this.btnTable4.Size = new System.Drawing.Size(146, 146);
@@ -475,7 +465,7 @@ namespace ChapeauxUI
             this.btnTable3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTable3.FlatAppearance.BorderSize = 0;
             this.btnTable3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTable3.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTable3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTable3.Location = new System.Drawing.Point(130, 331);
             this.btnTable3.Name = "btnTable3";
             this.btnTable3.Size = new System.Drawing.Size(146, 146);
@@ -492,7 +482,7 @@ namespace ChapeauxUI
             this.btnTable2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTable2.FlatAppearance.BorderSize = 0;
             this.btnTable2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTable2.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTable2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTable2.Location = new System.Drawing.Point(477, 170);
             this.btnTable2.Name = "btnTable2";
             this.btnTable2.Size = new System.Drawing.Size(146, 146);
@@ -509,7 +499,7 @@ namespace ChapeauxUI
             this.btnTable1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTable1.FlatAppearance.BorderSize = 0;
             this.btnTable1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTable1.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTable1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTable1.Location = new System.Drawing.Point(130, 170);
             this.btnTable1.Name = "btnTable1";
             this.btnTable1.Size = new System.Drawing.Size(146, 146);
@@ -569,12 +559,24 @@ namespace ChapeauxUI
             this.loadingTimer.Enabled = true;
             this.loadingTimer.Tick += new System.EventHandler(this.loadingTimer_Tick);
             // 
+            // picChapeau
+            // 
+            this.picChapeau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.picChapeau.Image = ((System.Drawing.Image)(resources.GetObject("picChapeau.Image")));
+            this.picChapeau.Location = new System.Drawing.Point(12, 12);
+            this.picChapeau.Name = "picChapeau";
+            this.picChapeau.Size = new System.Drawing.Size(120, 60);
+            this.picChapeau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picChapeau.TabIndex = 44;
+            this.picChapeau.TabStop = false;
+            // 
             // TableOverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(767, 985);
+            this.Controls.Add(this.picChapeau);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pctT10_DrinkStatus);
             this.Controls.Add(this.pctT10_FoodStatus);
@@ -606,7 +608,6 @@ namespace ChapeauxUI
             this.Controls.Add(this.btnTable3);
             this.Controls.Add(this.btnTable2);
             this.Controls.Add(this.btnTable1);
-            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pctLogo);
             this.Controls.Add(this.lblUserFullName);
             this.Controls.Add(this.btnLogout);
@@ -640,15 +641,14 @@ namespace ChapeauxUI
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBackground)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picChapeau)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.PictureBox pctBackground;
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pctLogo;
         private System.Windows.Forms.Label lblUserFullName;
         private System.Windows.Forms.PictureBox ptcHeader;
@@ -684,5 +684,6 @@ namespace ChapeauxUI
         private System.Windows.Forms.PictureBox pctT2_FoodStatus;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer loadingTimer;
+        private System.Windows.Forms.PictureBox picChapeau;
     }
 }

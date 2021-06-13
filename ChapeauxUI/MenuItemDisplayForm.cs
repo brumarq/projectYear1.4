@@ -13,8 +13,9 @@ namespace ChapeauxUI
         Item_Service itemService;
         ListViewItem lvItem;
 
-        public MenuItemDisplayForm(Item menuItem)
+        public MenuItemDisplayForm(Item menuItem, User user)
         {
+            lblUserFullName.Text = $"{user.FirstName} {user.LastName}";
             InitializeComponent();
             this.menuItem = menuItem;
          

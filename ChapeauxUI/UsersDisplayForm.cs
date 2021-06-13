@@ -11,17 +11,20 @@ namespace ChapeauxUI
     public partial class UsersDisplayForm : Form
     {
         User user;
+        User loggedUser;
         User_Service userService;
         ListViewItem lvItem;
 
         public UsersDisplayForm(User user)
         {
+
             InitializeComponent();
-            this.user = user;
+            loggedUser = user;
+            lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
 
             GetUserList();
         }
-        
+
         private void GetUserList()
         {
             try
@@ -134,7 +137,7 @@ namespace ChapeauxUI
 
                             MessageBox.Show(exc.Message);
                         }
-                        
+
                     }
                     else
                         return;
@@ -207,7 +210,7 @@ namespace ChapeauxUI
             if (butMenuItemOverview.Enabled)
             {
                 Item menuItem = new Item();
-                MenuItemDisplayForm menuItemDisplayForm = new MenuItemDisplayForm(menuItem);
+                MenuItemDisplayForm menuItemDisplayForm = new MenuItemDisplayForm(menuItem, loggedUser);
                 menuItemDisplayForm.Show();
                 this.Close();
             }

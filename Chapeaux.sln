@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapeauxLogic", "ChapeauxLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapeauxModel", "ChapeauxModel\ChapeauxModel.csproj", "{1719E5F4-9769-4ED2-8B45-676B4E27111F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dummy", "Dummy\Dummy.csproj", "{B0DD4705-0C40-4280-B6E3-2F4BF5B093B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,9 @@ Global
 		{1719E5F4-9769-4ED2-8B45-676B4E27111F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1719E5F4-9769-4ED2-8B45-676B4E27111F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1719E5F4-9769-4ED2-8B45-676B4E27111F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0DD4705-0C40-4280-B6E3-2F4BF5B093B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0DD4705-0C40-4280-B6E3-2F4BF5B093B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0DD4705-0C40-4280-B6E3-2F4BF5B093B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

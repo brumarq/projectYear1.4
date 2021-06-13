@@ -55,8 +55,11 @@ namespace ChapeauxUI
             this.cbRole = new System.Windows.Forms.ComboBox();
             this.butUserOverview = new System.Windows.Forms.Button();
             this.butMenuItemOverview = new System.Windows.Forms.Button();
+            this.lblUserFullName = new System.Windows.Forms.Label();
+            this.pctLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // listViewDisplayForm
@@ -72,11 +75,11 @@ namespace ChapeauxUI
             this.listViewDisplayForm.FullRowSelect = true;
             this.listViewDisplayForm.GridLines = true;
             this.listViewDisplayForm.HideSelection = false;
-            this.listViewDisplayForm.Location = new System.Drawing.Point(49, 165);
-            this.listViewDisplayForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listViewDisplayForm.Location = new System.Drawing.Point(37, 134);
+            this.listViewDisplayForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewDisplayForm.MultiSelect = false;
             this.listViewDisplayForm.Name = "listViewDisplayForm";
-            this.listViewDisplayForm.Size = new System.Drawing.Size(890, 462);
+            this.listViewDisplayForm.Size = new System.Drawing.Size(668, 376);
             this.listViewDisplayForm.TabIndex = 0;
             this.listViewDisplayForm.UseCompatibleStateImageBehavior = false;
             this.listViewDisplayForm.View = System.Windows.Forms.View.Details;
@@ -114,10 +117,10 @@ namespace ChapeauxUI
             // 
             // butAdd
             // 
-            this.butAdd.Location = new System.Drawing.Point(627, 698);
-            this.butAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.butAdd.Location = new System.Drawing.Point(470, 567);
+            this.butAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.butAdd.Name = "butAdd";
-            this.butAdd.Size = new System.Drawing.Size(112, 32);
+            this.butAdd.Size = new System.Drawing.Size(84, 26);
             this.butAdd.TabIndex = 1;
             this.butAdd.Text = "Add";
             this.butAdd.UseVisualStyleBackColor = true;
@@ -127,10 +130,9 @@ namespace ChapeauxUI
             // 
             this.ptcHeader.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ptcHeader.Image = global::ChapeauxUI.Properties.Resources.top_bar;
-            this.ptcHeader.Location = new System.Drawing.Point(-311, -1);
-            this.ptcHeader.Margin = new System.Windows.Forms.Padding(4);
+            this.ptcHeader.Location = new System.Drawing.Point(-233, -1);
             this.ptcHeader.Name = "ptcHeader";
-            this.ptcHeader.Size = new System.Drawing.Size(1494, 94);
+            this.ptcHeader.Size = new System.Drawing.Size(1120, 76);
             this.ptcHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptcHeader.TabIndex = 6;
             this.ptcHeader.TabStop = false;
@@ -142,10 +144,9 @@ namespace ChapeauxUI
             this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Location = new System.Drawing.Point(843, 87);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogout.Location = new System.Drawing.Point(632, 71);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(154, 66);
+            this.btnLogout.Size = new System.Drawing.Size(116, 54);
             this.btnLogout.TabIndex = 9;
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.butLogOut_Click);
@@ -154,19 +155,19 @@ namespace ChapeauxUI
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 7);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(2, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(137, 62);
+            this.pictureBox1.Size = new System.Drawing.Size(103, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
             // 
             // butDelete
             // 
-            this.butDelete.Location = new System.Drawing.Point(863, 698);
+            this.butDelete.Location = new System.Drawing.Point(647, 567);
+            this.butDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.butDelete.Name = "butDelete";
-            this.butDelete.Size = new System.Drawing.Size(112, 32);
+            this.butDelete.Size = new System.Drawing.Size(84, 26);
             this.butDelete.TabIndex = 33;
             this.butDelete.Text = "Delete";
             this.butDelete.UseVisualStyleBackColor = true;
@@ -174,9 +175,10 @@ namespace ChapeauxUI
             // 
             // butEdit
             // 
-            this.butEdit.Location = new System.Drawing.Point(745, 698);
+            this.butEdit.Location = new System.Drawing.Point(559, 567);
+            this.butEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.butEdit.Name = "butEdit";
-            this.butEdit.Size = new System.Drawing.Size(112, 32);
+            this.butEdit.Size = new System.Drawing.Size(84, 26);
             this.butEdit.TabIndex = 34;
             this.butEdit.Text = "Edit";
             this.butEdit.UseVisualStyleBackColor = true;
@@ -184,74 +186,83 @@ namespace ChapeauxUI
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(23, 708);
+            this.txtFirstName.Location = new System.Drawing.Point(17, 575);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(100, 22);
+            this.txtFirstName.Size = new System.Drawing.Size(76, 20);
             this.txtFirstName.TabIndex = 36;
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(129, 708);
+            this.txtLastName.Location = new System.Drawing.Point(97, 575);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(100, 22);
+            this.txtLastName.Size = new System.Drawing.Size(76, 20);
             this.txtLastName.TabIndex = 36;
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(235, 708);
+            this.txtUsername.Location = new System.Drawing.Point(176, 575);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(100, 22);
+            this.txtUsername.Size = new System.Drawing.Size(76, 20);
             this.txtUsername.TabIndex = 36;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(341, 708);
+            this.txtPassword.Location = new System.Drawing.Point(256, 575);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(100, 22);
+            this.txtPassword.Size = new System.Drawing.Size(76, 20);
             this.txtPassword.TabIndex = 36;
             // 
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(23, 685);
+            this.lblFirstName.Location = new System.Drawing.Point(17, 557);
+            this.lblFirstName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(76, 17);
+            this.lblFirstName.Size = new System.Drawing.Size(57, 13);
             this.lblFirstName.TabIndex = 37;
             this.lblFirstName.Text = "First Name";
             // 
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Location = new System.Drawing.Point(126, 685);
+            this.lblLastName.Location = new System.Drawing.Point(94, 557);
+            this.lblLastName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(76, 17);
+            this.lblLastName.Size = new System.Drawing.Size(58, 13);
             this.lblLastName.TabIndex = 37;
             this.lblLastName.Text = "Last Name";
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(232, 685);
+            this.lblUsername.Location = new System.Drawing.Point(174, 557);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(73, 17);
+            this.lblUsername.Size = new System.Drawing.Size(55, 13);
             this.lblUsername.TabIndex = 37;
             this.lblUsername.Text = "Username";
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(338, 685);
+            this.lblPassword.Location = new System.Drawing.Point(254, 557);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(69, 17);
+            this.lblPassword.Size = new System.Drawing.Size(53, 13);
             this.lblPassword.TabIndex = 37;
             this.lblPassword.Text = "Password";
             // 
             // lblRole
             // 
             this.lblRole.AutoSize = true;
-            this.lblRole.Location = new System.Drawing.Point(444, 685);
+            this.lblRole.Location = new System.Drawing.Point(333, 557);
+            this.lblRole.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(37, 17);
+            this.lblRole.Size = new System.Drawing.Size(29, 13);
             this.lblRole.TabIndex = 37;
             this.lblRole.Text = "Role";
             // 
@@ -264,18 +275,20 @@ namespace ChapeauxUI
             "Chef",
             "Bartender",
             "Waiter"});
-            this.cbRole.Location = new System.Drawing.Point(447, 706);
+            this.cbRole.Location = new System.Drawing.Point(335, 574);
+            this.cbRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbRole.Name = "cbRole";
-            this.cbRole.Size = new System.Drawing.Size(121, 24);
+            this.cbRole.Size = new System.Drawing.Size(92, 21);
             this.cbRole.TabIndex = 38;
             // 
             // butUserOverview
             // 
             this.butUserOverview.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.butUserOverview.ForeColor = System.Drawing.Color.Black;
-            this.butUserOverview.Location = new System.Drawing.Point(18, 97);
+            this.butUserOverview.Location = new System.Drawing.Point(14, 79);
+            this.butUserOverview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.butUserOverview.Name = "butUserOverview";
-            this.butUserOverview.Size = new System.Drawing.Size(233, 34);
+            this.butUserOverview.Size = new System.Drawing.Size(175, 28);
             this.butUserOverview.TabIndex = 39;
             this.butUserOverview.Text = "User Overview";
             this.butUserOverview.UseVisualStyleBackColor = true;
@@ -284,20 +297,48 @@ namespace ChapeauxUI
             // butMenuItemOverview
             // 
             this.butMenuItemOverview.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butMenuItemOverview.Location = new System.Drawing.Point(235, 97);
+            this.butMenuItemOverview.Location = new System.Drawing.Point(176, 79);
+            this.butMenuItemOverview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.butMenuItemOverview.Name = "butMenuItemOverview";
-            this.butMenuItemOverview.Size = new System.Drawing.Size(273, 34);
+            this.butMenuItemOverview.Size = new System.Drawing.Size(205, 28);
             this.butMenuItemOverview.TabIndex = 39;
             this.butMenuItemOverview.Text = "Menu Item Overview";
             this.butMenuItemOverview.UseVisualStyleBackColor = true;
             this.butMenuItemOverview.Click += new System.EventHandler(this.butMenuItemOverview_Click);
             // 
+            // lblUserFullName
+            // 
+            this.lblUserFullName.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblUserFullName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.lblUserFullName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblUserFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserFullName.ForeColor = System.Drawing.Color.White;
+            this.lblUserFullName.Location = new System.Drawing.Point(399, 17);
+            this.lblUserFullName.Name = "lblUserFullName";
+            this.lblUserFullName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblUserFullName.Size = new System.Drawing.Size(283, 24);
+            this.lblUserFullName.TabIndex = 41;
+            this.lblUserFullName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pctLogo
+            // 
+            this.pctLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.pctLogo.Image = global::ChapeauxUI.Properties.Resources.Capture;
+            this.pctLogo.Location = new System.Drawing.Point(685, 6);
+            this.pctLogo.Name = "pctLogo";
+            this.pctLogo.Size = new System.Drawing.Size(46, 46);
+            this.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctLogo.TabIndex = 40;
+            this.pctLogo.TabStop = false;
+            // 
             // UsersDisplayForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1010, 816);
+            this.ClientSize = new System.Drawing.Size(758, 663);
+            this.Controls.Add(this.lblUserFullName);
+            this.Controls.Add(this.pctLogo);
             this.Controls.Add(this.butMenuItemOverview);
             this.Controls.Add(this.butUserOverview);
             this.Controls.Add(this.cbRole);
@@ -317,12 +358,14 @@ namespace ChapeauxUI
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.ptcHeader);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UsersDisplayForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UsersDisplayForm";
             this.Load += new System.EventHandler(this.UsersDisplayForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,5 +398,7 @@ namespace ChapeauxUI
         private System.Windows.Forms.ComboBox cbRole;
         private System.Windows.Forms.Button butUserOverview;
         private System.Windows.Forms.Button butMenuItemOverview;
+        private System.Windows.Forms.Label lblUserFullName;
+        private System.Windows.Forms.PictureBox pctLogo;
     }
 }
