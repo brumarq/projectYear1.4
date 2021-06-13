@@ -85,7 +85,7 @@ namespace ChapeauxUI
             // lvUserId
             // 
             this.lvUserId.Text = "User Id";
-            this.lvUserId.Width = 40;
+            this.lvUserId.Width = 47;
             // 
             // lvFirstName
             // 

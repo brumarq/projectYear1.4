@@ -18,47 +18,6 @@ namespace ChapeauxDAL
             return ReadUsers(ExecuteSelectQuery(query, parameters));
         }
 
-        public User GetUserByUsername_DB(string username)
-        {
-            conn.Open();
-            User user = null;
-            using (SqlCommand command = new SqlCommand
-                ("select userID, firstName, lastName, userName, password, role from USERS where userName = @username", conn))
-            {
-                command.Parameters.AddWithValue("@username", username);
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        user = ReadUser(reader);
-                    }
-                }
-            }
-            conn.Close();
-
-            return user;
-        }
-        
-        public User GetUserAccount(string username, string password) //get an account that matches the parameters
-        {
-            conn.Open();
-            
-            User user = null;
-            using (SqlCommand cmd = new SqlCommand("select userID, firstName, lastName, userName, [password] from USERS where userName = @username AND [password] = @password;", conn))
-            {
-                cmd.Parameters.AddWithValue("@username", username);
-                cmd.Parameters.AddWithValue("@password", password);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                        user = ReadUser(reader);
-                }
-            }
-            conn.Close();
-            return user;
-        }
-        
         public void AddUserAccount(User user)
         {
             conn.Open();
@@ -108,39 +67,6 @@ namespace ChapeauxDAL
             
             ExecuteEditQuery(query, parameters);
             conn.Close();
-        }
-/*
-        public void DisplayUsersById(User user)
-        {
-            conn.Open();
-            String query = "select userID, firstName, lastName, userName, password, role from USERS where userID = @userID";
-
-            SqlParameter[] parameters = new SqlParameter[6]
-            {
-                new SqlParameter("@userID", user.UserID),
-                new SqlParameter("@firstname", user.FirstName),
-                new SqlParameter("@lastname", user.LastName),
-                new SqlParameter("@username", user.LoginUsername),
-                new SqlParameter("@password", user.LoginPassword),
-                new SqlParameter("@role", user.Role)
-            };
-            ExecuteEditQuery(query, parameters);
-            conn.Close();
-        }
-*/
-        private User ReadUser(SqlDataReader reader)
-        {
-            User user = new User()
-            {   //retrieve data from all fields
-                UserID = (int)reader["userID"],
-                FirstName = reader["firstName"].ToString(),
-                LastName = reader["lastName"].ToString(),
-                Role = (Role)Enum.Parse(typeof(Role), reader["role"].ToString()),
-                LoginUsername = reader["username"].ToString(),
-                LoginPassword = reader["password"].ToString(),
-            };
-            
-            return user;
         }
 
         public User LoginCheck(string username)

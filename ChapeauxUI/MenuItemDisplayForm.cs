@@ -20,7 +20,6 @@ namespace ChapeauxUI
             GetItemList();
         }
 
-
         private void GetItemList()
         {
             itemService = new Item_Service();
@@ -43,8 +42,10 @@ namespace ChapeauxUI
 
         private void listViewDisplayForm_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //if selected items from listview is 1, take info from db to Textboxes  
             if (listViewDisplayForm.SelectedItems.Count == 1)
             {
+                //tag - get or sets data to associate with the item
                 menuItem = listViewDisplayForm.SelectedItems[0].Tag as Item;
 
                 txtName.Text = menuItem.Name.ToString();
@@ -58,19 +59,31 @@ namespace ChapeauxUI
 
         public void AddItem()
         {
+            try
+            {
+                if (MessageBox.Show("Are you sure?", "Add", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    //setting values
+                    menuItem.Name = txtName.Text;
+                    menuItem.Price = decimal.Parse(txtPrice.Text);
+                    menuItem.Stock = int.Parse(txtStock.Text);
+                    menuItem.Category = txtCategory.Text;
+                    menuItem.Course = txtCourse.Text;
+                    menuItem.VATRate = decimal.Parse(txtVatRate.Text);
 
-            menuItem.Name = txtName.Text;
-            menuItem.Price = decimal.Parse(txtPrice.Text);
-            menuItem.Stock = int.Parse(txtStock.Text);
-            menuItem.Category = txtCategory.Text;
-            menuItem.Course = txtCourse.Text;
-            menuItem.VATRate = decimal.Parse(txtVatRate.Text);
+                    itemService.AddMenuItem(menuItem);
 
-            itemService.AddMenuItem(menuItem);
-
-            MessageBox.Show($"Menu Item added successfully.");
-
+                    MessageBox.Show($"Menu Item added successfully.");
+                }
+                else
+                    return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
         private void butAdd_Click(object sender, EventArgs e)
         {
             AddItem();
@@ -82,19 +95,12 @@ namespace ChapeauxUI
             {
                 if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
-                    GetItemList();
                     menuItem = listViewDisplayForm.SelectedItems[0].Tag as Item;
                     itemService.DeleteMenuItem(menuItem);
                     MessageBox.Show("Menu item deleted successfully.");
                 }
                 else
                     return;
-                
-                if (listViewDisplayForm.SelectedItems.Count < 1)
-                {
-                    throw new Exception("Please select a row.");
-                }
-                
             }
             catch (Exception ex)
             {
@@ -127,9 +133,9 @@ namespace ChapeauxUI
                 else
                     return;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("");
+                MessageBox.Show(ex.Message);
             }
         }
 

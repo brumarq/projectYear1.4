@@ -13,11 +13,6 @@ namespace ChapeauxLogic
             return itemDAO.Get_All_Items_DB();
         }
 
-        public Item GetItemByName(string name)
-        {
-            return itemDAO.GetItemByName_DB(name);
-        }
-
         public void AddMenuItem(Item menuItem)
         {
             itemDAO.AddMenuItem(menuItem);

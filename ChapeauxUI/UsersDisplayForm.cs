@@ -61,14 +61,22 @@ namespace ChapeauxUI
 
         public void AddUser()
         {
-            txtFirstName.Text = user.FirstName.ToString();
-            txtLastName.Text = user.LastName.ToString();
-            txtUsername.Text = user.LoginUsername.ToString();
-            txtPassword.Text = user.LoginPassword.ToString();
-            cbRole.Text = user.Role.ToString();
+            try
+            {
+                txtFirstName.Text = user.FirstName.ToString();
+                txtLastName.Text = user.LastName.ToString();
+                txtUsername.Text = user.LoginUsername.ToString();
+                txtPassword.Text = user.LoginPassword.ToString();
+                cbRole.Text = user.Role.ToString();
 
-            userService.AddUserAccount(user);
-            MessageBox.Show($"User added successfully.");
+                userService.AddUserAccount(user);
+                MessageBox.Show($"User added successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void butAdd_Click(object sender, EventArgs e)
@@ -95,7 +103,7 @@ namespace ChapeauxUI
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Problem Occured while deleting!", ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -108,18 +116,23 @@ namespace ChapeauxUI
         {
             try
             {
-                user = listViewDisplayForm.SelectedItems[0].Tag as User;
-                user.FirstName = txtFirstName.Text;
-                user.LastName = txtFirstName.Text;
-                user.LoginUsername = txtUsername.Text;
-                user.LoginPassword = txtPassword.Text;
-                userService.EditUserAccount(user);
+                if (MessageBox.Show("Are you sure?", "Edit", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    user = listViewDisplayForm.SelectedItems[0].Tag as User;
+                    user.FirstName = txtFirstName.Text;
+                    user.LastName = txtFirstName.Text;
+                    user.LoginUsername = txtUsername.Text;
+                    user.LoginPassword = txtPassword.Text;
+                    userService.EditUserAccount(user);
 
-                MessageBox.Show("User successfully updated.");
+                    MessageBox.Show("User successfully updated.");
+                }
+                else
+                    return;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Oops, User not selected!");
+                MessageBox.Show(ex.Message);
             }
         }
 
