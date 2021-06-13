@@ -30,7 +30,8 @@ namespace ChapeauxUI
             {
                 if (givenUsername == "" || givenPassword == "")
                 {
-                    throw new Exception("Enter login information!");
+                    lblError.Text = "Enter login information!";
+                    return;
                 }
 
                 User_Service userService = new User_Service();
@@ -65,10 +66,12 @@ namespace ChapeauxUI
                         this.Hide();*/
 
                     }
+
+                    lblError.Text = "";
                 }
                 else
                 {
-                    throw new Exception("Incorrect password!");
+                    lblError.Text = "Incorrect Password!";
                 }
             }
             catch (Exception err)
