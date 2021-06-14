@@ -40,7 +40,7 @@ namespace ChapeauxDAL
         }
         #endregion
 
-        #region Checkout
+        #region Get Food/Drinks seperately
         public List<OrderItem> GetOrderFood(int orderID)
         {
             string query = "SELECT ORDERITEMS.orderItemID, ORDERITEMS.orderID, ORDERITEMS.[count], ORDERITEMS.itemID, ORDERITEMS.orderDateTime, ITEMS.[name], ITEMS.category, ITEMS.price, ITEMS.VATRate, ORDERITEMS.state, ORDERITEMS.comments " +
@@ -70,6 +70,7 @@ namespace ChapeauxDAL
             };
             return ReadOrderItems(ExecuteSelectQuery(query, sqlParameters));
         }
+
 
         public List<OrderItem> GetLoadingFoodItems()
         {

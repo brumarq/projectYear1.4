@@ -38,6 +38,7 @@ namespace ChapeauxLogic
             return orderdb.GetByID(orderid);
         }
 
+        //For displaying the orderItems in Checkout (first food, then drinks)
         public Order GetByTableID(int tableID)
         {
             Order order = orderdb.GetByTableID(tableID);

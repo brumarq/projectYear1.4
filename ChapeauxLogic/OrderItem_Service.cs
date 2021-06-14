@@ -37,7 +37,7 @@ namespace ChapeauxLogic
             return orderItemdb.GetAllFoodStatus();
         }
 
-        #region GetFood/Drink
+        
         public List<OrderItem> GetLoadingFoodItems()
         {
             return orderItemdb.GetLoadingFoodItems();
@@ -47,6 +47,5 @@ namespace ChapeauxLogic
         {
             return orderItemdb.GetLoadingDrinkItems();
         }
-        #endregion
     }
 }

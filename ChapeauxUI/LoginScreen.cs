@@ -10,7 +10,6 @@ namespace ChapeauxUI
     public partial class LoginScreen : Form
     {
         private EventLog appLog = new EventLog("Application"); // Initiate EventLog
-        Item menuItem = new Item();
 
         public LoginScreen()
         {
