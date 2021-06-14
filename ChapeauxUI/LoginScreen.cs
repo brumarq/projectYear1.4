@@ -34,6 +34,8 @@ namespace ChapeauxUI
 
                 if (user != null)
                 {
+                    lblError.Text = "";
+
                     if (user.Role == Role.Waiter)
                     {
                         new TableOverviewForm(user).Show();
@@ -51,8 +53,12 @@ namespace ChapeauxUI
                     }
                     else
                     {
-                        throw new Exception("Incorrect password!");
+                        lblError.Text = "Error has occured, try again!";
                     }
+                }
+                else
+                {
+                    lblError.Text = "Incorrect Password!";
                 }
             }
             catch (Exception err)
