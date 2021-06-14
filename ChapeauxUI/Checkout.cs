@@ -30,7 +30,10 @@ namespace ChapeauxUI
             PrepareCheckoutForm(currentTable, user);
         }
 
+
         #region Global
+
+        //Filling initial form/order information + adding order for selected table to Transaction.Order property
         private void PrepareCheckoutForm(Table currentTable, User user)
         {
             lblUserFullName.Text = $"{user.FirstName} {user.LastName}";
@@ -42,6 +45,7 @@ namespace ChapeauxUI
             btnPayNow.Enabled = false;
         }
 
+        //Landing page
         private void CheckoutForm_Load(object sender, EventArgs e)
         {
             ShowPanel("Checkout");
@@ -72,6 +76,7 @@ namespace ChapeauxUI
 
             else if (panelName == "Payment")
             {
+                //Cash will be shown by default
                 pnlPayment.Show();
                 subPnlCash.Show();
             }
@@ -84,14 +89,13 @@ namespace ChapeauxUI
         //Panels
         #region Checkout
         #region Events
-        private void btnClearTip_Click(object sender, EventArgs e)
+        //Navigation
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            transaction.TipAmount = 0.0m;
-            txtTipAmount.Text = $"{transaction.TipAmount:0.00}";
-            txtToPay.Text = $"{transaction.Order.TotalPrice:0.00}";
-            lblNegativeError.ResetText();
+            this.Close();
         }
 
+        //Store filled information into payment UI (default payment method is Cash)
         private void btnToPayment_Click(object sender, EventArgs e)
         {
             ShowPanel("Payment");
@@ -109,6 +113,15 @@ namespace ChapeauxUI
             lblToPayByCard.Text = toPay.ToString();
             lblCardPaymentStatus.ForeColor = Color.Red;
             lblCardPaymentStatus.Text = "NOT PAID";
+        }
+
+        //Set tip to 0.00
+        private void btnClearTip_Click(object sender, EventArgs e)
+        {
+            transaction.TipAmount = 0.0m;
+            txtTipAmount.Text = $"{transaction.TipAmount:0.00}";
+            txtToPay.Text = $"{transaction.Order.TotalPrice:0.00}";
+            lblNegativeError.ResetText();
         }
 
         //Dynamically change tip/topay
@@ -185,17 +198,13 @@ namespace ChapeauxUI
             }
         }
 
+        //Clear comment
         private void btnRemoveComment_Click(object sender, EventArgs e)
         {
             txtFeedback.Clear();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        //prevent unwanted input
+        //Only allow digits (and 1 comma) to be entered
         private void txtTipAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == ',')
@@ -209,6 +218,7 @@ namespace ChapeauxUI
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',') || sequenceCount > 1;
         }
 
+        //Only allow digits (and 1 comma) to be entered
         private void txtToPay_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == ',')
@@ -222,12 +232,13 @@ namespace ChapeauxUI
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',') || sequenceCount > 1;
         }
 
-        //Change text in tip upon entering total
+        //Additional option to trigger txtToPay_Leave
         private void frameBox_Click(object sender, EventArgs e)
         {
             this.ActiveControl = null;
         }
 
+        //check for unwanted input like negative numbers
         private void txtToPay_Leave(object sender, EventArgs e)
         {
             try
@@ -240,7 +251,9 @@ namespace ChapeauxUI
             }
         }
         #endregion
+
         #region Methods
+        //Method for checking the unwanted input and act accordingly
         private void CheckUnwantedInput(decimal tipAmount, decimal toPay)
         {
             if (tipAmount < 0)
@@ -255,12 +268,14 @@ namespace ChapeauxUI
             }
         }
 
+        //Retrieve Order for selected table from database
         private Order GetOrder(Table currentTable)
         {
             Order_Service orderService = new Order_Service();
             return orderService.GetByTableID(currentTable.TableID);
         }
 
+        //Display the Transaction.Order in a listview and (adjustable) amounts in labels/textboxes
         private void ShowCurrentOrder(Order currrentOrder)
         {
             try
@@ -431,11 +446,13 @@ namespace ChapeauxUI
             btnPayNow.Enabled = true;
         }
 
+        //Only for card
         private void btnPayNow_Click(object sender, EventArgs e)
         {
             lblCardPaymentStatus.ForeColor = Color.Orange;
             lblCardPaymentStatus.Text = "PENDING";
 
+            //Simulating card payment declining/receiving
             DialogResult result = MessageBox.Show("Was the payment successful?", "Perform/Decline Transaction", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
@@ -459,6 +476,8 @@ namespace ChapeauxUI
         #endregion
         #region Methods
         //Cash
+
+        //Determine how much change should be given (per bill)
         private void ProcessReceivedCash(decimal received)
         {
             totalReceivedCash += received;
@@ -486,6 +505,8 @@ namespace ChapeauxUI
             btnPayNow.Enabled = false;
             btnBackToCheckout.Enabled = false;
         }
+
+        //Store the payment
         private void StorePayment()
         {
             transaction.TotalPrice = Convert.ToDecimal(lblTotalResult.Text);
@@ -507,6 +528,8 @@ namespace ChapeauxUI
 
         #region PaymentOverview
         #region Events
+
+        //Going back to payment screen (for card if the payment was successful this button is disabled)
         private void btnBackToPayment_Click(object sender, EventArgs e)
         {
             ShowPanel("Payment");
@@ -514,6 +537,7 @@ namespace ChapeauxUI
                 subPnlCard.Show();
         }
 
+        //Finalize the payment by updating the table status
         private void btnCloseOrder_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Free Up Table?", "Set Table Status", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -526,6 +550,7 @@ namespace ChapeauxUI
             this.Close();
         }
 
+        //Open/print receipt (form)
         private void btnPrintReceipt_Click(object sender, EventArgs e)
         {
             Form receipt = new Receipt(transaction);
@@ -533,6 +558,7 @@ namespace ChapeauxUI
         }
         #endregion
         #region Methods
+        //Show information about payment (Overview only: payment was already made and stored)
         private void LoadPaymentOverView()
         {
             ShowPanel("Overview");
@@ -547,6 +573,7 @@ namespace ChapeauxUI
             lblOverviewTotalInclTip.Text = (transaction.Order.TotalPrice + transaction.TipAmount).ToString("0.00");
         }
 
+        //Fill listview overview with (finished) payment information
         private void FillListViewOverview()
         {
             try
