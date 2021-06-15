@@ -15,7 +15,11 @@ namespace ChapeauxLogic
         public OrderItem_Service()
         {
             orderItemdb = new OrderItemDAL();
+        }
 
+        public void UpdateOrderItemStatus(OrderItem orderItem, State status)
+        {
+            orderItemdb.UpdateOrderItemStatus(orderItem, status);
         }
 
         public void AddItemToOrder(OrderItem orderItem)
@@ -23,24 +27,25 @@ namespace ChapeauxLogic
             orderItemdb.AddItemToOrder(orderItem);
         }
 
-        public List<OrderItem> getDrinksStatus(int tableNumber)
+        public List<Tuple<OrderItem, Order>> GetAllDrinksStatus()
         {
-            return orderItemdb.GetDrinksStatus(tableNumber);
+            return orderItemdb.GetAllDrinksStatus();
         }
 
-        public List<OrderItem> getFoodStatus(int tableNumber)
+        public List<Tuple<OrderItem, Order>> GetAllFoodStatus()
         {
-            return orderItemdb.GetFoodStatus(tableNumber);
+            return orderItemdb.GetAllFoodStatus();
         }
 
-        public List<OrderItem> GetFoodItems(int orderID)
+        
+        public List<OrderItem> GetLoadingFoodItems()
         {
-            return orderItemdb.GetOrderFood(orderID);
+            return orderItemdb.GetLoadingFoodItems();
         }
 
-        public List<OrderItem> GetDrinkItems(int orderID)
+        public List<OrderItem> GetLoadingDrinkItems()
         {
-            return orderItemdb.GetOrderDrinks(orderID);
+            return orderItemdb.GetLoadingDrinkItems();
         }
     }
 }

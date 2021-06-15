@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace ChapeauxDAL
 {
@@ -29,7 +30,7 @@ namespace ChapeauxDAL
                     new SqlParameter("@lastName", user.LastName),
                     new SqlParameter("@userName", user.LoginUsername),
                     new SqlParameter("@password", user.LoginPassword),
-                    new SqlParameter("@role", user.Role)
+                    new SqlParameter("@role", user.Role.ToString())
             };
             
             ExecuteEditQuery(query, parameters);
@@ -48,7 +49,7 @@ namespace ChapeauxDAL
                 new SqlParameter("@lastname", user.LastName),
                 new SqlParameter("@username", user.LoginUsername),
                 new SqlParameter("@password", user.LoginPassword),
-                new SqlParameter("@role", user.Role)
+                new SqlParameter("@role", user.Role.ToString())
             };
             
             ExecuteEditQuery(query, parameters);
@@ -69,15 +70,6 @@ namespace ChapeauxDAL
             conn.Close();
         }
 
-        public User LoginCheck(string username)
-        {
-            string query = "SELECT userID, role, firstName, lastName, userName, password FROM USERS WHERE userName = @userName";
-            SqlParameter[] sqlParameters = {
-                new SqlParameter("@userName", username),
-            };
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        }
-        
         private List<User> ReadUsers(DataTable dataTable)
         {
             List<User> users = new List<User>();
@@ -99,9 +91,24 @@ namespace ChapeauxDAL
             return users;
         }
 
-        private User ReadTables(DataTable dataTable)
+        #region Login
+        public User LoginCheck(string username, string givenPassword)
+        {
+            string query = "SELECT userID, role, firstName, lastName, userName, password FROM USERS WHERE userName = @userName";
+            SqlParameter[] sqlParameters = {
+                new SqlParameter("@userName", username),
+            };
+            return ReadLoginInformation(ExecuteSelectQuery(query, sqlParameters), givenPassword);
+        }
+
+        private User ReadLoginInformation(DataTable dataTable, string givenPassword)
         {
             User foundUser = null;
+            if (dataTable == null)
+            {
+                return foundUser;
+            }
+
             foreach (DataRow dr in dataTable.Rows)
             {
                 User user = new User()
@@ -114,11 +121,28 @@ namespace ChapeauxDAL
                     LoginPassword = dr["password"].ToString(),
                 };
 
-                foundUser = user;
+                /* ---- Comparing password in data base with given password ---- */
+                byte[] hashBytes = Convert.FromBase64String(user.LoginPassword);
+                // Take the salt out of hashBytes and save it into the salt array
+                byte[] salt = new byte[16];
+                Array.Copy(hashBytes, 0, salt, 0, 16);
+
+                // Hash the given password with the salt that was saved in the database, and save the result in the hash array
+                Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(givenPassword, salt, 10000);
+                byte[] hash = pbkdf2.GetBytes(20);
+
+                // Compare the hash from the given password with the hash from the database
+                for (int i = 0; i < 20; i++)
+                {
+                    if (hashBytes[i + 16] == hash[i])
+                    {
+                        foundUser = user;
+                    }
+                }
             }
 
             return foundUser;
         }
-
+        #endregion
     }
 }

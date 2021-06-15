@@ -19,7 +19,7 @@ namespace ChapeauxLogic
             orderItemdb = new OrderItemDAL();
         }
 
-        public bool getOrderForTable(int tableNumber)
+        public bool tableContainsOrder(int tableNumber)
         {
             return orderdb.IsThereAnOrder(tableNumber);
         }
@@ -29,20 +29,36 @@ namespace ChapeauxLogic
             orderdb.AddNewOrder(order);
         }
 
+        public void DeleteOrder(Order order)
+        {
+            orderdb.DeleteOrder(order);
+        }
+        public Order GetOrderByID(int orderid)
+        {
+            return orderdb.GetByID(orderid);
+        }
+
+        //For displaying the orderItems in Checkout (first food, then drinks)
         public Order GetByTableID(int tableID)
         {
             Order order = orderdb.GetByTableID(tableID);
-            order.foodItems = orderItemdb.GetOrderFood(order.OrderID);
-            order.drinkItems = orderItemdb.GetOrderDrinks(order.OrderID);
 
-            foreach (OrderItem foodItem in order.foodItems)
+            if (order == null)
             {
-                order.orderItems.Add(foodItem);
+                return null;
             }
 
-            foreach (OrderItem drinkItem in order.drinkItems)
+            order.FoodItems = orderItemdb.GetOrderFood(order.OrderID);
+            order.DrinkItems = orderItemdb.GetOrderDrinks(order.OrderID);
+
+            foreach (OrderItem foodItem in order.FoodItems)
             {
-                order.orderItems.Add(drinkItem);
+                order.OrderItems.Add(foodItem);
+            }
+
+            foreach (OrderItem drinkItem in order.DrinkItems)
+            {
+                order.OrderItems.Add(drinkItem);
             }
             return order;
         }

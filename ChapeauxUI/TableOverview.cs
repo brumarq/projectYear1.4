@@ -10,6 +10,7 @@ namespace ChapeauxUI
     public partial class TableOverviewForm : Form
     {
         User loggedUser;
+
         public TableOverviewForm(User user)
         {
             loggedUser = user;
@@ -19,84 +20,10 @@ namespace ChapeauxUI
         private void TableOverviewForm_Load(object sender, EventArgs e)
         {
             lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
-
-            Table_Service table_service = new Table_Service();
-            
-            List<Table> listOfTables = table_service.getAllTables();
-            Button[] listOfTableButtons = { btnTable1, btnTable2, btnTable3, btnTable4, btnTable5, btnTable6, btnTable7, btnTable8, btnTable9, btnTable10 };
-            int count = 0;
-            foreach (Table table in listOfTables)
-            {
-                if (table.Status == Status.Occupied)
-                {
-                    listOfTableButtons[count].BackgroundImage = ChapeauxUI.Properties.Resources.table_occupied;
-                    getOrderStatus(table, count);
-                }
-                else if (table.Status == Status.Late)
-                {
-                    listOfTableButtons[count].BackgroundImage = ChapeauxUI.Properties.Resources.table_late;
-                    getOrderStatus(table, count);
-                }
-
-                count++;
-            }
+            getTableStatus();
         }
 
-        void getOrderStatus( Table table, int count) 
-        {
-            OrderItem_Service orderItem_Service = new OrderItem_Service();
-            PictureBox[,] listOfTableStatus = new PictureBox[,] { { pctT1_DrinkStatus, pctT1_FoodStatus }, { pctT2_DrinkStatus, pctT2_FoodStatus }, { pctT3_DrinkStatus, pctT3_FoodStatus }, { pctT4_DrinkStatus, pctT4_FoodStatus }, { pctT5_DrinkStatus, pctT5_FoodStatus }, { pctT6_DrinkStatus, pctT6_FoodStatus }, { pctT7_DrinkStatus, pctT7_FoodStatus }, { pctT8_DrinkStatus, pctT8_FoodStatus }, { pctT9_DrinkStatus, pctT9_FoodStatus }, { pctT10_DrinkStatus, pctT10_FoodStatus } };
-
-            List<OrderItem> listOfDrinkStatus = orderItem_Service.getDrinksStatus(table.TableID);
-            List<OrderItem> listOfFoodStatus = orderItem_Service.getFoodStatus(table.TableID);
-
-            State? drinkStatus = null;
-            foreach (OrderItem drink in listOfDrinkStatus)
-            {
-                if (drink.State == State.served && (drinkStatus != State.ready || drinkStatus != State.loading))
-                {
-                    drinkStatus = State.served;
-                    listOfTableStatus[count, 0].Show();
-                    listOfTableStatus[count, 0].Image = ChapeauxUI.Properties.Resources.drinks_served1;
-                }
-                else if (drink.State == State.ready && drinkStatus != State.loading)
-                {
-                    drinkStatus = State.ready;
-                    listOfTableStatus[count, 0].Show();
-                    listOfTableStatus[count, 0].Image = ChapeauxUI.Properties.Resources.drinks_ReadyToBeServed1;
-                }
-                else if (drink.State == State.loading)
-                {
-                    drinkStatus = State.loading;
-                    listOfTableStatus[count, 0].Show();
-                    listOfTableStatus[count, 0].Image = ChapeauxUI.Properties.Resources.drinks_beingPrepared1;
-                }
-            }
-
-            State? foodStatus = null;
-            foreach (OrderItem food in listOfFoodStatus)
-            {
-                if (food.State == State.served && (foodStatus != State.ready || foodStatus != State.loading))
-                {
-                    foodStatus = State.served;
-                    listOfTableStatus[count, 1].Show();
-                    listOfTableStatus[count, 1].Image = ChapeauxUI.Properties.Resources.food_served1;
-                }
-                else if (food.State == State.ready && foodStatus != State.loading)
-                {
-                    foodStatus = State.ready;
-                    listOfTableStatus[count, 1].Show();
-                    listOfTableStatus[count, 1].Image = ChapeauxUI.Properties.Resources.food_ReadyToBeServed1;
-                }
-                else if (food.State == State.loading)
-                {
-                    foodStatus = State.loading;
-                    listOfTableStatus[count, 1].Show();
-                    listOfTableStatus[count, 1].Image = ChapeauxUI.Properties.Resources.food_beingPrepared1;
-                }
-            }
-        }
-
+        #region Buttons
         private void btnLogout_Click(object sender, EventArgs e)
         {
             LoginScreen loginScreen = new LoginScreen();
@@ -104,61 +31,138 @@ namespace ChapeauxUI
             this.Close();
         }
 
-        private void tableClicked(int tableNumber)
+        private void btnTable1_Click(object sender, EventArgs e)
         {
+            // Get the button ID from the sender text
+            int tableNumber = int.Parse(sender.ToString().Substring(35));
+
+            // Open a new table details with the retrieved table number
             TableDetails tableDetails = new TableDetails(loggedUser, tableNumber);
             tableDetails.Show();
             this.Close();
         }
+        #endregion
 
-        private void btnTable1_Click(object sender, EventArgs e)
+
+        #region Table status and Order status update methods
+        void getTableStatus()
         {
-            tableClicked(1);
+            Table_Service table_service = new Table_Service();
+            List<Table> listOfTables = table_service.getAllTables();
+
+            Button[] listOfTableButtons = { btnTable1, btnTable2, btnTable3,
+                                            btnTable4, btnTable5, btnTable6,
+                                            btnTable7, btnTable8, btnTable9,
+                                            btnTable10
+                                          };
+
+            // Get a list of all the orderItems status and the Order they belong to
+            OrderItem_Service orderItem_Service = new OrderItem_Service();
+            List<List<Tuple<OrderItem, Order>>> listOfDrinkAndFoodStatus = new List<List<Tuple<OrderItem, Order>>>();
+            listOfDrinkAndFoodStatus.Add(orderItem_Service.GetAllFoodStatus());
+            listOfDrinkAndFoodStatus.Add(orderItem_Service.GetAllDrinksStatus());
+
+            int count = 0;
+            // Iterate through every table, and use the listOfTableButtons to get the table status
+            foreach (Table table in listOfTables)
+            {
+                if (table.Status == Status.Occupied)
+                {
+                    listOfTableButtons[count].BackgroundImage = ChapeauxUI.Properties.Resources.table_occupied;
+                    getOrderStatus(table, listOfDrinkAndFoodStatus); // After getting table status, get the Order status
+                }
+                else if (table.Status == Status.Free)
+                {
+                    listOfTableButtons[count].BackgroundImage = ChapeauxUI.Properties.Resources.table_free;
+                    getOrderStatus(table, listOfDrinkAndFoodStatus); // After getting table status, get the Order status
+                }
+
+                    count++;
+            }
         }
 
-        private void btnTable2_Click(object sender, EventArgs e)
+        void getOrderStatus(Table table, List<List<Tuple<OrderItem, Order>>> listOfDrinkAndFoodStatus)
         {
-            tableClicked(2);
-        }
+            // Array with food and drink icons name, for every table
+            PictureBox[,] FoodAndDrinksIcons = new PictureBox[,] { { pctT1_FoodStatus, pctT1_DrinkStatus },
+                                                                  { pctT2_FoodStatus, pctT2_DrinkStatus },
+                                                                  { pctT3_FoodStatus, pctT3_DrinkStatus },
+                                                                  { pctT4_FoodStatus, pctT4_DrinkStatus },
+                                                                  { pctT5_FoodStatus, pctT5_DrinkStatus },
+                                                                  { pctT6_FoodStatus, pctT6_DrinkStatus },
+                                                                  { pctT7_FoodStatus, pctT7_DrinkStatus },
+                                                                  { pctT8_FoodStatus, pctT8_DrinkStatus },
+                                                                  { pctT9_FoodStatus, pctT9_DrinkStatus },
+                                                                  { pctT10_FoodStatus, pctT10_DrinkStatus }
+                                                                };
 
-        private void btnTable3_Click(object sender, EventArgs e)
-        {
-            tableClicked(3);
-        }
+            int foodOrDrink = 0; // This is used to decide if we need the drink icons or food icons, start with food
 
-        private void btnTable4_Click(object sender, EventArgs e)
-        {
-            tableClicked(4);
-        }
+            // Iterate through Food and Drink list
+            foreach (List<Tuple<OrderItem, Order>> orderType in listOfDrinkAndFoodStatus)
+            {
+                State? previousItemsState = null;
+                int previousOrderID = -1; // This will allow the program to know if the order is different than before
 
-        private void btnTable5_Click(object sender, EventArgs e)
-        {
-            tableClicked(5);
-        }
+                foreach (Tuple<OrderItem, Order> tuple in orderType)
+                {
+                    //Checking if the order is different than before
+                    if (previousOrderID != tuple.Item2.OrderID)
+                    {
+                        // Change the variable to the new orderId and reset the state
+                        previousOrderID = tuple.Item2.OrderID;
+                        previousItemsState = null;
+                    }
 
-        private void btnTable6_Click(object sender, EventArgs e)
-        {
-            tableClicked(6);
-        }
+                    // This variable is used to choose which table the needed icon belongs to
+                    int tableID = tuple.Item2.TableID - 1;
 
-        private void btnTable7_Click(object sender, EventArgs e)
-        {
-            tableClicked(7);
-        }
+                    //Show specific standard food or drink icon
+                    FoodAndDrinksIcons[tableID, foodOrDrink].Show();
 
-        private void btnTable8_Click(object sender, EventArgs e)
-        {
-            tableClicked(8);
-        }
+                    // Checking if the icon should be shown as served
+                    if (tuple.Item1.State == State.served && (previousItemsState != State.ready && previousItemsState != State.loading))
+                    {
+                        previousItemsState = State.served;
 
-        private void btnTable9_Click(object sender, EventArgs e)
-        {
-            tableClicked(9);
-        }
+                        // Change icon to served
+                        if (foodOrDrink == 0)
+                            FoodAndDrinksIcons[tableID, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_served1;
+                        else
+                            FoodAndDrinksIcons[tableID, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_served1;
 
-        private void btnTable10_Click(object sender, EventArgs e)
+                    }
+                    // Checking if the icon should be shown as Ready
+                    else if (tuple.Item1.State == State.ready && previousItemsState != State.loading)
+                    {
+                        previousItemsState = State.ready;
+
+                        // Change icon to ready
+                        if (foodOrDrink == 0)
+                            FoodAndDrinksIcons[tableID, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_ReadyToBeServed1;
+                        else
+                            FoodAndDrinksIcons[tableID, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_ReadyToBeServed1;
+                    }
+                    // Checking if the icon should be shown as Loading
+                    else if (tuple.Item1.State == State.loading)
+                    {
+                        previousItemsState = State.loading;
+
+                        // Change icon to loading
+                        if (foodOrDrink == 0)
+                            FoodAndDrinksIcons[tableID, foodOrDrink].Image = ChapeauxUI.Properties.Resources.food_beingPrepared1;
+                        else
+                            FoodAndDrinksIcons[tableID, foodOrDrink].Image = ChapeauxUI.Properties.Resources.drinks_beingPrepared1;
+                    }
+                }
+                foodOrDrink++; // Continue with drink icons
+            }
+        }
+        #endregion
+
+        private void loadingTimer_Tick(object sender, EventArgs e)
         {
-            tableClicked(10);
+            getTableStatus();
         }
     }
 }

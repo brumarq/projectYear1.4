@@ -13,9 +13,10 @@ namespace ChapeauxUI
         Item_Service itemService;
         ListViewItem lvItem;
 
-        public MenuItemDisplayForm(Item menuItem)
+        public MenuItemDisplayForm(Item menuItem, User user)
         {
             InitializeComponent();
+            lblUserFullName.Text = $"{user.FirstName} {user.LastName}";
             this.menuItem = menuItem;
          
             GetItemList();
@@ -171,6 +172,7 @@ namespace ChapeauxUI
             {
                 UsersDisplayForm usersDisplayForm = new UsersDisplayForm();
                 usersDisplayForm.Show();
+                this.Close();
             }
         }
 

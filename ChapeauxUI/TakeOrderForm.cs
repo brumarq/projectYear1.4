@@ -25,6 +25,60 @@ namespace ChapeauxUI
             btnAddToOrder.Enabled = false;
         }
 
+        #region Events
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSelectedCount.Clear();
+            txtItemComment.Clear();
+
+            if (listView1.SelectedItems.Count == 1)
+            {
+                item = listView1.SelectedItems[0].Tag as Item;
+                FillOrderItem();
+            }
+        }
+
+        private void btnAddToOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                orderItem.Count = Convert.ToInt32(txtSelectedCount.Text);
+                orderItem.Comment = txtItemComment.Text;
+                AddItemToOrder();
+                AddItemToListView();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void txtSelectedCount_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSelectedCount.Text.Length > 0)
+            {
+                btnAddToOrder.Enabled = true;
+            }
+            else
+            {
+                btnAddToOrder.Enabled = false;
+            }
+        }
+
+        private void btnBackToTable_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        //Prevent Unwanted Input
+        private void txtSelectedCount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+
+        #endregion
+        #region Methods
         private void GetMenu()
         {
             try
@@ -62,7 +116,7 @@ namespace ChapeauxUI
                 ItemID = item.ItemID,
                 OrderID = order.OrderID,
                 State = State.loading,
-                orderDateTime = DateTime.Now,
+                OrderDateTime = DateTime.Now,
                 Category = item.Category,
                 Course = item.Course,
                 Name = item.Name,
@@ -95,54 +149,6 @@ namespace ChapeauxUI
             listViewItemsToAdd.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewItemsToAdd.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtSelectedCount.Clear();
-            txtItemComment.Clear();
-
-            if (listView1.SelectedItems.Count == 1)
-            {
-                item = listView1.SelectedItems[0].Tag as Item;
-                FillOrderItem();
-            }
-        }
-
-        private void btnAddToOrder_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                orderItem.Count = Convert.ToInt32(txtSelectedCount.Text);
-                orderItem.Comment = txtItemComment.Text;
-                AddItemToOrder();
-                AddItemToListView();
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-        }
-
-        private void txtSelectedCount_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
-
-        private void txtSelectedCount_TextChanged(object sender, EventArgs e)
-        {
-            if (txtSelectedCount.Text.Length > 0)
-            {
-                btnAddToOrder.Enabled = true;
-            }
-            else
-            {
-                btnAddToOrder.Enabled = false;
-            }
-        }
-
-        private void btnBackToTable_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #endregion
     }
 }

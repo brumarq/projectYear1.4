@@ -40,6 +40,7 @@ namespace ChapeauxUI
             this.LoginPanel = new System.Windows.Forms.Panel();
             this.OverviewPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblError = new System.Windows.Forms.Label();
             this.txtPnlUsername.SuspendLayout();
             this.txtPnlPassword.SuspendLayout();
             this.LoginPanel.SuspendLayout();
@@ -126,7 +127,7 @@ namespace ChapeauxUI
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.75F, System.Drawing.FontStyle.Bold);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(235, 345);
+            this.btnLogin.Location = new System.Drawing.Point(235, 357);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(84, 32);
             this.btnLogin.TabIndex = 7;
@@ -136,6 +137,7 @@ namespace ChapeauxUI
             // 
             // LoginPanel
             // 
+            this.LoginPanel.Controls.Add(this.lblError);
             this.LoginPanel.Controls.Add(this.lblLogin);
             this.LoginPanel.Controls.Add(this.lblUsername);
             this.LoginPanel.Controls.Add(this.txtPnlUsername);
@@ -164,6 +166,16 @@ namespace ChapeauxUI
             this.label1.TabIndex = 0;
             this.label1.Text = "Overview";
             // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblError.Location = new System.Drawing.Point(94, 328);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(0, 15);
+            this.lblError.TabIndex = 8;
+            // 
             // LoginScreen
             // 
             this.AcceptButton = this.btnLogin;
@@ -176,7 +188,6 @@ namespace ChapeauxUI
             this.Name = "LoginScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chapeau";
-            this.Load += new System.EventHandler(this.ChapeauxUI_Load);
             this.txtPnlUsername.ResumeLayout(false);
             this.txtPnlUsername.PerformLayout();
             this.txtPnlPassword.ResumeLayout(false);
@@ -202,6 +213,7 @@ namespace ChapeauxUI
         private System.Windows.Forms.Panel LoginPanel;
         private System.Windows.Forms.Panel OverviewPanel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblError;
     }
 }
 

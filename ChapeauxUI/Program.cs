@@ -13,16 +13,9 @@ namespace ChapeauxUI
 
         static void Main()
         {
-            User user = new User();
-            Item menuItem = new Item();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            //Application.Run(new LoginScreen());
-            Application.Run(new MenuItemDisplayForm(menuItem));
-            Application.Run(new UsersDisplayForm());
-
-
+            Application.Run(new LoginScreen());
         }
     }
 }

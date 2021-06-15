@@ -4,22 +4,27 @@ using System.Collections.Generic;
 using ChapeauxModel;
 using ChapeauxLogic;
 using System.Drawing;
+using System.Security.Cryptography;
 
 namespace ChapeauxUI
 {
     public partial class UsersDisplayForm : Form
     {
         User user;
+        User loggedUser;
         User_Service userService;
         ListViewItem lvItem;
 
         public UsersDisplayForm()
         {
+
             InitializeComponent();
+            loggedUser = user;
+            lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
 
             GetUserList();
         }
-        
+
         private void GetUserList()
         {
             try
@@ -60,6 +65,22 @@ namespace ChapeauxUI
             }
         }
 
+        private string HashPassword(string givenPassword)
+        {
+            byte[] salt;
+            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+
+            var pbkdf2 = new Rfc2898DeriveBytes(givenPassword, salt, 10000);
+
+            byte[] hash = pbkdf2.GetBytes(20);
+            byte[] hashBytes = new byte[36];
+
+            Array.Copy(salt, 0, hashBytes, 0, 16);
+            Array.Copy(hash, 0, hashBytes, 16, 20);
+
+            return Convert.ToBase64String(hashBytes);
+        }
+
         public void AddUser()
         {
             try
@@ -69,8 +90,8 @@ namespace ChapeauxUI
                     user.FirstName = txtFirstName.Text;
                     user.LastName = txtLastName.Text;
                     user.LoginUsername = txtUsername.Text;
-                    user.LoginPassword = txtPassword.Text;
-                    cbRole.Text = user.Role.ToString();
+                    user.LoginPassword = HashPassword(txtPassword.Text);
+                    user.Role = (Role)Enum.Parse(typeof(Role), cbRole.Text.ToString());
 
                     userService.AddUserAccount(user);
                     MessageBox.Show($"User added successfully.");
@@ -100,9 +121,20 @@ namespace ChapeauxUI
                 {
                     if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                     {
-                        
-                        userService.RemoveUserAccount(user);
-                        MessageBox.Show("Account deletion successful!");
+                        user = listViewDisplayForm.SelectedItems[0].Tag as User;
+
+                        try
+                        {
+                            userService.RemoveUserAccount(user);
+                            MessageBox.Show("Account deletion successful!");
+                            listViewDisplayForm.Refresh();
+                        }
+                        catch (Exception exc)
+                        {
+
+                            MessageBox.Show(exc.Message);
+                        }
+
                     }
                     else
                         return;
@@ -133,8 +165,9 @@ namespace ChapeauxUI
                     user.FirstName = txtFirstName.Text;
                     user.LastName = txtFirstName.Text;
                     user.LoginUsername = txtUsername.Text;
-                    user.LoginPassword = txtPassword.Text;
-                    
+                    user.LoginPassword = HashPassword(txtPassword.Text);
+                    user.Role = (Role)Enum.Parse(typeof(Role), cbRole.Text.ToString());
+
                     userService.EditUserAccount(user);
                     MessageBox.Show("User successfully updated.");
                     listViewDisplayForm.Refresh();
@@ -174,8 +207,9 @@ namespace ChapeauxUI
             if (butMenuItemOverview.Enabled)
             {
                 Item menuItem = new Item();
-                MenuItemDisplayForm menuItemDisplayForm = new MenuItemDisplayForm(menuItem);
+                MenuItemDisplayForm menuItemDisplayForm = new MenuItemDisplayForm(menuItem, loggedUser);
                 menuItemDisplayForm.Show();
+                this.Close();
             }
         }
 

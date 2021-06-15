@@ -6,7 +6,7 @@ namespace ChapeauxModel
 {
     public enum Status
     {
-        Free, Occupied, Late
+        Free, Occupied
     }
     public class Table
     {
