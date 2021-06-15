@@ -20,27 +20,6 @@ namespace ChapeauxUI
          
             GetItemList();
         }
-        private void RefreshList()
-        {
-            itemService = new Item_Service();
-            List<Item> menuItems = itemService.GetItems();
-
-            listViewDisplayForm.Items.Clear();
-
-            foreach (Item i in menuItems)
-            {
-                lvItem = new ListViewItem(i.ItemID.ToString(), "0");
-                lvItem.SubItems.Add(i.Name);
-                lvItem.SubItems.Add(i.Price.ToString("0.00"));
-                lvItem.SubItems.Add(i.Stock.ToString("0"));
-                lvItem.SubItems.Add(i.Category.ToString());
-                lvItem.SubItems.Add(i.Course.ToString());
-                lvItem.SubItems.Add(i.VATRate.ToString("0.00"));
-
-                lvItem.Tag = i;
-                listViewDisplayForm.Items.Add(lvItem);
-            }
-        }
 
         private void GetItemList()
         {
@@ -60,6 +39,7 @@ namespace ChapeauxUI
                 lvItem.SubItems.Add(i.VATRate.ToString("0.00"));
                 
                 lvItem.Tag = i;
+
                 listViewDisplayForm.Items.Add(lvItem);
             }
         }
@@ -95,6 +75,32 @@ namespace ChapeauxUI
                     itemService.AddMenuItem(menuItem);
 
                     MessageBox.Show($"Menu Item added successfully.");
+                    
+                    GetItemList();
+                }
+                else
+                    return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void EditItem()
+        {
+            try
+            {
+                menuItem.Name = txtName.Text;
+                menuItem.Price = decimal.Parse(txtPrice.Text);
+                menuItem.Stock = int.Parse(txtStock.Text);
+                menuItem.Category = cbCategory.Text;
+                menuItem.Course = cbCourse.Text;
+                menuItem.VATRate = decimal.Parse(txtVatRate.Text);
+
+                if (MessageBox.Show("Are you sure?", "Edit", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    itemService.EditMenuItem(menuItem);
+                    MessageBox.Show("Menu item edit successful.");
 
                     GetItemList();
                 }
@@ -106,6 +112,7 @@ namespace ChapeauxUI
                 MessageBox.Show(ex.Message);
             }
         }
+
 
         private void butAdd_Click(object sender, EventArgs e)
         {
@@ -138,34 +145,6 @@ namespace ChapeauxUI
             DeleteItem();
         }
 
-        public void EditItem()
-        {
-            try
-            {
-                menuItem = listViewDisplayForm.SelectedItems[0].Tag as Item;
-                menuItem.Name = txtName.Text;
-                menuItem.Price = decimal.Parse(txtPrice.Text);
-                menuItem.Stock = int.Parse(txtStock.Text);
-                menuItem.Category = cbCategory.Text;
-                menuItem.Course = cbCourse.Text;
-                menuItem.VATRate = decimal.Parse(txtVatRate.Text);
-
-                if (MessageBox.Show("Are you sure?", "Edit", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
-                {
-                    itemService.EditMenuItem(menuItem);
-                    MessageBox.Show("Menu item edit successful.");
-
-                    GetItemList();
-                }
-                else
-                    return;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
         private void butEdit_Click(object sender, EventArgs e)
         {
             EditItem();
@@ -182,7 +161,7 @@ namespace ChapeauxUI
         {
             if (butMenuItemOverview.Enabled)
             {
-                RefreshList();
+                GetItemList();
             }
         }
 
@@ -190,8 +169,7 @@ namespace ChapeauxUI
         {
             if (butUserOverview.Enabled)
             {
-                User user = new User();
-                UsersDisplayForm usersDisplayForm = new UsersDisplayForm(user);
+                UsersDisplayForm usersDisplayForm = new UsersDisplayForm();
                 usersDisplayForm.Show();
             }
         }

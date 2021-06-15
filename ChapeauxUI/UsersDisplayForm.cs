@@ -13,10 +13,9 @@ namespace ChapeauxUI
         User_Service userService;
         ListViewItem lvItem;
 
-        public UsersDisplayForm(User user)
+        public UsersDisplayForm()
         {
             InitializeComponent();
-            this.user = user;
 
             GetUserList();
         }
@@ -38,9 +37,7 @@ namespace ChapeauxUI
                     lvItem.SubItems.Add(u.LoginUsername);
                     lvItem.SubItems.Add(u.LoginPassword);
                     lvItem.SubItems.Add(u.Role.ToString());
-
                     lvItem.Tag = u;
-
                     listViewDisplayForm.Items.Add(lvItem);
                 }
             }
@@ -55,7 +52,6 @@ namespace ChapeauxUI
             if (listViewDisplayForm.SelectedItems.Count == 1)
             {
                 user = listViewDisplayForm.SelectedItems[0].Tag as User;
-
                 txtFirstName.Text = user.FirstName;
                 txtLastName.Text = user.LastName;
                 txtUsername.Text = user.LoginUsername;
@@ -104,11 +100,9 @@ namespace ChapeauxUI
                 {
                     if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                     {
-                        user = listViewDisplayForm.SelectedItems[0].Tag as User;
-
+                        
                         userService.RemoveUserAccount(user);
                         MessageBox.Show("Account deletion successful!");
-                        listViewDisplayForm.Refresh();
                     }
                     else
                         return;
@@ -140,8 +134,7 @@ namespace ChapeauxUI
                     user.LastName = txtFirstName.Text;
                     user.LoginUsername = txtUsername.Text;
                     user.LoginPassword = txtPassword.Text;
-                    //user.Role = cbRole.Text.ToString();
-
+                    
                     userService.EditUserAccount(user);
                     MessageBox.Show("User successfully updated.");
                     listViewDisplayForm.Refresh();
@@ -164,7 +157,7 @@ namespace ChapeauxUI
 
         private void butBack_Click(object sender, EventArgs e)
         {
-            UsersDisplayForm usersDisplayForm = new UsersDisplayForm(user);
+            UsersDisplayForm usersDisplayForm = new UsersDisplayForm();
             usersDisplayForm.Show();
             this.Hide();
         }

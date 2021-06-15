@@ -95,7 +95,7 @@ namespace ChapeauxUI
                        
                         else if (user.Role == Role.Manager)
                         {
-                            new UsersDisplayForm(user).Show();
+                            new UsersDisplayForm().Show();
                             this.Hide();
 
                             new MenuItemDisplayForm(menuItem).Show();

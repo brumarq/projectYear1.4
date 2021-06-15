@@ -20,7 +20,7 @@ namespace ChapeauxUI
 
             //Application.Run(new LoginScreen());
             Application.Run(new MenuItemDisplayForm(menuItem));
-            Application.Run(new UsersDisplayForm(user));
+            Application.Run(new UsersDisplayForm());
 
 
         }
