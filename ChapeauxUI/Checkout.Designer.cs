@@ -1682,9 +1682,9 @@ namespace ChapeauxUI
             this.Controls.Add(this.pctLogo);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pnlPaymentOverview);
             this.Controls.Add(this.pnlCheckout);
             this.Controls.Add(this.pnlPayment);
-            this.Controls.Add(this.pnlPaymentOverview);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

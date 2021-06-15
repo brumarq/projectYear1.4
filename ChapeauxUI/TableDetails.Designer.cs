@@ -166,7 +166,7 @@ namespace ChapeauUI
             // pctBackground
             // 
             this.pctBackground.Image = global::ChapeauxUI.Properties.Resources.background_rectangle;
-            this.pctBackground.Location = new System.Drawing.Point(12, 149);
+            this.pctBackground.Location = new System.Drawing.Point(0, 149);
             this.pctBackground.Name = "pctBackground";
             this.pctBackground.Size = new System.Drawing.Size(768, 837);
             this.pctBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
