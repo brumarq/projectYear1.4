@@ -315,7 +315,7 @@ namespace ChapeauxUI
             this.lblUserFullName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblUserFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserFullName.ForeColor = System.Drawing.Color.White;
-            this.lblUserFullName.Location = new System.Drawing.Point(547, 47);
+            this.lblUserFullName.Location = new System.Drawing.Point(543, 25);
             this.lblUserFullName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserFullName.Name = "lblUserFullName";
             this.lblUserFullName.RightToLeft = System.Windows.Forms.RightToLeft.No;
