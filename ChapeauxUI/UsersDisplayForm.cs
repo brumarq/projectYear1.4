@@ -15,9 +15,8 @@ namespace ChapeauxUI
         User_Service userService;
         ListViewItem lvItem;
 
-        public UsersDisplayForm()
+        public UsersDisplayForm(User user)
         {
-
             InitializeComponent();
             loggedUser = user;
             lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
@@ -190,7 +189,7 @@ namespace ChapeauxUI
 
         private void butBack_Click(object sender, EventArgs e)
         {
-            UsersDisplayForm usersDisplayForm = new UsersDisplayForm();
+            UsersDisplayForm usersDisplayForm = new UsersDisplayForm(user);
             usersDisplayForm.Show();
             this.Hide();
         }

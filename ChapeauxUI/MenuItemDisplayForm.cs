@@ -12,12 +12,14 @@ namespace ChapeauxUI
         Item menuItem;
         Item_Service itemService;
         ListViewItem lvItem;
+        User loggedUser;
 
         public MenuItemDisplayForm(Item menuItem, User user)
         {
             InitializeComponent();
             lblUserFullName.Text = $"{user.FirstName} {user.LastName}";
             this.menuItem = menuItem;
+            loggedUser = user;
          
             GetItemList();
         }
@@ -52,41 +54,14 @@ namespace ChapeauxUI
                 menuItem = listViewDisplayForm.SelectedItems[0].Tag as Item;
 
                 txtName.Text = menuItem.Name.ToString();
-                txtPrice.Text = menuItem.Price.ToString();
+                txtPrice.Text = menuItem.Price.ToString("0.00");
                 txtStock.Text = menuItem.Stock.ToString();
                 cbCategory.Text = menuItem.Category.ToString();
-                cbCourse.Text = menuItem.Course.ToString();
+                cbType.Text = menuItem.Course.ToString();
                 txtVatRate.Text = menuItem.VATRate.ToString();
             }
         }
 
-        public void AddItem()
-        {
-            try
-            {
-                if (MessageBox.Show("Are you sure?", "Add", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
-                {
-                    menuItem.Name = txtName.Text;
-                    menuItem.Price = decimal.Parse(txtPrice.Text);
-                    menuItem.Stock = int.Parse(txtStock.Text);
-                    menuItem.Category = cbCategory.Text;
-                    menuItem.Course = cbCourse.Text;
-                    menuItem.VATRate = decimal.Parse(txtVatRate.Text);
-
-                    itemService.AddMenuItem(menuItem);
-
-                    MessageBox.Show($"Menu Item added successfully.");
-                    
-                    GetItemList();
-                }
-                else
-                    return;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
         public void EditItem()
         {
             try
@@ -95,13 +70,13 @@ namespace ChapeauxUI
                 menuItem.Price = decimal.Parse(txtPrice.Text);
                 menuItem.Stock = int.Parse(txtStock.Text);
                 menuItem.Category = cbCategory.Text;
-                menuItem.Course = cbCourse.Text;
+                menuItem.Course = cbType.Text;
                 menuItem.VATRate = decimal.Parse(txtVatRate.Text);
 
-                if (MessageBox.Show("Are you sure?", "Edit", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (MessageBox.Show($"Are you sure you want to update '{txtName.Text}'?", "Edit", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     itemService.EditMenuItem(menuItem);
-                    MessageBox.Show("Menu item edit successful.");
+                    MessageBox.Show("Menu item updated successfully.");
 
                     GetItemList();
                 }
@@ -114,17 +89,21 @@ namespace ChapeauxUI
             }
         }
 
-
         private void butAdd_Click(object sender, EventArgs e)
         {
-            AddItem();
+            AddNewItemForm addNewItemForm = new AddNewItemForm(menuItem);
+            if (addNewItemForm.Enabled)
+            {
+                this.Hide();
+            addNewItemForm.Show();
+            }
         }
 
         private void DeleteItem()
         {
             try 
             {
-                if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (MessageBox.Show($"Are you sure you want to delete '{txtName.Text}'?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     menuItem = listViewDisplayForm.SelectedItems[0].Tag as Item;
                     itemService.DeleteMenuItem(menuItem);
@@ -170,7 +149,7 @@ namespace ChapeauxUI
         {
             if (butUserOverview.Enabled)
             {
-                UsersDisplayForm usersDisplayForm = new UsersDisplayForm();
+                UsersDisplayForm usersDisplayForm = new UsersDisplayForm(loggedUser);
                 usersDisplayForm.Show();
                 this.Close();
             }

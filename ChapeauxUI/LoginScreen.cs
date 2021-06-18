@@ -2,7 +2,6 @@
 using ChapeauxModel;
 using System;
 using System.Diagnostics;
-using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace ChapeauxUI
