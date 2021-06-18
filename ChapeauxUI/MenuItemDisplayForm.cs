@@ -24,7 +24,7 @@ namespace ChapeauxUI
             GetItemList();
         }
 
-        private void GetItemList()
+        public void GetItemList() //Change name to UpdateItemList/RefreshItemList
         {
             itemService = new Item_Service();
             List<Item> menuItems = itemService.GetItems();
@@ -47,6 +47,7 @@ namespace ChapeauxUI
             }
         }
 
+        //fill textbox information for selected item
         private void listViewDisplayForm_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewDisplayForm.SelectedItems.Count == 1)
@@ -91,11 +92,11 @@ namespace ChapeauxUI
 
         private void butAdd_Click(object sender, EventArgs e)
         {
-            AddNewItemForm addNewItemForm = new AddNewItemForm(menuItem);
+            AddNewItemForm addNewItemForm = new AddNewItemForm(this, menuItem);
             if (addNewItemForm.Enabled)
             {
-                this.Hide();
-            addNewItemForm.Show();
+                //this.Hide();
+            addNewItemForm.ShowDialog();
             }
         }
 
