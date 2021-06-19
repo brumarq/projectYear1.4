@@ -21,10 +21,11 @@ namespace ChapeauxUI
             loggedUser = user;
             lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
 
-            GetUserList();
+            RefreshUserList();
         }
 
-        private void GetUserList()
+        //this list also get users with 'GetUsers' method
+        public void RefreshUserList() 
         {
             try
             {
@@ -51,6 +52,7 @@ namespace ChapeauxUI
             }
         }
 
+        //fill textbox information for selected user
         private void listViewDisplayForm_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewDisplayForm.SelectedItems.Count == 1)
@@ -64,7 +66,7 @@ namespace ChapeauxUI
             }
         }
 
-        private string HashPassword(string givenPassword)
+        public string HashPassword(string givenPassword)
         {
             byte[] salt;
             new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
@@ -80,36 +82,46 @@ namespace ChapeauxUI
             return Convert.ToBase64String(hashBytes);
         }
 
-        public void AddUser()
+        private void butAdd_Click(object sender, EventArgs e)
+        {
+            AddNewUserForm addNewUserForm = new AddNewUserForm(this, user);
+            if (addNewUserForm.Enabled)
+            {
+                //lets not go back to another form before doing something with form infront
+                addNewUserForm.ShowDialog();
+            }
+        }
+
+        private void UpdateUser()
         {
             try
             {
-                if (MessageBox.Show("Are you sure?", "Add", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (MessageBox.Show($"Are you sure you want to update '{txtFirstName.Text} {txtLastName.Text}'?", "Edit", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
+                    user = listViewDisplayForm.SelectedItems[0].Tag as User;
+
                     user.FirstName = txtFirstName.Text;
-                    user.LastName = txtLastName.Text;
+                    user.LastName = txtFirstName.Text;
                     user.LoginUsername = txtUsername.Text;
                     user.LoginPassword = HashPassword(txtPassword.Text);
                     user.Role = (Role)Enum.Parse(typeof(Role), cbRole.Text.ToString());
 
-                    userService.AddUserAccount(user);
-                    MessageBox.Show($"User added successfully.");
-                }
-                else
-                    return;
+                    userService.EditUserAccount(user);
+                    MessageBox.Show("User successfully updated.");
+                    listViewDisplayForm.Refresh();
 
-                GetUserList();
+                    RefreshUserList();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
-        private void butAdd_Click(object sender, EventArgs e)
+        private void butEdit_Click(object sender, EventArgs e)
         {
-            AddUser();
+            UpdateUser();
         }
 
         private void DeleteUser()
@@ -118,14 +130,14 @@ namespace ChapeauxUI
             {
                 if (listViewDisplayForm.SelectedItems.Count > 0)
                 {
-                    if (MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    if (MessageBox.Show($"Are you sure you want to delete '{txtFirstName.Text} {txtLastName.Text}'?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                     {
                         user = listViewDisplayForm.SelectedItems[0].Tag as User;
 
                         try
                         {
                             userService.RemoveUserAccount(user);
-                            MessageBox.Show("Account deletion successful!");
+                            MessageBox.Show("User successfully deleted!");
                             listViewDisplayForm.Refresh();
                         }
                         catch (Exception exc)
@@ -135,10 +147,8 @@ namespace ChapeauxUI
                         }
 
                     }
-                    else
-                        return;
-
-                    GetUserList();
+                    
+                    RefreshUserList();
                 }
 
             }
@@ -153,52 +163,12 @@ namespace ChapeauxUI
             DeleteUser();
         }
 
-        private void EditUser()
-        {
-            try
-            {
-                if (MessageBox.Show("Are you sure?", "Edit", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
-                {
-                    user = listViewDisplayForm.SelectedItems[0].Tag as User;
-
-                    user.FirstName = txtFirstName.Text;
-                    user.LastName = txtFirstName.Text;
-                    user.LoginUsername = txtUsername.Text;
-                    user.LoginPassword = HashPassword(txtPassword.Text);
-                    user.Role = (Role)Enum.Parse(typeof(Role), cbRole.Text.ToString());
-
-                    userService.EditUserAccount(user);
-                    MessageBox.Show("User successfully updated.");
-                    listViewDisplayForm.Refresh();
-
-                    GetUserList();
-                }
-                else
-                    return;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void butEdit_Click(object sender, EventArgs e)
-        {
-            EditUser();
-        }
 
         private void butBack_Click(object sender, EventArgs e)
         {
             UsersDisplayForm usersDisplayForm = new UsersDisplayForm(user);
             usersDisplayForm.Show();
-            this.Hide();
-        }
-
-        private void butLogOut_Click(object sender, EventArgs e)
-        {
-            LoginScreen loginScreen = new LoginScreen();
-            loginScreen.Show();
-            this.Hide();
+            Hide();
         }
 
         private void butMenuItemOverview_Click(object sender, EventArgs e)
@@ -208,18 +178,25 @@ namespace ChapeauxUI
                 Item menuItem = new Item();
                 MenuItemDisplayForm menuItemDisplayForm = new MenuItemDisplayForm(menuItem, loggedUser);
                 menuItemDisplayForm.Show();
-                this.Close();
+                Close();
             }
         }
 
         private void butUserOverview_Click(object sender, EventArgs e)
         {
-            GetUserList();
+            RefreshUserList();
         }
 
         private void UsersDisplayForm_Load(object sender, EventArgs e)
         {
             butUserOverview.BackColor = Color.Yellow;
+        }
+
+        private void butLogOut_Click(object sender, EventArgs e)
+        {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
+            Hide();
         }
     }
 }

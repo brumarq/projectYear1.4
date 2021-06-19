@@ -32,7 +32,7 @@ namespace ChapeauxUI
                     menuItem.VATRate = decimal.Parse(txtVATRate.Text);
 
                     item_Service.AddMenuItem(menuItem);
-                    itemForm.GetItemList();
+                    itemForm.RefreshItemList();
 
                     MessageBox.Show($"'{txtName.Text}' added successfully.");
                 }
@@ -45,7 +45,7 @@ namespace ChapeauxUI
 
         private void butBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

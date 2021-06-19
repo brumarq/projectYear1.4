@@ -44,11 +44,11 @@ namespace ChapeauxUI
             this.txtVATRate = new System.Windows.Forms.TextBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.cbType = new System.Windows.Forms.ComboBox();
-            this.ptcHeader = new System.Windows.Forms.PictureBox();
+            this.lblAddNewMenuItem = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblAddMenuItem = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
+            this.ptcHeader = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNameNew
@@ -183,17 +183,15 @@ namespace ChapeauxUI
             this.cbType.Size = new System.Drawing.Size(194, 24);
             this.cbType.TabIndex = 3;
             // 
-            // ptcHeader
+            // lblAddNewMenuItem
             // 
-            this.ptcHeader.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ptcHeader.Image = global::ChapeauxUI.Properties.Resources.top_bar;
-            this.ptcHeader.Location = new System.Drawing.Point(-3, -1);
-            this.ptcHeader.Margin = new System.Windows.Forms.Padding(4);
-            this.ptcHeader.Name = "ptcHeader";
-            this.ptcHeader.Size = new System.Drawing.Size(886, 94);
-            this.ptcHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptcHeader.TabIndex = 7;
-            this.ptcHeader.TabStop = false;
+            this.lblAddNewMenuItem.AutoSize = true;
+            this.lblAddNewMenuItem.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddNewMenuItem.Location = new System.Drawing.Point(21, 97);
+            this.lblAddNewMenuItem.Name = "lblAddNewMenuItem";
+            this.lblAddNewMenuItem.Size = new System.Drawing.Size(232, 28);
+            this.lblAddNewMenuItem.TabIndex = 1;
+            this.lblAddNewMenuItem.Text = "Add New Menu Item";
             // 
             // pictureBox1
             // 
@@ -207,15 +205,17 @@ namespace ChapeauxUI
             this.pictureBox1.TabIndex = 33;
             this.pictureBox1.TabStop = false;
             // 
-            // lblAddMenuItem
+            // ptcHeader
             // 
-            this.lblAddMenuItem.AutoSize = true;
-            this.lblAddMenuItem.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddMenuItem.Location = new System.Drawing.Point(21, 97);
-            this.lblAddMenuItem.Name = "lblAddMenuItem";
-            this.lblAddMenuItem.Size = new System.Drawing.Size(176, 28);
-            this.lblAddMenuItem.TabIndex = 1;
-            this.lblAddMenuItem.Text = "Add Menu Item";
+            this.ptcHeader.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ptcHeader.Image = global::ChapeauxUI.Properties.Resources.top_bar;
+            this.ptcHeader.Location = new System.Drawing.Point(-3, -1);
+            this.ptcHeader.Margin = new System.Windows.Forms.Padding(4);
+            this.ptcHeader.Name = "ptcHeader";
+            this.ptcHeader.Size = new System.Drawing.Size(886, 94);
+            this.ptcHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptcHeader.TabIndex = 7;
+            this.ptcHeader.TabStop = false;
             // 
             // AddNewItemForm
             // 
@@ -224,7 +224,7 @@ namespace ChapeauxUI
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(877, 554);
             this.Controls.Add(this.cbType);
-            this.Controls.Add(this.lblAddMenuItem);
+            this.Controls.Add(this.lblAddNewMenuItem);
             this.Controls.Add(this.lblNameNew);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.butBack);
@@ -243,8 +243,8 @@ namespace ChapeauxUI
             this.Name = "AddNewItemForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddNewItemForm";
-            ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptcHeader)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,6 +268,6 @@ namespace ChapeauxUI
         private System.Windows.Forms.ComboBox cbType;
         private System.Windows.Forms.PictureBox ptcHeader;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblAddMenuItem;
+        private System.Windows.Forms.Label lblAddNewMenuItem;
     }
 }

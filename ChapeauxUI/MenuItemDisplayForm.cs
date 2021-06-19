@@ -17,14 +17,16 @@ namespace ChapeauxUI
         public MenuItemDisplayForm(Item menuItem, User user)
         {
             InitializeComponent();
+            
             lblUserFullName.Text = $"{user.FirstName} {user.LastName}";
             this.menuItem = menuItem;
             loggedUser = user;
          
-            GetItemList();
+            RefreshItemList();
         }
 
-        public void GetItemList() //Change name to UpdateItemList/RefreshItemList
+        //this list also get items with 'GetItems' method
+        public void RefreshItemList()
         {
             itemService = new Item_Service();
             List<Item> menuItems = itemService.GetItems();
@@ -63,7 +65,17 @@ namespace ChapeauxUI
             }
         }
 
-        public void EditItem()
+        private void butAdd_Click(object sender, EventArgs e)
+        {
+            AddNewItemForm addNewItemForm = new AddNewItemForm(this, menuItem);
+            if (addNewItemForm.Enabled)
+            {
+                //lets not go back to another form before doing something with form infront
+                addNewItemForm.ShowDialog();
+            }
+        }
+
+        public void UpdateItem()
         {
             try
             {
@@ -79,10 +91,8 @@ namespace ChapeauxUI
                     itemService.EditMenuItem(menuItem);
                     MessageBox.Show("Menu item updated successfully.");
 
-                    GetItemList();
+                    RefreshItemList();
                 }
-                else
-                    return;
             }
             catch (Exception ex)
             {
@@ -90,14 +100,9 @@ namespace ChapeauxUI
             }
         }
 
-        private void butAdd_Click(object sender, EventArgs e)
+        private void butEdit_Click(object sender, EventArgs e)
         {
-            AddNewItemForm addNewItemForm = new AddNewItemForm(this, menuItem);
-            if (addNewItemForm.Enabled)
-            {
-                //this.Hide();
-            addNewItemForm.ShowDialog();
-            }
+            UpdateItem();
         }
 
         private void DeleteItem()
@@ -110,10 +115,8 @@ namespace ChapeauxUI
                     itemService.DeleteMenuItem(menuItem);
                     MessageBox.Show("Menu item deleted successfully.");
 
-                    GetItemList();
+                    RefreshItemList();
                 }
-                else
-                    return;
             }
             catch (Exception ex)
             {
@@ -126,23 +129,11 @@ namespace ChapeauxUI
             DeleteItem();
         }
 
-        private void butEdit_Click(object sender, EventArgs e)
-        {
-            EditItem();
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            LoginScreen loginScreen = new LoginScreen();
-            loginScreen.Show();
-            this.Close();
-        }
-
         private void butMenuItemOverview_Click(object sender, EventArgs e)
         {
             if (butMenuItemOverview.Enabled)
             {
-                GetItemList();
+                RefreshItemList();
             }
         }
 
@@ -152,13 +143,20 @@ namespace ChapeauxUI
             {
                 UsersDisplayForm usersDisplayForm = new UsersDisplayForm(loggedUser);
                 usersDisplayForm.Show();
-                this.Close();
+                Close();
             }
         }
 
         private void MenuItemDisplayForm_Load(object sender, EventArgs e)
         {
             butMenuItemOverview.BackColor = Color.Yellow;
+        }
+
+        private void butLogout_Click(object sender, EventArgs e)
+        {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
+            Close();
         }
     }
 }
