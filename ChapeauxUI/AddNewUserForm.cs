@@ -22,8 +22,9 @@ namespace ChapeauxUI
         {
             try
             {
-                if (MessageBox.Show("Are you sure?", "Add", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (MessageBox.Show($"Are you sure you want to add user '{txtFirstName.Text} {txtLastName.Text}'?", "Add", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
+                    user = new User();
                     user.FirstName = txtFirstName.Text;
                     user.LastName = txtLastName.Text;
                     user.LoginUsername = txtUsername.Text;

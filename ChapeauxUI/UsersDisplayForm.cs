@@ -13,8 +13,7 @@ namespace ChapeauxUI
         User user;
         User loggedUser;
         User_Service userService;
-        ListViewItem lvItem;
-
+        
         public UsersDisplayForm(User user)
         {
             InitializeComponent();
@@ -36,13 +35,17 @@ namespace ChapeauxUI
 
                 foreach (User u in users)
                 {
-                    lvItem = new ListViewItem(u.UserID.ToString(), "0");
+                    ListViewItem lvItem = new ListViewItem(u.UserID.ToString(), 0);
                     lvItem.SubItems.Add(u.FirstName);
                     lvItem.SubItems.Add(u.LastName);
                     lvItem.SubItems.Add(u.LoginUsername);
                     lvItem.SubItems.Add(u.LoginPassword);
                     lvItem.SubItems.Add(u.Role.ToString());
                     lvItem.Tag = u;
+                    if (u.LoginUsername == "" || u.LoginPassword == "")
+                    {
+                        lvItem.ForeColor = Color.DarkGray;
+                    }
                     listViewDisplayForm.Items.Add(lvItem);
                 }
             }
@@ -61,13 +64,17 @@ namespace ChapeauxUI
                 txtFirstName.Text = user.FirstName;
                 txtLastName.Text = user.LastName;
                 txtUsername.Text = user.LoginUsername;
-                txtPassword.Text = user.LoginPassword;
                 cbRole.Text = user.Role.ToString();
             }
         }
 
         public string HashPassword(string givenPassword)
         {
+            if (givenPassword == "")
+            {
+                //to prevent from hashing empty passwords 
+                return givenPassword;
+            }
             byte[] salt;
             new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
 
@@ -101,7 +108,7 @@ namespace ChapeauxUI
                     user = listViewDisplayForm.SelectedItems[0].Tag as User;
 
                     user.FirstName = txtFirstName.Text;
-                    user.LastName = txtFirstName.Text;
+                    user.LastName = txtLastName.Text;
                     user.LoginUsername = txtUsername.Text;
                     user.LoginPassword = HashPassword(txtPassword.Text);
                     user.Role = (Role)Enum.Parse(typeof(Role), cbRole.Text.ToString());
@@ -124,20 +131,20 @@ namespace ChapeauxUI
             UpdateUser();
         }
 
-        private void DeleteUser()
+        private void RemoveUserPermissions()
         {
             try
             {
                 if (listViewDisplayForm.SelectedItems.Count > 0)
                 {
-                    if (MessageBox.Show($"Are you sure you want to delete '{txtFirstName.Text} {txtLastName.Text}'?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    if (MessageBox.Show($"Are you sure you want to remove {txtFirstName.Text} {txtLastName.Text}'s login permission?", "Remove", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                     {
                         user = listViewDisplayForm.SelectedItems[0].Tag as User;
 
                         try
                         {
-                            userService.RemoveUserAccount(user);
-                            MessageBox.Show("User successfully deleted!");
+                            userService.RemoveUserPermissions(user);
+                            MessageBox.Show("User Login permission removed!");
                             listViewDisplayForm.Refresh();
                         }
                         catch (Exception exc)
@@ -160,7 +167,7 @@ namespace ChapeauxUI
 
         private void butDelete_Click(object sender, EventArgs e)
         {
-            DeleteUser();
+            RemoveUserPermissions();
         }
 
 

@@ -41,6 +41,7 @@ namespace ChapeauxDAL
         {
             conn.Open();
             String query = "update USERS set firstName = @firstName, lastName = @lastname, userName = @username, [password] = @password, role = @role where userID = @userID;";
+            String query2 = "update USERS set firstName = @firstName, lastName = @lastname, userName = @username, role = @role where userID = @userID;";
             
             SqlParameter[] parameters = new SqlParameter[6]
             {
@@ -51,15 +52,23 @@ namespace ChapeauxDAL
                 new SqlParameter("@password", user.LoginPassword),
                 new SqlParameter("@role", user.Role.ToString())
             };
-            
-            ExecuteEditQuery(query, parameters);
+
+            if (user.LoginPassword != "")
+            {
+                ExecuteEditQuery(query, parameters);
+            }
+            else
+            {
+                ExecuteEditQuery(query2, parameters);
+            }
+
             conn.Close();
         }
         
         public void RemoveUserAccount(User user) 
         {
             conn.Open();
-            String query = "delete from USERS where userID = @userID";
+            String query = "update USERS set username = '' , password = '' where userID = @userID";
 
             SqlParameter[] parameters = new SqlParameter[1]
             {
