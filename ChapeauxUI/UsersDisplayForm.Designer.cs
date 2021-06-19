@@ -76,7 +76,7 @@ namespace ChapeauxUI
             this.listViewDisplayForm.GridLines = true;
             this.listViewDisplayForm.HideSelection = false;
             this.listViewDisplayForm.Location = new System.Drawing.Point(37, 134);
-            this.listViewDisplayForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewDisplayForm.Margin = new System.Windows.Forms.Padding(2);
             this.listViewDisplayForm.MultiSelect = false;
             this.listViewDisplayForm.Name = "listViewDisplayForm";
             this.listViewDisplayForm.Size = new System.Drawing.Size(668, 376);
@@ -117,12 +117,12 @@ namespace ChapeauxUI
             // 
             // butAdd
             // 
-            this.butAdd.Location = new System.Drawing.Point(470, 567);
-            this.butAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butAdd.Location = new System.Drawing.Point(550, 574);
+            this.butAdd.Margin = new System.Windows.Forms.Padding(2);
             this.butAdd.Name = "butAdd";
             this.butAdd.Size = new System.Drawing.Size(84, 26);
             this.butAdd.TabIndex = 1;
-            this.butAdd.Text = "Add";
+            this.butAdd.Text = "Add new User";
             this.butAdd.UseVisualStyleBackColor = true;
             this.butAdd.Click += new System.EventHandler(this.butAdd_Click);
             // 
@@ -164,30 +164,30 @@ namespace ChapeauxUI
             // 
             // butDelete
             // 
-            this.butDelete.Location = new System.Drawing.Point(647, 567);
-            this.butDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butDelete.Location = new System.Drawing.Point(647, 570);
+            this.butDelete.Margin = new System.Windows.Forms.Padding(2);
             this.butDelete.Name = "butDelete";
             this.butDelete.Size = new System.Drawing.Size(84, 26);
             this.butDelete.TabIndex = 33;
-            this.butDelete.Text = "Delete";
+            this.butDelete.Text = "Remove User";
             this.butDelete.UseVisualStyleBackColor = true;
             this.butDelete.Click += new System.EventHandler(this.butDelete_Click);
             // 
             // butEdit
             // 
-            this.butEdit.Location = new System.Drawing.Point(559, 567);
-            this.butEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butEdit.Location = new System.Drawing.Point(431, 575);
+            this.butEdit.Margin = new System.Windows.Forms.Padding(2);
             this.butEdit.Name = "butEdit";
-            this.butEdit.Size = new System.Drawing.Size(84, 26);
+            this.butEdit.Size = new System.Drawing.Size(101, 26);
             this.butEdit.TabIndex = 34;
-            this.butEdit.Text = "Edit";
+            this.butEdit.Text = "Confirm Changes";
             this.butEdit.UseVisualStyleBackColor = true;
             this.butEdit.Click += new System.EventHandler(this.butEdit_Click);
             // 
             // txtFirstName
             // 
             this.txtFirstName.Location = new System.Drawing.Point(17, 575);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(76, 20);
             this.txtFirstName.TabIndex = 36;
@@ -195,7 +195,7 @@ namespace ChapeauxUI
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(97, 575);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(2);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(76, 20);
             this.txtLastName.TabIndex = 36;
@@ -203,7 +203,7 @@ namespace ChapeauxUI
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(176, 575);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(76, 20);
             this.txtUsername.TabIndex = 36;
@@ -211,7 +211,7 @@ namespace ChapeauxUI
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(256, 575);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(76, 20);
             this.txtPassword.TabIndex = 36;
@@ -276,7 +276,7 @@ namespace ChapeauxUI
             "Bartender",
             "Waiter"});
             this.cbRole.Location = new System.Drawing.Point(335, 574);
-            this.cbRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbRole.Margin = new System.Windows.Forms.Padding(2);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(92, 21);
             this.cbRole.TabIndex = 38;
@@ -286,7 +286,7 @@ namespace ChapeauxUI
             this.butUserOverview.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.butUserOverview.ForeColor = System.Drawing.Color.Black;
             this.butUserOverview.Location = new System.Drawing.Point(14, 79);
-            this.butUserOverview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butUserOverview.Margin = new System.Windows.Forms.Padding(2);
             this.butUserOverview.Name = "butUserOverview";
             this.butUserOverview.Size = new System.Drawing.Size(175, 28);
             this.butUserOverview.TabIndex = 39;
@@ -298,7 +298,7 @@ namespace ChapeauxUI
             // 
             this.butMenuItemOverview.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.butMenuItemOverview.Location = new System.Drawing.Point(176, 79);
-            this.butMenuItemOverview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butMenuItemOverview.Margin = new System.Windows.Forms.Padding(2);
             this.butMenuItemOverview.Name = "butMenuItemOverview";
             this.butMenuItemOverview.Size = new System.Drawing.Size(205, 28);
             this.butMenuItemOverview.TabIndex = 39;
@@ -358,7 +358,7 @@ namespace ChapeauxUI
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.ptcHeader);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UsersDisplayForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UsersDisplayForm";

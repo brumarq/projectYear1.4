@@ -9,10 +9,12 @@ namespace ChapeauxUI
     {
         Item menuItem = new Item();
         Item_Service item_Service = new Item_Service();
+        MenuItemDisplayForm itemForm;
         
-        public AddNewItemForm(Item item)
+        public AddNewItemForm(MenuItemDisplayForm itemForm, Item item)
         {
             InitializeComponent();
+            this.itemForm = itemForm;
             menuItem = item;
         }
 
@@ -30,6 +32,7 @@ namespace ChapeauxUI
                     menuItem.VATRate = decimal.Parse(txtVATRate.Text);
 
                     item_Service.AddMenuItem(menuItem);
+                    itemForm.GetItemList();
 
                     MessageBox.Show($"'{txtName.Text}' added successfully.");
                 }
@@ -42,11 +45,7 @@ namespace ChapeauxUI
 
         private void butBack_Click(object sender, EventArgs e)
         {
-            User user = new User();
-            MenuItemDisplayForm menuItemDisplayForm = new MenuItemDisplayForm(menuItem, user);
-
-            this.Hide();
-            menuItemDisplayForm.Show();
+            this.Close();
         }
     }
 }
