@@ -7,8 +7,8 @@ namespace ChapeauxUI
 {
     public partial class AddNewItemForm : Form
     {
-        Item menuItem = new Item();
-        Item_Service item_Service = new Item_Service();
+        Item menuItem;
+        Item_Service item_Service;
         MenuItemDisplayForm itemForm;
         
         public AddNewItemForm(MenuItemDisplayForm itemForm, Item item)
@@ -24,6 +24,7 @@ namespace ChapeauxUI
             {
                 if (MessageBox.Show($"Are you sure you want to add '{txtName.Text}' to the menu?", "Add", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
+                    menuItem = new Item();
                     menuItem.Name = txtName.Text;
                     menuItem.Price = decimal.Parse(txtPrice.Text);
                     menuItem.Stock = int.Parse(txtStock.Text);
@@ -31,6 +32,7 @@ namespace ChapeauxUI
                     menuItem.Course = cbType.Text;
                     menuItem.VATRate = decimal.Parse(txtVATRate.Text);
 
+                    item_Service = new Item_Service();
                     item_Service.AddMenuItem(menuItem);
                     itemForm.RefreshItemList();
 

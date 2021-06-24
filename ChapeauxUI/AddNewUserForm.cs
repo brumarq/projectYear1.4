@@ -8,7 +8,7 @@ namespace ChapeauxUI
     public partial class AddNewUserForm : Form
     {
         User user;
-        User_Service user_Service = new User_Service();
+        User_Service user_Service;
         UsersDisplayForm userDisplayForm;
 
         public AddNewUserForm(UsersDisplayForm userForm, User user)
@@ -31,6 +31,7 @@ namespace ChapeauxUI
                     user.LoginPassword = userDisplayForm.HashPassword(txtPassword.Text);
                     user.Role = (Role)Enum.Parse(typeof(Role), cbRole.Text.ToString());
 
+                    user_Service = new User_Service();
                     user_Service.AddUserAccount(user);
                     MessageBox.Show($"User added successfully.");
                 }
@@ -45,7 +46,7 @@ namespace ChapeauxUI
 
         private void butBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

@@ -75,6 +75,7 @@ namespace ChapeauxUI
                 //to prevent from hashing empty passwords 
                 return givenPassword;
             }
+
             byte[] salt;
             new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
 
@@ -103,7 +104,7 @@ namespace ChapeauxUI
         {
             try
             {
-                if (MessageBox.Show($"Are you sure you want to update '{txtFirstName.Text} {txtLastName.Text}'?", "Edit", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (MessageBox.Show($"Are you sure you want to update '{txtFirstName.Text} {txtLastName.Text}'?", "Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     user = listViewDisplayForm.SelectedItems[0].Tag as User;
 
@@ -182,8 +183,7 @@ namespace ChapeauxUI
         {
             if (butMenuItemOverview.Enabled)
             {
-                Item menuItem = new Item();
-                MenuItemDisplayForm menuItemDisplayForm = new MenuItemDisplayForm(menuItem, loggedUser);
+                MenuItemDisplayForm menuItemDisplayForm = new MenuItemDisplayForm(loggedUser);
                 menuItemDisplayForm.Show();
                 Close();
             }

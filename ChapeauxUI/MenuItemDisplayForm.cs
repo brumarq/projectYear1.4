@@ -14,12 +14,11 @@ namespace ChapeauxUI
         ListViewItem lvItem;
         User loggedUser;
 
-        public MenuItemDisplayForm(Item menuItem, User user)
+        public MenuItemDisplayForm(User user)
         {
             InitializeComponent();
             
             lblUserFullName.Text = $"{user.FirstName} {user.LastName}";
-            this.menuItem = menuItem;
             loggedUser = user;
          
             RefreshItemList();
@@ -86,7 +85,7 @@ namespace ChapeauxUI
                 menuItem.Course = cbType.Text;
                 menuItem.VATRate = decimal.Parse(txtVatRate.Text);
 
-                if (MessageBox.Show($"Are you sure you want to update '{txtName.Text}'?", "Edit", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (MessageBox.Show($"Are you sure you want to update '{txtName.Text}'?", "Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     itemService.EditMenuItem(menuItem);
                     MessageBox.Show("Menu item updated successfully.");
@@ -109,7 +108,7 @@ namespace ChapeauxUI
         {
             try 
             {
-                if (MessageBox.Show($"Are you sure you want to delete '{txtName.Text}'?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (MessageBox.Show($"Are you sure you want to remove '{txtName.Text}'?", "Remove", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     menuItem = listViewDisplayForm.SelectedItems[0].Tag as Item;
                     itemService.DeleteMenuItem(menuItem);
