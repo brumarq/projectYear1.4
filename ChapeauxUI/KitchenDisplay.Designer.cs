@@ -119,7 +119,7 @@ namespace ChapeauxUI
             this.btnReloadKitchen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReloadKitchen.FlatAppearance.BorderSize = 0;
             this.btnReloadKitchen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReloadKitchen.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReloadKitchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReloadKitchen.ForeColor = System.Drawing.Color.White;
             this.btnReloadKitchen.Location = new System.Drawing.Point(51, 837);
             this.btnReloadKitchen.Name = "btnReloadKitchen";
@@ -278,7 +278,7 @@ namespace ChapeauxUI
             this.btnReloadBar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReloadBar.FlatAppearance.BorderSize = 0;
             this.btnReloadBar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReloadBar.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReloadBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReloadBar.ForeColor = System.Drawing.Color.White;
             this.btnReloadBar.Location = new System.Drawing.Point(42, 827);
             this.btnReloadBar.Name = "btnReloadBar";
@@ -414,7 +414,7 @@ namespace ChapeauxUI
             this.lblUserFullName.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblUserFullName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
             this.lblUserFullName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblUserFullName.Font = new System.Drawing.Font("Roboto", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserFullName.ForeColor = System.Drawing.Color.White;
             this.lblUserFullName.Location = new System.Drawing.Point(377, 24);
             this.lblUserFullName.Name = "lblUserFullName";
@@ -426,8 +426,8 @@ namespace ChapeauxUI
             // tmrReloadListViews
             // 
             this.tmrReloadListViews.Enabled = true;
-            this.tmrReloadListViews.Interval = 3000;
-            this.tmrReloadListViews.Tick += new System.EventHandler(this.tmrReloadListViews_Tick);
+            this.tmrReloadListViews.Interval = 5000;
+            this.tmrReloadListViews.Tick += new System.EventHandler(this.tmrReloadListViews_Tick_1);
             // 
             // KitchenDisplay
             // 

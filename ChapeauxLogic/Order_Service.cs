@@ -18,6 +18,10 @@ namespace ChapeauxLogic
             orderdb = new OrderDAL();
             orderItemdb = new OrderItemDAL();
         }
+        public List<Order> GetOrders()
+        {
+            return orderdb.GetAllOrders();
+        }
 
         public bool tableContainsOrder(int tableNumber)
         {
