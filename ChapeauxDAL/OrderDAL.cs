@@ -22,6 +22,35 @@ namespace ChapeauxDAL
 
             return false;
         }
+        public List<Order> GetAllOrders()
+        {
+            string query = "select orderID, startDateTime, endDateTime, isPaid, tableID, userID from ORDERS where isPaid = 0";
+            SqlParameter[] sqlParameters =
+            {
+
+            };
+            return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
+        }
+        private List<Order> ReadOrders(DataTable dataTable)
+        {
+            List<Order> listOforders = new List<Order>();
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Order order = new Order()
+                {
+                    OrderID = (int)dr["orderID"],
+                    StartDateTime = (DateTime)dr["startDateTime"],
+                    EndDateTime = (DateTime)dr["endDateTime"],
+                    IsPaid = (bool)dr["isPaid"],
+                    TableID = (int)dr["tableID"],
+                    UserID = (int)dr["userID"]
+                };
+
+                listOforders.Add(order);
+            }
+
+            return listOforders;
+        }
         public bool IsThereAnOrder(int tableNumber)
         {
             string query = "SELECT tableID FROM ORDERS WHERE tableID=@tableID AND isPaid=0";

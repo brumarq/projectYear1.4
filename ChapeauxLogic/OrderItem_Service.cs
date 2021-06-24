@@ -21,7 +21,7 @@ namespace ChapeauxLogic
         {
             orderItemdb.UpdateOrderItemStatus(orderItem, status);
         }
-
+        
         public void AddItemToOrder(OrderItem orderItem)
         {
             orderItemdb.AddItemToOrder(orderItem);
