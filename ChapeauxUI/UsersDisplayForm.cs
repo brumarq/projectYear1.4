@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Security.Cryptography;
 
 namespace ChapeauxUI
-{
+{                           
     public partial class UsersDisplayForm : Form
     {
         User user;
@@ -19,7 +19,7 @@ namespace ChapeauxUI
             InitializeComponent();
             loggedUser = user;
             lblUserFullName.Text = $"{loggedUser.FirstName} {loggedUser.LastName}";
-
+            
             RefreshUserList();
         }
 
@@ -35,13 +35,15 @@ namespace ChapeauxUI
 
                 foreach (User u in users)
                 {
-                    ListViewItem lvItem = new ListViewItem(u.UserID.ToString(), 0);
+                    ListViewItem lvItem = new ListViewItem(u.UserID.ToString());
                     lvItem.SubItems.Add(u.FirstName);
                     lvItem.SubItems.Add(u.LastName);
                     lvItem.SubItems.Add(u.LoginUsername);
                     lvItem.SubItems.Add(u.LoginPassword);
                     lvItem.SubItems.Add(u.Role.ToString());
+                    //tagging each iterating item in the listView
                     lvItem.Tag = u;
+                    
                     if (u.LoginUsername == "" || u.LoginPassword == "")
                     {
                         lvItem.ForeColor = Color.DarkGray;
@@ -60,6 +62,7 @@ namespace ChapeauxUI
         {
             if (listViewDisplayForm.SelectedItems.Count == 1)
             {
+                //if selected Item is 1, tag the user
                 user = listViewDisplayForm.SelectedItems[0].Tag as User;
                 txtFirstName.Text = user.FirstName;
                 txtLastName.Text = user.LastName;
@@ -92,10 +95,9 @@ namespace ChapeauxUI
 
         private void butAdd_Click(object sender, EventArgs e)
         {
-            AddNewUserForm addNewUserForm = new AddNewUserForm(this, user);
+            AddNewUserForm addNewUserForm = new AddNewUserForm(this);
             if (addNewUserForm.Enabled)
             {
-                //lets not go back to another form before doing something with form infront
                 addNewUserForm.ShowDialog();
             }
         }
@@ -106,6 +108,7 @@ namespace ChapeauxUI
             {
                 if (MessageBox.Show($"Are you sure you want to update '{txtFirstName.Text} {txtLastName.Text}'?", "Update", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
+                    //tagged user passed to the 'user' the global object
                     user = listViewDisplayForm.SelectedItems[0].Tag as User;
 
                     user.FirstName = txtFirstName.Text;
@@ -113,10 +116,9 @@ namespace ChapeauxUI
                     user.LoginUsername = txtUsername.Text;
                     user.LoginPassword = HashPassword(txtPassword.Text);
                     user.Role = (Role)Enum.Parse(typeof(Role), cbRole.Text.ToString());
-
+                    
                     userService.EditUserAccount(user);
                     MessageBox.Show("User successfully updated.");
-                    listViewDisplayForm.Refresh();
 
                     RefreshUserList();
                 }
@@ -136,29 +138,23 @@ namespace ChapeauxUI
         {
             try
             {
-                if (listViewDisplayForm.SelectedItems.Count > 0)
+                if (MessageBox.Show($"Are you sure you want to remove {txtFirstName.Text} {txtLastName.Text}'s login permission?", "Remove", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
-                    if (MessageBox.Show($"Are you sure you want to remove {txtFirstName.Text} {txtLastName.Text}'s login permission?", "Remove", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+
+                    try
                     {
                         user = listViewDisplayForm.SelectedItems[0].Tag as User;
-
-                        try
-                        {
-                            userService.RemoveUserPermissions(user);
-                            MessageBox.Show("User Login permission removed!");
-                            listViewDisplayForm.Refresh();
-                        }
-                        catch (Exception exc)
-                        {
-
-                            MessageBox.Show(exc.Message);
-                        }
-
+                        userService.RemoveUserPermissions(user);
+                        MessageBox.Show("User Login permission removed!");
                     }
-                    
-                    RefreshUserList();
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show(exc.Message);
+                    }
                 }
-
+            
+                RefreshUserList();
+                
             }
             catch (Exception ex)
             {
@@ -178,7 +174,7 @@ namespace ChapeauxUI
             usersDisplayForm.Show();
             Hide();
         }
-
+        //if 'menu item overview button' pressed, pop out menuItem overview form
         private void butMenuItemOverview_Click(object sender, EventArgs e)
         {
             if (butMenuItemOverview.Enabled)

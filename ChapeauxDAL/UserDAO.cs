@@ -18,7 +18,7 @@ namespace ChapeauxDAL
             
             return ReadUsers(ExecuteSelectQuery(query, parameters));
         }
-
+        //(User user), to get users info from db
         public void AddUserAccount(User user)
         {
             conn.Open();

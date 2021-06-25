@@ -56,7 +56,7 @@ namespace ChapeauxUI
                 menuItem = listViewDisplayForm.SelectedItems[0].Tag as Item;
 
                 txtName.Text = menuItem.Name.ToString();
-                txtPrice.Text = menuItem.Price.ToString("0.00");
+                txtPrice.Text = menuItem.Price.ToString();
                 txtStock.Text = menuItem.Stock.ToString();
                 cbCategory.Text = menuItem.Category.ToString();
                 cbType.Text = menuItem.Course.ToString();
@@ -66,7 +66,7 @@ namespace ChapeauxUI
 
         private void butAdd_Click(object sender, EventArgs e)
         {
-            AddNewItemForm addNewItemForm = new AddNewItemForm(this, menuItem);
+            AddNewItemForm addNewItemForm = new AddNewItemForm(this);
             if (addNewItemForm.Enabled)
             {
                 //lets not go back to another form before doing something with form infront
@@ -78,6 +78,7 @@ namespace ChapeauxUI
         {
             try
             {
+                //updating through txtBoxes
                 menuItem.Name = txtName.Text;
                 menuItem.Price = decimal.Parse(txtPrice.Text);
                 menuItem.Stock = int.Parse(txtStock.Text);
@@ -104,7 +105,7 @@ namespace ChapeauxUI
             UpdateItem();
         }
 
-        private void DeleteItem()
+        private void RemoveItem()
         {
             try 
             {
@@ -125,7 +126,7 @@ namespace ChapeauxUI
 
         private void butDelete_Click(object sender, EventArgs e)
         {
-            DeleteItem();
+            RemoveItem();
         }
 
         private void butMenuItemOverview_Click(object sender, EventArgs e)
@@ -135,7 +136,7 @@ namespace ChapeauxUI
                 RefreshItemList();
             }
         }
-
+        //if 'user disply overview button' pressed, pop out user overview form
         private void butUserOverview_Click(object sender, EventArgs e)
         {
             if (butUserOverview.Enabled)
@@ -150,7 +151,7 @@ namespace ChapeauxUI
         {
             butMenuItemOverview.BackColor = Color.Yellow;
         }
-
+        //shows login screen
         private void butLogout_Click(object sender, EventArgs e)
         {
             LoginScreen loginScreen = new LoginScreen();

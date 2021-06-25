@@ -9,13 +9,13 @@ namespace ChapeauxUI
     {
         Item menuItem;
         Item_Service item_Service;
+        //need this to call method itemForm.RefreshItemList'
         MenuItemDisplayForm itemForm;
         
-        public AddNewItemForm(MenuItemDisplayForm itemForm, Item item)
+        public AddNewItemForm(MenuItemDisplayForm itemForm)
         {
             InitializeComponent();
             this.itemForm = itemForm;
-            menuItem = item;
         }
 
         private void butAdd_Click(object sender, EventArgs e)

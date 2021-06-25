@@ -11,10 +11,9 @@ namespace ChapeauxUI
         User_Service user_Service;
         UsersDisplayForm userDisplayForm;
 
-        public AddNewUserForm(UsersDisplayForm userForm, User user)
+        public AddNewUserForm(UsersDisplayForm userForm)
         {
             InitializeComponent();
-            this.user = user;
             userDisplayForm = userForm;
         }
 
